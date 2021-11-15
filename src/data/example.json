@@ -1,0 +1,21 @@
+{
+  "root_id": "__INTEGER__",
+  "nodes": [
+    {
+      "id": "__INTEGER__",
+      "label": "__STRING__ (It will keep the label of the cluster, if no label exists (namely no naming given for the cluster), it can be NONE)",
+      "distinguishing_features": [
+        {
+          "action_itmes": [
+            "__STRING__ (Action (e.g. Query))"
+          ],
+          "frequency": "__DOUBLE__ (At the beginning, we can show the normalized frequency (count_of_given_k_gram / count_of_all_k_grams), but I am totally open to any alternatives (E.g. chi-square score etc.))"
+        }
+      ],
+      "children_nodes": [
+        "__INTEGER__ (id of the nodes)"
+      ],
+      "subtree_size": "__INTEGER__ (Number of all patterns in the subtree)"
+    }
+  ]
+}
