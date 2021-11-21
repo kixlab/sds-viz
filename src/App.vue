@@ -1,32 +1,44 @@
 <template>
   <div class="w-full h-full flex">
-    <information class="w-1/3 h-full bg-red-300"/>
-    <visualization class="w-2/3 h-full bg-gray-400"/>
+    <div class="w-3/5 h-full">
+      <div class="w-full h-2/5 flex">
+        <filter-panel class="main-component w-1/2 h-full"/>
+        <keyword-selection class="main-component w-1/2 h-full"/>
+      </div>
+      <pattern-selection class="main-component w-full h-3/5"/>
+    </div>
+    <query-selection class="main-component w-2/5 h-full"/>
   </div>
 </template>
 
 <script>
 
-import Visualization from './components/Visualization.vue';
-import Information from './components/Information.vue';
+import FilterPanel from './components/Filter/FilterPanel.vue';
+import KeywordSelection from './components/Keyword/KeywordSelection.vue';
+import PatternSelection from './components/Behavior/PatternSelection.vue';
+import QuerySelection from './components/QueryList/QuerySelection.vue';
 
 export default {
   name: 'App',
   components: {
-    Visualization,
-    Information,
-  }
+    FilterPanel,
+    KeywordSelection,
+    PatternSelection,
+    QuerySelection
+  },
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   width: 100%;
   height: 100%;
+}
+.main-component {
+  padding: 16px;
+  border-width: 1px;
+  border-color: gray;
+  border-style: solid;
+  border-radius: 5px;
 }
 </style>
