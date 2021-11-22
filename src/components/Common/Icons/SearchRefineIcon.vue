@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "SearchRefineIcon.vue",
+  name: "SearchRefineIcon",
   components: {},
 };
 </script>

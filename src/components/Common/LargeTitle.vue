@@ -1,12 +1,12 @@
 <template>
-  <h1 class="text-xl font-semibold">
+  <h1 class="text-lg">
     <slot> </slot>
   </h1>
 </template>
 
 <script>
 export default {
-  name: "SectionTitle",
+  name: "LargeTitle",
   components: {},
 };
 </script>

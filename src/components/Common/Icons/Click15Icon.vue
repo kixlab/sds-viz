@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "Click15Icon.vue",
+  name: "Click15Icon",
   components: {},
 };
 </script>

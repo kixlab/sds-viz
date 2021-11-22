@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: "SearchIcon.vue",
+  name: "SearchIcon",
   components: {},
 };
 </script>

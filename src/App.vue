@@ -30,12 +30,8 @@ export default {
 </script>
 
 <style>
-#app {
-  width: 100%;
-  height: 100%;
-}
 .main-component {
-  padding: 16px;
+  padding: 8px;
   border-width: 1px;
   border-color: gray;
   border-style: solid;

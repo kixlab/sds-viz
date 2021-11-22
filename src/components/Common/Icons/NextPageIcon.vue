@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "NextPage.vue",
+  name: "NextPage",
   components: {},
 };
 </script>

@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "Click11PlusIcon.vue",
+  name: "Click11PlusIcon",
   components: {},
 };
 </script>
