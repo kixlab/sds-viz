@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-red-300">
+  <div class="">
     <section-title> Filter panel </section-title>
   </div>
 </template>

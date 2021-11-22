@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full flex">
     <div class="w-3/5 h-full">
-      <div class="w-full h-2/5 flex">
+      <div class="w-full h-9/20 flex">
         <filter-panel class="main-component w-1/2 h-full"/>
         <keyword-selection class="main-component w-1/2 h-full"/>
       </div>
-      <pattern-selection class="main-component w-full h-3/5"/>
+      <pattern-selection class="main-component w-full h-11/20"/>
     </div>
     <query-selection class="main-component w-2/5 h-full"/>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blue-300">
+  <div class="">
     <section-title> Keyword selection </section-title>
   </div>
 </template>

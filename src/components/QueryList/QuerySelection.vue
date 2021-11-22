@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-yellow-300">
+  <div class="">
     <section-title> Query Selection </section-title>
   </div>
 </template>

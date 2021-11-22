@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-green-300">
+  <div class="">
     <section-title> Pattern Selection </section-title>
   </div>
 </template>
