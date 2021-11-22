@@ -1,16 +1,17 @@
 <template>
   <div class="bg-green-300">
-    Hi
+    <section-title> Pattern Selection </section-title>
   </div>
 </template>
 
 <script>
-
+import SectionTitle from "@/components/Common/SectionTitle.vue";
 export default {
-  name: 'PatternSelection',
+  name: "PatternSelection",
   components: {
-  }
-}
+    SectionTitle,
+  },
+};
 </script>
 
 <style>

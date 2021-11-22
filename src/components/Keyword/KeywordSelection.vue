@@ -1,16 +1,18 @@
 <template>
   <div class="bg-blue-300">
-    Hi
+    <section-title> Keyword selection </section-title>
   </div>
 </template>
 
 <script>
+import SectionTitle from "@/components/Common/SectionTitle.vue";
 
 export default {
-  name: 'KeywordSelection',
+  name: "KeywordSelection",
   components: {
-  }
-}
+    SectionTitle,
+  },
+};
 </script>
 
 <style>
