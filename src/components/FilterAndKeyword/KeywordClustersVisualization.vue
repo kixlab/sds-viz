@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap overflow-y-scroll">
     <div v-for="keywordCluster in keywordClusters" :key="keywordCluster.id" :class="['mx-2 cursor-pointer', interactionState.chosenKeywordClusterId === keywordCluster.id ? 'hover-bg-gray-400 bg-gray-400' : 'hover:bg-gray-300 bg-gray-200']" v-on:click="setChosenKeywordCluster(keywordCluster.id)">
         {{ keywordCluster.topKeyword }}
     </div>
@@ -27,9 +27,13 @@ export default {
   },
   methods: {
       setChosenKeywordCluster(keywordClusterId) {
-        this.setInteractionState({
+        let update = {
           chosenKeywordClusterId: keywordClusterId,
-        });
+        };
+        if(this.interactionState.chosenKeywordClusterId === keywordClusterId) {
+          update.chosenKeywordClusterId = null;
+        }
+        this.setInteractionState(update);
       },
   },
 };

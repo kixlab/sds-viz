@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <section-title> Filter and Keyword </section-title>
-    <div class="w-auto flex-grow mx-4 my-4 flex flex-col">
+    <div class="flex flex-col flex-grow  w-auto mx-4 my-4 overflow-y-hidden">
       <div
         class="
           w-full
@@ -34,8 +34,8 @@
           </small-title>
         </div>
       </div>
-      <div class="mt-4 bg-gray-200 border border-black rounded-md flex-grow">
-        <keyword-clusters-visualization v-if="interactionState.chosenMetric !== null" class="w-full h-full" />
+      <div class="flex flex-col flex-grow mt-4 bg-gray-200 border border-black rounded-md overflow-y-hidden">
+        <keyword-clusters-visualization v-if="interactionState.chosenMetric !== null" class="w-full" />
       </div>
     </div>
   </div>

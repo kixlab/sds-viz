@@ -1,8 +1,6 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="48"
-    height="1"
     viewBox="0 0 48 1"
     fill="none"
   >

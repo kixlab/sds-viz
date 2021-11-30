@@ -1,9 +1,8 @@
 <template>
   <div class="w-full h-full flex">
     <div class="w-3/5 h-full">
-
-      <filter-and-keyword-panel class="main-component w-full h-3/5 flex"/>
-      <pattern-selection class="main-component w-full h-2/5"/>
+      <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
+      <pattern-selection class="main-component w-full h-1/3"/>
     </div>
     <query-selection class="main-component w-2/5 h-full"/>
   </div>
