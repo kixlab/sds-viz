@@ -236,6 +236,10 @@ export class KeywordCluster {
         return this.config.keywords;
     }
 
+    get topKeyword() {
+        return this.config.keywords[0].keyword;
+    }
+
     set id(id) {
         this.config.id = id;
     }

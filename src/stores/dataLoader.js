@@ -1,7 +1,5 @@
 import { Session, BehaviorCluster, KeywordCluster } from './dataStructures.js';
 
-const METRICS = ['pSkip', 'Click', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate'];
-
 export const loadSessions = (filePath, keywordClustersDict) => {
     const sessionsRaw = require(`${filePath}`);
     sessionsRaw.forEach(session => {        
@@ -10,7 +8,7 @@ export const loadSessions = (filePath, keywordClustersDict) => {
         behaviorCluster.sessions[session.SessionNum] = new Session(session);
         behaviorCluster.subtree_size = behaviorCluster.subtree_size + 1;
         keywordCluster.subtree_size = keywordCluster.subtree_size + 1;
-        METRICS.forEach(metric => {
+        window.globalVars.METRICS.forEach(metric => {
             const metricValues = keywordCluster.metricValues;
             metricValues[metric] = metricValues[metric] + session[metric];
             keywordCluster.metricValues = metricValues;
@@ -26,7 +24,7 @@ export const loadKeywordClusters = (filePath, keywordClustersDict) => {
         return new KeywordCluster({
             'id': key,
             'subtree_size': 0,
-            'metric_values': METRICS.reduce((a,x) => ({...a, [x]: 0.0}), {}),
+            'metric_values': window.globalVars.METRICS.reduce((a,x) => ({...a, [x]: 0.0}), {}),
             'keywords': value.map(keyword => {
                 return {
                     'keyword': keyword[0],

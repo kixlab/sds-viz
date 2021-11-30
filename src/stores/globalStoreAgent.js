@@ -9,7 +9,10 @@ const SESSIONS_FILE = 'sequences-5-20.json';
 export const initGlobalStore = () => {
 
     // Definitions and Getters //
-
+    window.globalVars = {
+        METRICS: ['pSkip', 'Click@1-5', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate'],
+        METRIC_LABELS: ['P(skip)', 'Click@1-5', 'Max RR', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate'],
+    };
     var keywordClusters = {};
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     keywordClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
@@ -75,10 +78,10 @@ export const initGlobalStore = () => {
             }
         });
         // nullify the next states
-        var isNull = false;
-        Object.entries(interactionState).forEach(([key, value]) => {
-            if(value === null) {
-                isNull = true;
+        var isNull = true;
+        Object.keys(interactionState).reverse().forEach((key) => {
+            if(key in partialState) {
+                isNull = false;
             }
             if(isNull) {
                 interactionState[key] = null;

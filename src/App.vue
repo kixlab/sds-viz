@@ -1,11 +1,9 @@
 <template>
   <div class="w-full h-full flex">
     <div class="w-3/5 h-full">
-      <div class="w-full h-9/20 flex">
-        <filter-panel class="main-component w-1/2 h-full"/>
-        <keyword-selection class="main-component w-1/2 h-full"/>
-      </div>
-      <pattern-selection class="main-component w-full h-11/20"/>
+
+      <filter-and-keyword-panel class="main-component w-full h-3/5 flex"/>
+      <pattern-selection class="main-component w-full h-2/5"/>
     </div>
     <query-selection class="main-component w-2/5 h-full"/>
   </div>
@@ -13,20 +11,18 @@
 
 <script>
 
-import FilterPanel from './components/Filter/FilterPanel.vue';
-import KeywordSelection from './components/Keyword/KeywordSelection.vue';
 import PatternSelection from './components/Behavior/PatternSelection.vue';
 import QuerySelection from './components/QueryList/QuerySelection.vue';
 import { initGlobalStore } from "@/stores/globalStoreAgent.js";
+import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywordPanel.vue';
 // import {computed} from "vue";
 
 export default {
   name: 'App',
   components: {
-    FilterPanel,
-    KeywordSelection,
     PatternSelection,
-    QuerySelection
+    QuerySelection,
+    FilterAndKeywordPanel
   },
   setup() {
     const necessaryMethods = initGlobalStore();
