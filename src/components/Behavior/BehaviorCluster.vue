@@ -40,12 +40,13 @@
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
+import LineInTheMiddle from "../Common/Icons/LineInTheMiddle.vue";
 
 import IconGiver from '../Common/IconGiver.vue';
 export default {
   name: "BehaviorCluster",
   components: {
-    IconGiver,
+    IconGiver,LineInTheMiddle,
   },
   props: ["behaviorCluster"],
   setup() {
