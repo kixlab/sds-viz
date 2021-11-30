@@ -19,12 +19,7 @@
           :key="action_item"
         >
           <div class="w-8 h-8">
-            <click-11-plus-icon v-if="action_item === 'Click11+'" />
-            <click-15-icon v-else-if="action_item === 'Click1-5'" />
-            <click-610-icon v-else-if="action_item === 'Click6-10'" />
-            <empty-icon v-else-if="action_item === 'Empty'" />
-            <search-refine-icon v-else-if="action_item === 'RefinedQuery'" />
-            <search-icon v-else-if="action_item === 'NewQuery'" />
+            <icon-giver v-bind="{action_item}"/>
           </div>
 
           <line-in-the-middle
@@ -45,25 +40,12 @@
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
-import Click15Icon from "../Common/Icons/Click15Icon.vue";
-import Click610Icon from "../Common/Icons/Click610Icon.vue";
-import SearchRefineIcon from "../Common/Icons/SearchRefineIcon.vue";
-import Click11PlusIcon from "../Common/Icons/Click11PlusIcon.vue";
-import SearchIcon from "../Common/Icons/SearchIcon.vue";
-import LineInTheMiddle from "../Common/Icons/LineInTheMiddle.vue";
-import EmptyIcon from "../Common/Icons/EmptyIcon.vue";
-import SmallTitle from "../Common/SmallTitle.vue";
+
+import IconGiver from '../Common/IconGiver.vue';
 export default {
   name: "BehaviorCluster",
   components: {
-    Click15Icon,
-    Click610Icon,
-    SearchRefineIcon,
-    Click11PlusIcon,
-    SearchIcon,
-    LineInTheMiddle,
-    EmptyIcon,
-    SmallTitle,
+    IconGiver,
   },
   props: ["behaviorCluster"],
   setup() {

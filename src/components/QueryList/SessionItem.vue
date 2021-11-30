@@ -1,69 +1,106 @@
 <template>
   <div class="w-auto flex flex-col items-center">
-    <div class="w-full flex justify-between items-center bg-gray-200 rounded-xl border border-black py-2 px-2 cursor-pointer hover:bg-gray-300" v-on:click="active = !active">
+    <div
+      :class="[
+        'w-full flex justify-between items-center rounded-xl border border-black py-2 px-2 cursor-pointer',
+        this.interactionState.chosenSessionId === session.id
+          ? 'bg-gray-400 hover:bg-gray-400'
+          : 'bg-gray-200 hover:bg-gray-300',
+      ]"
+      v-on:click="setChosenSession()"
+    >
       <div class="w-11/12 flex items-center overflow-x-scroll">
-          <div class="w-5/12 flex items-center">
-            <search-icon class="w-9 h-9 mr-2"/>
-            <medium-title>
-            mailing list of *** department
-            </medium-title>
-          </div>
-          <div class="w-7/12 flex items-center overflow-x-scroll">
-            <click-11-plus-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-15-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-610-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-11-plus-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-15-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-11-plus-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-            <click-15-icon class="w-9 h-9"/>
-            <line-in-the-middle class="w-4 h-9"/>
-          </div>
+        <div class="w-5/12 flex items-center">
+          <search-icon class="w-8 h-8 mr-2" />
+          <medium-title>
+            {{ session.sequence[0].Query }}
+          </medium-title>
+        </div>
+        <div class="w-7/12 flex items-center overflow-x-scroll">
+          <template
+            v-for="(action, i) in session.sequence.slice(1)"
+            :key="action"
+          >
+            <div class="w-8 h-8">
+              <icon-giver v-bind="{ action_item: action.Type }" />
+            </div>
+            <line-in-the-middle
+              v-if="i !== session.sequence.length - 2"
+              class="w-4 h-8"
+            />
+          </template>
+        </div>
       </div>
       <div class="mx-2">
-        <triangle-black v-bind="{class: ['w-5 h-5', active && 'transform rotate-180']}"/>
+        <triangle-black
+          v-bind="{
+            class: [
+              'w-5 h-5',
+              interactionState.chosenSessionId === session.id &&
+                'transform rotate-180',
+            ],
+          }"
+        />
       </div>
     </div>
-    <div v-if="active" class="w-full px-2 mt-2">
+    <div
+      v-if="interactionState.chosenSessionId === session.id"
+      class="w-full px-2 mt-2"
+    >
       <div class="bg-gray-200 w-full border border-black rounded-md px-2">
-        <search-history/>
+        <search-history v-bind="{
+          session: session,
+        }"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SearchIcon from '@/components/Common/Icons/SearchIcon.vue';
-import Click11PlusIcon from '@/components/Common/Icons/Click11PlusIcon.vue';
-import MediumTitle from '../Common/MediumTitle.vue';
-import Click15Icon from '../Common/Icons/Click15Icon.vue';
-import Click610Icon from '../Common/Icons/Click610Icon.vue';
-import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue';
-import TriangleBlack from '../Common/Icons/TriangleBlack.vue';
-import SearchHistory from './SearchHistory.vue';
+import SearchIcon from "@/components/Common/Icons/SearchIcon.vue";
+import MediumTitle from "../Common/MediumTitle.vue";
+import LineInTheMiddle from "../Common/Icons/LineInTheMiddle.vue";
+import TriangleBlack from "../Common/Icons/TriangleBlack.vue";
+import SearchHistory from "./SearchHistory.vue";
+import IconGiver from "../Common/IconGiver.vue";
+import { useGlobalStore } from "@/stores/globalStoreAgent.js";
+import { computed } from "vue";
 
 export default {
   name: "QuerySelection",
   components: {
     SearchIcon,
     MediumTitle,
-    Click11PlusIcon,
-    Click15Icon,
-    Click610Icon,
     LineInTheMiddle,
     TriangleBlack,
     SearchHistory,
+    IconGiver,
+  },
+  props: ["session"],
+  setup() {
+    const store = useGlobalStore();
+    const interactionState = computed(() => store.getInteractionState.value);
+    const setInteractionState = store.setInteractionState;
+
+    return {
+      interactionState,
+      setInteractionState,
+    };
   },
   data() {
-    return {
-      'active': false,
-    }
-  }
+    return {};
+  },
+  methods: {
+    setChosenSession() {
+      let update = {
+        chosenSessionId: this.session.id,
+      };
+      if (this.interactionState.chosenSessionId === this.session.id) {
+        update.chosenSessionId = null;
+      }
+      this.setInteractionState(update);
+    },
+  },
 };
 </script>
 
