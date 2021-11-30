@@ -17,6 +17,8 @@ import FilterPanel from './components/Filter/FilterPanel.vue';
 import KeywordSelection from './components/Keyword/KeywordSelection.vue';
 import PatternSelection from './components/Behavior/PatternSelection.vue';
 import QuerySelection from './components/QueryList/QuerySelection.vue';
+import { initGlobalStore } from "@/stores/globalStoreAgent.js";
+// import {computed} from "vue";
 
 export default {
   name: 'App',
@@ -25,6 +27,13 @@ export default {
     KeywordSelection,
     PatternSelection,
     QuerySelection
+  },
+  setup() {
+    const necessaryMethods = initGlobalStore();
+    necessaryMethods;
+    return {  
+      
+    }
   },
 }
 </script>
