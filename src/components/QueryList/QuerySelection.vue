@@ -49,9 +49,10 @@ export default {
         return Object.values(sessions).sort((a, b) => {
           const aMetricVal = a.metricValues[sortByOption.value];
           const bMetricVal = b.metricValues[sortByOption.value];
+          // sort bad to good
           return window.globalVars.IS_METRIC_GOODNESS_DIRECT[sortByOption.value]
-            ? bMetricVal - aMetricVal
-            : aMetricVal - bMetricVal;
+            ? aMetricVal - bMetricVal
+            : bMetricVal - aMetricVal;
         })
       }
       return null;
