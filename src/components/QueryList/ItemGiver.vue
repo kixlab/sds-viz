@@ -1,21 +1,25 @@
 <template>
-    <click-11-plus-item v-if="action.Type === 'Click11+'" />
-    <new-query-item v-else-if="action.Type === 'NewQuery'" />
-    <div v-else>
-        todo
-    </div>
+  <new-query-item v-if="action.Type === 'NewQuery'" v-bind="{ action }" />
+  <refined-query-item v-else-if="action.Type === 'RefinedQuery'" v-bind="{ action }" />
+  <next-page-item v-else-if="action.Type === 'NextPage'" v-bind="{ action }" />
+  <click-item v-else-if="['Click6-10', 'Click1-5', 'Click11+'].includes(action.Type)" v-bind="{ action }"/>
+  <div v-else>todo</div>
 </template>
 
 <script>
-import Click11PlusItem from './SearchHistoryItems/Click11PlusItem.vue';
-import NewQueryItem from './SearchHistoryItems/NewQueryItem.vue';
+import NewQueryItem from "./SearchHistoryItems/NewQueryItem.vue";
+import ClickItem from './SearchHistoryItems/ClickItem.vue';
+import RefinedQueryItem from './SearchHistoryItems/RefinedQueryItem.vue';
+import NextPageItem from './SearchHistoryItems/NextPageItem.vue';
 
 export default {
   name: "ItemGiver",
   props: ["action"],
   components: {
-    Click11PlusItem,
-    NewQueryItem
+    NewQueryItem,
+    ClickItem,
+    RefinedQueryItem,
+    NextPageItem
   },
 };
 </script>

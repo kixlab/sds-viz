@@ -12,6 +12,14 @@ export const initGlobalStore = () => {
     window.globalVars = {
         METRICS: ['pSkip', 'Click@1-5', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate'],
         METRIC_LABELS: ['P(skip)', 'Click@1-5', 'Max RR', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate'],
+        IS_METRIC_GOODNESS_DIRECT: {
+            'pSkip': false,
+            'Click@1-5': true,
+            'MaxRR': true,
+            'MeanRR': true,
+            'AbandonmentRate': false,
+            'ReformulationRate': false
+        }
     };
     var keywordClusters = {};
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
