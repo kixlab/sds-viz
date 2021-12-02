@@ -18,7 +18,10 @@
     </div>
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
-        <div class="iframe-wrapper px-4 pt-2">
+        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
+          {{ seeSearchResults ? 'Close search results' : 'See search results' }}
+        </div>
+        <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
           <iframe
             class="scaled-iframe"
             :src="`https://www.google.com/search?igu=1&q=${action.Query}&sourceid=chrome-mobile`"
@@ -40,6 +43,11 @@ export default {
     MediumTitle,
     IconGiver,
   },
+  data() {
+    return {
+      'seeSearchResults': false,
+    }
+  }
 };
 </script>
 

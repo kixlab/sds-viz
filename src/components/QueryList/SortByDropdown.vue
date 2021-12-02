@@ -4,8 +4,9 @@
     <div>
       <MenuButton
         class="
-          inline-flex
-          justify-center
+          flex
+          items-center
+          justify-between
           w-full
           rounded-md
           border border-gray-300
@@ -22,7 +23,9 @@
           focus:ring-indigo-500
         "
       >
-        {{ mainOption }}
+      <down-icon class="h-4 w-4 mr-1" v-if="isMetricGoodnessDirect[mainOption] === true"/>
+              <up-icon class="h-4 w-4 mr-1" v-else/>
+              {{ mainOption }}
         <ChevronDownIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
       </MenuButton>
     </div>
@@ -41,7 +44,7 @@
           absolute
           right-0
           mt-1
-          w-36
+          w-40
           rounded-md
           shadow-lg
           bg-white
@@ -59,10 +62,12 @@
             <div
               v-bind:class="[
                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                'block px-4 py-1 text-xs cursor-pointer',
+                'px-2 py-1 text-xs cursor-pointer flex items-center',
               ]"
               v-on:click="pickOption(option)"
             >
+              <down-icon class="h-4 w-4 mr-2" v-if="isMetricGoodnessDirect[option] === true"/>
+              <up-icon class="h-4 w-4 mr-2" v-else/>
               {{ option }}
             </div>
           </MenuItem>
@@ -74,14 +79,18 @@
 
 <script>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { ChevronDownIcon } from "@heroicons/vue/solid";
 import { inject } from "vue";
+import UpIcon from '../Common/Icons/UpIcon.vue';
+import DownIcon from '../Common/Icons/DownIcon.vue';
+import {ChevronDownIcon} from "@heroicons/vue/solid";
 export default {
   components: {
     Menu,
     MenuButton,
     MenuItem,
     MenuItems,
+    UpIcon,
+    DownIcon,
     ChevronDownIcon,
   },
   setup() {
@@ -89,10 +98,12 @@ export default {
     const parentCallFunction = inject("parentCallFunction");
     const allOptions = inject("allOptions");
     const mainOption = inject("mainOption");
+    const isMetricGoodnessDirect = window.globalVars.IS_METRIC_GOODNESS_DIRECT;
     return {
       parentCallFunction,
       allOptions,
       mainOption,
+      isMetricGoodnessDirect,
     };
   },
   data() {

@@ -3,9 +3,10 @@
     <section-title> Query Selection </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <div class="flex justify-end items-center">
-        <!-- <medium-title> Total Count: 203 </medium-title> -->
         <div class="flex items-center m-1">
-          <medium-title class="mx-2"> Sort By: </medium-title>
+          <div class="mx-2 relative">
+            <medium-title class="relative"> Sort By (worst to best): </medium-title>
+          </div>
           <sort-by-dropdown />
         </div>
       </div>
@@ -30,6 +31,7 @@ import SortByDropdown from "@/components/QueryList/SortByDropdown.vue";
 import SessionItem from "@/components/QueryList/SessionItem.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, provide, ref } from "vue";
+// import QuestionMark from '../Common/Icons/QuestionMark.vue';
 export default {
   name: "QuerySelection",
   components: {
@@ -37,6 +39,7 @@ export default {
     MediumTitle,
     SortByDropdown,
     SessionItem,
+    // QuestionMark,
   },
   setup() {
     const sortByOption = ref(window.globalVars.METRICS[0]);
