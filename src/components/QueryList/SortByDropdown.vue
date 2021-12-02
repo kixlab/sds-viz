@@ -23,9 +23,12 @@
           focus:ring-indigo-500
         "
       >
-      <down-icon class="h-4 w-4 mr-1" v-if="isMetricGoodnessDirect[mainOption] === true"/>
-              <up-icon class="h-4 w-4 mr-1" v-else/>
-              {{ mainOption }}
+        <up-icon
+          class="h-4 w-4 mr-1"
+          v-if="isMetricGoodnessDirect[mainOption] === true"
+        />
+        <down-icon class="h-4 w-4 mr-1" v-else />
+        {{ mainOption }}
         <ChevronDownIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
       </MenuButton>
     </div>
@@ -66,8 +69,11 @@
               ]"
               v-on:click="pickOption(option)"
             >
-              <down-icon class="h-4 w-4 mr-2" v-if="isMetricGoodnessDirect[option] === true"/>
-              <up-icon class="h-4 w-4 mr-2" v-else/>
+              <up-icon
+                class="h-4 w-4 mr-2"
+                v-if="isMetricGoodnessDirect[option] === true"
+              />
+              <down-icon class="h-4 w-4 mr-2" v-else />
               {{ option }}
             </div>
           </MenuItem>
@@ -80,9 +86,9 @@
 <script>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { inject } from "vue";
-import UpIcon from '../Common/Icons/UpIcon.vue';
-import DownIcon from '../Common/Icons/DownIcon.vue';
-import {ChevronDownIcon} from "@heroicons/vue/solid";
+import UpIcon from "../Common/Icons/UpIcon.vue";
+import DownIcon from "../Common/Icons/DownIcon.vue";
+import { ChevronDownIcon } from "@heroicons/vue/solid";
 export default {
   components: {
     Menu,
