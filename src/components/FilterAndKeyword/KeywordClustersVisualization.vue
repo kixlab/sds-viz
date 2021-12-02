@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-wrap overflow-y-scroll">
-    <div v-for="keywordCluster in keywordClusters" :key="keywordCluster.id" :class="['mx-2 cursor-pointer', interactionState.chosenKeywordClusterId === keywordCluster.id ? 'border border-gray-500' : '']" :style="`background-color: ${getColor(keywordCluster.id)}`" v-on:click="setChosenKeywordCluster(keywordCluster.id)">
+    <div v-for="keywordCluster in keywordClusters" :key="keywordCluster.id" :class="['mx-2 cursor-pointer text-white', interactionState.chosenKeywordClusterId === keywordCluster.id ? 'border border-gray-500' : '']" :style="`background-color: ${getColor(keywordCluster.id)}`" v-on:click="setChosenKeywordCluster(keywordCluster.id)">
         {{ keywordCluster.topKeyword }}
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
     const rankingPercentageById = computed(() => {
       const ranking = {};
       sortedKeywordClusters.value.forEach((keywordCluster, index) => {
-        ranking[keywordCluster.id] = index / sortedKeywordClusters.value.length;
+        ranking[keywordCluster.id] = 2 * index / sortedKeywordClusters.value.length;
       });
       return ranking;
     });
@@ -59,7 +59,12 @@ export default {
       },
       getColor(keywordClusterId) {
         const rankingP = this.rankingPercentageById[keywordClusterId];
-        return d3.interpolateLab("red", "green")(rankingP);
+        const greenZone = ['#D6E8D8', '#2BD72B'], redZone = ['#F05656', '#ECDBDC'];
+        if(rankingP < 1) {
+          return d3.interpolate(redZone[0], redZone[1])(rankingP);
+        } else {
+          return d3.interpolate(greenZone[0], greenZone[1])(rankingP - 1);
+        }
       }
   },
 };
