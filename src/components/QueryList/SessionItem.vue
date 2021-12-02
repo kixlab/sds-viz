@@ -9,29 +9,28 @@
       ]"
       v-on:click="setChosenSession()"
     >
-      <div class="w-11/12 flex items-center overflow-x-scroll">
-        <div class="w-5/12 flex items-center">
-          <search-icon class="w-8 h-8 mr-2" />
+      <div class="w-11/12 h-full flex items-center">
+        <div class="w-5/12 pr-1 h-full flex items-center">
+          <search-icon class="min-w-min min-h-min w-8 h-8 mr-2" />
           <medium-title>
             {{ session.sequence[0].Query }}
           </medium-title>
         </div>
-        <div class="w-7/12 flex items-center overflow-x-scroll">
+        <div class="w-7/12 h-full flex items-center overflow-scroll">
           <template
             v-for="(action, i) in session.sequence.slice(1)"
             :key="action"
           >
-            <div class="w-8 h-8">
-              <icon-giver v-bind="{ action_item: action.Type }" />
-            </div>
+            <icon-giver class="min-w-min min-h-min w-8 h-8" v-bind="{ action_item: action.Type }" />
             <line-in-the-middle
               v-if="i !== session.sequence.length - 2"
-              class="w-4 h-8"
+              class="w-4 h-4"
+              style="min-width: 16px; min-height: 16px;"
             />
           </template>
         </div>
       </div>
-      <div class="mx-2">
+      <div class="mx-2 h-full flex justify-center items-center">
         <triangle-black
           v-bind="{
             class: [

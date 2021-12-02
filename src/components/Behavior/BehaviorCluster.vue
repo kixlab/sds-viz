@@ -12,7 +12,7 @@
       <div
         v-for="distinguishingFeature in behaviorCluster.distinguishingFeatures"
         :key="distinguishingFeature"
-        class="flex my-3 mx-3"
+        class="flex my-2 mx-2 items-center"
       >
         <template
           v-for="(action_item, i) in distinguishingFeature.action_items"
@@ -24,7 +24,7 @@
 
           <line-in-the-middle
             v-if="i !== distinguishingFeature.action_items.length - 1"
-            class="w-4 h-8"
+            class="w-4 h-4"
           />
         </template>
       </div>
@@ -40,13 +40,13 @@
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
-import LineInTheMiddle from "../Common/Icons/LineInTheMiddle.vue";
-
+import LineInTheMiddle from "@/components/Common/Icons/LineInTheMiddle.vue";
 import IconGiver from '../Common/IconGiver.vue';
 export default {
   name: "BehaviorCluster",
   components: {
-    IconGiver,LineInTheMiddle,
+    IconGiver,
+    LineInTheMiddle,
   },
   props: ["behaviorCluster"],
   setup() {
