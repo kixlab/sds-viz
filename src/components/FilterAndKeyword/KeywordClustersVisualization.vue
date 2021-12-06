@@ -130,7 +130,7 @@ export default {
     },
     render() {
       d3.select("#keyword-viz").selectAll("svg").remove();
-      var margin = { top: 20, right: 20, bottom: 20, left: 20 };
+      var margin = { top: 15, right: 15, bottom: 15, left: 15 };
       const width = $("#keyword-viz").width() - margin.left - margin.right;
       const height = $("#keyword-viz").height() - margin.top - margin.bottom;
       const lr_x = [0, 10],

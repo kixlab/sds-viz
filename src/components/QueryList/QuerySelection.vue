@@ -3,7 +3,7 @@
     <section-title> Query Selection </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <div class="flex justify-end items-center">
-        <div class="flex items-center m-1">
+        <div v-if="sessions !== null" class="flex items-center m-1">
           <div class="mx-2 relative">
             <medium-title class="relative"> Sort By (worst to best): </medium-title>
           </div>
