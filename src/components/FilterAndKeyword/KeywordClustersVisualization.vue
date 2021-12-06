@@ -6,16 +6,18 @@
       style="visibility: hidden"
     >
       <p class="font-bold w-full flex justify-center mb-2 relative">
-          {{ tooltipTitle }}
-        </p>
+        {{ tooltipTitle }}
+      </p>
       <div v-for="metric in metrics" :key="metric" class="flex items-center">
-        <div class="h-3 w-3 mr-1" :style="`background-color: ${metricColor[metric]}`">
-        </div>
+        <div
+          class="h-3 w-3 mr-1"
+          :style="`background-color: ${metricColor[metric]}`"
+        ></div>
         <p class="font-bold text-sm mr-1">{{ metric }}:</p>
         <p class="text-sm">{{ metricVal[metric] }}</p>
       </div>
       <p class="font-bold text-sm flex justify-end mt-2">
-          Total Count: {{ totalCountTooltip }}
+        Total Count: {{ totalCountTooltip }}
       </p>
     </div>
   </div>
@@ -26,7 +28,6 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
-
 export default {
   name: "KeywordClustersVisualization",
   components: {},
@@ -35,7 +36,6 @@ export default {
     const interactionState = computed(() => store.getInteractionState.value);
     const keywordClusters = computed(() => store.getKeywordClusters.value);
     const setInteractionState = store.setInteractionState;
-
     const sortedKeywordClusters = computed(() => {
       const chosenMetric = interactionState.value.chosenMetric;
       return Object.values(keywordClusters.value).sort((a, b) => {
@@ -46,7 +46,6 @@ export default {
           : bAvgMetricVal - aAvgMetricVal;
       });
     });
-
     const rankingPercentageById = computed(() => {
       const ranking = {};
       sortedKeywordClusters.value.forEach((keywordCluster, index) => {
@@ -55,11 +54,8 @@ export default {
       });
       return ranking;
     });
-
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
-
     const metrics = window.globalVars.METRICS;
-
     return {
       interactionState,
       setInteractionState,
@@ -79,7 +75,7 @@ export default {
         return acc;
       }, {}),
       metricColor: window.globalVars.METRICS.reduce((acc, metric) => {
-        acc[metric] = 'none';
+        acc[metric] = "none";
         return acc;
       }, {}),
       tooltipTitle: "",
@@ -119,7 +115,6 @@ export default {
       const height = $("#keyword-viz").height() - margin.top - margin.bottom;
       const lr_x = [0, 10],
         lr_y = [0, 10];
-
       var SVG = d3
         .select("#keyword-viz")
         .append("svg")
@@ -131,7 +126,6 @@ export default {
         .attr("width", width)
         .attr("height", height)
         .attr("fill", "#E4E7EB");
-
       var zoom = d3
         .zoom()
         .scaleExtent([0.5, 20]) // This control how much you can unzoom (x0.5) and zoom (x20)
@@ -141,14 +135,11 @@ export default {
         ])
         .on("zoom", updateChart);
       SVG.call(zoom);
-
       const G_N = 9,
         G_M = 6;
       const data = this.keywordRenderData;
       var positions = data.map(() => [0, 0]);
-
       var x = d3.scaleLinear().domain(lr_x).range([0, width]);
-
       var y = d3.scaleLinear().domain(lr_y).range([height, 0]);
       /* eslint-disable */
       var clip = SVG.append("defs")
@@ -160,12 +151,9 @@ export default {
         .attr("x", 0)
         .attr("y", 0);
       /* eslint-enable */
-
       var scatter = SVG.append("g").attr("clip-path", "url(#clip)");
-
       const paddingXRect = 4,
         paddingYRect = 2;
-
       scatter
         .selectAll("rect")
         .data(data)
@@ -176,7 +164,6 @@ export default {
         .attr("ry", 6)
         .attr("class", "keyword-cluster-rect")
         .style("cursor", "pointer");
-
       var tooltip = d3.select("#keyword-tooltip");
       scatter
         .selectAll("text")
@@ -217,25 +204,27 @@ export default {
           const metricVal = this.metricVal;
           window.globalVars.METRICS.forEach((metric) => {
             metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
-            const ranking = Object.values(this.keywordClusters).sort((a, b) => {
-              const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
-              const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
-              return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
-                ? aAvgMetricVal - bAvgMetricVal
-                : bAvgMetricVal - aAvgMetricVal;
-            }).indexOf(d);
-            const rankingP = 2 * ranking / Object.values(this.keywordClusters).length;
+            const ranking = Object.values(this.keywordClusters)
+              .sort((a, b) => {
+                const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
+                const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
+                return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
+                  ? aAvgMetricVal - bAvgMetricVal
+                  : bAvgMetricVal - aAvgMetricVal;
+              })
+              .indexOf(d);
+            const rankingP =
+              (2 * ranking) / Object.values(this.keywordClusters).length;
             const color = this.getColor(rankingP);
             this.metricColor[metric] = color;
           });
-            this.tooltipTitle = d.topKeyword;
-            this.totalCountTooltip = d.subtreeSize;
+          this.tooltipTitle = d.topKeyword;
+          this.totalCountTooltip = d.subtreeSize;
           tooltip.style("visibility", "visible");
         })
         .on("mouseout", function () {
           tooltip.style("visibility", "hidden");
         });
-
       scatter
         .selectAll("rect")
         .attr("width", (d) => {
@@ -255,11 +244,9 @@ export default {
         .attr("x", (d) => {
           return d3.select(`#text-${d.id}`).node().getBBox().x - paddingXRect;
         });
-
       function updateChart(e) {
         var newX = e.transform.rescaleX(x);
         var newY = e.transform.rescaleY(y);
-
         scatter
           .selectAll("text")
           .attr("x", function (_, i) {

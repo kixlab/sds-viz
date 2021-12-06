@@ -17,6 +17,7 @@
         MeanRR: float,
         AbandonmentRate: float,
         ReformulationRate: float,
+        NDCG: float,
         QueriesCount: int,
         ClicksPerQuery: float,
         BERTopicsKeywordCluster: int,
