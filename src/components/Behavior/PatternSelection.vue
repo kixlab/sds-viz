@@ -1,7 +1,8 @@
 <template>
   <div class="flex flex-col">
-    <section-title> Pattern Selection </section-title>
+    <section-title> Behavior Pattern Selection </section-title>
     <div class="flex justify-between items-center flex-grow mx-8 my-4 overflow-y-hidden">
+      <behavior-legend></behavior-legend>
       <div
         class="
           flex
@@ -27,6 +28,7 @@
 import SectionTitle from "@/components/Common/SectionTitle.vue";
 import BehaviorCluster from "./BehaviorCluster.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
+import BehaviorLegend from './BehaviorLegend.vue'
 import { computed } from "vue";
 // import GoLeft from '../Common/Icons/GoLeft.vue';
 // import GoRight from '../Common/Icons/GoRight.vue';
@@ -35,6 +37,7 @@ export default {
   components: {
     SectionTitle,
     BehaviorCluster,
+    BehaviorLegend,
   },
   setup() {
     const store = useGlobalStore();
