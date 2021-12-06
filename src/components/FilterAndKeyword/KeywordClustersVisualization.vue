@@ -84,15 +84,17 @@ export default {
   },
   methods: {
     flipColorOfKeywordCluster(id) {
-      if(id === null) return ;
+      if (id === null) return;
       const curColor = $(`#text-${id}`).css("fill");
-      const newColor = curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
+      const newColor =
+        curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
       $(`#text-${id}`).css("fill", newColor);
     },
     setChosenKeywordCluster(keywordClusterId) {
-      const previouslyChosenKeywordClusterId = this.interactionState.chosenKeywordClusterId;
+      const previouslyChosenKeywordClusterId =
+        this.interactionState.chosenKeywordClusterId;
       this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
-      
+
       let update = {
         chosenKeywordClusterId: keywordClusterId,
       };
@@ -101,9 +103,9 @@ export default {
       }
       this.setInteractionState(update);
 
-      const currentlyChosenKeywordClusterId = this.interactionState.chosenKeywordClusterId;
+      const currentlyChosenKeywordClusterId =
+        this.interactionState.chosenKeywordClusterId;
       this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
-      
     },
     getColor(rankingP) {
       const greenZone = ["#D6E8D8", "#2BD72B"],
@@ -178,6 +180,10 @@ export default {
         .attr("class", "keyword-cluster-rect")
         .style("cursor", "pointer");
       var tooltip = d3.select("#keyword-tooltip");
+      const centerOfGravity = [
+        (lr_x[1] - lr_x[0]) / 2,
+        (lr_y[1] - lr_y[0]) / 2,
+      ];
       scatter
         .selectAll("text")
         .data(data)
@@ -187,15 +193,15 @@ export default {
           return Math.sqrt(d.subtreeSize) * 2; // TODO, Subject to Change
         })
         .attr("x", function (_, i) {
-          positions[i][0] =
-            (parseInt(i % G_M) * lr_x[1]) / G_M +
-            d3.randomUniform(-lr_x[1] / 20, lr_x[1] / 20)();
+          positions[i][0] = (parseInt(i % G_M) * lr_x[1]) / G_M;
+          positions[i][0] +=
+            d3.randomUniform(0, 0.25)() * (centerOfGravity[0] - positions[i][0]);
           return x(positions[i][0]);
         })
         .attr("y", function (_, i) {
-          positions[i][1] =
-            (parseInt(i / G_M) * lr_y[1]) / G_N +
-            d3.randomUniform(-lr_y[1] / 20, lr_y[1] / 20)();
+          positions[i][1] = (parseInt(i / G_M) * lr_y[1]) / G_N;
+          positions[i][1] += 
+            d3.randomUniform(0, 0.25)() * (centerOfGravity[1] - positions[i][1]);
           return y(positions[i][1]);
         })
         .style("fill", "rgb(255, 255, 255)")
@@ -206,14 +212,14 @@ export default {
           this.setChosenKeywordCluster(d.id);
         })
         .on("mouseover", (e, d) => {
-          if ((e.layerY / height) > 0.5) {
-            tooltip.style("bottom", `${height-e.layerY + 40}px`);
-            tooltip.style("top", null)
+          if (e.layerY / height > 0.5) {
+            tooltip.style("bottom", `${height - e.layerY + 40}px`);
+            tooltip.style("top", null);
           } else {
             tooltip.style("top", `${e.layerY}px`);
-            tooltip.style("bottom", null)
+            tooltip.style("bottom", null);
           }
-          if (((e.layerX + 15) / width) > 0.5) {
+          if ((e.layerX + 15) / width > 0.5) {
             tooltip.style("right", `${width - e.layerX + 55}px`);
             tooltip.style("left", null);
           } else {
