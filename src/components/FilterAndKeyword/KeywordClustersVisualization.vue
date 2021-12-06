@@ -141,7 +141,8 @@ export default {
         .attr("width", "100%")
         .attr("height", "100%")
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("cursor", "move");
       SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
