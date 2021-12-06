@@ -83,7 +83,16 @@ export default {
     };
   },
   methods: {
+    flipColorOfKeywordCluster(id) {
+      if(id === null) return ;
+      const curColor = $(`#text-${id}`).css("fill");
+      const newColor = curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
+      $(`#text-${id}`).css("fill", newColor);
+    },
     setChosenKeywordCluster(keywordClusterId) {
+      const previouslyChosenKeywordClusterId = this.interactionState.chosenKeywordClusterId;
+      this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
+      
       let update = {
         chosenKeywordClusterId: keywordClusterId,
       };
@@ -91,6 +100,10 @@ export default {
         update.chosenKeywordClusterId = null;
       }
       this.setInteractionState(update);
+
+      const currentlyChosenKeywordClusterId = this.interactionState.chosenKeywordClusterId;
+      this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
+      
     },
     getColor(rankingP) {
       const greenZone = ["#D6E8D8", "#2BD72B"],
@@ -185,17 +198,12 @@ export default {
             d3.randomUniform(-lr_y[1] / 20, lr_y[1] / 20)();
           return y(positions[i][1]);
         })
-        .style("fill", "white")
+        .style("fill", "rgb(255, 255, 255)")
         .style("cursor", "pointer")
         .text((d) => d.topKeyword)
         .attr("id", (d) => `text-${d.id}`)
         .on("click", (e, d) => {
           this.setChosenKeywordCluster(d.id);
-          // flip the fill color
-          const me = d3.select(`#text-${d.id}`);
-          const prevFill = me.style("fill");
-          console.log(prevFill);
-          me.style("fill", prevFill === "white" ? "black" : "white");
         })
         .on("mouseover", (e, d) => {
           if ((e.layerY / height) > 0.5) {
