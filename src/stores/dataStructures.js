@@ -54,6 +54,7 @@ export class Session {
             'MeanRR': this.config['MeanRR'],
             'AbandonmentRate': this.config['AbandonmentRate'],
             'ReformulationRate': this.config['ReformulationRate'],
+            'NDCG': this.config['NDCG']
         };
     }
 
