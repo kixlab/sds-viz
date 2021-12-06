@@ -123,6 +123,11 @@ export default {
       }
       return array;
     },
+    updateTooltip(tooltipTitle, metricVal, totalCountTooltip) {
+      this.tooltipTitle = tooltipTitle;
+      this.metricVal = metricVal;
+      this.totalCountTooltip = totalCountTooltip;
+    },
     render() {
       d3.select("#keyword-viz").selectAll("svg").remove();
       var margin = { top: 20, right: 20, bottom: 20, left: 20 };
@@ -184,6 +189,45 @@ export default {
         (lr_x[1] - lr_x[0]) / 2,
         (lr_y[1] - lr_y[0]) / 2,
       ];
+
+      const updateTooltip = (e, d) => {
+        if (e.layerY / height > 0.5) {
+          tooltip.style("bottom", `${height - e.layerY + 40}px`);
+          tooltip.style("top", null);
+        } else {
+          tooltip.style("top", `${e.layerY}px`);
+          tooltip.style("bottom", null);
+        }
+        if ((e.layerX + 15) / width > 0.5) {
+          tooltip.style("right", `${width - e.layerX + 55}px`);
+          tooltip.style("left", null);
+        } else {
+          tooltip.style("left", `${e.layerX + 15}px`);
+          tooltip.style("right", null);
+        }
+        const f = d3.format(".3f");
+        const metricVal = this.metricVal;
+        window.globalVars.METRICS.forEach((metric) => {
+          metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
+          const ranking = Object.values(this.keywordClusters)
+            .sort((a, b) => {
+              const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
+              const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
+              return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
+                ? aAvgMetricVal - bAvgMetricVal
+                : bAvgMetricVal - aAvgMetricVal;
+            })
+            .indexOf(d);
+          const rankingP =
+            (2 * ranking) / Object.values(this.keywordClusters).length;
+          const color = this.getColor(rankingP);
+          this.metricColor[metric] = color;
+        });
+        this.tooltipTitle = d.topKeyword;
+        this.totalCountTooltip = d.subtreeSize;
+        tooltip.style("visibility", "visible");
+      };
+
       scatter
         .selectAll("text")
         .data(data)
@@ -195,13 +239,25 @@ export default {
         .attr("x", function (_, i) {
           positions[i][0] = (parseInt(i % G_M) * lr_x[1]) / G_M;
           positions[i][0] +=
-            d3.randomUniform(0, 0.25)() * (centerOfGravity[0] - positions[i][0]);
+            d3.randomUniform(0, 0.25)() *
+            (centerOfGravity[0] - positions[i][0]);
+          positions[i][0] +=
+            d3.randomUniform(0, 1) > 0.5
+              ? d3.randomUniform(1, 1.25)() *
+                (centerOfGravity[0] - positions[i][0])
+              : 0;
           return x(positions[i][0]);
         })
         .attr("y", function (_, i) {
           positions[i][1] = (parseInt(i / G_M) * lr_y[1]) / G_N;
-          positions[i][1] += 
-            d3.randomUniform(0, 0.25)() * (centerOfGravity[1] - positions[i][1]);
+          positions[i][1] +=
+            d3.randomUniform(0, 0.25)() *
+            (centerOfGravity[1] - positions[i][1]);
+          positions[i][1] +=
+            d3.randomUniform(0, 1) > 0.5
+              ? d3.randomUniform(1, 1.25)() *
+                (centerOfGravity[1] - positions[i][1])
+              : 0;
           return y(positions[i][1]);
         })
         .style("fill", "rgb(255, 255, 255)")
@@ -209,46 +265,19 @@ export default {
         .text((d) => d.topKeyword)
         .attr("id", (d) => `text-${d.id}`)
         .on("click", (e, d) => {
+          updateTooltip(e, d);
           this.setChosenKeywordCluster(d.id);
         })
         .on("mouseover", (e, d) => {
-          if (e.layerY / height > 0.5) {
-            tooltip.style("bottom", `${height - e.layerY + 40}px`);
-            tooltip.style("top", null);
-          } else {
-            tooltip.style("top", `${e.layerY}px`);
-            tooltip.style("bottom", null);
-          }
-          if ((e.layerX + 15) / width > 0.5) {
-            tooltip.style("right", `${width - e.layerX + 55}px`);
-            tooltip.style("left", null);
-          } else {
-            tooltip.style("left", `${e.layerX + 15}px`);
-            tooltip.style("right", null);
-          }
-          const f = d3.format(".3f");
-          const metricVal = this.metricVal;
-          window.globalVars.METRICS.forEach((metric) => {
-            metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
-            const ranking = Object.values(this.keywordClusters)
-              .sort((a, b) => {
-                const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
-                const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
-                return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
-                  ? aAvgMetricVal - bAvgMetricVal
-                  : bAvgMetricVal - aAvgMetricVal;
-              })
-              .indexOf(d);
-            const rankingP =
-              (2 * ranking) / Object.values(this.keywordClusters).length;
-            const color = this.getColor(rankingP);
-            this.metricColor[metric] = color;
-          });
-          this.tooltipTitle = d.topKeyword;
-          this.totalCountTooltip = d.subtreeSize;
-          tooltip.style("visibility", "visible");
+          if (
+            this.interactionState.chosenKeywordClusterId !== null &&
+            this.interactionState.chosenKeywordClusterId !== d.id
+          )
+            return;
+          updateTooltip(e, d);
         })
-        .on("mouseout", function () {
+        .on("mouseout", () => {
+          if (this.interactionState.chosenKeywordClusterId !== null) return;
           tooltip.style("visibility", "hidden");
         });
       scatter
