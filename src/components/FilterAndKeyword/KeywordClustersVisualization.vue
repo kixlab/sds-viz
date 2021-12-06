@@ -211,8 +211,20 @@ export default {
           me.style("fill", prevFill === "white" ? "black" : "white");
         })
         .on("mouseover", (e, d) => {
-          tooltip.style("top", `${e.layerY}px`);
-          tooltip.style("left", `${e.layerX + 15}px`);
+          if ((e.layerY / height) > 0.5) {
+            tooltip.style("bottom", `${height-e.layerY + 40}px`);
+            tooltip.style("top", null)
+          } else {
+            tooltip.style("top", `${e.layerY}px`);
+            tooltip.style("bottom", null)
+          }
+          if (((e.layerX + 15) / width) > 0.5) {
+            tooltip.style("right", `${width - e.layerX + 55}px`);
+            tooltip.style("left", null);
+          } else {
+            tooltip.style("left", `${e.layerX + 15}px`);
+            tooltip.style("right", null);
+          }
           const f = d3.format(".3f");
           const metricVal = this.metricVal;
           window.globalVars.METRICS.forEach((metric) => {
