@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-col justify-self-center w-25 h-full border border-black mx-auto justify-between">
+  <div class="grid grid-cols-2 grid-rows-3 h-full px-1 border w-40 border-black">
     <template 
       v-for="i in iconOrder" 
       :key="i">
-      <div class="justify-center mx-auto text-center">
-        <div class="w-8 h-8 mx-auto" :class="color[i]">
+      <div class="flex flex-col items-center my-2">
+        <div class="w-8 h-8">
           <icon-giver 
             v-bind="{action_item: i}">
           </icon-giver>
         </div>
-        <span class="text-sm">{{i}}</span>
+        <small-title class="mt-1"> {{i}}</small-title>
       </div>
     </template>
   </div>
@@ -17,23 +17,17 @@
 
 <script>
 import IconGiver from '../Common/IconGiver.vue';
+import SmallTitle from '../Common/SmallTitle.vue';
 
 export default {
   name: 'BehaviorLegend',
   components: {
-    IconGiver
+    IconGiver,
+    SmallTitle
   },
   data: function () {
     return {
-      iconOrder: ['NewQuery', 'RefinedQuery', 'Click1-5', 'Click6-10', 'Click11+', 'NextPage'],
-      color: {
-        'NewQuery': 'bg-red-600',
-        'RefinedQuery': 'bg-red-400',
-        'Click1-5': 'bg-green-600',
-        'Click6-10': 'bg-green-400',
-        'Click11+': 'bg-green-200',
-        'NextPage': 'bg-blue-400'
-      }
+      iconOrder: ['Click1-5', 'Click6-10', 'Click11+', 'NextPage', 'NewQuery', 'RefinedQuery'],
     }
   }
   

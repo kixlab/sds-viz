@@ -1,17 +1,14 @@
 <template>
   <div class="flex flex-col">
-    <section-title> Behavior Pattern Selection </section-title>
-    <div class="flex justify-between items-center flex-grow mx-8 my-4 overflow-y-hidden">
-      <behavior-legend></behavior-legend>
-      <div
-        class="
-          flex
+      <section-title> Behavior Pattern Selection </section-title>
+    <div class="flex w-full flex-grow overflow-y-hidden p-4">
+
+      <behavior-legend class="min-w-max mr-4"/>
+<div class="flex justify-between items-center flex-grow overflow-y-hidden">
+      <div class="flex
           justify-around
           flex-grow
-          h-full
-          rounded-md
-        "
-      >
+          h-full">
         <behavior-cluster
           v-for="behaviorCluster in behaviorClusters"
           :key="behaviorCluster.id"
@@ -21,6 +18,8 @@
         />
       </div>
     </div>
+    </div>
+    
   </div>
 </template>
 
@@ -28,7 +27,7 @@
 import SectionTitle from "@/components/Common/SectionTitle.vue";
 import BehaviorCluster from "./BehaviorCluster.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import BehaviorLegend from './BehaviorLegend.vue'
+import BehaviorLegend from "./BehaviorLegend.vue";
 import { computed } from "vue";
 // import GoLeft from '../Common/Icons/GoLeft.vue';
 // import GoRight from '../Common/Icons/GoRight.vue';
