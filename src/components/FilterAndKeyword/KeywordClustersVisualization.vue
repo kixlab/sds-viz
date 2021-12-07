@@ -6,16 +6,18 @@
       style="visibility: hidden"
     >
       <p class="font-bold w-full flex justify-center mb-2 relative">
-          {{ tooltipTitle }}
-        </p>
+        {{ tooltipTitle }}
+      </p>
       <div v-for="metric in metrics" :key="metric" class="flex items-center">
-        <div class="h-3 w-3 mr-1" :style="`background-color: ${metricColor[metric]}`">
-        </div>
+        <div
+          class="h-3 w-3 mr-1"
+          :style="`background-color: ${metricColor[metric]}`"
+        ></div>
         <p class="font-bold text-sm mr-1">{{ metric }}:</p>
         <p class="text-sm">{{ metricVal[metric] }}</p>
       </div>
       <p class="font-bold text-sm flex justify-end mt-2">
-          Total Count: {{ totalCountTooltip }}
+        Total Count: {{ totalCountTooltip }}
       </p>
     </div>
   </div>
@@ -26,7 +28,6 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
-
 export default {
   name: "KeywordClustersVisualization",
   components: {},
@@ -35,7 +36,6 @@ export default {
     const interactionState = computed(() => store.getInteractionState.value);
     const keywordClusters = computed(() => store.getKeywordClusters.value);
     const setInteractionState = store.setInteractionState;
-
     const sortedKeywordClusters = computed(() => {
       const chosenMetric = interactionState.value.chosenMetric;
       return Object.values(keywordClusters.value).sort((a, b) => {
@@ -46,7 +46,6 @@ export default {
           : bAvgMetricVal - aAvgMetricVal;
       });
     });
-
     const rankingPercentageById = computed(() => {
       const ranking = {};
       sortedKeywordClusters.value.forEach((keywordCluster, index) => {
@@ -55,11 +54,8 @@ export default {
       });
       return ranking;
     });
-
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
-
     const metrics = window.globalVars.METRICS;
-
     return {
       interactionState,
       setInteractionState,
@@ -79,7 +75,7 @@ export default {
         return acc;
       }, {}),
       metricColor: window.globalVars.METRICS.reduce((acc, metric) => {
-        acc[metric] = 'none';
+        acc[metric] = "none";
         return acc;
       }, {}),
       tooltipTitle: "",
@@ -87,7 +83,18 @@ export default {
     };
   },
   methods: {
+    flipColorOfKeywordCluster(id) {
+      if (id === null) return;
+      const curColor = $(`#text-${id}`).css("fill");
+      const newColor =
+        curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
+      $(`#text-${id}`).css("fill", newColor);
+    },
     setChosenKeywordCluster(keywordClusterId) {
+      const previouslyChosenKeywordClusterId =
+        this.interactionState.chosenKeywordClusterId;
+      this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
+
       let update = {
         chosenKeywordClusterId: keywordClusterId,
       };
@@ -95,6 +102,10 @@ export default {
         update.chosenKeywordClusterId = null;
       }
       this.setInteractionState(update);
+
+      const currentlyChosenKeywordClusterId =
+        this.interactionState.chosenKeywordClusterId;
+      this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
     },
     getColor(rankingP) {
       const greenZone = ["#D6E8D8", "#2BD72B"],
@@ -112,26 +123,30 @@ export default {
       }
       return array;
     },
+    updateTooltip(tooltipTitle, metricVal, totalCountTooltip) {
+      this.tooltipTitle = tooltipTitle;
+      this.metricVal = metricVal;
+      this.totalCountTooltip = totalCountTooltip;
+    },
     render() {
       d3.select("#keyword-viz").selectAll("svg").remove();
-      var margin = { top: 20, right: 20, bottom: 20, left: 20 };
+      var margin = { top: 15, right: 15, bottom: 15, left: 15 };
       const width = $("#keyword-viz").width() - margin.left - margin.right;
       const height = $("#keyword-viz").height() - margin.top - margin.bottom;
       const lr_x = [0, 10],
         lr_y = [0, 10];
-
       var SVG = d3
         .select("#keyword-viz")
         .append("svg")
         .attr("width", "100%")
         .attr("height", "100%")
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("cursor", "move");
       SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
         .attr("fill", "#E4E7EB");
-
       var zoom = d3
         .zoom()
         .scaleExtent([0.5, 20]) // This control how much you can unzoom (x0.5) and zoom (x20)
@@ -141,14 +156,11 @@ export default {
         ])
         .on("zoom", updateChart);
       SVG.call(zoom);
-
       const G_N = 9,
         G_M = 6;
       const data = this.keywordRenderData;
       var positions = data.map(() => [0, 0]);
-
       var x = d3.scaleLinear().domain(lr_x).range([0, width]);
-
       var y = d3.scaleLinear().domain(lr_y).range([height, 0]);
       /* eslint-disable */
       var clip = SVG.append("defs")
@@ -160,12 +172,9 @@ export default {
         .attr("x", 0)
         .attr("y", 0);
       /* eslint-enable */
-
       var scatter = SVG.append("g").attr("clip-path", "url(#clip)");
-
       const paddingXRect = 4,
         paddingYRect = 2;
-
       scatter
         .selectAll("rect")
         .data(data)
@@ -176,8 +185,50 @@ export default {
         .attr("ry", 6)
         .attr("class", "keyword-cluster-rect")
         .style("cursor", "pointer");
-
       var tooltip = d3.select("#keyword-tooltip");
+      const centerOfGravity = [
+        (lr_x[1] - lr_x[0]) / 2,
+        (lr_y[1] - lr_y[0]) / 2,
+      ];
+
+      const updateTooltip = (e, d) => {
+        if (e.layerY / height > 0.5) {
+          tooltip.style("bottom", `${height - e.layerY + 40}px`);
+          tooltip.style("top", null);
+        } else {
+          tooltip.style("top", `${e.layerY}px`);
+          tooltip.style("bottom", null);
+        }
+        if ((e.layerX + 15) / width > 0.5) {
+          tooltip.style("right", `${width - e.layerX + 55}px`);
+          tooltip.style("left", null);
+        } else {
+          tooltip.style("left", `${e.layerX + 15}px`);
+          tooltip.style("right", null);
+        }
+        const f = d3.format(".3f");
+        const metricVal = this.metricVal;
+        window.globalVars.METRICS.forEach((metric) => {
+          metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
+          const ranking = Object.values(this.keywordClusters)
+            .sort((a, b) => {
+              const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
+              const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
+              return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
+                ? aAvgMetricVal - bAvgMetricVal
+                : bAvgMetricVal - aAvgMetricVal;
+            })
+            .indexOf(d);
+          const rankingP =
+            (2 * ranking) / Object.values(this.keywordClusters).length;
+          const color = this.getColor(rankingP);
+          this.metricColor[metric] = color;
+        });
+        this.tooltipTitle = d.topKeyword;
+        this.totalCountTooltip = d.subtreeSize;
+        tooltip.style("visibility", "visible");
+      };
+
       scatter
         .selectAll("text")
         .data(data)
@@ -187,55 +238,49 @@ export default {
           return Math.sqrt(d.subtreeSize) * 2; // TODO, Subject to Change
         })
         .attr("x", function (_, i) {
-          positions[i][0] =
-            (parseInt(i % G_M) * lr_x[1]) / G_M +
-            d3.randomUniform(-lr_x[1] / 20, lr_x[1] / 20)();
+          positions[i][0] = (parseInt(i % G_M) * lr_x[1]) / G_M;
+          positions[i][0] +=
+            d3.randomUniform(0, 0.25)() *
+            (centerOfGravity[0] - positions[i][0]);
+          positions[i][0] +=
+            d3.randomUniform(0, 1) > 0.5
+              ? d3.randomUniform(1, 1.25)() *
+                (centerOfGravity[0] - positions[i][0])
+              : 0;
           return x(positions[i][0]);
         })
         .attr("y", function (_, i) {
-          positions[i][1] =
-            (parseInt(i / G_M) * lr_y[1]) / G_N +
-            d3.randomUniform(-lr_y[1] / 20, lr_y[1] / 20)();
+          positions[i][1] = (parseInt(i / G_M) * lr_y[1]) / G_N;
+          positions[i][1] +=
+            d3.randomUniform(0, 0.25)() *
+            (centerOfGravity[1] - positions[i][1]);
+          positions[i][1] +=
+            d3.randomUniform(0, 1) > 0.5
+              ? d3.randomUniform(1, 1.25)() *
+                (centerOfGravity[1] - positions[i][1])
+              : 0;
           return y(positions[i][1]);
         })
-        .style("fill", "white")
+        .style("fill", "rgb(255, 255, 255)")
         .style("cursor", "pointer")
         .text((d) => d.topKeyword)
         .attr("id", (d) => `text-${d.id}`)
         .on("click", (e, d) => {
+          updateTooltip(e, d);
           this.setChosenKeywordCluster(d.id);
-          // flip the fill color
-          const me = d3.select(`#text-${d.id}`);
-          const prevFill = me.style("fill");
-          console.log(prevFill);
-          me.style("fill", prevFill === "white" ? "black" : "white");
         })
         .on("mouseover", (e, d) => {
-          tooltip.style("top", `${e.layerY}px`);
-          tooltip.style("left", `${e.layerX + 15}px`);
-          const f = d3.format(".3f");
-          const metricVal = this.metricVal;
-          window.globalVars.METRICS.forEach((metric) => {
-            metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
-            const ranking = Object.values(this.keywordClusters).sort((a, b) => {
-              const aAvgMetricVal = a.metricValues[metric] / a.subtreeSize;
-              const bAvgMetricVal = b.metricValues[metric] / b.subtreeSize;
-              return window.globalVars.IS_METRIC_GOODNESS_DIRECT[metric]
-                ? aAvgMetricVal - bAvgMetricVal
-                : bAvgMetricVal - aAvgMetricVal;
-            }).indexOf(d);
-            const rankingP = 2 * ranking / Object.values(this.keywordClusters).length;
-            const color = this.getColor(rankingP);
-            this.metricColor[metric] = color;
-          });
-            this.tooltipTitle = d.topKeyword;
-            this.totalCountTooltip = d.subtreeSize;
-          tooltip.style("visibility", "visible");
+          if (
+            this.interactionState.chosenKeywordClusterId !== null &&
+            this.interactionState.chosenKeywordClusterId !== d.id
+          )
+            return;
+          updateTooltip(e, d);
         })
-        .on("mouseout", function () {
+        .on("mouseout", () => {
+          if (this.interactionState.chosenKeywordClusterId !== null) return;
           tooltip.style("visibility", "hidden");
         });
-
       scatter
         .selectAll("rect")
         .attr("width", (d) => {
@@ -255,11 +300,9 @@ export default {
         .attr("x", (d) => {
           return d3.select(`#text-${d.id}`).node().getBBox().x - paddingXRect;
         });
-
       function updateChart(e) {
         var newX = e.transform.rescaleX(x);
         var newY = e.transform.rescaleY(y);
-
         scatter
           .selectAll("text")
           .attr("x", function (_, i) {

@@ -17,6 +17,7 @@
         MeanRR: float,
         AbandonmentRate: float,
         ReformulationRate: float,
+        NDCG: float,
         QueriesCount: int,
         ClicksPerQuery: float,
         BERTopicsKeywordCluster: int,
@@ -54,6 +55,7 @@ export class Session {
             'MeanRR': this.config['MeanRR'],
             'AbandonmentRate': this.config['AbandonmentRate'],
             'ReformulationRate': this.config['ReformulationRate'],
+            'NDCG': this.config['NDCG']
         };
     }
 

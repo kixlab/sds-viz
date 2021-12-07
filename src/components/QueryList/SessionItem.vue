@@ -16,7 +16,7 @@
             {{ session.sequence[0].Query }}
           </medium-title>
         </div>
-        <div class="w-7/12 h-full flex items-center overflow-scroll">
+        <div class="w-7/12 h-full flex items-center overflow-x-scroll">
           <template
             v-for="(action, i) in session.sequence.slice(1)"
             :key="action"

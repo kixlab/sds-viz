@@ -10,15 +10,16 @@ export const initGlobalStore = () => {
 
     // Definitions and Getters //
     window.globalVars = {
-        METRICS: ['pSkip', 'Click@1-5', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate'],
-        METRIC_LABELS: ['P(skip)', 'Click@1-5', 'Max RR', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate'],
+        METRICS: ['pSkip', 'Click@1-5', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate', 'NDCG'],
+        METRIC_LABELS: ['pSkip', 'Click@1-5', 'Max RR', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate', 'NDCG'],
         IS_METRIC_GOODNESS_DIRECT: {
             'pSkip': false,
             'Click@1-5': true,
             'MaxRR': true,
             'MeanRR': true,
             'AbandonmentRate': false,
-            'ReformulationRate': false
+            'ReformulationRate': false,
+            'NDCG': true
         }
     };
     var keywordClusters = {};
