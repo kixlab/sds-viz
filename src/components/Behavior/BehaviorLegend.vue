@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 grid-rows-3 h-full px-1 border w-40 border-black">
+  <div class="grid grid-cols-2 grid-rows-3 h-full px-1 border w-40 border-black overflow-y-scroll">
     <template 
       v-for="i in iconOrder" 
       :key="i">
