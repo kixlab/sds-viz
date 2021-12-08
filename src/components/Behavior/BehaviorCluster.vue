@@ -31,7 +31,7 @@
     </div>
     <div class="flex justify-end mx-2 my-1">
       <small-title class="font-bold">
-        Total Count: {{ behaviorCluster.subtreeSize }}
+        {{ behaviorCluster.subtreeSize }} sessions
       </small-title>
     </div>
   </div>

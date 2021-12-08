@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col">
-    <section-title> Filter and Keyword </section-title>
+    <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
     <div class="flex flex-col flex-grow w-auto mx-4 my-4">
       <div class="flex flex-col bg-gray-200 rounded-md border border-black">
         <in-section-title class="bg-gray-200 mt-1 mx-2">
-          Performance Metrics
+          Performance Metric Selection
         </in-section-title>
         <div class="w-full flex h-16 items-center justify-around">
           <div
@@ -39,7 +39,7 @@
         "
       >
         <in-section-title class="bg-gray-200 mt-1 mx-2">
-          Problematic Query Domains
+          User Query Clusters
         </in-section-title>
         <keyword-clusters-visualization
           v-if="interactionState.chosenMetric !== null"
