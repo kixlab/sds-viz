@@ -20,13 +20,13 @@
         Number of sessions: {{ totalCountTooltip }}
       </p>
     </div>
-    <filter-visualization/>
+    <filter-visualization class="absolute top-0 right-2 transform -translate-y-6" v-bind="{getColor}"/>
   </div>
 </template>
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, provide } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
 import FilterVisualization from './FilterVisualization.vue'
@@ -60,6 +60,9 @@ export default {
     });
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
     const metrics = window.globalVars.METRICS;
+
+    provide("rankingPercentageById", rankingPercentageById);
+    
     return {
       interactionState,
       setInteractionState,
