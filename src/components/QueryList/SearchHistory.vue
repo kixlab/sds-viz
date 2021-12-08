@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col py-2 px-2">
-    <large-title> Search History </large-title>
+    <large-title> User Search History </large-title>
     <div class="flex flex-col items-center my-4">
       <template v-for="(action,i) in session.sequence" :key="action" >
       <item-giver v-bind="{action}" class="w-full"/>

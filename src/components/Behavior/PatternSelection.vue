@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-      <section-title> Behavior Pattern Selection </section-title>
+      <section-title> Behavior Pattern Clusters </section-title>
     <div class="flex w-full flex-grow overflow-y-hidden p-4">
 
       <behavior-legend class="min-w-max mr-4"/>
