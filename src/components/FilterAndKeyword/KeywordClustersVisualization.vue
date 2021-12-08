@@ -20,6 +20,7 @@
         Number of sessions: {{ totalCountTooltip }}
       </p>
     </div>
+    <filter-visualization/>
   </div>
 </template>
 
@@ -28,9 +29,12 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
+import FilterVisualization from './FilterVisualization.vue'
 export default {
   name: "KeywordClustersVisualization",
-  components: {},
+  components: {
+    FilterVisualization,
+  },
   setup() {
     const store = useGlobalStore();
     const interactionState = computed(() => store.getInteractionState.value);
@@ -129,20 +133,27 @@ export default {
       this.totalCountTooltip = totalCountTooltip;
     },
     render() {
-      d3.select("#keyword-viz").selectAll("svg").remove();
       var margin = { top: 15, right: 15, bottom: 15, left: 15 };
       const width = $("#keyword-viz").width() - margin.left - margin.right;
       const height = $("#keyword-viz").height() - margin.top - margin.bottom;
       const lr_x = [0, 10],
         lr_y = [0, 10];
-      var SVG = d3
+      var SVG;
+      if(d3.select('#svg-keyword-viz').empty()) {
+         SVG = d3
         .select("#keyword-viz")
         .append("svg")
         .attr("width", "100%")
         .attr("height", "100%")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .attr("cursor", "move");
+        .attr("cursor", "move")
+        .attr("id", "svg-keyword-viz");
+      }
+      else {
+         SVG = d3.select("#svg-keyword-viz");
+      }
+      
       SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
