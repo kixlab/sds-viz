@@ -4,7 +4,7 @@
       <icon-giver class="w-9 h-9 mr-2" v-bind="{action_item: action.Type}"/>
       <div class="flex-grow text-center flex flex-col">
         <medium-title>
-          Clicked the {{ action.Rank }}th search result</medium-title
+          Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
         <medium-title class="mt-2"
           >URL:<a
@@ -19,7 +19,7 @@
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
-          {{ seeSearchResults ? 'Close search results' : 'See search results' }}
+          {{ seeSearchResults ? 'Close search results' : 'See search results (of Google)' }}
         </div>
         <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
           <iframe
@@ -46,6 +46,22 @@ export default {
   data() {
     return {
       'seeSearchResults': false,
+    }
+  },
+  methods: {
+    produceRank: function (rank) {
+      const target = rank % 100
+      let suffix = 'th'
+      if (target === 11 || target === 12 || target === 13) {
+        suffix = 'th'
+      } else if (target % 10 === 1) {
+        suffix = 'st'
+      } else if (target % 10 === 2) {
+        suffix = 'nd'
+      } else if (target % 10 === 3) {
+        suffix = 'rd'
+      }
+      return `${rank}${suffix}`
     }
   }
 };

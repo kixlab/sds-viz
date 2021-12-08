@@ -17,7 +17,7 @@
         <p class="text-sm">{{ metricVal[metric] }}</p>
       </div>
       <p class="font-bold text-sm flex justify-end mt-2">
-        Total Count: {{ totalCountTooltip }}
+        Number of sessions: {{ totalCountTooltip }}
       </p>
     </div>
   </div>

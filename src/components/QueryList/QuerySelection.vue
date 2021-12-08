@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <section-title> Query Selection </section-title>
+    <section-title> Individual Search Sessions </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <div class="flex justify-end items-center">
         <div v-if="sessions !== null" class="flex items-center m-1">
