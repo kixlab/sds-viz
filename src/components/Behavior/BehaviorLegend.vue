@@ -26,7 +26,7 @@ export default {
   },
   data: function () {
     return {
-      iconOrder: ['Click1-5', 'Click6-10', 'Click11+', 'NextPage', 'NewQuery', 'RefinedQuery'],
+      iconOrder: ['Click1-5', 'Click6-10', 'NextPage', 'Click11+', 'NewQuery', 'RefinedQuery'],
       explanation: {
         'Click1-5': `Click rank 1-5`,
         'Click6-10': 'Click rank 6-10',
