@@ -17,9 +17,10 @@
         <p class="text-sm">{{ metricVal[metric] }}</p>
       </div>
       <p class="font-bold text-sm flex justify-end mt-2">
-        Total Count: {{ totalCountTooltip }}
+        Number of sessions: {{ totalCountTooltip }}
       </p>
     </div>
+    <filter-visualization v-if="chosenMetric"></filter-visualization>
   </div>
 </template>
 
@@ -28,9 +29,12 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
+import FilterVisualization from './FilterVisualization.vue'
 export default {
   name: "KeywordClustersVisualization",
-  components: {},
+  components: {
+    FilterVisualization,
+  },
   setup() {
     const store = useGlobalStore();
     const interactionState = computed(() => store.getInteractionState.value);
