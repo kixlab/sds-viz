@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/4 h-1/5 float-right">
+  <div class="w-1/4 h-1/5 absolute -right-0.5 -top-0.5">
     <div class="w-full h-full relative" id="metric-viz"></div>
   </div>
 </template>
