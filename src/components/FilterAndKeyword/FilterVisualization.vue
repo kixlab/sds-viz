@@ -24,18 +24,18 @@ export default {
       chosenMetric
     }
   },
-  mounted: function () {
-    this.render()
+  mounted() {
+    this.render();
   },
   methods: {
     render() {
     // ripped off from https://www.d3-graph-gallery.com/graph/histogram_basic.html
-   
+
+    d3.select("#metric-viz").selectAll("svg").remove();   
     const margin = {top: 10, right: 10, bottom: 10, left: 10}
     const width = $(`#metric-viz`).width() - margin.left - margin.right;
     const height = $(`#metric-viz`).height() - margin.top - margin.bottom;
-
-    d3.select("#metric-viz").selectAll("svg").remove();
+    
     const svg = d3
       .select("#metric-viz")
       .append("svg")
@@ -57,8 +57,6 @@ export default {
         })   // I need to give the vector of value
         .domain(x.domain())  // then the domain of the graphic
         .thresholds(x.ticks(10)); // then the numbers of bins
-
-    console.log(histogram)
 
     // And apply this function to data to get the bins
     var bins = histogram(Object.values(this.keywordClusters));
