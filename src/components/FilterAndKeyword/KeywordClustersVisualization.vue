@@ -142,18 +142,20 @@ export default {
       if(d3.select('#svg-keyword-viz').empty()) {
          SVG = d3
         .select("#keyword-viz")
-        .append("svg")
-        .attr("width", "100%")
+        .append("svg").attr("width", "100%")
         .attr("height", "100%")
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .attr("cursor", "move")
         .attr("id", "svg-keyword-viz");
       }
       else {
          SVG = d3.select("#svg-keyword-viz");
       }
-      
+
+      SVG.selectAll("*").remove();
+
+      SVG = SVG.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("cursor", "move")
+
       SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
