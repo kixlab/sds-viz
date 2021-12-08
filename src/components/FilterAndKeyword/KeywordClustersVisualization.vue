@@ -183,8 +183,10 @@ export default {
         .attr("fill", (d) => this.getColor(this.rankingPercentageById[d.id]))
         .attr("rx", 6)
         .attr("ry", 6)
-        .attr("class", "keyword-cluster-rect")
-        .style("cursor", "pointer");
+        .attr("class", `keyword-cluster-rect`)
+        // .attr("class", (d) => {return (this.rankingPercentageById[d.id] <= 1 ? 'highlight--worst' : '')})
+        .style("cursor", "pointer")
+        .style("filter", (d) => `${(this.rankingPercentageById[d.id] <= 0.4) && 'drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8))'}`);
       var tooltip = d3.select("#keyword-tooltip");
       const centerOfGravity = [
         (lr_x[1] - lr_x[0]) / 2,
@@ -224,7 +226,7 @@ export default {
           const color = this.getColor(rankingP);
           this.metricColor[metric] = color;
         });
-        this.tooltipTitle = d.topKeyword;
+        this.tooltipTitle = d.topFiveKeywords.join('/');
         this.totalCountTooltip = d.subtreeSize;
         tooltip.style("visibility", "visible");
       };
@@ -349,5 +351,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.highlight--worst {
+  filter: drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8));
+  stroke: black;
+  stroke-width: 2;
+}
+
 </style>
