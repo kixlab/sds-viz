@@ -3,7 +3,7 @@
     <template 
       v-for="i in iconOrder" 
       :key="i">
-      <div class="flex flex-col items-center my-2">
+      <div class="flex flex-col items-center my-2 mx-1">
         <div class="w-8 h-8">
           <icon-giver 
             v-bind="{action_item: i}">
