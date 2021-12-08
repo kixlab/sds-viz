@@ -2,23 +2,36 @@
   <div class="w-full h-full relative" id="keyword-viz">
     <div
       id="keyword-tooltip"
-      class="absolute z-20 bg-white rounded-md border-gray-500 border px-2 py-2"
+      class="absolute z-20 bg-white rounded-md border-gray-500 border px-2 py-2 divide-y-2"
       style="visibility: hidden"
     >
-      <p class="font-bold w-full flex justify-center mb-2 relative">
-        {{ tooltipTitle }}
-      </p>
-      <div v-for="metric in metrics" :key="metric" class="flex items-center">
-        <div
-          class="h-3 w-3 mr-1"
-          :style="`background-color: ${metricColor[metric]}`"
-        ></div>
-        <p class="font-bold text-sm mr-1">{{ metric }}:</p>
-        <p class="text-sm">{{ metricVal[metric] }}</p>
+      <div>
+        <p class="font-bold w-full flex justify-center mb-2 relative">
+          {{ tooltipTitle }}
+        </p>
       </div>
-      <p class="font-bold text-sm flex justify-end mt-2">
-        Number of sessions: {{ totalCountTooltip }}
-      </p>
+      <div>
+        <div v-for="metric in metrics" :key="metric" class="flex items-center">
+          <div
+            class="h-3 w-3 mr-1"
+            :style="`background-color: ${metricColor[metric]}`"
+          ></div>
+          <p class="font-bold text-sm mr-1">{{ metric }}:</p>
+          <p class="text-sm">{{ metricVal[metric] }}</p>
+        </div>
+      </div>
+      <div class="flex justify-end items-center space-x-2">
+        <div>
+          <p v-if="isOutlier" class="text-sm flex justify-end mt-2">
+            Outlier cluster
+          </p>
+        </div>
+        <div>
+          <p class="font-bold text-sm flex justify-end mt-2">
+            Number of sessions: {{ totalCountTooltip }}
+          </p>  
+        </div>
+      </div>
     </div>
     <filter-visualization/>
   </div>
@@ -84,6 +97,7 @@ export default {
       }, {}),
       tooltipTitle: "",
       totalCountTooltip: 0,
+      isOutlier: false
     };
   },
   methods: {
@@ -196,8 +210,13 @@ export default {
         .attr("fill", (d) => this.getColor(this.rankingPercentageById[d.id]))
         .attr("rx", 6)
         .attr("ry", 6)
-        .attr("class", "keyword-cluster-rect")
-        .style("cursor", "pointer");
+        .attr("class", `keyword-cluster-rect`)
+        // .attr("class", (d) => {return (this.rankingPercentageById[d.id] <= 1 ? 'highlight--worst' : '')})
+        .style("cursor", "pointer")
+        .style("filter", (d) => `${(this.rankingPercentageById[d.id] <= 0.4) && 'drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8))'}`)
+        .style("stroke", (d) => `${(d.id === -1) && 'black'}`)
+        .style("stroke-width", (d) => `${(d.id === -1) && '1'}`)
+        .style("stroke-dasharray", (d) => `${(d.id === -1) && '5,5'}`)
       var tooltip = d3.select("#keyword-tooltip");
       const centerOfGravity = [
         (lr_x[1] - lr_x[0]) / 2,
@@ -237,9 +256,10 @@ export default {
           const color = this.getColor(rankingP);
           this.metricColor[metric] = color;
         });
-        this.tooltipTitle = d.topKeyword;
+        this.tooltipTitle = `${d.topFiveKeywords.join('/')}`;
         this.totalCountTooltip = d.subtreeSize;
         tooltip.style("visibility", "visible");
+        this.isOutlier = (d.id === -1)
       };
 
       scatter
@@ -362,5 +382,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.highlight--worst {
+  filter: drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8));
+  stroke: black;
+  stroke-width: 2;
+}
+
 </style>

@@ -242,6 +242,10 @@ export class KeywordCluster {
         return this.config.keywords[0].keyword;
     }
 
+    get topFiveKeywords() {
+        return this.config.keywords.slice(0, 5).map(k => k.keyword)
+    }
+
     set id(id) {
         this.config.id = id;
     }
