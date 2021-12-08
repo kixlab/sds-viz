@@ -90,6 +90,7 @@ export default {
     setMetric(metric) {
       let updateState = {
         chosenMetric: metric,
+        chosenThreshold: 0.0,
       };
       if (this.interactionState.chosenMetric === metric) {
         updateState.chosenMetric = null;

@@ -31,6 +31,7 @@ export const initGlobalStore = () => {
     var interactionState = {
         'chosenMetric': null,
         'chosenKeywordClusterId': null,
+        'chosenThreshold': null,
         'chosenBehaviorClusterId': null,
         'chosenSessionId': null,
     };

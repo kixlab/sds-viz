@@ -2,7 +2,16 @@
   <div class="w-full h-full relative" id="keyword-viz">
     <div
       id="keyword-tooltip"
-      class="absolute z-20 bg-white rounded-md border-gray-500 border px-2 py-2 divide-y-2"
+      class="
+        absolute
+        z-20
+        bg-white
+        rounded-md
+        border-gray-500 border
+        px-2
+        py-2
+        divide-y-2
+      "
       style="visibility: hidden"
     >
       <div>
@@ -29,11 +38,14 @@
         <div>
           <p class="font-bold text-sm flex justify-end mt-2">
             Number of sessions: {{ totalCountTooltip }}
-          </p>  
+          </p>
         </div>
       </div>
     </div>
-    <filter-visualization class="absolute top-0 right-2 transform -translate-y-6" v-bind="{getColor}"/>
+    <filter-visualization
+      class="absolute top-0 right-2 transform -translate-y-6"
+      v-bind="{ getColor }"
+    />
   </div>
 </template>
 
@@ -42,7 +54,7 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, provide } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
-import FilterVisualization from './FilterVisualization.vue'
+import FilterVisualization from "./FilterVisualization.vue";
 export default {
   name: "KeywordClustersVisualization",
   components: {
@@ -73,9 +85,12 @@ export default {
     });
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
     const metrics = window.globalVars.METRICS;
+    const chosenThreshold = computed(
+      () => store.getInteractionState.value.chosenThreshold
+    );
 
     provide("rankingPercentageById", rankingPercentageById);
-    
+
     return {
       interactionState,
       setInteractionState,
@@ -83,6 +98,7 @@ export default {
       rankingPercentageById,
       chosenMetric,
       metrics,
+      chosenThreshold,
     };
   },
   data() {
@@ -100,7 +116,7 @@ export default {
       }, {}),
       tooltipTitle: "",
       totalCountTooltip: 0,
-      isOutlier: false
+      isOutlier: false,
     };
   },
   methods: {
@@ -156,22 +172,22 @@ export default {
       const lr_x = [0, 10],
         lr_y = [0, 10];
       var SVG;
-      if(d3.select('#svg-keyword-viz').empty()) {
-         SVG = d3
-        .select("#keyword-viz")
-        .append("svg").attr("width", "100%")
-        .attr("height", "100%")
-        .attr("id", "svg-keyword-viz");
-      }
-      else {
-         SVG = d3.select("#svg-keyword-viz");
+      if (d3.select("#svg-keyword-viz").empty()) {
+        SVG = d3
+          .select("#keyword-viz")
+          .append("svg")
+          .attr("width", "100%")
+          .attr("height", "100%")
+          .attr("id", "svg-keyword-viz");
+      } else {
+        SVG = d3.select("#svg-keyword-viz");
       }
 
       SVG.selectAll("*").remove();
 
       SVG = SVG.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .attr("cursor", "move")
+        .attr("cursor", "move");
 
       SVG.append("rect")
         .attr("width", width)
@@ -205,6 +221,15 @@ export default {
       var scatter = SVG.append("g").attr("clip-path", "url(#clip)");
       const paddingXRect = 4,
         paddingYRect = 2;
+      const checkHighlight = (d) => {
+        const threshold = this.chosenThreshold;
+        if (!window.globalVars.IS_METRIC_GOODNESS_DIRECT[this.chosenMetric]) {
+          return (
+            d.metricValues[this.chosenMetric] / d.subtreeSize > 1 - threshold
+          );
+        }
+        return d.metricValues[this.chosenMetric] / d.subtreeSize < threshold;
+      };
       scatter
         .selectAll("rect")
         .data(data)
@@ -216,10 +241,17 @@ export default {
         .attr("class", `keyword-cluster-rect`)
         // .attr("class", (d) => {return (this.rankingPercentageById[d.id] <= 1 ? 'highlight--worst' : '')})
         .style("cursor", "pointer")
-        .style("filter", (d) => `${(this.rankingPercentageById[d.id] <= 0.4) && 'drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8))'}`)
-        .style("stroke", (d) => `${(d.id === -1) && 'black'}`)
-        .style("stroke-width", (d) => `${(d.id === -1) && '1'}`)
-        .style("stroke-dasharray", (d) => `${(d.id === -1) && '5,5'}`)
+        .style(
+          "filter",
+          (d) =>
+            `${
+              checkHighlight(d) &&
+              "drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8))"
+            }`
+        )
+        .style("stroke", (d) => `${d.id === -1 && "black"}`)
+        .style("stroke-width", (d) => `${d.id === -1 && "1"}`)
+        .style("stroke-dasharray", (d) => `${d.id === -1 && "5,5"}`);
       var tooltip = d3.select("#keyword-tooltip");
       const centerOfGravity = [
         (lr_x[1] - lr_x[0]) / 2,
@@ -228,10 +260,10 @@ export default {
 
       const updateTooltip = (e, d) => {
         if (e.layerY / height > 0.5) {
-          tooltip.style("bottom", `${height - e.layerY + 40}px`);
+          tooltip.style("bottom", `${height - e.layerY}px`);
           tooltip.style("top", null);
         } else {
-          tooltip.style("top", `${e.layerY}px`);
+          tooltip.style("top", `${e.layerY - 40}px`);
           tooltip.style("bottom", null);
         }
         if ((e.layerX + 15) / width > 0.5) {
@@ -259,10 +291,10 @@ export default {
           const color = this.getColor(rankingP);
           this.metricColor[metric] = color;
         });
-        this.tooltipTitle = `${d.topFiveKeywords.join('/')}`;
+        this.tooltipTitle = `${d.topFiveKeywords.join(" / ")}`;
         this.totalCountTooltip = d.subtreeSize;
         tooltip.style("visibility", "visible");
-        this.isOutlier = (d.id === -1)
+        this.isOutlier = d.id === -1;
       };
 
       scatter
@@ -381,6 +413,13 @@ export default {
         }
       },
     },
+    chosenThreshold: {
+      handler(newVal, oldVal) {
+        if (newVal !== null && newVal !== oldVal) {
+          this.render();
+        }
+      },
+    },
   },
 };
 </script>
@@ -391,5 +430,4 @@ export default {
   stroke: black;
   stroke-width: 2;
 }
-
 </style>
