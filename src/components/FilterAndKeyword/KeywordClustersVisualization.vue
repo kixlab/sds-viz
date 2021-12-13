@@ -415,6 +415,9 @@ export default {
           this.setChosenKeywordCluster(null)
           this.isTooltipVisible = false
           this.render();
+        } else if (newVal === null) {
+          this.setChosenKeywordCluster(null)
+          this.isTooltipVisible = false
         }
       },
     },
