@@ -12,7 +12,7 @@
         py-2
         divide-y-2
       "
-      style="visibility: hidden"
+      v-show="isTooltipVisible"
     >
       <div>
         <p class="font-bold w-full flex justify-center mb-2 relative">
@@ -117,6 +117,7 @@ export default {
       tooltipTitle: "",
       totalCountTooltip: 0,
       isOutlier: false,
+      isTooltipVisible: false
     };
   },
   methods: {
@@ -293,7 +294,8 @@ export default {
         });
         this.tooltipTitle = `${d.topFiveKeywords.join(" / ")}`;
         this.totalCountTooltip = d.subtreeSize;
-        tooltip.style("visibility", "visible");
+        // tooltip.style("visibility", "visible");
+        this.isTooltipVisible = true
         this.isOutlier = d.id === -1;
       };
 
@@ -347,7 +349,8 @@ export default {
         })
         .on("mouseout", () => {
           if (this.interactionState.chosenKeywordClusterId !== null) return;
-          tooltip.style("visibility", "hidden");
+          this.isTooltipVisible = false
+          // tooltip.style("visibility", "hidden");
         });
       scatter
         .selectAll("rect")
@@ -409,6 +412,8 @@ export default {
     chosenMetric: {
       handler(newVal, oldVal) {
         if (newVal !== null && newVal !== oldVal) {
+          this.setChosenKeywordCluster(null)
+          this.isTooltipVisible = false
           this.render();
         }
       },
