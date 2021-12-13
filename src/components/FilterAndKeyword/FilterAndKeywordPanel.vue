@@ -7,7 +7,7 @@
           <in-section-title class="bg-gray-200 mt-1 mx-2">
             Performance Metric Selection
           </in-section-title>
-          <button class="w-6 h-6 mr-2" @click="tooltipClicked = true" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
+          <button class="w-6 h-6 mr-2" @click="tooltipClicked = !tooltipClicked; showTooltip = false" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
             <question-mark />
           </button>
         </div>
