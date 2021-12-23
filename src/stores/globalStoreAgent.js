@@ -112,12 +112,6 @@ export const initGlobalStore = () => {
     // Return necessary methods //
 
     return {
-        getInteractionState,
-        getKeywordClusters,
-        getBehaviorClusters,
-        getSessions,
-        getSession,
-        setInteractionState,
     }
 
 };

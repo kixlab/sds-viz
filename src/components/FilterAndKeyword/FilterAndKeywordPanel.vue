@@ -2,7 +2,9 @@
   <div class="flex flex-col">
     <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
     <div class="flex flex-col flex-grow w-auto mx-4 my-4">
+      <!-- Performance Metric Selection -->
       <div class="flex flex-col bg-gray-200 rounded-md border border-black">
+        <!-- Title and question mark -->
         <div class="flex justify-between content-center items-center">
           <in-section-title class="bg-gray-200 mt-1 mx-2">
             Performance Metric Selection
@@ -11,6 +13,7 @@
             <question-mark />
           </button>
         </div>
+        <!-- Tooltip -->
         <div class="relative">
           <div v-if="showTooltip || tooltipClicked" class="absolute z-20
             right-6            cursor-pointer
@@ -31,6 +34,7 @@
             </ul>
           </div>
         </div>
+        <!-- List of buttons for metrics in the UI -->
         <div class="w-full flex h-16 items-center justify-around">
           <div
             v-for="metricInfo in metricsData"
@@ -53,6 +57,7 @@
           </div>
         </div>
       </div>
+      <!-- User Query Clusters -->
       <div
         class="
           flex flex-col flex-grow
@@ -66,6 +71,7 @@
         <in-section-title class="bg-gray-200 mt-1 mx-2">
           User Query Clusters
         </in-section-title>
+        <!-- The visualization of the keyword clusters -->
         <keyword-clusters-visualization
           v-if="interactionState.chosenMetric !== null"
           class="w-full flex-grow"
@@ -94,8 +100,11 @@ export default {
     QuestionMark
   },
   setup() {
+    // Inject the methods to manipulate the state of the global store
     const store = useGlobalStore();
+    // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);
+    // Updates the interaction state
     const setInteractionState = store.setInteractionState;
 
     return {
@@ -105,6 +114,7 @@ export default {
   },
   data() {
     return {
+      // List of metrics
       metricsData: window.globalVars.METRICS.map((e, i) => {
         return {
           metric: e,
@@ -116,14 +126,18 @@ export default {
     };
   },
   methods: {
+    // Updates the metric chosen
     setMetric(metric) {
+      // Set the metric chosen and the threshold for highlighting
       let updateState = {
         chosenMetric: metric,
         chosenThreshold: 0.0,
       };
+      // If the currently chosen metric is the same as the one chosen, then we cancel selection
       if (this.interactionState.chosenMetric === metric) {
         updateState.chosenMetric = null;
       }
+      // Update the interaction state
       this.setInteractionState(updateState);
     },
   },

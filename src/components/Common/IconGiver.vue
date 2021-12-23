@@ -1,4 +1,5 @@
 <template>
+  <!-- Check the action item, and give the right icon -->
   <click-11-plus-icon v-if="action_item === 'Click11+'" />
   <click-15-icon v-else-if="action_item === 'Click1-5'" />
   <click-610-icon v-else-if="action_item === 'Click6-10'" />
