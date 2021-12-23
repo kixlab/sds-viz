@@ -1,5 +1,7 @@
 import { Session, BehaviorCluster, KeywordCluster } from './dataStructures.js';
 
+// Load the sessions information from the file, to the keywordClustersDict
+// For the details of how the data is structured, check the dataStructures.js file
 export const loadSessions = (filePath, keywordClustersDict) => {
     const sessionsRaw = require(`${filePath}`);
     sessionsRaw.forEach(session => {
@@ -23,6 +25,8 @@ export const loadSessions = (filePath, keywordClustersDict) => {
     return keywordClustersDict;
 };
 
+// Load the keyword clusters information from the file, to the keywordClustersDict
+// For the details of how the data is structured, check the dataStructures.js file
 export const loadKeywordClusters = (filePath, keywordClustersDict) => {
     keywordClustersDict = {};
     const keywordClustersRaw = require(`${filePath}`);
@@ -49,6 +53,9 @@ export const loadKeywordClusters = (filePath, keywordClustersDict) => {
     return keywordClustersDict;
 };
 
+
+// Load the behavior clusters information from the file, to the keywordClustersDict
+// For the details of how the data is structured, check the dataStructures.js file
 export const loadBehaviorClusters = (filePath, keywordClustersDict) => {
     const behaviorGalaxiesRaw = require(`${filePath}`);
     behaviorGalaxiesRaw.forEach(behaviorGalaxy => {

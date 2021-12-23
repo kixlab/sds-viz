@@ -27,6 +27,8 @@ export default {
     FilterAndKeywordPanel
   },
   setup() {
+    // Initializa the global store, so that its methods that manipulates the state, could be
+    // injectible in every subcomponent of this component.
     initGlobalStore();
   },
 }

@@ -1,11 +1,15 @@
 <template>
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
-      <icon-giver class="w-9 h-9 mr-2" v-bind="{action_item: action.Type}"/>
+      <!-- The icon corresponding to the click -->
+      <icon-giver class="w-9 h-9 mr-2" v-bind="{ action_item: action.Type }" />
+      <!-- The texts -->
       <div class="flex-grow text-center flex flex-col">
+        <!-- Clicked .... -->
         <medium-title>
           Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
+        <!-- URL: ... -->
         <medium-title class="mt-2"
           >URL:<a
             :href="action.ClickedURL"
@@ -16,10 +20,21 @@
         >
       </div>
     </div>
+    <!-- I-frame to show the search results -->
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
-        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
-          {{ seeSearchResults ? 'Close search results' : 'See search results (of Google)' }}
+        <div
+          :class="[
+            'flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer',
+            seeSearchResults ? 'bg-gray-400' : 'bg-gray-200',
+          ]"
+          v-on:click="seeSearchResults = !seeSearchResults"
+        >
+          {{
+            seeSearchResults
+              ? "Close search results"
+              : "See search results (of Google)"
+          }}
         </div>
         <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
           <iframe
@@ -33,7 +48,7 @@
 </template>
 
 <script>
-import IconGiver from '../../Common/IconGiver.vue';
+import IconGiver from "../../Common/IconGiver.vue";
 import MediumTitle from "../../Common/MediumTitle.vue";
 
 export default {
@@ -45,29 +60,32 @@ export default {
   },
   data() {
     return {
-      'seeSearchResults': false,
-    }
+      // Stores whether to see the search results or not
+      seeSearchResults: false,
+    };
   },
   methods: {
+    // Naming of the rankings (e.g. "1st", "2nd", "3rd", ...)
     produceRank: function (rank) {
-      const target = rank % 100
-      let suffix = 'th'
+      const target = rank % 100;
+      let suffix = "th";
       if (target === 11 || target === 12 || target === 13) {
-        suffix = 'th'
+        suffix = "th";
       } else if (target % 10 === 1) {
-        suffix = 'st'
+        suffix = "st";
       } else if (target % 10 === 2) {
-        suffix = 'nd'
+        suffix = "nd";
       } else if (target % 10 === 3) {
-        suffix = 'rd'
+        suffix = "rd";
       }
-      return `${rank}${suffix}`
-    }
-  }
+      return `${rank}${suffix}`;
+    },
+  },
 };
 </script>
 
 <style>
+/* Style elements corresponding to the i-frame element */
 :root {
   --scale-val: 0.5;
   --wrap-width: 100%;
