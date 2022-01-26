@@ -1,8 +1,9 @@
 <template>
-  <new-query-item v-if="action.Type === 'NewQuery'" v-bind="{ action }" />
-  <refined-query-item v-else-if="action.Type === 'RefinedQuery'" v-bind="{ action }" />
+  <new-query-item v-if="action.Type === 'NewQuery' || action.Type === 'NewQuery_Short'" v-bind="{ action }" />
+  <refined-query-item v-else-if="action.Type === 'RefinedQuery'  || action.Type === 'RefinedQuery_Short'" v-bind="{ action }" />
   <next-page-item v-else-if="action.Type === 'NextPage'" v-bind="{ action }" />
-  <click-item v-else-if="['Click6-10', 'Click1-5', 'Click11+'].includes(action.Type)" v-bind="{ action }"/>
+  <click-quicklink-item v-else-if="action.Type === 'ClickQuickLink'" v-bind="{ action }" />
+  <click-item v-else-if="['Click6-10', 'Click1-5', 'Click11+', 'Click6-10_Short', 'Click1-5_Short', 'Click11+_Short'].includes(action.Type)" v-bind="{ action }"/>
   <div v-else>todo</div>
 </template>
 

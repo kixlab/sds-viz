@@ -2,7 +2,7 @@ import { provide, ref, computed, inject } from "vue";
 import { loadBehaviorClusters, loadKeywordClusters, loadSessions } from "./dataLoader";
 
 const DATAPATH = './data';
-const KEYWORD_CLUSTERS_FILE = 'BERTopics-cluster-50000-50.json'; 
+const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
 
@@ -34,6 +34,7 @@ export const initGlobalStore = () => {
         'chosenThreshold': null,
         'chosenBehaviorClusterId': null,
         'chosenSessionId': null,
+        'savedSessions': [],
     };
     const interactionStateRef = ref(interactionState);
     const getInteractionState = computed(() => interactionStateRef.value);
@@ -95,6 +96,9 @@ export const initGlobalStore = () => {
             }
             if(isNull) {
                 interactionState[key] = null;
+                if (key === 'savedSessions') {
+                    interactionState[key] = [];
+                }
             }
         });
     };

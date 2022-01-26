@@ -6,6 +6,7 @@
         <medium-title>
           Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
+        <medium-title class="mt-2">{{action.ClickedTitle}}</medium-title>
         <medium-title class="mt-2"
           >URL:<a
             :href="action.ClickedURL"
@@ -19,15 +20,24 @@
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
-          {{ seeSearchResults ? 'Close search results' : 'See search results (of Google)' }}
+          {{ seeSearchResults ? 'Close document content' : 'See document content' }}
         </div>
-        <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
+        <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
+          <div class="mt-2 border-4 text-justify">
+            <!-- <p>{{action.ClickedContext}}</p> -->
+            <p v-html="highlightedContext"></p>
+          </div>
+        </div>
+        <!-- <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
           <iframe
             class="scaled-iframe"
             :src="`https://www.google.com/search?igu=1&q=${action.Query}&sourceid=chrome-mobile`"
           ></iframe>
-        </div>
+        </div> -->
       </div>
+    </div>
+    <div class="text-sm text-right">
+      Dwell time: {{action.DwellTime}} s
     </div>
   </div>
 </template>
@@ -42,6 +52,13 @@ export default {
   components: {
     MediumTitle,
     IconGiver,
+  },
+  computed: {
+    highlightedContext: function () {
+      // const regex = new RegExp(`(${this.action.Query})`, "gi");
+      const c = this.action.ClickedContext.replaceAll(this.action.Query, '<span class="text-blue-500">$&</span>');
+      return c
+    }
   },
   data() {
     return {

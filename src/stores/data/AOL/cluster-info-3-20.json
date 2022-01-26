@@ -1,0 +1,7782 @@
+[{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 635,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 1678.2114759764954
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 399.63215178702757
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 369.26986581996033
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 293.125
+        }
+      ],
+      "divided_cluster": 14,
+      "remaining_cluster": 15,
+      "children": [
+        14,
+        15
+      ],
+      "subtree_size": 99,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 536,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 4981.599999999999
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 564.6666666666667
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 560.589957160266
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery"
+          ],
+          "score": 98.83936651583709
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 52,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 484,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 81.39772727272727
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 71.21111111111112
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 66.12875536480686
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Empty"
+          ],
+          "score": 47.62105263157895
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 35.540636042402824
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NextPage",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 26.39
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 25.225475408652976
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 18.480392156862745
+        }
+      ],
+      "divided_cluster": 12,
+      "remaining_cluster": 13,
+      "children": [
+        12,
+        13
+      ],
+      "subtree_size": 107,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 377,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 313.3666666666667
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 278.90625000000006
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 212.93617021276594
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 209.05405405405403
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 170.41975308641975
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 151.2
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 96.16161616161614
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 139,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 10,
+      "remaining_cluster": 11,
+      "children": [
+        10,
+        11
+      ],
+      "subtree_size": 238,
+      "parent": null
+    },
+    {
+      "id": 10,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 94
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 94,
+      "parent": 9
+    },
+    {
+      "id": 11,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 144
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 144
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 144,
+      "parent": 9
+    },
+    {
+      "id": 12,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 81.39772727272727
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 71.21111111111112
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 66.12875536480686
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Empty"
+          ],
+          "score": 47.62105263157895
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 35.540636042402824
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NextPage",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 26.39
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 25.225475408652976
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 18.480392156862745
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 363.4
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 48.55555555555556
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 12.987145557655955
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 7.666666666666667
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 23,
+      "parent": 6
+    },
+    {
+      "id": 13,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 81.39772727272727
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 71.21111111111112
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 66.12875536480686
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Empty"
+          ],
+          "score": 47.62105263157895
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 35.540636042402824
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NextPage",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 26.39
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 25.225475408652976
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 18.480392156862745
+        },
+        {
+          "cluster_id": 13,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 58
+        },
+        {
+          "cluster_id": 13,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 78
+        },
+        {
+          "cluster_id": 13,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 109
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 84,
+      "parent": 6
+    },
+    {
+      "id": 14,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 1678.2114759764954
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 399.63215178702757
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 369.26986581996033
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 293.125
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 96.15980392156865
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 42.75
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 25.8206043956044
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 25.234453781512602
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 42,
+      "parent": 2
+    },
+    {
+      "id": 15,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 1678.2114759764954
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 399.63215178702757
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 369.26986581996033
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 293.125
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 27
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 206
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 266
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 57,
+      "parent": 2
+    }
+  ],
+  "keyword_cluster": 1
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 548,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 2883.8150066942194
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 481.5000250070853
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 411.62407059968046
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 338.9163561427281
+        }
+      ],
+      "divided_cluster": 12,
+      "remaining_cluster": 13,
+      "children": [
+        12,
+        14,
+        15
+      ],
+      "subtree_size": 123,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 425,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 461.2680529839055
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 269.11764705882354
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 83.63037272911801
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 59,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 366,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 325.61290322580646
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 293.39393939393943
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 198.2608695652174
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 129.12280701754383
+        }
+      ],
+      "divided_cluster": 10,
+      "remaining_cluster": 11,
+      "children": [
+        10,
+        11
+      ],
+      "subtree_size": 160,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 206,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 92
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 92,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 114
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 114
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 114,
+      "parent": 7
+    },
+    {
+      "id": 10,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 325.61290322580646
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 293.39393939393943
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 198.2608695652174
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 129.12280701754383
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 7.185703185703186
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 4.371584699453552
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 4.115709835336004
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "Click1-5",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 3.310344827586207
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 32,
+      "parent": 6
+    },
+    {
+      "id": 11,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 325.61290322580646
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 293.39393939393943
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 198.2608695652174
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 129.12280701754383
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 34
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 43
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 170
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 128,
+      "parent": 6
+    },
+    {
+      "id": 12,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 2883.8150066942194
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 481.5000250070853
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 411.62407059968046
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 338.9163561427281
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NextPage",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 79.11111111111111
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 79.11111111111111
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 70.26315789473685
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click11+",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 62.300000000000004
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 55.095238095238095
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "NextPage"
+          ],
+          "score": 48.54545454545455
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 43.27531256405001
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 42.56521739130435
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 42.56521739130435
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click6-10",
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 32.040000000000006
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click6-10",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 23.074074074074076
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 20.57170868347339
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "Click1-5",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 19.07142857142857
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 14.402808241940843
+        },
+        {
+          "cluster_id": 12,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 14.370378151260505
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 34,
+      "parent": 2
+    },
+    {
+      "id": 13,
+      "label": "Merged",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 2883.8150066942194
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 481.5000250070853
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 411.62407059968046
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 338.9163561427281
+        }
+      ],
+      "divided_cluster": 14,
+      "remaining_cluster": 15,
+      "children": [
+        14,
+        15
+      ],
+      "subtree_size": 89,
+      "parent": null
+    },
+    {
+      "id": 14,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 2883.8150066942194
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 481.5000250070853
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 411.62407059968046
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 338.9163561427281
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 117.49999999999999
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 31.960000000000004
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 28.923076923076927
+        },
+        {
+          "cluster_id": 14,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 28.923076923076927
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 42,
+      "parent": 13
+    },
+    {
+      "id": 15,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 2883.8150066942194
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 481.5000250070853
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 411.62407059968046
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 338.9163561427281
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 15,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "Empty"
+          ],
+          "score": 16
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 47,
+      "parent": 13
+    }
+  ],
+  "keyword_cluster": 2
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 485,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 556.6444228319228
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 538.1514199062586
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "NextPage"
+          ],
+          "score": 340.69632352941176
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 238.55179449726018
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 72,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 413,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 242.0957794334951
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 215.4018691588785
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 195.33684210526314
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 170.57851239669418
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 161.44660194174756
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 149.33333333333337
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 97.16883116883119
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 83.87654320987654
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 66.22988505747126
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 241,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 172,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 275.77777777777777
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 34.76190476190476
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 34.76190476190476
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 29.014492753623188
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 26,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 146,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 69
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 69,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 77
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 77
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 77,
+      "parent": 7
+    }
+  ],
+  "keyword_cluster": 3
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 480,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 1823.8909975669103
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 299.013201320132
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 90.56260162601623
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 86.33962264150944
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 64,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 416,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 354.30697674418604
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 15.226850663985301
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 9.442379182156134
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 7.40484429065744
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 20,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 396,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 192.2803738317757
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 173.61290322580646
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 165.03157894736842
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 145.07999999999998
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 141.32673267326734
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 136.48818897637796
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 134.03883495145632
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 101.6352932518949
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 84.55462184873952
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 76.72131147540983
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 162,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 234,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 107,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 127
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 127,
+      "parent": 7
+    }
+  ],
+  "keyword_cluster": 4
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 426,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 465.61287229579904
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 333.00941903865834
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 307.573513566461
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 250.01433482991553
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 219.66815798335494
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 123.7097746503868
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 83.3939393939394
+        }
+      ],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 82,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 344,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 114.33333333333331
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 110.98053633399937
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 79.44959135718359
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 68.78242210086732
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 56.0
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 40.090909090909086
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery",
+            "Empty"
+          ],
+          "score": 32.66666666666666
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 50,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        7
+      ],
+      "subtree_size": 294,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 320.04255319148933
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 284.11764705882354
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 170.18181818181822
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 97.27058823529413
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 156,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 53
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 72
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 85
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 138,
+      "parent": 5
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 465.61287229579904
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 333.00941903865834
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 307.573513566461
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 250.01433482991553
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 219.66815798335494
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 123.7097746503868
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 83.3939393939394
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 16.799999999999997
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 14.031937411247757
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 13.333333333333332
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NextPage",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 9.392568216097628
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 26,
+      "parent": 2
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 465.61287229579904
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 333.00941903865834
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 307.573513566461
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 250.01433482991553
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 219.66815798335494
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 123.7097746503868
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 83.3939393939394
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "Click11+",
+            "NextPage"
+          ],
+          "score": 17
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NextPage",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 29
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 60
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 56,
+      "parent": 2
+    }
+  ],
+  "keyword_cluster": 5
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 342,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 455.9731659069407
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 250.25616028708134
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 55.17857142857143
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 41.098101804562475
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 33,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 98
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 321
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 109
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 309,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 6
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 322,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 287.93722734592296
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 195.69821052631582
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 181.86671006944442
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 159.33402777777775
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 156.40908888888887
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 125.1262775616083
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 97.62549212598425
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 72.1168202764977
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 43.316015625
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 60,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 262,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 244.37209302325584
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 149.625
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 113.99999999999999
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 108.0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 148,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        7
+      ],
+      "subtree_size": 114,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 43
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 43,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 71
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 71
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 71,
+      "parent": 5
+    }
+  ],
+  "keyword_cluster": 7
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 108
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 119
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 327
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 311,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 9
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 214,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 88.38896551724139
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 21.411764705882348
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 21.411764705882348
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 18.0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 58,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 156,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 81.3913043478261
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 81.3913043478261
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NextPage",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 73.125
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 58.5
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 39,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        7
+      ],
+      "subtree_size": 117,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 100.3809523809524
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 80.08333333333334
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 51.5625
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 46.92189393939394
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 55,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 27
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 30
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 30
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 62,
+      "parent": 5
+    }
+  ],
+  "keyword_cluster": 14
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "subtree_size": 216,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 109.4526707234618
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 75.83333333333334
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 54.961648388168825
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 40.50568295114656
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 34,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        5
+      ],
+      "subtree_size": 182,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 435.23076923076917
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 303.8823529411764
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 58.425000000000004
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 58.425000000000004
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 59,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 31
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 40
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 90
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 123,
+      "parent": 3
+    }
+  ],
+  "keyword_cluster": 16
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 214,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 140.7120050282841
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 120.68181818181819
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 66.79961618423158
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 66.31784455262715
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 37,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 177,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 62.062223049711406
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 49.86666666666666
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 49.86666666666666
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 43.87096774193549
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 42.223880597014926
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 23.314285714285717
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 23.314285714285717
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 18.888888888888886
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 18.888888888888886
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 11.60377358490566
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 8.401601191584437
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 41,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 136,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 162.64285714285717
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 145.2
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 85.10000000000001
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 75.42857142857143
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 37,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 99,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 30
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 30,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 69
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 69
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 69,
+      "parent": 7
+    }
+  ],
+  "keyword_cluster": 17
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 213,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 74.48970221697493
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "Empty"
+          ],
+          "score": 56.17647058823529
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 19.19607843137255
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 4.935897435897435
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 22,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 51
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 89
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 200
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 191,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 19
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "subtree_size": 200,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 89.79241231209735
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 59.48717948717949
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 54.61649713922441
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 40.46511627906977
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 55,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        5
+      ],
+      "subtree_size": 145,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 97.56797791580401
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 94.87499999999999
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 62.0
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 48.85714285714286
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 69,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 28
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 44
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 28
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 76,
+      "parent": 3
+    }
+  ],
+  "keyword_cluster": 20
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 181,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 87.74999999999999
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 60.66666666666667
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click1-5",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 39.0
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 39.0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 25,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 156,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 356.5
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 162.35294117647058
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 135.8569105691057
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 73.6
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 41,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        7
+      ],
+      "subtree_size": 115,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 54.6
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 30.333333333333332
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 20.57142857142857
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 12.295513731060607
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 24,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 28
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 42
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 75
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 91,
+      "parent": 5
+    }
+  ],
+  "keyword_cluster": 22
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 144,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 7
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 14
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 17,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 38
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 72
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 131
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 127,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 24
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 131,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 17
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 21
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 38
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 17,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 30
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 50
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 104
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 114,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 25
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 130,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 14
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 23
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 19,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        7
+      ],
+      "subtree_size": 111,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 28.125
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 10.5
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 7.285714285714284
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 3.6386587550380654
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 21,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        7
+      ],
+      "subtree_size": 90,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 34.8
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 34.28571428571428
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 26.363636363636363
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 32,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 30
+        },
+        {
+          "cluster_id": 7,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 60
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 58,
+      "parent": 5
+    }
+  ],
+  "keyword_cluster": 27
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 123,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 92.72727272727272
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 40.8
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 32.04876476906552
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 31.875000000000004
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 21,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 102,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 76.3157894736842
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 63.52380952380952
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 58.0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 44,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 58,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "Click6-10",
+            "RefinedQuery"
+          ],
+          "score": 1
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 3
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 7
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 14,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 44,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 20
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 20,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 24
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 24
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 24,
+      "parent": 7
+    }
+  ],
+  "keyword_cluster": 28
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 40
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 40
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 121
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 127,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 31
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 35
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 48
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 100
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 111,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 33
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 97,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 12
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 14
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 13,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 18
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 25
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 50
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 84,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 35
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 108,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 7
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 22
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 17,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 41
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 41
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 113
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 91,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 36
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 25
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 42
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 90
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 95,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 38
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 92,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 10
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 12,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 80,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 16,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        9
+      ],
+      "subtree_size": 64,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 7
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 13
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 10
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 10,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        9
+      ],
+      "subtree_size": 54,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 15
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 21
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 15,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 15
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 28
+        },
+        {
+          "cluster_id": 9,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 39,
+      "parent": 7
+    }
+  ],
+  "keyword_cluster": 39
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 104,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 16
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 18
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 14,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 90,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 12
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NextPage",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 14
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 12,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 6,
+      "remaining_cluster": 7,
+      "children": [
+        6,
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 78,
+      "parent": null
+    },
+    {
+      "id": 6,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 33.60000000000001
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 30.0
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 24.480000000000004
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 23.73913043478261
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 22.709677419354836
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 21.0
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 18.479999999999997
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 18.0
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 16.153846153846153
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 16.058651026392962
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 12.000000000000002
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 10.125
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 8.4
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click1-5",
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 8.4
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 8.4
+        },
+        {
+          "cluster_id": 6,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 6.774193548387096
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 36,
+      "parent": 5
+    },
+    {
+      "id": 7,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 8,
+      "remaining_cluster": 9,
+      "children": [
+        8,
+        10,
+        11
+      ],
+      "subtree_size": 42,
+      "parent": null
+    },
+    {
+      "id": 8,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 14
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 14,
+      "parent": 7
+    },
+    {
+      "id": 9,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 10,
+      "remaining_cluster": 11,
+      "children": [
+        10,
+        11
+      ],
+      "subtree_size": 28,
+      "parent": null
+    },
+    {
+      "id": 10,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "Click1-5",
+            "RefinedQuery",
+            "RefinedQuery"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 10,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 11
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 11,
+      "parent": 9
+    },
+    {
+      "id": 11,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 17
+        },
+        {
+          "cluster_id": 11,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 17
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 17,
+      "parent": 9
+    }
+  ],
+  "keyword_cluster": 40
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 20
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 23
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 61
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 78,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 41
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 22
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 33
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 63
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 71,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 42
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 29
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 85
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 29
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 89,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 43
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 23
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 27
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 47
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 65,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 45
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 61,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery"
+          ],
+          "score": 3
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click6-10"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 8
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 8,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 20
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 34
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 58
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 53,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 47
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 51,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 3
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 4
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 18,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 21
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 33,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 48
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "Empty"
+          ],
+          "score": 7
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 8
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 52
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 61,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 49
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 16
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 49
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 50,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 50
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "subtree_size": 49,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 2
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 3
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 5,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        5
+      ],
+      "subtree_size": 44,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click6-10",
+            "NextPage"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 15
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 9
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 16,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 8
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 28,
+      "parent": 3
+    }
+  ],
+  "keyword_cluster": 52
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 16
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 20
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 42
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 54,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 53
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 22
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 35,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 55
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NextPage",
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 14
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 16
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click11+",
+            "Click11+"
+          ],
+          "score": 29
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 29,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 56
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        4,
+        5
+      ],
+      "subtree_size": 37,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 7
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 7
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 6,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Merged",
+      "distinguishing_features": [],
+      "divided_cluster": 4,
+      "remaining_cluster": 5,
+      "children": [
+        4,
+        5
+      ],
+      "subtree_size": 31,
+      "parent": null
+    },
+    {
+      "id": 4,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "RefinedQuery",
+            "Click1-5"
+          ],
+          "score": 5
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
+            "NewQuery",
+            "RefinedQuery"
+          ],
+          "score": 5
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 5,
+      "parent": 3
+    },
+    {
+      "id": 5,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 15
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 23
+        },
+        {
+          "cluster_id": 5,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 27
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 26,
+      "parent": 3
+    }
+  ],
+  "keyword_cluster": 58
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 8
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 8
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 19
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 36,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 59
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 20
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 30
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 59
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 50,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 61
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 24
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 35
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 32,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 65
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "Click6-10"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 20
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 24,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 68
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 11
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 12
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 21
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 22,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 69
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 5
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 6
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 23
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 20,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 74
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Tree",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NextPage"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click6-10",
+            "NextPage",
+            "Click11+"
+          ],
+          "score": 0
+        }
+      ],
+      "divided_cluster": 2,
+      "remaining_cluster": 3,
+      "children": [
+        2,
+        3
+      ],
+      "subtree_size": 26,
+      "parent": null
+    },
+    {
+      "id": 2,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage",
+            "NewQuery"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NextPage"
+          ],
+          "score": 5
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
+            "NewQuery",
+            "NewQuery"
+          ],
+          "score": 5
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 5,
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "label": "Remainder",
+      "distinguishing_features": [
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 9
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "Click1-5",
+            "NewQuery"
+          ],
+          "score": 10
+        },
+        {
+          "cluster_id": 3,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 28
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 21,
+      "parent": 1
+    }
+  ],
+  "keyword_cluster": 76
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Empty"
+          ],
+          "score": 4
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 8
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 6
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 11,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": 79
+},{
+  "root_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Leaf",
+      "distinguishing_features": [
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Empty"
+          ],
+          "score": 123
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 200
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "NewQuery",
+            "Click1-5"
+          ],
+          "score": 365
+        }
+      ],
+      "divided_cluster": null,
+      "remaining_cluster": null,
+      "children": null,
+      "subtree_size": 500,
+      "parent": null
+    }
+  ],
+  "keyword_cluster": -1
+}]

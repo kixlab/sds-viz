@@ -7,16 +7,21 @@
           ? 'bg-gray-400 hover:bg-gray-400'
           : 'bg-gray-200 hover:bg-gray-300',
       ]"
-      v-on:click="setChosenSession()"
     >
-      <div class="w-11/12 h-full flex items-center">
+      <div class="w-8 flex items-center"
+        @click="setFavoriteSession()">
+        <favorite-icon v-if="!isClicked"></favorite-icon>
+        <favorite-clicked-icon v-else></favorite-clicked-icon>
+      </div>
+      <div class="w-10/12 h-full flex items-center" v-on:click="setChosenSession()">
+
         <div class="w-5/12 pr-1 h-full flex items-center">
           <search-icon class="min-w-min min-h-min w-8 h-8 mr-2" />
           <medium-title>
             {{ session.sequence[0].Query }}
           </medium-title>
         </div>
-        <div class="w-7/12 h-full flex items-center overflow-x-scroll">
+        <div class="w-7/12 h-full flex items-center justify-start overflow-x-scroll">
           <template
             v-for="(action, i) in session.sequence.slice(1)"
             :key="action"
@@ -64,9 +69,11 @@ import SearchHistory from "./SearchHistory.vue";
 import IconGiver from "../Common/IconGiver.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
+import FavoriteIcon from '../Common/Icons/FavoriteIcon.vue';
+import FavoriteClickedIcon from '../Common/Icons/FavoriteClickedIcon.vue';
 
 export default {
-  name: "QuerySelection",
+  name: "SessionItem",
   components: {
     SearchIcon,
     MediumTitle,
@@ -74,6 +81,8 @@ export default {
     TriangleBlack,
     SearchHistory,
     IconGiver,
+    FavoriteIcon,
+    FavoriteClickedIcon,
   },
   props: ["session"],
   setup() {
@@ -89,7 +98,22 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    isClicked() {
+      return this.interactionState.savedSessions.includes(this.session.id);
+    },
+  },
   methods: {
+    setFavoriteSession() {
+      const update = {
+        savedSessions: this.isClicked
+          ? this.interactionState.savedSessions.filter(
+              (id) => id !== this.session.id
+            )
+          : [...this.interactionState.savedSessions, this.session.id],
+      };
+      this.setInteractionState(update);
+    },
     setChosenSession() {
       let update = {
         chosenSessionId: this.session.id,
