@@ -1,10 +1,12 @@
 <template>
   <div class="grid grid-cols-2 grid-rows-3 h-full px-1 border w-40 border-black overflow-y-scroll">
+    <!-- Render the behavior icons and their explanations -->
     <template 
       v-for="i in iconOrder" 
       :key="i">
       <div class="flex flex-col items-center my-2 mx-1">
         <div class="w-8 h-8">
+          <!-- Gives the right icon based on the action_item -->
           <icon-giver 
             v-bind="{action_item: i}">
           </icon-giver>
@@ -26,7 +28,9 @@ export default {
   },
   data: function () {
     return {
+      // Order of the behavior icons
       iconOrder: ['Click1-5', 'Click6-10', 'NextPage', 'Click11+', 'NewQuery', 'RefinedQuery'],
+      // Explanation of the behavior icons
       explanation: {
         'Click1-5': `Click rank 1-5`,
         'Click6-10': 'Click rank 6-10',

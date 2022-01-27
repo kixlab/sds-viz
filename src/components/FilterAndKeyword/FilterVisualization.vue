@@ -2,7 +2,9 @@
   <div
     class="w-64 h-32 px-1 pt-1 pb-4 bg-gray-200 border border-gray-500 rounded-sm"
   >
+    <!-- This div contains the filter threshold visualization -->
     <div class="w-full h-full relative" id="metric-viz"></div>
+      <!-- Slider here -->
       <input
         type="range"
         min="0"
@@ -24,18 +26,24 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 
 export default {
   name: "FilterVisualization",
+  // We utilize 'getColor' method from the parent component
   props: [
     'getColor',
   ],
-  setup(context, props) {
-    console.log(context, props)
+  setup() {
+    // Inject the functions to manipulate the interaction state
     const store = useGlobalStore();
+    // The list of keyword clusters
     const keywordClusters = computed(() => store.getKeywordClusters.value);
+    // Current interaction state (which panel is open, which metric is chosen, ...)
     const interactionState = computed(() => store.getInteractionState.value);
+    // The chosen performance metric
     const chosenMetric = computed(
       () => store.getInteractionState.value.chosenMetric
     );
+    // Updates the interaction state
     const setInteractionState = store.setInteractionState;
+    // The information of what threshold for the filtering is chosen
     const chosenThreshold = computed(
       () => store.getInteractionState.value.chosenThreshold
     );
@@ -44,23 +52,30 @@ export default {
       keywordClusters,
       interactionState,
       chosenMetric,
+      // Inject the 'rankingPercentageById' dictionary from the parent component, and utilize it
+      // One good aspect of using inject instead of prop, is that we can utilize reactivity. However, props are probably not reactive
       rankingPercentageById: inject("rankingPercentageById"),
       setInteractionState,
       chosenThreshold
     };
   },
   mounted() {
+    // When this component is mounted for the first time, render the visualization
     this.render();
   },
   methods: {
+    // This method creates an svg element, renders the filtering visualization in it, and appends it to the 
+    // div with id: 'metric-viz'
     render() {
       // ripped off from https://www.d3-graph-gallery.com/graph/histogram_basic.html
-
       d3.select("#metric-viz").selectAll("svg").remove();
+      // Set the margins
       const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+      // Size of the component
       const width = $(`#metric-viz`).width() - margin.left - margin.right;
       const height = $(`#metric-viz`).height() - margin.top - margin.bottom;
-
+      
+      // Create the svg element 
       const svg = d3
         .select("#metric-viz")
         .append("svg")
@@ -69,14 +84,20 @@ export default {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+      // X range for the column bars
       let rangeX = [0, width];
+      // If the metric is inversely proportional with its goodness, then reverse the mapping of the range.
+      // Namely, since we show the worst results first, we adjust the rendering order based on the proportionality 
+      // of the metric with its goodness
       if(!window.globalVars.IS_METRIC_GOODNESS_DIRECT[this.chosenMetric]) {
         rangeX.reverse();
       }
+      // x location mapper
       var x = d3
         .scaleLinear()
         .domain([0, 1]) // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
         .range(rangeX);
+      // append the bottom of the x-axis 
       svg
         .append("g")
         .attr("transform", "translate(0," + (height - 10) + ")")
@@ -120,6 +141,7 @@ export default {
         .attr("height", function (d) {
           return height - y(d.length) - 10;
         })
+        // Find the color of the bar by finding the cluster with the closest metric value
         .style("fill", (d) => {
           const keywordClusterList = Object.values(this.keywordClusters);
           const closest = keywordClusterList.reduce(
@@ -145,7 +167,10 @@ export default {
           const ranking = this.rankingPercentageById[closest.id];
           return this.getColor(ranking);
         });
-        const getPercentage = () => {
+      
+      // Calculate the percentage of the total number of keywords that are highlighted by the
+      // chosen threshold
+      const getPercentage = () => {
         const threshold = this.chosenThreshold;
         const keywordClustersList = Object.values(this.keywordClusters);
         const isCorrelated = window.globalVars.IS_METRIC_GOODNESS_DIRECT[this.chosenMetric];
@@ -160,39 +185,45 @@ export default {
         return percentage;
       }
 
+      // if the chosen threshold is larger than 0, then show the percentage of keywords that are highlighted
       if(this.chosenThreshold > 0.0) {
 
-      const textX = d3.scaleLinear().domain([0, 1]).range([0, width]);
-      const shX = d3.scaleLinear().domain([0, 1]).range([14, 11]);
+        const textX = d3.scaleLinear().domain([0, 1]).range([0, width]);
+        const shX = d3.scaleLinear().domain([0, 1]).range([14, 11]);
 
-      svg.append('rect')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('width', textX(this.chosenThreshold))
-      .attr('height', height - 10)
-      .attr('fill', 'rgba(0, 0, 0, 0.15)')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1)
+        svg.append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', textX(this.chosenThreshold))
+        .attr('height', height - 10)
+        .attr('fill', 'rgba(0, 0, 0, 0.15)')
+        .attr('stroke', 'black')
+        .attr('stroke-width', 1)
 
-      svg.append("text")
-      .attr('id', 'threshold-text')
-      .attr("x", textX(this.chosenThreshold) / 2 - shX(this.chosenThreshold))
-      .attr("y", height / 2)
-      .text(`${getPercentage()}%`)
-      .style('font-size', '1rem')
-      .style('font-weight', 'bold')
+        svg.append("text")
+        .attr('id', 'threshold-text')
+        .attr("x", textX(this.chosenThreshold) / 2 - shX(this.chosenThreshold))
+        .attr("y", height / 2)
+        .text(`${getPercentage()}%`)
+        .style('font-size', '1rem')
+        .style('font-weight', 'bold')
       
       }
-
     },
+    // Update the threshold value when the slider is moved
     updateThreshold() {
+      // Get the slider value
       const threshold = $("#metric-threshold").val() / 10;
+      // Update the interaction state that stores the chosen threshold as well, in the global store
       this.setInteractionState({'chosenThreshold': threshold});
     },
   },
+  // Watch the states of some variables, and act according to the changes
   watch: {
     chosenMetric: {
+      // If the chosenMetric is changed
       handler(newVal, oldVal) {
+        // If we choose a new metric, then re-render this component (also, update the slider as well)
         if (newVal !== null && newVal !== oldVal) {
           $("#metric-threshold").val(0);
           this.render();
@@ -200,7 +231,9 @@ export default {
       },
     },
     chosenThreshold: {
+      // If the chosen threshold is changed
       handler(newVal, oldVal) {
+        // If we choose a new threshold, then re-render this component
         if (newVal !== null && newVal !== oldVal) {
           this.render();
         }

@@ -1,15 +1,20 @@
 <template>
   <div class="flex flex-col">
+    <!-- Title: 'Individual Search Sessions' -->
     <section-title> Individual Search Sessions </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
+      <!-- The dropdown -->
       <div class="flex justify-end items-center">
         <div v-if="sessions !== null" class="flex items-center m-1">
           <div class="mx-2 relative">
-            <medium-title class="relative"> Sort By (worst to best): </medium-title>
+            <medium-title class="relative">
+              Sort By (worst to best):
+            </medium-title>
           </div>
           <sort-by-dropdown />
         </div>
       </div>
+      <!-- The query list -->
       <div class="flex flex-col overflow-y-scroll mt-4">
         <session-item
           v-for="session in sessions"
@@ -31,7 +36,7 @@ import SortByDropdown from "@/components/QueryList/SortByDropdown.vue";
 import SessionItem from "@/components/QueryList/SessionItem.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, provide, ref } from "vue";
-// import QuestionMark from '../Common/Icons/QuestionMark.vue';
+
 export default {
   name: "QuerySelection",
   components: {
@@ -39,13 +44,17 @@ export default {
     MediumTitle,
     SortByDropdown,
     SessionItem,
-    // QuestionMark,
   },
   setup() {
+    // The currently active sortByOption
     const sortByOption = ref(window.globalVars.METRICS[0]);
+    // Inject the methods to manipulate the state of the global store
     const store = useGlobalStore();
+    // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);
+    // Updates the interaction state
     const setInteractionState = store.setInteractionState;
+    // List of sessions, sorted by the current sortByOption from worst to best
     const sessions = computed(() => {
       const sessions = store.getSessions.value;
       if (sessions !== null) {
@@ -56,14 +65,17 @@ export default {
           return window.globalVars.IS_METRIC_GOODNESS_DIRECT[sortByOption.value]
             ? aMetricVal - bMetricVal
             : bMetricVal - aMetricVal;
-        })
+        });
       }
       return null;
     });
+    // When the sortByOption changes
     const onSortByOptionChange = (option) => {
       sortByOption.value = option;
     };
 
+    // Provide 'parentCallFunction', 'mainOption' and 'allOptions' to the dropdown component
+    // It actually provides those to all the children components, but they are used only in the dropdown 
     provide("parentCallFunction", onSortByOptionChange);
     provide("mainOption", sortByOption);
     provide("allOptions", window.globalVars.METRICS);

@@ -1,5 +1,8 @@
 <template>
+  <!-- The visualization of the clusters -->
+  <!-- It is constructed by the 'render' method in the methods -->
   <div class="w-full h-full relative" id="keyword-viz">
+    <!-- Keyword cluster tooltip -->
     <div
       id="keyword-tooltip"
       class="
@@ -14,11 +17,13 @@
       "
       v-show="isTooltipVisible"
     >
+    <!-- Title of tooltip -->
       <div>
         <p class="font-bold w-full flex justify-center mb-2 relative">
           {{ tooltipTitle }}
         </p>
       </div>
+      <!-- List of Metrics -->
       <div>
         <div v-for="metric in metrics" :key="metric" class="flex items-center">
           <div
@@ -29,6 +34,7 @@
           <p class="text-sm">{{ metricVal[metric] }}</p>
         </div>
       </div>
+      <!-- Information at the bottom -->
       <div class="flex justify-end items-center space-x-2">
         <div>
           <p v-if="isOutlier" class="text-sm flex justify-end mt-2">
@@ -42,6 +48,8 @@
         </div>
       </div>
     </div>
+    <!-- Visualization for the threshold filtering -->
+    <!-- 'getColor' method is binded to calculate the color for the bar chart column -->
     <filter-visualization
       class="absolute top-0 right-2 transform -translate-y-6"
       v-bind="{ getColor }"
@@ -61,10 +69,15 @@ export default {
     FilterVisualization,
   },
   setup() {
+    // Inject the functions to manipulate the interaction state
     const store = useGlobalStore();
+    // Current interaction state (which panel is open, which metric is chosen, ...)
     const interactionState = computed(() => store.getInteractionState.value);
-    const keywordClusters = computed(() => store.getKeywordClusters.value);
+    // Updates the interaction state
     const setInteractionState = store.setInteractionState;
+    // The list of keyword clusters
+    const keywordClusters = computed(() => store.getKeywordClusters.value);
+    // Sort the keyword clusters with respect to how good it is performing under the chosen performance metric
     const sortedKeywordClusters = computed(() => {
       const chosenMetric = interactionState.value.chosenMetric;
       return Object.values(keywordClusters.value).sort((a, b) => {
@@ -75,20 +88,28 @@ export default {
           : bAvgMetricVal - aAvgMetricVal;
       });
     });
+    // Retrieve the dictionary of keyword clusters that maps their ids to the percentage ranking 
+    // with respect to the chosen performance metric
+    // percentage ranking: gives the percentile (e.g. 1st in 50 data points would be 0.02 in percentage ranking)
     const rankingPercentageById = computed(() => {
       const ranking = {};
       sortedKeywordClusters.value.forEach((keywordCluster, index) => {
         ranking[keywordCluster.id] =
-          (2 * index) / sortedKeywordClusters.value.length;
+          index / sortedKeywordClusters.value.length;
       });
       return ranking;
     });
+    // The chosen performance metric
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
+    // All the metrics
     const metrics = window.globalVars.METRICS;
+    // The chosen threshold for the filtering
     const chosenThreshold = computed(
       () => store.getInteractionState.value.chosenThreshold
     );
 
+    // Provide the 'rankingPercentageById' computed property to the sub components 
+    // so that they can reactively refer to the percentage ranking of a keyword cluster
     provide("rankingPercentageById", rankingPercentageById);
 
     return {
@@ -103,24 +124,31 @@ export default {
   },
   data() {
     return {
+      // Order of the keywords to render
       keywordRenderData: this.randomShuffle(
         Object.values(this.keywordClusters)
       ),
+      // Tooltip data (metric values of a keyword cluster)
       metricVal: window.globalVars.METRICS.reduce((acc, metric) => {
         acc[metric] = 0;
         return acc;
       }, {}),
+      // Tooltip data (metric colors of a keyword cluster)
       metricColor: window.globalVars.METRICS.reduce((acc, metric) => {
         acc[metric] = "none";
         return acc;
       }, {}),
       tooltipTitle: "",
       totalCountTooltip: 0,
+      // Outlier cluster indicator (Tooltip data)
+      // Outlier cluster is the cluster that did not have a proper clustering result
+      // it basically contains keywords that were not clustered meaningfully (they are leftovers)
       isOutlier: false,
       isTooltipVisible: false
     };
   },
   methods: {
+    // Flip the color of the keyword cluster text (happens after click)
     flipColorOfKeywordCluster(id) {
       if (id === null) return;
       const curColor = $(`#text-${id}`).css("fill");
@@ -128,32 +156,42 @@ export default {
         curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
       $(`#text-${id}`).css("fill", newColor);
     },
+    // Update the chosen keyword cluster, by updating the interaction state
     setChosenKeywordCluster(keywordClusterId) {
       const previouslyChosenKeywordClusterId =
         this.interactionState.chosenKeywordClusterId;
+      // Flip the color of previously chosen keyword cluster
       this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
 
+      // Update to be applied onto the interaction state
       let update = {
         chosenKeywordClusterId: keywordClusterId,
       };
+      // If the chosen keyword cluster is the same as the previously chosen keyword cluster,
+      // then set the chosen keyword cluster to null
       if (this.interactionState.chosenKeywordClusterId === keywordClusterId) {
         update.chosenKeywordClusterId = null;
       }
+      // Update the interaction state
       this.setInteractionState(update);
-
+      // Flip the color of the newly chosen keyword cluster
       const currentlyChosenKeywordClusterId =
         this.interactionState.chosenKeywordClusterId;
       this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
     },
+    // Obtain the color for a given ranking percentage
     getColor(rankingP) {
       const greenZone = ["#D6E8D8", "#2BD72B"],
         redZone = ["#F05656", "#ECDBDC"];
-      if (rankingP < 1) {
-        return d3.interpolate(redZone[0], redZone[1])(rankingP);
+      // If it is in top 50% --> it is good then --> green color
+      // Else, --> it is bad --> red color
+      if (rankingP < 0.5) {
+        return d3.interpolate(redZone[0], redZone[1])(rankingP * 2);
       } else {
-        return d3.interpolate(greenZone[0], greenZone[1])(rankingP - 1);
+        return d3.interpolate(greenZone[0], greenZone[1])(rankingP * 2 - 1);
       }
     },
+    // Utility function
     randomShuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -161,18 +199,24 @@ export default {
       }
       return array;
     },
+    // Update the tooltip data (e.g. title, metric values, total count of sessions)
     updateTooltip(tooltipTitle, metricVal, totalCountTooltip) {
       this.tooltipTitle = tooltipTitle;
       this.metricVal = metricVal;
       this.totalCountTooltip = totalCountTooltip;
     },
+    // Render the visualization by creating a svg element and appending it to the DOM
     render() {
+      // Margins for the visualization
       var margin = { top: 15, right: 15, bottom: 15, left: 15 };
+      // Obtain the width and height of the visualization panel
       const width = $("#keyword-viz").width() - margin.left - margin.right;
       const height = $("#keyword-viz").height() - margin.top - margin.bottom;
-      const lr_x = [0, 10],
-        lr_y = [0, 10];
+      // Construct 10x10 grid to place the keyword clusters (TODO)
+      const lr_x = [0, 10], lr_y = [0, 10];
+      // Final svg element that shows the visualization
       var SVG;
+      // If there is no svg inside the div, then create a new one
       if (d3.select("#svg-keyword-viz").empty()) {
         SVG = d3
           .select("#keyword-viz")
@@ -180,20 +224,27 @@ export default {
           .attr("width", "100%")
           .attr("height", "100%")
           .attr("id", "svg-keyword-viz");
-      } else {
+      } 
+      // Else, choose the one inside the div
+      else {
         SVG = d3.select("#svg-keyword-viz");
       }
 
+      // Clear the interior of the svg element
       SVG.selectAll("*").remove();
 
+      // Append a graphic element to the svg, and translate it by the margins
       SVG = SVG.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .attr("cursor", "move");
 
+      // Append a rectangle that makes the background of the visualization
       SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
         .attr("fill", "#E4E7EB");
+      
+      // D3 zoom object that enables zooming in and out of the visualization
       var zoom = d3
         .zoom()
         .scaleExtent([0.5, 20]) // This control how much you can unzoom (x0.5) and zoom (x20)
@@ -203,12 +254,19 @@ export default {
         ])
         .on("zoom", updateChart);
       SVG.call(zoom);
-      const G_N = 9,
-        G_M = 6;
+
+      // Construct a grid to display the keyword clusters
+      const G_N = 9, G_M = 6;
+      // Keyword cluster data
       const data = this.keywordRenderData;
+      // Stores the positions of the keyword cluster in the display (initialized to (0, 0) at the beginning)
       var positions = data.map(() => [0, 0]);
+      // x and y coordinates mappers. For a given location in the range 
+      // x: [0, 10], y: [0, 10]  (which are lr_x, lr_y); maps to the width/height
       var x = d3.scaleLinear().domain(lr_x).range([0, width]);
       var y = d3.scaleLinear().domain(lr_y).range([height, 0]);
+      // Actually, I do not know what it does, but this was used when I migrated an example code
+      // from d3.js website. Probably, it handles the exceeding portion of the visualization.
       /* eslint-disable */
       var clip = SVG.append("defs")
         .append("SVG:clipPath")
@@ -219,9 +277,12 @@ export default {
         .attr("x", 0)
         .attr("y", 0);
       /* eslint-enable */
+      // Append the clip to the svg by encapsulating it inside a graphic object
       var scatter = SVG.append("g").attr("clip-path", "url(#clip)");
-      const paddingXRect = 4,
-        paddingYRect = 2;
+      // Padding for the keyword clusters
+      const paddingXRect = 4, paddingYRect = 2;
+      // Based on the threshold filtering, determine whether the keyword cluster should be highlighted
+      // with black shadow
       const checkHighlight = (d) => {
         const threshold = this.chosenThreshold;
         if (!window.globalVars.IS_METRIC_GOODNESS_DIRECT[this.chosenMetric]) {
@@ -231,6 +292,8 @@ export default {
         }
         return d.metricValues[this.chosenMetric] / d.subtreeSize < threshold;
       };
+      // Draw the background rectangles for the keyword clusters
+      // They are drawn temporarily. Based on the keyword string's location/size etc. Will be updated
       scatter
         .selectAll("rect")
         .data(data)
@@ -240,7 +303,6 @@ export default {
         .attr("rx", 6)
         .attr("ry", 6)
         .attr("class", `keyword-cluster-rect`)
-        // .attr("class", (d) => {return (this.rankingPercentageById[d.id] <= 1 ? 'highlight--worst' : '')})
         .style("cursor", "pointer")
         .style(
           "filter",
@@ -253,13 +315,13 @@ export default {
         .style("stroke", (d) => `${d.id === -1 && "black"}`)
         .style("stroke-width", (d) => `${d.id === -1 && "1"}`)
         .style("stroke-dasharray", (d) => `${d.id === -1 && "5,5"}`);
+      
+      // Tooltip shown when hovered over a keyword cluster
       var tooltip = d3.select("#keyword-tooltip");
-      const centerOfGravity = [
-        (lr_x[1] - lr_x[0]) / 2,
-        (lr_y[1] - lr_y[0]) / 2,
-      ];
 
+      // Update the tooltip content
       const updateTooltip = (e, d) => {
+        // Dynamic placement over the grid (e.g. if the keyword cluster is on top right, put the tooltip on bottom left)
         if (e.layerY / height > 0.5) {
           tooltip.style("bottom", `${height - e.layerY}px`);
           tooltip.style("top", null);
@@ -275,6 +337,7 @@ export default {
           tooltip.style("right", null);
         }
         const f = d3.format(".3f");
+        // Render all the metric values in the tooltip
         const metricVal = this.metricVal;
         window.globalVars.METRICS.forEach((metric) => {
           metricVal[metric] = f(d.metricValues[metric] / d.subtreeSize);
@@ -292,33 +355,53 @@ export default {
           const color = this.getColor(rankingP);
           this.metricColor[metric] = color;
         });
+        // Show the representative keywords for the hovered keyword cluster
         this.tooltipTitle = `${d.topFiveKeywords.join(" / ")}`;
+        // Subtree size --> number of sessions belonging to that keyword cluster
         this.totalCountTooltip = d.subtreeSize;
-        // tooltip.style("visibility", "visible");
+        // Set visibility to true
         this.isTooltipVisible = true
+        // Check whether it is an outlier keyword cluster
         this.isOutlier = d.id === -1;
       };
 
+      // Center of gravity, which is the center of the grid.
+      const centerOfGravity = [
+        (lr_x[1] - lr_x[0]) / 2,
+        (lr_y[1] - lr_y[0]) / 2,
+      ];
+
+      // Draw the text of the keyword clusters
       scatter
         .selectAll("text")
         .data(data)
         .enter()
         .append("text")
+        // Font size is proportional to the sqrt(# of sessions in the subtree)
         .style("font-size", (d) => {
-          return Math.sqrt(d.subtreeSize) * 2; // TODO, Subject to Change
+          return Math.sqrt(d.subtreeSize) * 2; 
         })
+        // Find the x coordinate of the text
         .attr("x", function (_, i) {
+          // Map the x coordinate to the range represented by lr_x.
+          // Since we render like a grid, and store G_M objects in the horizontal axis,
+          // we use the variable G_M
           positions[i][0] = (parseInt(i % G_M) * lr_x[1]) / G_M;
+          // Add a bit of randomization to the x coordinate by shifting the object 
+          // toward the center of gravity
           positions[i][0] +=
             d3.randomUniform(0, 0.25)() *
             (centerOfGravity[0] - positions[i][0]);
+          // Determine whether to make the location symmetrical wrt the center of gravity
           positions[i][0] +=
             d3.randomUniform(0, 1) > 0.5
               ? d3.randomUniform(1, 1.25)() *
                 (centerOfGravity[0] - positions[i][0])
               : 0;
+          // Find the x coordinate mapping of the text (namely, map to the range [0, width])
           return x(positions[i][0]);
         })
+        // Very similar logic to the x coordinate case
         .attr("y", function (_, i) {
           positions[i][1] = (parseInt(i / G_M) * lr_y[1]) / G_N;
           positions[i][1] +=
@@ -331,14 +414,19 @@ export default {
               : 0;
           return y(positions[i][1]);
         })
+        // Text color
         .style("fill", "rgb(255, 255, 255)")
         .style("cursor", "pointer")
+        // Show the top keyword of the keyword cluster
         .text((d) => d.topKeyword)
         .attr("id", (d) => `text-${d.id}`)
+        // When clicked, update the chosen keyword cluster with the current one
+        // also, anchor the tooltip to the screen
         .on("click", (e, d) => {
           updateTooltip(e, d);
           this.setChosenKeywordCluster(d.id);
         })
+        // When hovered, show the tooltip
         .on("mouseover", (e, d) => {
           if (
             this.interactionState.chosenKeywordClusterId !== null &&
@@ -347,11 +435,16 @@ export default {
             return;
           updateTooltip(e, d);
         })
+        // When the hovering is over, hide the tooltip
         .on("mouseout", () => {
           if (this.interactionState.chosenKeywordClusterId !== null) return;
           this.isTooltipVisible = false
-          // tooltip.style("visibility", "hidden");
         });
+
+      // Update the height/width of the background rectangles for the keyword cluster texts
+      // We do it in the later stage because:
+      // 1) We do not know the size of the keyword cluster texts beforehand
+      // 2) The bakcground rectangles should be in the background without blocking the textual content
       scatter
         .selectAll("rect")
         .attr("width", (d) => {
@@ -371,9 +464,13 @@ export default {
         .attr("x", (d) => {
           return d3.select(`#text-${d.id}`).node().getBBox().x - paddingXRect;
         });
+      
+      // When zoomed in/out, update the chart
       function updateChart(e) {
+        // Find the new x, y mapping
         var newX = e.transform.rescaleX(x);
         var newY = e.transform.rescaleY(y);
+        // Change the x, y location of the text content
         scatter
           .selectAll("text")
           .attr("x", function (_, i) {
@@ -382,6 +479,8 @@ export default {
           .attr("y", function (_, i) {
             return newY(positions[i][1]);
           });
+        // For the rectangles, update their x, y locations as well.
+        // Also, update the height/width information
         scatter
           .selectAll("rect")
           .attr("width", (d) => {
@@ -406,23 +505,37 @@ export default {
     },
   },
   mounted() {
+    // When this compenent is mounted for the first time, since the template code is ready
+    // we call the render function to create the svg containing the visualization
+    // and update the template
     this.render();
   },
+  // Watch any changes in those metrics, and accordingly, update something
   watch: {
+    // If the chosen metric is changes
     chosenMetric: {
       handler(newVal, oldVal) {
+        // If the new metric is not null, and is not equal to the old one
+        // --> the chosen keyword cluster is set to null (resetted) and the tooltip is hidden (if visible)
+        // We also, re-render the visualiation of keyword clusters for the chosen metric 
+        // since the colors etc. also change
         if (newVal !== null && newVal !== oldVal) {
           this.setChosenKeywordCluster(null)
           this.isTooltipVisible = false
           this.render();
-        } else if (newVal === null) {
+        } 
+        // But, if we only set the new metric to null, we do not need to re-render the visualization (it should be empty)
+        else if (newVal === null) {
           this.setChosenKeywordCluster(null)
           this.isTooltipVisible = false
         }
       },
     },
+    // If the chosenThreshold is changed
     chosenThreshold: {
       handler(newVal, oldVal) {
+        // If the new threshold is not null, and is not equal to the old one
+        // --> re-render the visualization
         if (newVal !== null && newVal !== oldVal) {
           this.render();
         }
@@ -433,6 +546,7 @@ export default {
 </script>
 
 <style scoped>
+/* Style of the highlighted keyword cluster */
 .highlight--worst {
   filter: drop-shadow(2px 4px 10px rgba(255, 0, 0, 0.8));
   stroke: black;

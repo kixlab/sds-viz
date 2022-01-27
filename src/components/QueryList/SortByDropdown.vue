@@ -100,10 +100,12 @@ export default {
     ChevronDownIcon,
   },
   setup() {
-    // local store
+    // Inject the properties from the parent component
     const parentCallFunction = inject("parentCallFunction");
     const allOptions = inject("allOptions");
     const mainOption = inject("mainOption");
+    // Whether the metric goodness is directly proportionate with the value of the metric
+    // whether, the higher is the better
     const isMetricGoodnessDirect = window.globalVars.IS_METRIC_GOODNESS_DIRECT;
     return {
       parentCallFunction,
@@ -116,6 +118,8 @@ export default {
     return {};
   },
   methods: {
+    // When an option is picked, the parentCallFunction is called with this option
+    // Then, the parent component will set the dropdown option
     pickOption: function (option) {
       this.parentCallFunction(option);
     },
