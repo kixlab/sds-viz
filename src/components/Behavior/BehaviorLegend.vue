@@ -5,7 +5,7 @@
       v-for="i in iconOrder" 
       :key="i">
       <div class="flex flex-col items-center my-2 mx-1">
-        <div class="w-8 h-8">
+        <div class="w-6 h-6">
           <!-- Gives the right icon based on the action_item -->
           <icon-giver 
             v-bind="{action_item: i}">
@@ -29,15 +29,17 @@ export default {
   data: function () {
     return {
       // Order of the behavior icons
-      iconOrder: ['Click1-5', 'Click6-10', 'NextPage', 'Click11+', 'NewQuery', 'RefinedQuery'],
+      iconOrder: ['Click1-5', 'Click6-10', 'Click11+', 'ClickQuickLink', 'NewQuery', 'RefinedQuery', 'EndSession'],
       // Explanation of the behavior icons
       explanation: {
         'Click1-5': `Click rank 1-5`,
         'Click6-10': 'Click rank 6-10',
         'Click11+': 'Click rank ≥ 11',
-        'NextPage': 'Next page',
+        'ClickQuickLink': 'Click on a quick link',
+        // 'NextPage': 'Next page',
         'NewQuery': 'New query',
-        'RefinedQuery': 'Query refined'
+        'RefinedQuery': 'Query refined',
+        'EndSession': 'Session ended'
       }
     }
   }
