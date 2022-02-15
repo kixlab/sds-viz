@@ -15,6 +15,7 @@ import NewQueryItem from "./SearchHistoryItems/NewQueryItem.vue";
 import ClickItem from "./SearchHistoryItems/ClickItem.vue";
 import RefinedQueryItem from "./SearchHistoryItems/RefinedQueryItem.vue";
 import NextPageItem from "./SearchHistoryItems/NextPageItem.vue";
+import ClickQuicklinkItem from './SearchHistoryItems/ClickQuicklinkItem.vue';
 import EndSession from "./SearchHistoryItems/EndSession.vue";
 
 export default {
@@ -26,7 +27,8 @@ export default {
     ClickItem,
     RefinedQueryItem,
     NextPageItem,
-    EndSession
+    EndSession,
+    ClickQuicklinkItem
   },
 };
 </script>

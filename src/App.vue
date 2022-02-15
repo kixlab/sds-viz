@@ -1,13 +1,19 @@
 <template>
-  <div class="w-full h-full flex">
-    <div class="w-3/5 h-full">
-      <!-- Query Clusters & Search Engine Performance Metrics -->
-      <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
-      <!-- Behavior Pattern Clusters -->
-      <pattern-selection class="main-component w-full h-1/3"/>
+  <div class="w-full h-screen flex flex-col">
+    <div class="w-full h-8 grow-0 flex justify-between">
+      <div> Search Engine Log Inspection Tool</div>
+      <button>Next</button>
     </div>
-    <!-- Individual Search Sessions -->
-    <query-selection class="main-component w-2/5 h-full"/>
+    <div class="w-full h-full flex flex-wrap">
+      <div class="w-3/5 h-full">
+        <!-- Query Clusters & Search Engine Performance Metrics -->
+        <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
+        <!-- Behavior Pattern Clusters -->
+        <pattern-selection class="main-component w-full h-1/3"/>
+      </div>
+      <!-- Individual Search Sessions -->
+      <query-selection class="main-component w-2/5 h-full"/>
+    </div>
   </div>
 </template>
 

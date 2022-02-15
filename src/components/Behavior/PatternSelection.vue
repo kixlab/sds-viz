@@ -2,7 +2,10 @@
   <!-- Behavior Pattern Clusters -->
   <div class="flex flex-col">
     <!-- The title -->
-    <section-title> Behavior Pattern Clusters </section-title>
+    <div class="flex justify-between">
+      <section-title> Behavior Pattern Clusters </section-title>
+      <behavior-search-box></behavior-search-box>
+    </div>
     <div class="flex w-full flex-grow overflow-y-hidden p-4">
       <!-- Behavior Legend -->
       <behavior-legend class="min-w-max mr-4" />
@@ -30,6 +33,7 @@ import BehaviorCluster from "./BehaviorCluster.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import BehaviorLegend from "./BehaviorLegend.vue";
 import { computed } from "vue";
+import BehaviorSearchBox from './BehaviorSearchBox.vue';
 
 export default {
   name: "PatternSelection",
@@ -37,6 +41,7 @@ export default {
     SectionTitle,
     BehaviorCluster,
     BehaviorLegend,
+    BehaviorSearchBox,
   },
   setup() {
     // Inject the methods to manipulate the state of the global store

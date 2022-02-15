@@ -45,7 +45,7 @@
         </div>
       </div>
       <!-- The triangle, indicating whether the current session is selected -->
-      <div class="mx-2 h-full flex justify-center items-center">
+      <div class="mx-2 h-full flex justify-center items-center" v-on:click="setChosenSession()">
         <triangle-black
           v-bind="{
             class: [
