@@ -31,7 +31,11 @@ export default {
   },
   // Prop from the parent (which is the session information)
   props: ["session"],
-  data() {},
+  data() {
+    return {
+      
+    }
+  },
 };
 </script>
 

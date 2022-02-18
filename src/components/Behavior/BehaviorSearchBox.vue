@@ -62,11 +62,9 @@ import {
   ListboxOption
 } from '@headlessui/vue'
 
-import {shallowRef} from 'vue'
 import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
-import BehaviorOptions from './BehaviorOptions.vue'
 import BehaviorOption from './BehaviorOption.vue'
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 
@@ -81,7 +79,6 @@ export default {
     IconGiver,
     SmallTitle,
     LineInTheMiddle,
-    BehaviorOptions,
     BehaviorOption,
     ChevronDownIcon
   },
@@ -94,8 +91,6 @@ export default {
   data: function () {
     return {
       selectedBehaviors: ['NewQuery'],
-      behaviorOptions: shallowRef(this.$options.components.BehaviorOptions),
-      behaviorOption: shallowRef(this.$options.components.BehaviorOption),
       showOptions: false
 
     }

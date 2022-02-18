@@ -1,7 +1,7 @@
 import { provide, ref, computed, inject } from "vue";
 import { loadBehaviorClusters, loadKeywordClusters, loadSessions } from "./dataLoader";
 
-const DATAPATH = './data';
+const DATAPATH = './data/SDS';
 const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
@@ -27,14 +27,16 @@ export const initGlobalStore = () => {
 
     // Load the data to the keywordClusters dictionary
     var keywordClusters = {};
+    var totalSessions = null;
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     keywordClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
-    keywordClusters = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters);
+    [keywordClusters, totalSessions ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters);
     
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
     // And, vue will update the template based on the changes, if needed
     const keywordClustersRef = ref(keywordClusters);
+    const totalSessionsRef = ref(totalSessions);
 
     // The interactions state, keeping the current state of the app
     var interactionState = {
@@ -43,7 +45,6 @@ export const initGlobalStore = () => {
         'chosenThreshold': null,
         'chosenBehaviorClusterId': null,
         'chosenSessionId': null,
-        'savedSessions': [],
     };
     // Make it reactive
     const interactionStateRef = ref(interactionState);
@@ -52,6 +53,14 @@ export const initGlobalStore = () => {
     // So, whenever one of the properties changes, the computed property will be updated
     // And, the template will be updated
     const getInteractionState = computed(() => interactionStateRef.value);
+
+    // Separate state variable for managing saved sessions
+
+    var selectedSessionIds = [];
+
+    const selectedSessionIdsRef = ref(selectedSessionIds);
+    console.log(selectedSessionIdsRef)
+    const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
 
     // Get the keywordClusters dictionary
     const getKeywordClusters = computed(() => {
@@ -96,10 +105,31 @@ export const initGlobalStore = () => {
         return session;
     });
 
+    const getSelectedSessions = computed(() => {
+        const savedSessions = getSelectedSessionIds.value;
+
+        if(savedSessions.length === 0) {
+            return null;
+        }
+        const sessions = totalSessionsRef.value.filter(session => {
+            return savedSessions.includes(session.id);
+        })
+
+        return sessions
+    })
+
+
     // Setters //
+
+    // Update saved sessions
+
+    const setSelectedSessionIds = (sessions) => {
+        selectedSessionIdsRef.value = sessions;
+    }
 
     // Update the interaction state
     const setInteractionState = (partialState) => {
+        console.log(partialState)
         const interactionState = getInteractionState.value;
         // update the interactionState
         Object.entries(partialState).forEach(([key, value]) => {
@@ -132,8 +162,11 @@ export const initGlobalStore = () => {
     provide('getBehaviorClusters', getBehaviorClusters);
     provide('getSessions', getSessions);    
     provide('getSession', getSession);
+    provide('getSelectedSessions', getSelectedSessions)
+    provide('getSelectedSessionIds', getSelectedSessionIds)
 
     provide('setInteractionState', setInteractionState);
+    provide('setSelectedSessionIds', setSelectedSessionIds);
 
     // Return necessary methods to the app.vue //
 
@@ -151,7 +184,9 @@ export const useGlobalStore = () => ({
     getBehaviorClusters: inject("getBehaviorClusters"),
     getSessions: inject("getSessions"),
     getSession: inject("getSession"),
+    getSelectedSessions: inject("getSelectedSessions"),
+    getSelectedSessionIds: inject("getSelectedSessionIds"),
 
     setInteractionState: inject("setInteractionState"),
-
+    setSelectedSessionIds: inject("setSelectedSessionIds")
 });

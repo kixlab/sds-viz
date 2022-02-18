@@ -4,10 +4,13 @@ import { Session, BehaviorCluster, KeywordCluster } from './dataStructures.js';
 // For the details of how the data is structured, check the dataStructures.js file
 export const loadSessions = (filePath, keywordClustersDict) => {
     const sessionsRaw = require(`${filePath}`);
+    const totalSessions = []
     sessionsRaw.forEach(session => {
         const keywordCluster = keywordClustersDict[session.BERTopicsKeywordCluster];
         const behaviorCluster = Object.values(keywordCluster.behaviorClusters).find(bc => bc.subtreeNodeIds.has(session.ClusterID));
-        behaviorCluster.sessions[session.SessionNum] = new Session(session);
+        const s = new Session(session);
+        behaviorCluster.sessions[session.SessionNum] = s
+        totalSessions.push(s);
         behaviorCluster.subtreeSize = behaviorCluster.subtreeSize + 1;
         keywordCluster.subtreeSize = keywordCluster.subtreeSize + 1;
         window.globalVars.METRICS.forEach(metric => {
@@ -22,7 +25,7 @@ export const loadSessions = (filePath, keywordClustersDict) => {
             delete keywordClustersDict[key];
         }
     });
-    return keywordClustersDict;
+    return [keywordClustersDict, totalSessions];
 };
 
 // Load the keyword clusters information from the file, to the keywordClustersDict

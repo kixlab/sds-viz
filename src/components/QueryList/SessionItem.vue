@@ -104,12 +104,17 @@ export default {
     const store = useGlobalStore();
     // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);
+    const selectedSessionIds = computed(() => store.getSelectedSessionIds.value);
+
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
+    const setSelectedSessionIds = store.setSelectedSessionIds;
 
     return {
       interactionState,
       setInteractionState,
+      selectedSessionIds,
+      setSelectedSessionIds
     };
   },
   data() {
@@ -117,19 +122,17 @@ export default {
   },
   computed: {
     isClicked() {
-      return this.interactionState.savedSessions.includes(this.session.id);
+      return this.selectedSessionIds.includes(this.session.id);
     },
   },
   methods: {
     setFavoriteSession() {
-      const update = {
-        savedSessions: this.isClicked
-          ? this.interactionState.savedSessions.filter(
+      const update = this.isClicked
+          ? this.selectedSessionIds.filter(
               (id) => id !== this.session.id
             )
-          : [...this.interactionState.savedSessions, this.session.id],
-      };
-      this.setInteractionState(update);
+          : [...this.selectedSessionIds, this.session.id];
+      this.setSelectedSessionIds(update);
     },
     // In case this session is clicked, update the interaction state
     setChosenSession() {
