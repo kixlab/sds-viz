@@ -59,6 +59,14 @@ export class Session {
         };
     }
 
+    get shorthandSequence() {
+        const shorthand_actions_dict = window.globalVars.SHORTHAND_ACTIONS;
+        const shorthand_actions = this.config.Sequence.map(action => {
+            return shorthand_actions_dict[action.Type];
+        })
+        return shorthand_actions.join('');
+    }
+
     get queriesCount() {
         return this.config.queriesCount;
     }

@@ -18,6 +18,9 @@
         <button @click="showOptions = !showOptions">
           <ChevronDownIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
         </button>
+        <button @click="setBehaviors()">
+          <SearchIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
+        </button>
       </div>
     </div>
     <div 
@@ -62,11 +65,13 @@ import {
   ListboxOption
 } from '@headlessui/vue'
 
+import { useGlobalStore } from "@/stores/globalStoreAgent.js";
+import { computed } from "vue";
 import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
 import BehaviorOption from './BehaviorOption.vue'
-import { ChevronDownIcon } from "@heroicons/vue/solid";
+import { ChevronDownIcon, SearchIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -80,24 +85,44 @@ export default {
     SmallTitle,
     LineInTheMiddle,
     BehaviorOption,
-    ChevronDownIcon
+    ChevronDownIcon,
+    SearchIcon
   },
   setup: function () {
     const behaviors = ['Click1-5', 'Click6-10', 'Click11+', 'ClickQuickLink', 'NewQuery', 'RefinedQuery', 'EndSession']
+    const store = useGlobalStore();
+    // Current interaction state (which panel is open, which metric is chosen)
+    const interactionState = computed(() => store.getInteractionState.value);
+    // Updates the interaction state
+    const setInteractionState = store.setInteractionState;
+    const setShorthandBehaviors = store.setShorthandBehaviors
+
     return {
-      behaviors
-    }
+      interactionState,
+      setInteractionState,
+      behaviors,
+      setShorthandBehaviors
+    };
   },
   data: function () {
     return {
       selectedBehaviors: ['NewQuery'],
       showOptions: false
-
     }
   },
   methods: {
     removeBehavior: function (i) {
       this.selectedBehaviors.splice(i, 1)
+    },
+    setBehaviors: function () {
+      console.log('setBehaviors')
+      this.setShorthandBehaviors(this.shorthandSelectedBehaviors)
+    }
+  },
+  computed: {
+    shorthandSelectedBehaviors: function () {
+      const shorthand_behaviors_dict = window.globalVars.SHORTHAND_ACTIONS
+      return this.selectedBehaviors.map(b => shorthand_behaviors_dict[b]).join('')
     }
   }
 }

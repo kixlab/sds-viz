@@ -22,6 +22,20 @@ export const initGlobalStore = () => {
             'AbandonmentRate': false,
             'ReformulationRate': false,
             'NDCG': true
+        },
+        SHORTHAND_ACTIONS: {
+            'Click1-5': 'A',
+            'Click6-10': 'B',
+            'Click11+': 'C',
+            'NewQuery': 'N',
+            'RefinedQuery': 'R',
+            'Click1-5_short': 'a',
+            'Click6-10_short': 'b',
+            'Click11+_short': 'c',
+            'NewQuery_short': 'n',
+            'RefinedQuery_short': 'r',
+            'ClickQuickLink': 'Q',
+            'EndSession': 'E'
         }
     };
 
@@ -61,6 +75,18 @@ export const initGlobalStore = () => {
     const selectedSessionIdsRef = ref(selectedSessionIds);
     console.log(selectedSessionIdsRef)
     const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
+
+    // Another separate state variable for highlighting clusters IDs by searchbox results
+    
+    var highlights = {
+        'behaviorClusters': [],
+        'keywordClusters': [],
+        'sessionIds': []
+    }
+
+    const highlightsRef = ref(highlights);
+
+    const getHighlights = computed(() => highlightsRef.value);
 
     // Get the keywordClusters dictionary
     const getKeywordClusters = computed(() => {
@@ -154,6 +180,31 @@ export const initGlobalStore = () => {
         });
     };
 
+    // Update the highlights
+
+    const setHighlights = (newHighlights) => {
+        const highlights = getHighlights.value;
+        Object.entries(newHighlights).forEach(([key, value]) => {
+            highlights[key] = value;
+        });
+    }
+
+    const setShorthandBehaviors = (shorthandBehaviors) => {
+        const sessions = totalSessionsRef.value
+        const filteredSessions = sessions.filter(session => {
+            return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
+        })
+
+        const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
+        const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
+
+        setHighlights({
+            behaviorClusters: behaviorClusters,
+            keywordClusters: keywordClusters,
+            sessionIds: filteredSessions.map(session => session.id)
+        })
+    }
+
     // Provide //
 
     // Provide those getters and setters to the sub-components of the app
@@ -164,9 +215,12 @@ export const initGlobalStore = () => {
     provide('getSession', getSession);
     provide('getSelectedSessions', getSelectedSessions)
     provide('getSelectedSessionIds', getSelectedSessionIds)
+    provide('getHighlights', getHighlights)
 
     provide('setInteractionState', setInteractionState);
     provide('setSelectedSessionIds', setSelectedSessionIds);
+    provide('setHighlights', setHighlights);
+    provide('setShorthandBehaviors', setShorthandBehaviors)
 
     // Return necessary methods to the app.vue //
 
@@ -186,7 +240,10 @@ export const useGlobalStore = () => ({
     getSession: inject("getSession"),
     getSelectedSessions: inject("getSelectedSessions"),
     getSelectedSessionIds: inject("getSelectedSessionIds"),
+    getHighlights: inject("getHighlights"),
 
     setInteractionState: inject("setInteractionState"),
-    setSelectedSessionIds: inject("setSelectedSessionIds")
+    setSelectedSessionIds: inject("setSelectedSessionIds"),
+    setHighlights: inject("setHighlights"),
+    setShorthandBehaviors: inject("setShorthandBehaviors")
 });
