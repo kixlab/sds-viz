@@ -1,7 +1,7 @@
 import { provide, ref, computed, inject } from "vue";
 import { loadBehaviorClusters, loadKeywordClusters, loadSessions } from "./dataLoader";
 
-const DATAPATH = './data/SDS';
+const DATAPATH = './data/SDS/new';
 const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
@@ -27,23 +27,26 @@ export const initGlobalStore = () => {
 
     // Load the data to the keywordClusters dictionary
     var keywordClusters = {};
+    var behaviorClusters = {};
     var totalSessions = null;
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
-    keywordClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
-    [keywordClusters, totalSessions ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters);
+    behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
+    [keywordClusters, behaviorClusters, totalSessions ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
     
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
     // And, vue will update the template based on the changes, if needed
     const keywordClustersRef = ref(keywordClusters);
+    const behaviorClustersRef = ref(behaviorClusters);
+
     const totalSessionsRef = ref(totalSessions);
 
     // The interactions state, keeping the current state of the app
     var interactionState = {
+        'chosenBehaviorClusterId': null,
         'chosenMetric': null,
         'chosenKeywordClusterId': null,
         'chosenThreshold': null,
-        'chosenBehaviorClusterId': null,
         'chosenSessionId': null,
     };
     // Make it reactive
@@ -59,14 +62,14 @@ export const initGlobalStore = () => {
     var selectedSessionIds = [];
 
     const selectedSessionIdsRef = ref(selectedSessionIds);
-    console.log(selectedSessionIdsRef)
     const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
 
     // Get the keywordClusters dictionary
     const getKeywordClusters = computed(() => {
         const interactionState = getInteractionState.value;
         const chosenMetric = interactionState['chosenMetric'];
-        if(chosenMetric === null) {
+        const chosenBehaviorClusterId = interactionState['chosenBehaviorClusterId']
+        if(chosenMetric === null || chosenBehaviorClusterId === null) {
             return null;
         }
         return keywordClustersRef.value;
@@ -74,24 +77,31 @@ export const initGlobalStore = () => {
 
     // based on the interaction state's status, get the behavior clusters that are relevant
     const getBehaviorClusters = computed(() => {
-        const interactionState = getInteractionState.value;
-        const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
-        if(chosenKeywordClusterId === null) {
-            return null;
-        }
-        const keywordCluster = getKeywordClusters.value[chosenKeywordClusterId];
-        return keywordCluster.behaviorClusters;
+        // const interactionState = getInteractionState.value;
+        // const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
+        // if(chosenKeywordClusterId === null) {
+        //     return null;
+        // }
+        // const keywordCluster = getKeywordClusters.value[chosenKeywordClusterId];
+        // return keywordCluster.behaviorClusters;
+        return behaviorClustersRef.value;
     });
 
     // Get the sessions that are relevant to the current status of the interaction state
     const getSessions = computed(() => {
         const interactionState = getInteractionState.value;
+        const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
         const chosenBehaviorClusterId = interactionState['chosenBehaviorClusterId'];
-        if(chosenBehaviorClusterId === null) {
+        if(chosenBehaviorClusterId === null || chosenKeywordClusterId === null) {
             return null;
         } 
-        const behaviorCluster = getBehaviorClusters.value[chosenBehaviorClusterId];
-        return behaviorCluster.sessions;
+        const sessions = totalSessionsRef.value.filter(session => {
+            return (session.keywordClusterId === chosenKeywordClusterId && session.behaviorClusterId === chosenBehaviorClusterId)
+        });
+
+        return sessions
+        // const behaviorCluster = getBehaviorClusters.value[chosenBehaviorClusterId];
+        // return behaviorCluster.sessions;
     });
 
     // Get the chosen session
@@ -129,7 +139,6 @@ export const initGlobalStore = () => {
 
     // Update the interaction state
     const setInteractionState = (partialState) => {
-        console.log(partialState)
         const interactionState = getInteractionState.value;
         // update the interactionState
         Object.entries(partialState).forEach(([key, value]) => {
@@ -140,6 +149,19 @@ export const initGlobalStore = () => {
         // nullify the next states
         // Namely, if a state is null, then next states should also be null 
         // (since the flow of the application is sequential)
+
+        // update subtree size appropriately
+        if ('chosenBehaviorClusterId' in partialState) {
+            const sessions = totalSessionsRef.value
+            const keywordClusters = keywordClustersRef.value;
+            console.log(keywordClusters)
+            console.log(sessions)
+            for (let [key, value] of Object.entries(keywordClusters)) {
+                console.log(key, value)
+                value.subtreeSize = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key)).length;
+            }
+        }
+
         var isNull = true;
         Object.keys(interactionState).reverse().forEach((key) => {
             if(key in partialState) {

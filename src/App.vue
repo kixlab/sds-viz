@@ -19,10 +19,10 @@
     </div>
     <div v-if="page === 1" class="w-full h-full flex flex-wrap">
       <div class="w-3/5 h-full">
-        <!-- Query Clusters & Search Engine Performance Metrics -->
-        <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
         <!-- Behavior Pattern Clusters -->
         <pattern-selection class="main-component w-full h-1/3"/>
+        <!-- Query Clusters & Search Engine Performance Metrics -->
+        <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
       </div>
       <!-- Individual Search Sessions -->
       <query-selection class="main-component w-2/5 h-full"/>
