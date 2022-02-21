@@ -2,12 +2,12 @@ import { Session, BehaviorCluster, KeywordCluster } from './dataStructures.js';
 
 // Load the sessions information from the file, to the keywordClustersDict
 // For the details of how the data is structured, check the dataStructures.js file
-export const loadSessions = (filePath, keywordClustersDict) => {
+export const loadSessions = (filePath, keywordClustersDict, behaviorClustersDict) => {
     const sessionsRaw = require(`${filePath}`);
     const totalSessions = []
     sessionsRaw.forEach(session => {
         const keywordCluster = keywordClustersDict[session.BERTopicsKeywordCluster];
-        const behaviorCluster = Object.values(keywordCluster.behaviorClusters).find(bc => bc.subtreeNodeIds.has(session.ClusterID));
+        const behaviorCluster = behaviorClustersDict[session.ClusterID] // Object.values(keywordCluster.behaviorClusters).find(bc => bc.subtreeNodeIds.has(session.ClusterID));
         const s = new Session(session);
         behaviorCluster.sessions[session.SessionNum] = s
         totalSessions.push(s);
@@ -25,7 +25,7 @@ export const loadSessions = (filePath, keywordClustersDict) => {
             delete keywordClustersDict[key];
         }
     });
-    return [keywordClustersDict, totalSessions];
+    return [keywordClustersDict, behaviorClustersDict, totalSessions];
 };
 
 // Load the keyword clusters information from the file, to the keywordClustersDict
@@ -56,15 +56,14 @@ export const loadKeywordClusters = (filePath, keywordClustersDict) => {
     return keywordClustersDict;
 };
 
-
-// Load the behavior clusters information from the file, to the keywordClustersDict
-// For the details of how the data is structured, check the dataStructures.js file
-export const loadBehaviorClusters = (filePath, keywordClustersDict) => {
+// Load the behavior clusters information from the file to behaviorClustersDict
+export const loadBehaviorClusters = (filePath) => {
     const behaviorGalaxiesRaw = require(`${filePath}`);
-    behaviorGalaxiesRaw.forEach(behaviorGalaxy => {
-        const keywordClusterId = behaviorGalaxy.keyword_cluster;
-        const keywordCluster = keywordClustersDict[keywordClusterId];
-        const behaviorClusters = keywordCluster.behaviorClusters;
+    const behaviorClustersDict = {};
+    behaviorGalaxiesRaw.forEach(behaviorGalaxy => { // There's going to be only one element in the behaviorGalaxiesRaw anyways
+        // const keywordClusterId = behaviorGalaxy.keyword_cluster;
+        // const keywordCluster = keywordClustersDict[keywordClusterId];
+        const behaviorClusters = behaviorClustersDict // keywordCluster.behaviorClusters;
 
         const galaxyRootNode = behaviorGalaxy.nodes.find(node => node.id === behaviorGalaxy.root_id);
         const firstLayerNodeIds = galaxyRootNode.children;
@@ -102,5 +101,54 @@ export const loadBehaviorClusters = (filePath, keywordClustersDict) => {
             behaviorClusters[behaviorGalaxy.root_id].distinguishingFeatures = behaviorClusters[behaviorGalaxy.root_id].distinguishingFeatures.filter(df => df.score > 0);
         }
     });
-    return keywordClustersDict;
+    return behaviorClustersDict;
 };
+
+
+// Load the behavior clusters information from the file, to the keywordClustersDict
+// For the details of how the data is structured, check the dataStructures.js file
+// export const loadBehaviorClusters = (filePath, keywordClustersDict) => {
+//     const behaviorGalaxiesRaw = require(`${filePath}`);
+//     behaviorGalaxiesRaw.forEach(behaviorGalaxy => {
+//         const keywordClusterId = behaviorGalaxy.keyword_cluster;
+//         const keywordCluster = keywordClustersDict[keywordClusterId];
+//         const behaviorClusters = keywordCluster.behaviorClusters;
+
+//         const galaxyRootNode = behaviorGalaxy.nodes.find(node => node.id === behaviorGalaxy.root_id);
+//         const firstLayerNodeIds = galaxyRootNode.children;
+
+//         const dfs = (nodeId) => {
+//             const curNode = behaviorGalaxy.nodes.find(node => node.id === nodeId);
+//             let subtreeNodeIds = [nodeId];
+//             if (curNode.children !== null) {
+//                 curNode.children.forEach(childId => {
+//                     subtreeNodeIds = subtreeNodeIds.concat(dfs(childId));
+//                 });
+//             }
+//             return subtreeNodeIds;
+//         };
+
+
+//         if (firstLayerNodeIds !== null) {
+//             const firstLayerNodes = behaviorGalaxy.nodes.filter(node => firstLayerNodeIds.includes(node.id));
+
+//             firstLayerNodes.forEach(firstLayerNode => {
+//                 behaviorClusters[firstLayerNode.id] = new BehaviorCluster(
+//                     firstLayerNode
+//                 );
+//                 behaviorClusters[firstLayerNode.id].subtreeSize = 0;
+//                 behaviorClusters[firstLayerNode.id].subtreeNodeIds = new Set(dfs(firstLayerNode.id));
+//                 behaviorClusters[firstLayerNode.id].distinguishingFeatures = behaviorClusters[firstLayerNode.id].distinguishingFeatures.filter(df => df.score > 0);
+//             });
+//         }
+//         else {
+//             behaviorClusters[behaviorGalaxy.root_id] = new BehaviorCluster(
+//                 galaxyRootNode
+//             );
+//             behaviorClusters[behaviorGalaxy.root_id].subtreeSize = 0;
+//             behaviorClusters[behaviorGalaxy.root_id].subtreeNodeIds = new Set(dfs(behaviorGalaxy.root_id));
+//             behaviorClusters[behaviorGalaxy.root_id].distinguishingFeatures = behaviorClusters[behaviorGalaxy.root_id].distinguishingFeatures.filter(df => df.score > 0);
+//         }
+//     });
+//     return keywordClustersDict;
+// };
