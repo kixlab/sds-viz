@@ -79,8 +79,8 @@ export const initGlobalStore = () => {
     // Another separate state variable for highlighting clusters IDs by searchbox results
     
     var highlights = {
-        'behaviorClusters': [],
-        'keywordClusters': [],
+        'behaviorClusters': new Set(),
+        'keywordClusters': new Set(),
         'sessionIds': []
     }
 

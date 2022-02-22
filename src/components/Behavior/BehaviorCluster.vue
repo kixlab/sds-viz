@@ -2,10 +2,13 @@
   <!-- Behavior cluster -->
   <div
     :class="[
-      'flex flex-col justify-between w-40 h-full border border-black rounded-md mx-2 cursor-pointer',
+      'flex flex-col justify-between w-40 h-full rounded-md mx-2 cursor-pointer',
       interactionState.chosenBehaviorClusterId === behaviorCluster.id
         ? 'bg-gray-400 hover:bg-gray-400'
         : 'bg-gray-200 hover:bg-gray-300',
+      highlights.behaviorClusters.has(behaviorCluster.id)
+        ? 'border-yellow-500 border-4'
+        : 'border-black border',
     ]"
     v-on:click="setChosenBehaviorCluster()"
   >
@@ -64,10 +67,11 @@ export default {
     const interactionState = computed(() => store.getInteractionState.value);
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
-
+    const highlights = computed(() => store.getHighlights.value);
     return {
       interactionState,
       setInteractionState,
+      highlights
     };
   },
   methods: {
