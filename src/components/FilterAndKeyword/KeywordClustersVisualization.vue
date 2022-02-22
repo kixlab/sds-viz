@@ -426,21 +426,21 @@ export default {
         // When clicked, update the chosen keyword cluster with the current one
         // also, anchor the tooltip to the screen
         .on("click", (e, d) => {
-          updateTooltip(e, d);
+          // updateTooltip(e, d);
           this.setChosenKeywordCluster(d.id);
         })
         // When hovered, show the tooltip
         .on("mouseover", (e, d) => {
-          if (
-            this.interactionState.chosenKeywordClusterId !== null &&
-            this.interactionState.chosenKeywordClusterId !== d.id
-          )
-            return;
+          // if (
+          //   this.interactionState.chosenKeywordClusterId !== null &&
+          //   this.interactionState.chosenKeywordClusterId !== d.id
+          // )
+          //   return;
           updateTooltip(e, d);
         })
         // When the hovering is over, hide the tooltip
         .on("mouseout", () => {
-          if (this.interactionState.chosenKeywordClusterId !== null) return;
+          // if (this.interactionState.chosenKeywordClusterId !== null) return;
           this.isTooltipVisible = false
         });
 
