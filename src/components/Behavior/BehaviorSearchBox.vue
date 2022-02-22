@@ -6,9 +6,9 @@
           <div class="w-6 h-6 relative">
             <icon-giver v-bind="{action_item: b}"></icon-giver>
             <div 
-              class="absolute z-10 -top-3 -right-1.5"
+              class="absolute z-10 -top-2 -right-1"
               @click="removeBehavior(i)">
-              X
+              <MinusCircleIcon class="-mr-1 ml-1 h-4 w-4 red" />
             </div>
           </div>
           <line-in-the-middle v-if="i !== selectedBehaviors.length - 1" class="w-4 h-4 min-w-[12] min-h-[12]"></line-in-the-middle>
@@ -16,7 +16,9 @@
       </div>
       <div>
         <button @click="showOptions = !showOptions">
-          <ChevronDownIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
+          <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
+          <ChevronUpIcon v-else class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
+
         </button>
         <button @click="setBehaviors()">
           <SearchIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
@@ -71,7 +73,7 @@ import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
 import BehaviorOption from './BehaviorOption.vue'
-import { ChevronDownIcon, SearchIcon } from "@heroicons/vue/solid";
+import { ChevronDownIcon, ChevronUpIcon, SearchIcon, MinusCircleIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -86,10 +88,12 @@ export default {
     LineInTheMiddle,
     BehaviorOption,
     ChevronDownIcon,
-    SearchIcon
+    SearchIcon,
+    ChevronUpIcon,
+    MinusCircleIcon
   },
   setup: function () {
-    const behaviors = ['Click1-5', 'Click6-10', 'Click11+', 'ClickQuickLink', 'NewQuery', 'RefinedQuery', 'EndSession']
+    const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'ClickQuickLink', 'EndSession']
     const store = useGlobalStore();
     // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);
