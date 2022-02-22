@@ -1,27 +1,33 @@
 <template>
   <div class="w-1/2 relative">
-    <div class="flex justify-between rounded-lg shadow-md py-2 pl-3 pr-5">
-      <div class="flex items-center">
-        <template v-for="(b, i) in selectedBehaviors" :key="i">
-          <div class="w-6 h-6 relative">
-            <icon-giver v-bind="{action_item: b}"></icon-giver>
-            <div 
-              class="absolute z-10 -top-2 -right-1"
-              @click="removeBehavior(i)">
-              <MinusCircleIcon class="-mr-1 ml-1 h-4 w-4 red" />
+    <div class="flex">
+      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5">
+        <div v-if="selectedBehaviors.length > 0" class="flex flex-1 items-center">
+          <template v-for="(b, i) in selectedBehaviors" :key="i">
+            <div class="w-6 h-6 relative">
+              <icon-giver v-bind="{action_item: b}"></icon-giver>
+              <div 
+                class="absolute z-10 -top-2 -right-1"
+                @click="removeBehavior(i)">
+                <MinusCircleIcon class="-mr-1 ml-1 h-4 w-4 text-red-500 bg-white/50" />
+              </div>
             </div>
-          </div>
-          <line-in-the-middle v-if="i !== selectedBehaviors.length - 1" class="w-4 h-4 min-w-[12] min-h-[12]"></line-in-the-middle>
-        </template>
+            <line-in-the-middle v-if="i !== selectedBehaviors.length - 1" class="w-4 h-4 min-w-[12] min-h-[12]"></line-in-the-middle>
+          </template>
+        </div>
+        <div class="flex flex-1 items-center text-gray-400" v-else>
+          Open the action palette and add behaviors to start searching
+        </div>
+        <div class="flex flex-none items-center">
+          <button @click="showOptions = !showOptions" class="cursor-pointer">
+            <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+            <ChevronUpIcon v-else class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
       </div>
-      <div>
-        <button @click="showOptions = !showOptions">
-          <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
-          <ChevronUpIcon v-else class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
-
-        </button>
-        <button @click="setBehaviors()">
-          <SearchIcon class="-mr-1 ml-1 h-4 w-4" aria-hidden="true" />
+      <div class="flex flex-none items-center px-2 py-1 rounded-lg shadow-md bg-green-500 text-white">
+        <button @click="setBehaviors()" class="cursor-pointer align-bottom my-auto">
+          <SearchIcon class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
         </button>
       </div>
     </div>
