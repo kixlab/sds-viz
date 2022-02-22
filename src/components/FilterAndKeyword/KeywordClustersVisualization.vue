@@ -91,6 +91,8 @@ export default {
           : bAvgMetricVal - aAvgMetricVal;
       });
     });
+
+    const highlights = computed(() => store.getHighlights.value);
     // Retrieve the dictionary of keyword clusters that maps their ids to the percentage ranking 
     // with respect to the chosen performance metric
     // percentage ranking: gives the percentile (e.g. 1st in 50 data points would be 0.02 in percentage ranking)
@@ -123,6 +125,7 @@ export default {
       chosenMetric,
       metrics,
       chosenThreshold,
+      highlights
     };
   },
   data() {
@@ -294,7 +297,8 @@ export default {
           );
         }
         return d.metricValues[this.chosenMetric] / d.subtreeSize < threshold;
-      };
+      };      
+
       // Draw the background rectangles for the keyword clusters
       // They are drawn temporarily. Based on the keyword string's location/size etc. Will be updated
       scatter
@@ -315,9 +319,10 @@ export default {
               "drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8))"
             }`
         )
-        .style("stroke", (d) => `${d.id === -1 && "black"}`)
-        .style("stroke-width", (d) => `${d.id === -1 && "1"}`)
-        .style("stroke-dasharray", (d) => `${d.id === -1 && "5,5"}`);
+        .style("stroke", (d) => `${d.id === -1 ? "black" : (this.highlights.keywordClusters.has(d.id) ? "rgb(245, 158, 11)" : "none")}`)
+        .style("stroke-width", (d) => `${d.id === -1 ? "1" : (this.highlights.keywordClusters.has(d.id) ? "4" : "none")}`)
+        .style("stroke-dasharray", (d) => `${d.id === -1 && "5,5"}`)
+        .style()
       
       // Tooltip shown when hovered over a keyword cluster
       var tooltip = d3.select("#keyword-tooltip");

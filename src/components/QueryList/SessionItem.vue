@@ -3,10 +3,13 @@
     <!-- The search session item -->
     <div
       :class="[
-        'w-full flex justify-between items-center rounded-xl border border-black py-2 px-2 cursor-pointer',
+        'w-full flex justify-between items-center rounded-xl py-2 px-2 cursor-pointer',
         this.interactionState.chosenSessionId === session.id
           ? 'bg-gray-400 hover:bg-gray-400'
           : 'bg-gray-200 hover:bg-gray-300',
+        highlights.sessionIds.includes(session.id)
+          ? 'border-yellow-500 border-4'
+          : 'border-black border',  
       ]"
     >
       <div class="w-8 flex items-center"
@@ -110,11 +113,14 @@ export default {
     const setInteractionState = store.setInteractionState;
     const setSelectedSessionIds = store.setSelectedSessionIds;
 
+    const highlights = computed(() => store.getHighlights.value);
+
     return {
       interactionState,
       setInteractionState,
       selectedSessionIds,
-      setSelectedSessionIds
+      setSelectedSessionIds,
+      highlights
     };
   },
   data() {
