@@ -336,19 +336,19 @@ export default {
         .text((d) => d.topKeyword)
         .attr("id", (d) => `text-${d.id}`)
         .on("click", (e, d) => {
-          updateTooltip(e, d);
+          // updateTooltip(e, d);
           this.setChosenKeywordCluster(d.id);
         })
         .on("mouseover", (e, d) => {
-          if (
-            this.interactionState.chosenKeywordClusterId !== null &&
-            this.interactionState.chosenKeywordClusterId !== d.id
-          )
-            return;
+          // if (
+          //   this.interactionState.chosenKeywordClusterId !== null &&
+          //   this.interactionState.chosenKeywordClusterId !== d.id
+          // )
+          //   return;
           updateTooltip(e, d);
         })
         .on("mouseout", () => {
-          if (this.interactionState.chosenKeywordClusterId !== null) return;
+          // if (this.interactionState.chosenKeywordClusterId !== null) return;
           this.isTooltipVisible = false
           // tooltip.style("visibility", "hidden");
         });
