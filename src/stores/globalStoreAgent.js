@@ -12,15 +12,14 @@ export const initGlobalStore = () => {
 
     // The global variables (keeps info about the metrics)
     window.globalVars = {
-        METRICS: ['pSkip', 'Click@1-5', 'MaxRR', 'MeanRR', 'AbandonmentRate', 'ReformulationRate', 'NDCG'],
-        METRIC_LABELS: ['pSkip', 'Click@1-5', 'Max RR', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate', 'NDCG'],
+        METRICS: ['Click@1-5', 'MeanRR', 'AbandonmentRate', 'ReformulationRate', 'MAP', 'NDCG'],
+        METRIC_LABELS: ['CTR@5', 'Mean RR', 'Abandonment Rate', 'Reformulation Rate', 'mAP', 'NDCG'],
         IS_METRIC_GOODNESS_DIRECT: {
-            'pSkip': false,
             'Click@1-5': true,
-            'MaxRR': true,
             'MeanRR': true,
             'AbandonmentRate': false,
             'ReformulationRate': false,
+            'MAP': true,
             'NDCG': true
         },
         SHORTHAND_ACTIONS: {
