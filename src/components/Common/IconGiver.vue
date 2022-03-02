@@ -6,7 +6,6 @@
   <click-15-short-icon v-else-if="action_item === 'Click1-5_Short'" />
   <click-610-icon v-else-if="action_item === 'Click6-10'" />
   <click-610-short-icon v-else-if="action_item === 'Click6-10_Short'" />
-  <click-quicklink-icon v-else-if="action_item === 'ClickQuickLink'" />
   <empty-icon v-else-if="action_item === 'Empty'" />
   <empty-icon v-else-if="action_item === 'EndSession'" />
   <search-refine-icon v-else-if="action_item === 'RefinedQuery'" />
@@ -14,6 +13,7 @@
   <search-icon v-else-if="action_item === 'NewQuery'" />
   <search-short-icon v-else-if="action_item === 'NewQuery_Short'" />
   <next-page-icon v-else-if="action_item === 'NextPage'"/> 
+  <click-quicklink-icon v-else-if="action_item === 'ClickQuickLink'" />
 </template>
 
 <script>
