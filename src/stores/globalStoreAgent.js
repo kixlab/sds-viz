@@ -213,7 +213,8 @@ export const initGlobalStore = () => {
     const setShorthandBehaviors = (shorthandBehaviors) => {
         const sessions = totalSessionsRef.value
         const filteredSessions = sessions.filter(session => {
-            return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
+            // return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
+            return session.shorthandSequence === shorthandBehaviors
         })
 
         const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
