@@ -3,7 +3,7 @@
     <!-- The search session item -->
     <div
       :class="[
-        'w-full flex justify-between items-center rounded-xl py-2 px-2 cursor-pointer',
+        'w-full flex flex-wrap justify-between items-center rounded-xl py-1 px-2 cursor-pointer',
         this.interactionState.chosenSessionId === session.id
           ? 'bg-gray-400 hover:bg-gray-400'
           : 'bg-gray-200 hover:bg-gray-300',
@@ -17,7 +17,7 @@
         <favorite-icon v-if="!isClicked"></favorite-icon>
         <favorite-clicked-icon v-else></favorite-clicked-icon>
       </div>
-      <div class="w-10/12 h-full flex items-center" v-on:click="setChosenSession()">
+      <div class="w-10/12 flex items-center" v-on:click="setChosenSession()">
 
         <div class="w-5/12 pr-1 h-full flex items-center">
           <!-- The search icon -->
@@ -48,7 +48,7 @@
         </div>
       </div>
       <!-- The triangle, indicating whether the current session is selected -->
-      <div class="mx-2 h-full flex justify-center items-center" v-on:click="setChosenSession()">
+      <div class="mx-2  flex justify-center items-center" v-on:click="setChosenSession()">
         <triangle-black
           v-bind="{
             class: [
@@ -58,6 +58,9 @@
             ],
           }"
         />
+      </div>
+      <div class="w-full text-right text-xxs">     
+        {{session.timestamp.toLocaleString('ko-KR')}}
       </div>
     </div>
     <!-- If this session is clicked, then shows the search history as well -->
@@ -156,5 +159,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.text-xxs {
+  font-size: 0.5em;
+}
 </style>
