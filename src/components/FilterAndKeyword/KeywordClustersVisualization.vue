@@ -51,10 +51,10 @@
     <div
       class="absolute -top-6 left-20 flex">
       <div class="">
-        <input type="text">
+        <input v-model="keyword" type="text">
       </div>
       <div class="flex-none items-center px-1 rounded-lg shadow-md bg-green-500 text-white">
-        <button class="cursor-pointer my-auto">
+        <button @click="setKeyword()" class="cursor-pointer my-auto">
           <SearchIcon class="h-4 w-4" aria-hidden="true" />
         </button>
       </div>
@@ -127,6 +127,8 @@ export default {
       () => store.getInteractionState.value.chosenThreshold
     );
 
+    const setQuery = store.setQuery;
+
     // Provide the 'rankingPercentageById' computed property to the sub components 
     // so that they can reactively refer to the percentage ranking of a keyword cluster
     provide("rankingPercentageById", rankingPercentageById);
@@ -139,7 +141,8 @@ export default {
       chosenMetric,
       metrics,
       chosenThreshold,
-      highlights
+      highlights,
+      setQuery
     };
   },
   data() {
@@ -164,7 +167,8 @@ export default {
       // Outlier cluster is the cluster that did not have a proper clustering result
       // it basically contains keywords that were not clustered meaningfully (they are leftovers)
       isOutlier: false,
-      isTooltipVisible: false
+      isTooltipVisible: false,
+      keyword: ''
     };
   },
   methods: {
@@ -525,6 +529,10 @@ export default {
           });
       }
     },
+    setKeyword: function () {
+      console.log(this.keyword)
+      this.setQuery(this.keyword);
+    }
   },
   mounted() {
     // When this compenent is mounted for the first time, since the template code is ready
