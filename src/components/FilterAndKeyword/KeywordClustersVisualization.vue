@@ -48,6 +48,17 @@
         </div>
       </div>
     </div>
+    <div
+      class="absolute -top-6 left-20 flex">
+      <div class="">
+        <input type="text">
+      </div>
+      <div class="flex-none items-center px-1 rounded-lg shadow-md bg-green-500 text-white">
+        <button class="cursor-pointer my-auto">
+          <SearchIcon class="h-4 w-4" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
     <!-- Visualization for the threshold filtering -->
     <!-- 'getColor' method is binded to calculate the color for the bar chart column -->
     <filter-visualization
@@ -63,10 +74,13 @@ import { computed, provide } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
 import FilterVisualization from "./FilterVisualization.vue";
+import { SearchIcon } from "@heroicons/vue/solid";
+
 export default {
   name: "KeywordClustersVisualization",
   components: {
     FilterVisualization,
+    SearchIcon
   },
   setup() {
     // Inject the functions to manipulate the interaction state
