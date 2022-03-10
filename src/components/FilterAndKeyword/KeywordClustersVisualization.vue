@@ -48,6 +48,17 @@
         </div>
       </div>
     </div>
+    <!-- <div
+      class="absolute -top-6 left-20 flex">
+      <div class="">
+        <input v-model="keyword" type="text">
+      </div>
+      <div class="flex-none items-center px-1 rounded-lg shadow-md bg-green-500 text-white">
+        <button @click="setKeyword()" class="cursor-pointer my-auto">
+          <SearchIcon class="h-4 w-4" aria-hidden="true" />
+        </button>
+      </div>
+    </div> -->
     <!-- Visualization for the threshold filtering -->
     <!-- 'getColor' method is binded to calculate the color for the bar chart column -->
     <filter-visualization
@@ -63,10 +74,13 @@ import { computed, provide } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
 import FilterVisualization from "./FilterVisualization.vue";
+// import { SearchIcon } from "@heroicons/vue/solid";
+
 export default {
   name: "KeywordClustersVisualization",
   components: {
     FilterVisualization,
+    // SearchIcon
   },
   setup() {
     // Inject the functions to manipulate the interaction state
@@ -106,12 +120,16 @@ export default {
     });
     // The chosen performance metric
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
+    const chosenBehaviorCluster = computed(() => interactionState.value.chosenBehaviorCluster);
+
     // All the metrics
     const metrics = window.globalVars.METRICS;
     // The chosen threshold for the filtering
     const chosenThreshold = computed(
       () => store.getInteractionState.value.chosenThreshold
     );
+
+    const setQuery = store.setQuery;
 
     // Provide the 'rankingPercentageById' computed property to the sub components 
     // so that they can reactively refer to the percentage ranking of a keyword cluster
@@ -125,7 +143,9 @@ export default {
       chosenMetric,
       metrics,
       chosenThreshold,
-      highlights
+      highlights,
+      setQuery,
+      chosenBehaviorCluster
     };
   },
   data() {
@@ -150,7 +170,8 @@ export default {
       // Outlier cluster is the cluster that did not have a proper clustering result
       // it basically contains keywords that were not clustered meaningfully (they are leftovers)
       isOutlier: false,
-      isTooltipVisible: false
+      isTooltipVisible: false,
+      keyword: ''
     };
   },
   methods: {
@@ -511,6 +532,10 @@ export default {
           });
       }
     },
+    setKeyword: function () {
+      console.log(this.keyword)
+      this.setQuery(this.keyword);
+    }
   },
   mounted() {
     // When this compenent is mounted for the first time, since the template code is ready
@@ -545,6 +570,17 @@ export default {
         // If the new threshold is not null, and is not equal to the old one
         // --> re-render the visualization
         if (newVal !== null && newVal !== oldVal) {
+          this.render();
+        }
+      },
+    },
+    chosenBehaviorCluster: {
+      handler(newVal, oldVal) {
+        // If the new behavior cluster is not equal to the old one
+        // --> re-render the visualization
+        console.log('fired?')
+        if (newVal !== oldVal) {
+          console.log('fired')
           this.render();
         }
       },

@@ -15,7 +15,7 @@
         <div class="flex justify-around flex-grow h-full">
           <!-- List of behavior clusters -->
           <behavior-cluster
-            v-for="behaviorCluster in behaviorClusters"
+            v-for="behaviorCluster in filteredBehaviorClusters"
             :key="behaviorCluster.id"
             v-bind="{
               behaviorCluster: behaviorCluster,
@@ -52,11 +52,16 @@ export default {
     const setInteractionState = store.setInteractionState;
     // List of behavior clusters associated with the chosen keyword cluster
     const behaviorClusters = computed(() => store.getBehaviorClusters.value);
+    const filteredBehaviorClusters = computed(() => {
+      const behaviorClusters = store.getBehaviorClusters.value;
+      return Object.values(behaviorClusters).filter(c => c.subtreeSize > 0)
+    });
 
     return {
       interactionState,
       setInteractionState,
       behaviorClusters,
+      filteredBehaviorClusters
     };
   },
 };

@@ -67,6 +67,14 @@ export class Session {
         return shorthand_actions.join('');
     }
 
+    get allQueries() {
+        const queries = this.config.Sequence.filter(action => action.Type === 'NewQuery' || action.Type === 'RefinedQuery').map(action => {
+            return action.Query;
+        })
+
+        return queries.join('|');
+    }
+
     get queriesCount() {
         return this.config.queriesCount;
     }
