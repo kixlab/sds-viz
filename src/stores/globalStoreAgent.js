@@ -55,7 +55,7 @@ export const initGlobalStore = () => {
     const totalSessionsRef = ref(totalSessions);
 
     // The interactions state, keeping the current state of the app
-    var interactionState = {
+    var interactionState = localStorage.getItem('interactionState') || {
         'chosenBehaviorClusterId': null,
         'chosenMetric': null,
         'chosenKeywordClusterId': null,
@@ -72,14 +72,14 @@ export const initGlobalStore = () => {
 
     // Separate state variable for managing saved sessions
 
-    var selectedSessionIds = [];
+    var selectedSessionIds = localStorage.getItem('selectedSessionIds') || {};
 
     const selectedSessionIdsRef = ref(selectedSessionIds);
     const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
 
     // Another separate state variable for highlighting clusters IDs by searchbox results
     
-    var highlights = {
+    var highlights = localStorage.getItem('selectedHighlights') || {
         'behaviorClusters': new Set(),
         'keywordClusters': new Set(),
         'sessionIds': []
@@ -140,18 +140,18 @@ export const initGlobalStore = () => {
         return session;
     });
 
-    const getSelectedSessions = computed(() => {
-        const savedSessions = getSelectedSessionIds.value;
+    // const getSelectedSessions = computed(() => {
+    //     const savedSessions = getSelectedSessionIds.value;
 
-        if(savedSessions.length === 0) {
-            return null;
-        }
-        const sessions = totalSessionsRef.value.filter(session => {
-            return savedSessions.includes(session.id);
-        })
+    //     if(savedSessions.length === 0) {
+    //         return null;
+    //     }
+    //     const sessions = totalSessionsRef.value.filter(session => {
+    //         return savedSessions.includes(session.id);
+    //     })
 
-        return sessions
-    })
+    //     return sessions
+    // })
 
 
     // Setters //
@@ -160,6 +160,7 @@ export const initGlobalStore = () => {
 
     const setSelectedSessionIds = (sessions) => {
         selectedSessionIdsRef.value = sessions;
+        localStorage.setItem('selectedSessionIds', JSON.stringify(sessions));
     }
 
     // Update the interaction state
@@ -199,6 +200,8 @@ export const initGlobalStore = () => {
                 }
             }
         });
+        localStorage.setItem('interactionState', JSON.stringify(interactionState));
+
     };
 
     // Update the highlights
@@ -208,6 +211,7 @@ export const initGlobalStore = () => {
         Object.entries(newHighlights).forEach(([key, value]) => {
             highlights[key] = value;
         });
+        localStorage.setItem('highlights', JSON.stringify(highlights));
     }
 
     const setShorthandBehaviors = (shorthandBehaviors) => {
@@ -234,7 +238,7 @@ export const initGlobalStore = () => {
     provide('getBehaviorClusters', getBehaviorClusters);
     provide('getSessions', getSessions);    
     provide('getSession', getSession);
-    provide('getSelectedSessions', getSelectedSessions)
+    // provide('getSelectedSessions', getSelectedSessions)
     provide('getSelectedSessionIds', getSelectedSessionIds)
     provide('getHighlights', getHighlights)
 
