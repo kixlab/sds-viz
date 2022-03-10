@@ -47,15 +47,20 @@ export class Session {
         return this.config.Sequence;
     }
 
+    get timestamp() {
+        return new Date(this.config.Timestamp);
+    }
+
     get metricValues() {
         return {
-            'pSkip': this.config['pSkip'],
+            // 'pSkip': this.config['pSkip'],
             'Click@1-5': this.config['Click@1-5'],
-            'MaxRR': this.config['MaxRR'],
+            // 'MaxRR': this.config['MaxRR'],
             'MeanRR': this.config['MeanRR'],
             'AbandonmentRate': this.config['AbandonmentRate'],
             'ReformulationRate': this.config['ReformulationRate'],
-            'NDCG': this.config['NDCG']
+            'NDCG': this.config['NDCG'],
+            'MAP': this.config['MAP']
         };
     }
 
