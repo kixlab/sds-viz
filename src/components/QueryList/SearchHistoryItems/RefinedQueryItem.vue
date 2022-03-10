@@ -8,6 +8,9 @@
       <medium-title class="flex-grow text-center"
         >Refined to: {{ action.Query }}
       </medium-title>
+      <medium-title class="flex-grow text-center"
+        >Processed as: {{ action.ExtendedQuery }}
+      </medium-title>
     </div>
     <!-- i-frame to show the search results -->
     <div class="flex mt-2">

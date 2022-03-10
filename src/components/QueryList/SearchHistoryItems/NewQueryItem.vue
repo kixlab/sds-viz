@@ -5,6 +5,7 @@
       <search-icon class="w-9 h-9 mr-2" />
       <!-- Searched ... -->
       <medium-title class="flex-grow text-center">Searched:  {{ action.Query }} </medium-title>
+      <medium-title class="flex-grow text-center">Processed as:  {{ action.ExtendedQuery }} </medium-title>
     </div>
     <!-- i-frame component to show the search results -->
     <div class="flex mt-2">
