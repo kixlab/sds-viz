@@ -12,11 +12,11 @@
           : 'border-black border',  
       ]"
     >
-      <div class="w-8 flex items-center"
+      <!-- <div class="w-8 flex items-center"
         @click="setFavoriteSession()">
         <favorite-icon v-if="!isClicked"></favorite-icon>
         <favorite-clicked-icon v-else></favorite-clicked-icon>
-      </div>
+      </div> -->
       <div class="w-10/12 flex items-center" v-on:click="setChosenSession()">
 
         <div class="w-5/12 pr-1 h-full flex items-center">
@@ -59,7 +59,10 @@
           }"
         />
       </div>
-      <div class="w-full text-right text-xxs">     
+      <div class="w-6/12">
+        <session-tagger :session-id="session.id"></session-tagger>
+      </div>
+      <div class="w-6/12 text-right text-xxs">     
         {{session.timestamp.toLocaleString('ko-KR')}}
       </div>
     </div>
@@ -89,9 +92,9 @@ import SearchHistory from "./SearchHistory.vue";
 import IconGiver from "../Common/IconGiver.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
-import FavoriteIcon from '../Common/Icons/FavoriteIcon.vue';
-import FavoriteClickedIcon from '../Common/Icons/FavoriteClickedIcon.vue';
-
+// import FavoriteIcon from '../Common/Icons/FavoriteIcon.vue';
+// import FavoriteClickedIcon from '../Common/Icons/FavoriteClickedIcon.vue';
+import SessionTagger from './SessionTagger.vue'
 export default {
   name: "SessionItem",
   components: {
@@ -101,8 +104,9 @@ export default {
     TriangleBlack,
     SearchHistory,
     IconGiver,
-    FavoriteIcon,
-    FavoriteClickedIcon,
+    // FavoriteIcon,
+    // FavoriteClickedIcon,
+    SessionTagger
   },
   props: ["session"],
   setup() {
@@ -127,12 +131,14 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      tags: ['aaa', 'bbb', 'ccc']
+    };
   },
   computed: {
-    isClicked() {
-      return this.selectedSessionIds.includes(this.session.id);
-    },
+    // isClicked() {
+    //   return this.selectedSessionIds.includes(this.session.id);
+    // },
   },
   methods: {
     setFavoriteSession() {

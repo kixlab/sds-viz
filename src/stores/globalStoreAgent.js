@@ -55,12 +55,13 @@ export const initGlobalStore = () => {
     const totalSessionsRef = ref(totalSessions);
 
     // The interactions state, keeping the current state of the app
-    var interactionState = JSON.parse(localStorage.getItem('interactionState')) || {
+    var interactionState = {
         'chosenBehaviorClusterId': null,
         'chosenMetric': null,
         'chosenKeywordClusterId': null,
         'chosenThreshold': null,
         'chosenSessionId': null,
+        'chosenTag': ''
     };
     // Make it reactive
     const interactionStateRef = ref(interactionState);
@@ -72,7 +73,7 @@ export const initGlobalStore = () => {
 
     // Separate state variable for managing saved sessions
 
-    var selectedSessionIds = JSON.parse(localStorage.getItem('selectedSessionIds')) || [];
+    var selectedSessionIds = JSON.parse(localStorage.getItem('selectedSessionIds')) || {};
 
     const selectedSessionIdsRef = ref(selectedSessionIds);
     const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
@@ -141,15 +142,20 @@ export const initGlobalStore = () => {
     });
 
     const getSelectedSessions = computed(() => {
+        const interactionState = getInteractionState.value;
+
+        const selectedTag = interactionState['chosenTag'];
         const savedSessions = getSelectedSessionIds.value;
 
-        if(savedSessions.length === 0) {
-            return null;
+        if(!selectedTag || !(selectedTag in savedSessions) || (savedSessions[selectedTag].length === 0)) {
+            console.log('empty')
+            return [];
         }
+        const selectedSessions = savedSessions[selectedTag]
         const sessions = totalSessionsRef.value.filter(session => {
-            return savedSessions.includes(session.id);
+            return selectedSessions.includes(session.id);
         })
-
+        console.log('sessions', sessions)
         return sessions
     })
 
@@ -158,10 +164,42 @@ export const initGlobalStore = () => {
 
     // Update saved sessions
 
-    const setSelectedSessionIds = (sessions) => {
-        selectedSessionIdsRef.value = sessions;
-        localStorage.setItem('selectedSessionIds', JSON.stringify(sessions));
+    const setSelectedSessionIds = (tag, sessionId, method) => {
+        const selectedSessionIds = getSelectedSessionIds.value;
+
+        if (method === 'add') {
+            if (tag in selectedSessionIds) {
+                if (selectedSessionIds[tag].includes(sessionId)) {
+                    // selectedSessionIds[tag] = selectedSessionIds[tag].filter(id => id !== sessionId);
+                } else {
+                    selectedSessionIds[tag].push(sessionId);
+                }
+            } else {
+                selectedSessionIds[tag] = [sessionId];
+            }
+        } else if (method === 'remove') {
+            if (tag in selectedSessionIds) {
+                if (selectedSessionIds[tag].includes(sessionId)) {
+                    selectedSessionIds[tag] = selectedSessionIds[tag].filter(id => id !== sessionId);
+                }
+            }
+        }
+
+        // if (tag in selectedSessionIds) {
+        //     if (selectedSessionIds[tag].includes(sessionId)) {
+        //         selectedSessionIds[tag] = selectedSessionIds[tag].filter(id => id !== sessionId);
+        //     } else {
+        //         selectedSessionIds[tag].push(sessionId);
+        //     }
+        // } else {
+        //     selectedSessionIds[tag] = [sessionId];
+        // }
     }
+
+    // const setSelectedSessionIds = (sessions) => {
+    //     selectedSessionIdsRef.value = sessions;
+    //     localStorage.setItem('selectedSessionIds', JSON.stringify(sessions));
+    // }
 
     // Update the interaction state
     const setInteractionState = (partialState) => {
