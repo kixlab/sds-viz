@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div
+    <!-- <div
       class="absolute -top-6 left-20 flex">
       <div class="">
         <input v-model="keyword" type="text">
@@ -58,7 +58,7 @@
           <SearchIcon class="h-4 w-4" aria-hidden="true" />
         </button>
       </div>
-    </div>
+    </div> -->
     <!-- Visualization for the threshold filtering -->
     <!-- 'getColor' method is binded to calculate the color for the bar chart column -->
     <filter-visualization
@@ -74,13 +74,13 @@ import { computed, provide } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
 import FilterVisualization from "./FilterVisualization.vue";
-import { SearchIcon } from "@heroicons/vue/solid";
+// import { SearchIcon } from "@heroicons/vue/solid";
 
 export default {
   name: "KeywordClustersVisualization",
   components: {
     FilterVisualization,
-    SearchIcon
+    // SearchIcon
   },
   setup() {
     // Inject the functions to manipulate the interaction state
@@ -120,6 +120,8 @@ export default {
     });
     // The chosen performance metric
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
+    const chosenBehaviorCluster = computed(() => interactionState.value.chosenBehaviorCluster);
+
     // All the metrics
     const metrics = window.globalVars.METRICS;
     // The chosen threshold for the filtering
@@ -142,7 +144,8 @@ export default {
       metrics,
       chosenThreshold,
       highlights,
-      setQuery
+      setQuery,
+      chosenBehaviorCluster
     };
   },
   data() {
@@ -567,6 +570,17 @@ export default {
         // If the new threshold is not null, and is not equal to the old one
         // --> re-render the visualization
         if (newVal !== null && newVal !== oldVal) {
+          this.render();
+        }
+      },
+    },
+    chosenBehaviorCluster: {
+      handler(newVal, oldVal) {
+        // If the new behavior cluster is not equal to the old one
+        // --> re-render the visualization
+        console.log('fired?')
+        if (newVal !== oldVal) {
+          console.log('fired')
           this.render();
         }
       },

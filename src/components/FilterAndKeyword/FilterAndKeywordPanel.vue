@@ -1,6 +1,18 @@
 <template>
   <div class="flex flex-col">
-    <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
+    <div class="flex justify-between">
+      <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
+      <div class="flex">
+        <div class="bg-white rounded-lg shadow-md cursor-default focus:outline-none">
+          <input v-model="keyword" type="text">
+        </div>
+        <div class="flex-none items-center px-1 rounded-lg shadow-md bg-green-500 text-white">
+          <button @click="setKeyword()" class="cursor-pointer my-auto">
+            <SearchIcon class="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="flex flex-col flex-grow w-auto mx-4 my-4">
       <!-- Performance Metric Selection -->
       <div class="flex flex-col bg-gray-200 rounded-md border border-black">
@@ -89,6 +101,8 @@ import KeywordClustersVisualization from "./KeywordClustersVisualization.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed } from "vue";
 import QuestionMark from '../Common/Icons/QuestionMark.vue'
+import { SearchIcon } from "@heroicons/vue/solid";
+
 
 export default {
   name: "FilterAndKeywordPanel",
@@ -97,7 +111,8 @@ export default {
     SmallTitle,
     KeywordClustersVisualization,
     InSectionTitle,
-    QuestionMark
+    QuestionMark,
+    SearchIcon,
   },
   setup() {
     // Inject the methods to manipulate the state of the global store
@@ -106,10 +121,11 @@ export default {
     const interactionState = computed(() => store.getInteractionState.value);
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
-
+    const setQuery = store.setQuery;
     return {
       interactionState,
       setInteractionState,
+      setQuery
     };
   },
   data() {
@@ -122,7 +138,8 @@ export default {
         };
       }),
       showTooltip: false,
-      tooltipClicked: false
+      tooltipClicked: false,
+      keyword: ''
     };
   },
   methods: {
@@ -140,6 +157,10 @@ export default {
       // Update the interaction state
       this.setInteractionState(updateState);
     },
+    setKeyword: function () {
+      console.log(this.keyword)
+      this.setQuery(this.keyword);
+    }
   },
 };
 </script>

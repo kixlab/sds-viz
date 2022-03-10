@@ -173,14 +173,31 @@ export const initGlobalStore = () => {
         });
         // nullify the states
         // update subtree size appropriately when behavior cluster is updated
-        if ('chosenBehaviorClusterId' in partialState) {
+        if (('chosenBehaviorClusterId' in partialState) || ('chosenKeywordClusterId' in partialState)) {
             interactionState['chosenSessionId'] = null;
-              
-            if (interactionState['chosenBehaviorClusterId']) {
-                const sessions = totalSessionsRef.value
-                const keywordClusters = keywordClustersRef.value;
+            const sessions = totalSessionsRef.value
+            const keywordClusters = keywordClustersRef.value; 
+            const behaviorClusters = behaviorClustersRef.value;
+            
+            if (!interactionState['chosenBehaviorClusterId'] && interactionState['chosenKeywordClusterId']) {
+                console.log('updating behavior cluster subtree size')
+
+                for (let [key, value] of Object.entries(behaviorClusters)) {
+                    value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
+                }
+            } else if (interactionState['chosenBehaviorClusterId'] && !interactionState['chosenKeywordClusterId'] ) {
+                console.log('updating keyword cluster subtree size')
+
                 for (let [key, value] of Object.entries(keywordClusters)) {
                     value.subtreeSize = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key)).length;
+                }
+            } else if (!interactionState['chosenBehaviorClusterId'] && !interactionState['chosenKeywordClusterId'] ){
+                console.log('reverting subtree size')
+                for (let [key, value] of Object.entries(keywordClusters)) {
+                    value.subtreeSize = sessions.filter(session => (session.keywordClusterId == key)).length;
+                }
+                for (let [key, value] of Object.entries(behaviorClusters)) {
+                    value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
                 }
             }
 
@@ -193,16 +210,22 @@ export const initGlobalStore = () => {
 
         }
 
-        if ('chosenKeywordClusterId' in partialState) {
-            interactionState['chosenSessionId'] = null;
-            if (interactionState['chosenKeywordClusterId']) {
-                const sessions = totalSessionsRef.value
-                const behaviorClusters = behaviorClustersRef.value;
-                for (let [key, value] of Object.entries(behaviorClusters)) {
-                    value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.keywordClusterId == key)).length;
-                }
-            }
-        }
+        // if ('chosenKeywordClusterId' in partialState) {
+        //     interactionState['chosenSessionId'] = null;
+        //     const sessions = totalSessionsRef.value
+        //     const behaviorClusters = behaviorClustersRef.value;
+        //     if (interactionState['chosenKeywordClusterId'] && !interactionState['chosenBehaviorClusterId']) {
+        //         console.log('updating subtree size')
+        //         for (let [key, value] of Object.entries(behaviorClusters)) {
+        //             value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
+        //         }
+        //     } else if (!interactionState['chosenBehaviorClusterId'] && !interactionState['chosenKeywordClusterId'] ) {
+        //         console.log('reverting subtree size')
+        //         for (let [key, value] of Object.entries(keywordClusters)) {
+        //             value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
+        //         }
+        //     }
+        // }
 
         // var isNull = true;
         // Object.keys(interactionState).reverse().forEach((key) => {

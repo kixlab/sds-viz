@@ -8,27 +8,26 @@
         {
           "cluster_id": 1,
           "action_items": [
-            "Click6-10",
-            "Click6-10",
-            "NewQuery"
-          ],
-          "score": 0
-        },
-        {
-          "cluster_id": 1,
-          "action_items": [
-            "NewQuery",
-            "Click6-10_Short",
-            "Click6-10"
-          ],
-          "score": 0
-        },
-        {
-          "cluster_id": 1,
-          "action_items": [
-            "Click1-5",
             "Click1-5",
             "RefinedQuery"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "Click1-5",
+            "NewQuery",
+            "Click6-10_Short"
+          ],
+          "score": 0
+        },
+        {
+          "cluster_id": 1,
+          "action_items": [
+            "RefinedQuery",
+            "Click6-10",
+            "Click6-10"
           ],
           "score": 0
         }
@@ -60,6 +59,14 @@
         {
           "cluster_id": 2,
           "action_items": [
+            "Click1-5",
+            "Click1-5"
+          ],
+          "score": 100.00000000000001
+        },
+        {
+          "cluster_id": 2,
+          "action_items": [
             "NewQuery",
             "Click1-5",
             "Click1-5"
@@ -69,16 +76,8 @@
         {
           "cluster_id": 2,
           "action_items": [
-            "Click1-5",
-            "Click1-5"
-          ],
-          "score": 100.00000000000001
-        },
-        {
-          "cluster_id": 2,
-          "action_items": [
-            "Click6-10_Short",
-            "Click6-10"
+            "Click6-10",
+            "NewQuery"
           ],
           "score": 100.0
         }
@@ -119,7 +118,14 @@
         {
           "cluster_id": 4,
           "action_items": [
-            "NewQuery",
+            "Click6-10",
+            "NewQuery"
+          ],
+          "score": 150.0
+        },
+        {
+          "cluster_id": 4,
+          "action_items": [
             "Click1-5",
             "Click1-5"
           ],
@@ -128,14 +134,7 @@
         {
           "cluster_id": 4,
           "action_items": [
-            "Click6-10_Short",
-            "Click6-10"
-          ],
-          "score": 150.0
-        },
-        {
-          "cluster_id": 4,
-          "action_items": [
+            "NewQuery",
             "Click1-5",
             "Click1-5"
           ],
@@ -169,16 +168,16 @@
         {
           "cluster_id": 6,
           "action_items": [
-            "Click6-10_Short",
-            "Click6-10"
+            "Click1-5",
+            "Click6-10_Short"
           ],
           "score": 300.0
         },
         {
           "cluster_id": 6,
           "action_items": [
-            "Click1-5",
-            "Click6-10_Short"
+            "Click6-10_Short",
+            "Click6-10"
           ],
           "score": 300.0
         },
@@ -217,23 +216,6 @@
         {
           "cluster_id": 8,
           "action_items": [
-            "Click6-10_Short",
-            "Click6-10"
-          ],
-          "score": 200.0
-        },
-        {
-          "cluster_id": 8,
-          "action_items": [
-            "NewQuery",
-            "Click1-5",
-            "Click6-10_Short"
-          ],
-          "score": 200.0
-        },
-        {
-          "cluster_id": 8,
-          "action_items": [
             "Click1-5",
             "Click6-10_Short",
             "Click6-10"
@@ -244,32 +226,42 @@
           "cluster_id": 8,
           "action_items": [
             "Click1-5",
-            "Click6-10_Short"
-          ],
-          "score": 200.0
-        },
-        {
-          "cluster_id": 8,
-          "action_items": [
-            "NewQuery",
-            "Click1-5",
-            "Click6-10"
-          ],
-          "score": 200.0
-        },
-        {
-          "cluster_id": 8,
-          "action_items": [
-            "Click1-5",
-            "Click6-10"
-          ],
-          "score": 200.0
-        },
-        {
-          "cluster_id": 8,
-          "action_items": [
             "Click6-10",
             "Click6-10"
+          ],
+          "score": 200.0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 200.0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "Click1-5",
+            "Click6-10_Short"
+          ],
+          "score": 200.0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click6-10"
+          ],
+          "score": 200.0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
+            "NewQuery",
+            "Click1-5",
+            "Click6-10_Short"
           ],
           "score": 200.0
         },
@@ -284,7 +276,14 @@
         {
           "cluster_id": 8,
           "action_items": [
-            "Click1-5",
+            "Click6-10_Short",
+            "Click6-10"
+          ],
+          "score": 200.0
+        },
+        {
+          "cluster_id": 8,
+          "action_items": [
             "Click6-10",
             "Click6-10"
           ],
@@ -304,9 +303,8 @@
         {
           "cluster_id": 9,
           "action_items": [
-            "Click1-5",
-            "Click1-5",
-            "RefinedQuery"
+            "NewQuery",
+            "ClickQuickLink"
           ],
           "score": 0
         },
@@ -314,8 +312,7 @@
           "cluster_id": 9,
           "action_items": [
             "NewQuery",
-            "Click1-5",
-            "Empty"
+            "Click1-5"
           ],
           "score": 200
         },
@@ -323,7 +320,8 @@
           "cluster_id": 9,
           "action_items": [
             "NewQuery",
-            "Click1-5"
+            "Click1-5",
+            "Empty"
           ],
           "score": 200
         }
