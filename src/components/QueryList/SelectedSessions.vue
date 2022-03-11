@@ -4,7 +4,7 @@
     <section-title> Selected Search Sessions </section-title>
     <medium-title>Tags</medium-title>
     <div class="flex">
-      <div v-for="tag in tags" :key="tag" :class="[selectedTag === tag ? 'bg-blue-500 text-white' : 'text-blue border-blue-500', 'px-3 py-1 mx-2 cursor-pointer rounded-lg shadow-md']" @click="selectTag(tag)">
+      <div v-for="tag in tags" :key="tag" :class="[selectedTag === tag ? 'bg-blue-500 text-white' : 'text-blue', 'px-3 py-1 mx-2 cursor-pointer rounded-lg shadow-md']" @click="selectTag(tag)">
         {{tag}}
       </div>
     </div>

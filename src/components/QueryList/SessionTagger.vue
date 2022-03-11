@@ -1,12 +1,12 @@
 <template>
-  <div class="tag-input">
-    <div v-for="(tag, index) in tags" :key="tag" class="tag-input__tag inline">
-      <span @click="removeTag(index)">x</span>
+  <div class="tag-input mt-1 w-full border border-black bg-white flex flex-wrap rounded-lg">
+    <div v-for="(tag, index) in tags" :key="tag" class="bg-blue-500 text-sm text-white px-1 py-1 mx-1 my-1 rounded-lg">
+      <span class="cursor-pointer text-sm opacity-75" @click="removeTag(index)">x</span>
       {{tag}}
     </div>
-    <input 
+    <input
       type="text"
-      class="tag-input__input"
+      class="tag-input__input bg-none border-none outline-none"
       @keydown.enter="addTag"
       @keydown.,="addTag"
       @keydown.delete="removeLastTag"
