@@ -90,6 +90,13 @@ export const initGlobalStore = () => {
 
     const getHighlights = computed(() => highlightsRef.value);
 
+    // yet another state variable for managing action items
+
+    var actionItems = JSON.parse(localStorage.getItem('actionItems')) || [];
+
+    const actionItemsRef = ref(actionItems);
+    const getActionItems = computed(() => actionItemsRef.value);
+
     // Get the keywordClusters dictionary
     const getKeywordClusters = computed(() => {
         const interactionState = getInteractionState.value;
@@ -162,6 +169,7 @@ export const initGlobalStore = () => {
 
     // Setters //
 
+    // Add / delete notes
     // Update saved sessions
 
     const setSelectedSessionIds = (tag, sessionId, method) => {
@@ -338,6 +346,7 @@ export const initGlobalStore = () => {
     provide('getSelectedSessions', getSelectedSessions)
     provide('getSelectedSessionIds', getSelectedSessionIds)
     provide('getHighlights', getHighlights)
+    provide('getActionItems', getActionItems)
 
     provide('setInteractionState', setInteractionState);
     provide('setSelectedSessionIds', setSelectedSessionIds);
@@ -364,6 +373,7 @@ export const useGlobalStore = () => ({
     getSelectedSessions: inject("getSelectedSessions"),
     getSelectedSessionIds: inject("getSelectedSessionIds"),
     getHighlights: inject("getHighlights"),
+    getActionItems: inject('getActionItems'),
 
     setInteractionState: inject("setInteractionState"),
     setSelectedSessionIds: inject("setSelectedSessionIds"),

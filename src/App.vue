@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen flex flex-col">
-    <div class="w-full h-auto grow-0 flex justify-start items-center">
+    <div class="w-full h-auto grow-0 flex justify-start items-center relative">
       <div class="grow-0 py-2 px-4">
         <button 
           v-show="page === 2" 
@@ -9,6 +9,11 @@
       </div>
       <div class="flex-1 grow"> 
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
+      </div>
+      <div class="grow-0 py-2 px-4">
+        <button 
+          @click="toggleActionItems()"
+          class="bg-blue-500 text-white rounded-md px-2 py-1">Action Items</button>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
@@ -35,6 +40,11 @@
 
     </div>
 
+    <div v-show="showActionItems" class="absolute z-10 top-10 right-1/4 shadow-md rounded-md w-1/5 h-1/5 bg-white">
+      List of Action Items
+      <action-items class="w-full h-full"/>
+    </div>
+
   </div>
 </template>
 
@@ -45,6 +55,7 @@ import QuerySelection from './components/QueryList/QuerySelection.vue';
 import { initGlobalStore } from "@/stores/globalStoreAgent.js";
 import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywordPanel.vue';
 import SelectedSessions from './components/QueryList/SelectedSessions.vue';
+import ActionItems from './components/ActionItems/ActionItems.vue';
 // import {computed} from "vue";
 
 export default {
@@ -54,6 +65,7 @@ export default {
     QuerySelection,
     FilterAndKeywordPanel,
     SelectedSessions,
+    ActionItems
   },
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
@@ -62,7 +74,13 @@ export default {
   },
   data: function() {
     return {
-      page: 1
+      page: 1,
+      showActionItems: false
+    }
+  },
+  methods: {
+    toggleActionItems() {
+      this.showActionItems = !this.showActionItems;
     }
   }
 }
