@@ -172,6 +172,23 @@ export const initGlobalStore = () => {
     // Add / delete notes
     // Update saved sessions
 
+    const addActionItem = (item) => {
+        actionItemsRef.value.push(item);
+        localStorage.setItem('actionItems', JSON.stringify(actionItemsRef.value));
+    }
+
+    const updateActionItem = (idx, item) => {
+        actionItemsRef.value.splice(idx, 1, item);
+        localStorage.setItem('actionItems', JSON.stringify(actionItemsRef.value));
+
+    }
+
+    const removeActionItem = (idx) => {
+        actionItemsRef.value.splice(idx, 1)
+        localStorage.setItem('actionItems', JSON.stringify(actionItemsRef.value));
+
+    }
+
     const setSelectedSessionIds = (tag, sessionId, method) => {
         const selectedSessionIds = getSelectedSessionIds.value;
 
@@ -353,6 +370,9 @@ export const initGlobalStore = () => {
     provide('setHighlights', setHighlights);
     provide('setShorthandBehaviors', setShorthandBehaviors)
     provide('setQuery', setQuery)
+    provide('addActionItem', addActionItem)
+    provide('removeActionItem', removeActionItem)
+    provide('updateActionItem', updateActionItem)
 
     // Return necessary methods to the app.vue //
 
@@ -379,5 +399,8 @@ export const useGlobalStore = () => ({
     setSelectedSessionIds: inject("setSelectedSessionIds"),
     setHighlights: inject("setHighlights"),
     setShorthandBehaviors: inject("setShorthandBehaviors"),
-    setQuery: inject("setQuery")
+    setQuery: inject("setQuery"),
+    addActionItem: inject("addActionItem"),
+    removeActionItem: inject("removeActionItem"),
+    updateActionItem: inject("updateActionItem")
 });
