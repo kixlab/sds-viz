@@ -1,18 +1,18 @@
 <template>
   <div class="w-full h-screen flex flex-col">
     <div class="w-full h-auto grow-0 flex justify-start items-center">
-      <div class="grow-0 py-2 px-4">
-        <button 
-          v-show="page === 2" 
-          @click="page = 1"
-          class="bg-red-500 text-white rounded-md px-2 py-1">Prev</button>
-      </div>
       <div class="flex-1 grow"> 
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
-          v-show="page === 1" 
+          :disabled="page === 1" 
+          @click="page = 1"
+          class="bg-red-500 text-white rounded-md px-2 py-1">Prev</button>
+      </div>
+      <div class="grow-0 py-2 px-4">
+        <button 
+          :disabled="page === 2" 
           @click="page = 2"
           class="bg-blue-500 text-white rounded-md px-2 py-1">Next</button>
       </div>
@@ -31,6 +31,8 @@
       <selected-sessions class="main-component w-2/5 h-full"/>
 
       <div class="w-3/5 h-full">
+        <query-view></query-view>
+        <search-results-view></search-results-view>
       </div>
 
     </div>
@@ -45,6 +47,8 @@ import QuerySelection from './components/QueryList/QuerySelection.vue';
 import { initGlobalStore } from "@/stores/globalStoreAgent.js";
 import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywordPanel.vue';
 import SelectedSessions from './components/QueryList/SelectedSessions.vue';
+import SearchResultsView from './components/AggregateView/SearchResultsView.vue'
+import QueryView from './components/AggregateView/QueryView.vue'
 // import {computed} from "vue";
 
 export default {
@@ -54,6 +58,8 @@ export default {
     QuerySelection,
     FilterAndKeywordPanel,
     SelectedSessions,
+    SearchResultsView,
+    QueryView
   },
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
