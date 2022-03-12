@@ -1,12 +1,14 @@
 <template>
   <div class="w-full h-screen flex flex-col">
     <div class="w-full h-auto grow-0 flex justify-start items-center relative">
-      
+      <div class="flex-1 grow px-4"> 
+        <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
+      </div>
       <div class="grow-0 py-2 px-4">
         <button 
-          v-show="page === 2" 
+          :disabled="page === 1"
           @click="changePage(1)"
-          class="bg-red-500 text-white rounded-md px-2 py-1">Prev</button>
+          class="bg-red-500 text-white rounded-md px-2 py-1">Browse</button>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
@@ -15,9 +17,9 @@
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
-          v-show="page === 1" 
+          :disabled="page === 2"
           @click="changePage(2)"
-          class="bg-blue-500 text-white rounded-md px-2 py-1">Next</button>
+          class="bg-blue-500 text-white rounded-md px-2 py-1">Inspect</button>
       </div>
     </div>
     <div v-if="page === 1" class="w-full h-full flex flex-wrap">
