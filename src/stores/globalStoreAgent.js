@@ -144,7 +144,7 @@ export const initGlobalStore = () => {
         if(chosenSessionId === null) {
             return null;
         }
-        const session = getSessions.value[chosenSessionId];
+        const session = totalSessionsRef.value.find(s => s.id === chosenSessionId)
         return session;
     });
 
@@ -162,7 +162,6 @@ export const initGlobalStore = () => {
         const sessions = totalSessionsRef.value.filter(session => {
             return selectedSessions.includes(session.id);
         })
-        console.log('sessions', sessions)
         return sessions
     })
 
@@ -378,6 +377,7 @@ export const initGlobalStore = () => {
 
     // Apparently nothing specific to return
     return {
+        setInteractionState
     }
 
 };

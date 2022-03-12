@@ -4,7 +4,7 @@
       <div class="grow-0 py-2 px-4">
         <button 
           v-show="page === 2" 
-          @click="page = 1"
+          @click="changePage(1)"
           class="bg-red-500 text-white rounded-md px-2 py-1">Prev</button>
       </div>
       <div class="flex-1 grow"> 
@@ -18,7 +18,7 @@
       <div class="grow-0 py-2 px-4">
         <button 
           v-show="page === 1" 
-          @click="page = 2"
+          @click="changePage(2)"
           class="bg-blue-500 text-white rounded-md px-2 py-1">Next</button>
       </div>
     </div>
@@ -40,10 +40,7 @@
 
     </div>
 
-    <div v-show="showActionItems" class="absolute z-10 top-10 right-1/4 shadow-md rounded-md w-1/5 h-1/5 bg-white">
-      List of Action Items
-      <action-items class="w-full h-full"/>
-    </div>
+    <action-items v-if="showActionItems" class="absolute z-10 top-10 right-1/4 shadow-md rounded-md w-1/4 h-1/4 bg-white" @close="showActionItems = false"/>
 
   </div>
 </template>
@@ -56,8 +53,7 @@ import { initGlobalStore } from "@/stores/globalStoreAgent.js";
 import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywordPanel.vue';
 import SelectedSessions from './components/QueryList/SelectedSessions.vue';
 import ActionItems from './components/ActionItems/ActionItems.vue';
-// import {computed} from "vue";
-
+import { ref, provide } from 'vue';
 export default {
   name: 'App',
   components: {
@@ -70,19 +66,35 @@ export default {
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
     // injectible in every subcomponent of this component.
-    initGlobalStore();
-  },
-  data: function() {
+    const { setInteractionState } = initGlobalStore();
+
+
+    const page = ref(1);
+    const showActionItems = ref(false);
+
+    const toggleActionItems = function () {
+      showActionItems.value = !showActionItems.value;
+    };
+    
+    const changePage = function (newPage) {
+      page.value = newPage;
+      setInteractionState({
+        chosenTag: '',
+        chosenSessionId: null
+      });
+
+    };
+
+    provide('navigateToGroups', () => changePage(2));
+    provide('navigateToSessions', () => changePage(1));
+
     return {
-      page: 1,
-      showActionItems: false
+      page,
+      showActionItems,
+      changePage,
+      toggleActionItems
     }
   },
-  methods: {
-    toggleActionItems() {
-      this.showActionItems = !this.showActionItems;
-    }
-  }
 }
 </script>
 
