@@ -5,6 +5,10 @@
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
       </div>
       <div class="grow-0 py-2 px-4">
+        <input v-model="tempUsername" :disabled="isUsernameSet" placeholder="Your name here">
+        <button :disabled="isUsernameSet" @click="setName" :class="[isUsernameSet ? 'bg-gray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
+      </div>
+      <div class="grow-0 py-2 px-4">
         <button 
           :disabled="page === 1"
           @click="changePage(1)"
@@ -58,7 +62,7 @@ import ActionItems from './components/ActionItems/ActionItems.vue';
 import { ref, provide } from 'vue';
 import SearchResultsView from './components/AggregateView/SearchResultsView.vue'
 import QueryList from './components/AggregateView/QueryList.vue'
-// import {computed} from "vue";
+import {computed} from "vue";
 
 export default {
   name: 'App',
@@ -74,15 +78,35 @@ export default {
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
     // injectible in every subcomponent of this component.
-    const { setInteractionState } = initGlobalStore();
+    const { setInteractionState, getUsername, setUsername } = initGlobalStore();
 
-
+    const createLog = function(eventName, payload) {
+      const API_URL = 'http://localhost:8000';
+      fetch(`${API_URL}/log/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          log_user: getUsername.value,
+          event_name: eventName,
+          event_payload: payload
+        })
+      });
+    }
+    const isUsernameSet = computed(() => getUsername.value !== '')
+    const tempUsername = ref(getUsername.value)
     const page = ref(1);
     const showActionItems = ref(false);
 
     const toggleActionItems = function () {
       showActionItems.value = !showActionItems.value;
+      createLog('toggleActionItem', '')
     };
+
+    const setName = function () {
+      setUsername(tempUsername.value);
+    }
     
     const changePage = function (newPage) {
       page.value = newPage;
@@ -96,11 +120,16 @@ export default {
     provide('navigateToGroups', () => changePage(2));
     provide('navigateToSessions', () => changePage(1));
 
+    provide('createLog', createLog);
+
     return {
       page,
       showActionItems,
       changePage,
-      toggleActionItems
+      toggleActionItems,
+      setName,
+      isUsernameSet,
+      tempUsername
     }
   },
 }

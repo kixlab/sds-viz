@@ -42,6 +42,7 @@ export const initGlobalStore = () => {
     var keywordClusters = {};
     var behaviorClusters = {};
     var totalSessions = null;
+    var username = localStorage.getItem('username') || '';
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
     [keywordClusters, behaviorClusters, totalSessions ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
@@ -51,8 +52,8 @@ export const initGlobalStore = () => {
     // And, vue will update the template based on the changes, if needed
     const keywordClustersRef = ref(keywordClusters);
     const behaviorClustersRef = ref(behaviorClusters);
-
     const totalSessionsRef = ref(totalSessions);
+    const usernameRef = ref(username);
 
     // The interactions state, keeping the current state of the app
     var interactionState = {
@@ -80,7 +81,7 @@ export const initGlobalStore = () => {
 
     // Another separate state variable for highlighting clusters IDs by searchbox results
     
-    var highlights = JSON.parse(localStorage.getItem('selectedHighlights')) || {
+    var highlights = {
         'behaviorClusters': new Set(),
         'keywordClusters': new Set(),
         'sessionIds': []
@@ -165,11 +166,22 @@ export const initGlobalStore = () => {
         return sessions
     })
 
+    // get username
+
+    const getUsername = computed(() => {
+        return usernameRef.value;
+    })
+
 
     // Setters //
 
     // Add / delete notes
     // Update saved sessions
+
+    const setUsername = (newUsername) => {
+        usernameRef.value = newUsername;
+        localStorage.setItem('username', newUsername);
+    }
 
     const addActionItem = (item) => {
         actionItemsRef.value.push(item);
@@ -314,7 +326,7 @@ export const initGlobalStore = () => {
         Object.entries(newHighlights).forEach(([key, value]) => {
             highlights[key] = value;
         });
-        localStorage.setItem('highlights', JSON.stringify(highlights));
+        // localStorage.setItem('highlights', JSON.stringify(highlights));
     }
 
     const setShorthandBehaviors = (shorthandBehaviors) => {
@@ -363,6 +375,7 @@ export const initGlobalStore = () => {
     provide('getSelectedSessionIds', getSelectedSessionIds)
     provide('getHighlights', getHighlights)
     provide('getActionItems', getActionItems)
+    provide('getUsername', getUsername)
 
     provide('setInteractionState', setInteractionState);
     provide('setSelectedSessionIds', setSelectedSessionIds);
@@ -372,12 +385,15 @@ export const initGlobalStore = () => {
     provide('addActionItem', addActionItem)
     provide('removeActionItem', removeActionItem)
     provide('updateActionItem', updateActionItem)
+    provide('setUsername', setUsername)
 
     // Return necessary methods to the app.vue //
 
     // Apparently nothing specific to return
     return {
-        setInteractionState
+        setInteractionState,
+        setUsername,
+        getUsername
     }
 
 };
@@ -394,6 +410,7 @@ export const useGlobalStore = () => ({
     getSelectedSessionIds: inject("getSelectedSessionIds"),
     getHighlights: inject("getHighlights"),
     getActionItems: inject('getActionItems'),
+    getUsername: inject('getUsername'),
 
     setInteractionState: inject("setInteractionState"),
     setSelectedSessionIds: inject("setSelectedSessionIds"),
@@ -402,5 +419,7 @@ export const useGlobalStore = () => ({
     setQuery: inject("setQuery"),
     addActionItem: inject("addActionItem"),
     removeActionItem: inject("removeActionItem"),
-    updateActionItem: inject("updateActionItem")
+    updateActionItem: inject("updateActionItem"),
+    setUsername: inject('setUsername'),
+
 });
