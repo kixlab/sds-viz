@@ -23,11 +23,11 @@
       </div>
     </div>
     <div v-if="page === 1" class="w-full h-full flex flex-wrap">
-      <div class="w-3/5 h-full">
+      <div class="w-3/5 h-full flex-col">
         <!-- Behavior Pattern Clusters -->
-        <pattern-selection class="main-component w-full h-1/3"/>
+        <pattern-selection class="main-component w-full h-1/3 flex-auto"/>
         <!-- Query Clusters & Search Engine Performance Metrics -->
-        <filter-and-keyword-panel class="main-component w-full h-2/3 flex"/>
+        <filter-and-keyword-panel class="main-component w-full h-2/3 flex flex-auto"/>
       </div>
       <!-- Individual Search Sessions -->
       <query-selection class="main-component w-2/5 h-full"/>
@@ -35,9 +35,9 @@
     <div v-else-if="page === 2" class="w-full h-full flex">
       <selected-sessions class="main-component w-2/5 h-full"/>
 
-      <div class="w-3/5 h-full">
-        <query-view></query-view>
-        <search-results-view></search-results-view>
+      <div class="w-3/5 h-full flex flex-col">
+        <query-list class="h-1/3 main-component flex-auto"></query-list>
+        <search-results-view class="h-2/3 main-component flex-auto"></search-results-view>
       </div>
 
     </div>
@@ -53,11 +53,11 @@ import PatternSelection from './components/Behavior/PatternSelection.vue';
 import QuerySelection from './components/QueryList/QuerySelection.vue';
 import { initGlobalStore } from "@/stores/globalStoreAgent.js";
 import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywordPanel.vue';
-import SelectedSessions from './components/QueryList/SelectedSessions.vue';
+import SelectedSessions from './components/AggregateView/SelectedSessions.vue';
 import ActionItems from './components/ActionItems/ActionItems.vue';
 import { ref, provide } from 'vue';
 import SearchResultsView from './components/AggregateView/SearchResultsView.vue'
-import QueryView from './components/AggregateView/QueryView.vue'
+import QueryList from './components/AggregateView/QueryList.vue'
 // import {computed} from "vue";
 
 export default {
@@ -69,7 +69,7 @@ export default {
     SelectedSessions,
     ActionItems,
     SearchResultsView,
-    QueryView
+    QueryList
   },
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be

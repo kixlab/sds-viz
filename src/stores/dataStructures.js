@@ -92,6 +92,46 @@ export class Session {
         return this.config.BERTopicsKeywordCluster;
     }
 
+    get allQueryPairs() {
+        const queries = this.config.Sequence.filter(action => action.Type === 'NewQuery' || action.Type === 'RefinedQuery').map(action => {
+            return `${action.Query}|${action.ExtendedQuery}`;
+        })
+
+        return queries
+    }
+
+    get allClickedItems() {
+
+        const clickEventNames = ['Click1-5', 'Click6-10', 'Click11+', 'Click1-5_Short', 'Click6-10_Short', 'Click11+_Short'];
+        const queries = this.config.Sequence.filter(action => action.Type === 'NewQuery' || action.Type === 'RefinedQuery')
+        // .map(action => {
+        //     return action
+        // })
+
+        const clickedItems = queries.map(query => {
+            const clickedURLs = this.config.Sequence.filter(action => clickEventNames.includes(action.Type) && action.Query === query.Query).map(action => {
+                return action.ClickedURL
+            })
+
+            const queryResults = query.QueryResults.map(queryResult => {
+                const count = clickedURLs.filter(url => url === queryResult.url).length
+                return {
+                    ...queryResult,
+                    count: count
+                }
+            })
+            return {
+                query: query.Query,
+                results: queryResults
+                
+            }
+        })
+
+
+
+        return clickedItems
+    }
+
     set id(id) {
         this.config.SessionNum = id;
     }
