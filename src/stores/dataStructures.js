@@ -122,8 +122,8 @@ export class Session {
             })
             return {
                 query: query.Query,
+                expandedQuery: query.ExtendedQuery,
                 results: queryResults
-                
             }
         })
 

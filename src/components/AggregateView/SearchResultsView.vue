@@ -3,9 +3,9 @@
     <div class="grow-0">
       <section-title> Search Results comparison</section-title>
     </div>
-    <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-scroll">
+    <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-auto">
       <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="w-1/3 flex-none h-full flex flex-col">
-        <div class="flex-none">
+        <div class="flex-none cursor-pointer" @click="highlightSessions(result.query, result.expandedQuery)">
           Query: {{result.query}}
         </div>
         <div class="flex-auto divide-y overflow-y-auto">
@@ -41,11 +41,25 @@ export default {
       }).flat()
     })
 
+    const setHighlights = store.setHighlights
+
     // const allClickedItems = computed(() => selectedSessions.map(s => s.allClickedItems))
+    const highlightSessions = function (query, expandedQuery) {
+      console.log(query, expandedQuery)
+      const highlightedSessions = selectedSessions.value.filter(session => {
+        return session.allQueryPairs.flat().includes(`${query}|${expandedQuery}`)
+      }).map(session => session.id)
+      setHighlights({
+        behaviorClusters: new Set(),
+        keywordClusters: new Set(),
+        sessionIds: highlightedSessions
+      })
+    }
 
     return {
       selectedSessions,
-      searchResults
+      searchResults,
+      highlightSessions
       // allClickedItems
     }
   },

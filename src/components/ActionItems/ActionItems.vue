@@ -8,7 +8,7 @@
         </button>
       </div>
     </div>
-    <div class="overflow-y-scroll h-4/5 divide-y border">
+    <div class="overflow-y-auto h-4/5 divide-y border">
       <action-item v-for="(item, idx) in actionItems" :actionItem="item" :key="item.text" :idx="idx" @update-note="updateNote" @remove="remove"></action-item>
     </div>
     <div class="bg-green-500 rounded-md text-white cursor-pointer text-center">

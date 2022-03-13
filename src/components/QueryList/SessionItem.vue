@@ -17,7 +17,7 @@
         <favorite-icon v-if="!isClicked"></favorite-icon>
         <favorite-clicked-icon v-else></favorite-clicked-icon>
       </div> -->
-      <div class="w-10/12 flex items-center" v-on:click="setChosenSession()">
+      <div class="w-10/12 flex flex-auto items-center" v-on:click="setChosenSession()">
 
         <div class="w-5/12 pr-1 h-full flex items-center">
           <!-- The search icon -->
@@ -28,7 +28,7 @@
           </medium-title>
         </div>
         <!-- Action history -->
-        <div class="w-7/12 h-full flex items-center justify-start overflow-x-scroll">
+        <div class="w-7/12 h-full flex items-center justify-start overflow-x-auto">
           <template
             v-for="(action, i) in session.sequence.slice(1)"
             :key="action"
@@ -48,7 +48,7 @@
         </div>
       </div>
       <!-- The triangle, indicating whether the current session is selected -->
-      <div class="mx-2 flex justify-center items-center" v-on:click="setChosenSession()">
+      <div class="mx-2 flex flex-none justify-center items-center" v-on:click="setChosenSession()">
         <triangle-black
           v-bind="{
             class: [

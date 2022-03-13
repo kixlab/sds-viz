@@ -22,7 +22,7 @@
         </div>
       </div> -->
       <!-- The query list -->
-      <div class="flex flex-col overflow-y-scroll mt-4">
+      <div class="flex flex-col overflow-y-auto mt-4">
         <session-item
           v-for="session in selectedSessions"
           :key="session.id"

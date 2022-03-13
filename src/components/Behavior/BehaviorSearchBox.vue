@@ -27,12 +27,12 @@
       </div>
       <div class="flex flex-none items-center px-2 py-1 rounded-lg shadow-md bg-green-500 text-white">
         <button @click="setBehaviors()" class="cursor-pointer align-bottom my-auto">
-          <SearchIcon class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+          <SearchIcon class=" h-6 w-6" aria-hidden="true" />
         </button>
       </div>
     </div>
     <div 
-      class="grid grid-cols-2 absolute z-10 rounded-lg shadow-md w-full bg-white px-2 py-2 overflow-y-scroll" 
+      class="grid grid-cols-2 absolute z-10 rounded-lg shadow-md w-full bg-white px-2 py-2 overflow-y-auto" 
       v-if="showOptions">
       <behavior-option 
         v-for="b in behaviors" 

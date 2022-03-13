@@ -11,9 +11,9 @@
       </thead>
       <tbody>
         <tr v-for="qc in queriesCount" :key="qc.query">
-          <th>{{qc.query}}</th>
-          <th>{{qc.expandedQuery}}</th>
-          <th>{{qc.count}}</th>
+          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.query}}</th>
+          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.expandedQuery}}</th>
+          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.count}}</th>
         </tr>
       </tbody>
     </table>
@@ -32,6 +32,7 @@ export default {
   setup() {
     const store = useGlobalStore()
     const selectedSessions = computed(() => store.getSelectedSessions.value)
+    const setHighlights = store.setHighlights
 
     const queries = computed(() => {
       return selectedSessions.value.map(session => session.allQueryPairs.flat()).flat()
@@ -50,10 +51,22 @@ export default {
         }
       })
     })
+
+    const highlightSessions = function (query, expandedQuery) {
+      const highlightedSessions = selectedSessions.value.filter(session => {
+        return session.allQueryPairs.flat().includes(`${query}|${expandedQuery}`)
+      }).map(session => session.id)
+      setHighlights({
+        behaviorClusters: new Set(),
+        keywordClusters: new Set(),
+        sessionIds: highlightedSessions
+      })
+    }
     return {
       selectedSessions,
       queries,
-      queriesCount
+      queriesCount,
+      highlightSessions
     }
   }
   

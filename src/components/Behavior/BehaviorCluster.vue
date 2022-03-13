@@ -13,7 +13,7 @@
     v-on:click="setChosenBehaviorCluster()"
   >
     <!-- Behavior k-grams are listed here -->
-    <div class="flex-grow overflow-y-scroll">
+    <div class="flex-grow overflow-y-auto">
       <div
         v-for="distinguishingFeature in behaviorCluster.distinguishingFeatures"
         :key="distinguishingFeature"
