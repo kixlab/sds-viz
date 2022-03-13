@@ -257,6 +257,10 @@ export const initGlobalStore = () => {
             return session.shorthandSequence === shorthandBehaviors
         })
 
+        if (filteredSessions.length === 0) {
+            alert('No sessions found with the given behaviors.')
+        }
+
         const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
         const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
 
