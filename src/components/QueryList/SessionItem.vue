@@ -59,11 +59,13 @@
           }"
         />
       </div>
-      <div class="w-6/12">
-        <session-tagger :session-id="session.id"></session-tagger>
-      </div>
-      <div class="w-6/12 text-right text-xxs">     
-        {{session.timestamp.toLocaleString('ko-KR')}}
+      <div class="flex w-full items-center">
+        <div class="grow mr-2">
+          <session-tagger :session-id="session.id"></session-tagger>
+        </div>
+        <div class="flex-none text-right text-xxs">     
+          {{session.timestamp.toLocaleString('ko-KR')}}
+        </div>
       </div>
     </div>
     <!-- If this session is clicked, then shows the search history as well -->
@@ -168,5 +170,9 @@ export default {
 <style scoped>
 .text-xxs {
   font-size: 0.5em;
+}
+
+.grow {
+  flex-grow: 1;
 }
 </style>
