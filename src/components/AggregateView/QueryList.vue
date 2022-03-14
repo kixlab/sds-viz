@@ -1,22 +1,24 @@
 <template>
-  <div>
-    <section-title>Query Comparison</section-title>
-    <table class="table-auto w-full">
-      <thead>
-        <tr>
-          <th>User query</th>
-          <th>Expanded query</th>
-          <th>Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="qc in queriesCount" :key="qc.query">
-          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.query}}</th>
-          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.expandedQuery}}</th>
-          <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.count}}</th>
-        </tr>
-      </tbody>
-    </table>
+  <div class="flex flex-col">
+    <section-title class="flex-0">Query Comparison</section-title>
+    <div class="flex-1 overflow-y-auto">
+      <table class="table-auto w-full">
+        <thead>
+          <tr>
+            <th>User query</th>
+            <th>Expanded query</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(qc, idx) in queriesCount" :key="qc.query" :class="idx % 2 == 1 ? 'bg-white' : 'bg-gray-300'">
+            <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.query}}</th>
+            <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.expandedQuery}}</th>
+            <th @click="highlightSessions(qc.query, qc.expandedQuery)" class="cursor-pointer">{{qc.count}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -49,7 +51,7 @@ export default {
           expandedQuery: expandedQuery,
           count: queries.value.filter(q => q === query).length
         }
-      })
+      }).sort((a, b) => b.count - a.count)
     })
 
     const highlightSessions = function (query, expandedQuery) {
