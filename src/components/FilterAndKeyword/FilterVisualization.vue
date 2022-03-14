@@ -56,7 +56,8 @@ export default {
       // One good aspect of using inject instead of prop, is that we can utilize reactivity. However, props are probably not reactive
       rankingPercentageById: inject("rankingPercentageById"),
       setInteractionState,
-      chosenThreshold
+      chosenThreshold,
+      createLog: inject('createLog')
     };
   },
   mounted() {
@@ -213,6 +214,12 @@ export default {
     // Update the threshold value when the slider is moved
     updateThreshold() {
       // Get the slider value
+      this.createLog('updateThreshold', {
+        chosenThreshold: this.chosenThreshold,
+        chosenMetric: this.chosenMetric,
+        keywordClusters: this.keywordClusters
+      })
+      console.log(this.keywordClusters)
       const threshold = $("#metric-threshold").val() / 10;
       // Update the interaction state that stores the chosen threshold as well, in the global store
       this.setInteractionState({'chosenThreshold': threshold});

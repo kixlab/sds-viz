@@ -19,7 +19,7 @@
           Open the action palette and add behaviors to start searching
         </div>
         <div class="flex flex-none items-center">
-          <button @click="showOptions = !showOptions" class="cursor-pointer">
+          <button @click="seeBehaviorPanel()" class="cursor-pointer">
             <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
             <ChevronUpIcon v-else class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
           </button>
@@ -38,7 +38,7 @@
         v-for="b in behaviors" 
         :value="b" 
         :key="b" 
-        @click="selectedBehaviors.push(b)"
+        @click="pushBehavior(b)"
         class="cursor-pointer">
       </behavior-option>
     </div>
@@ -74,7 +74,7 @@ import {
 } from '@headlessui/vue'
 
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
@@ -107,11 +107,14 @@ export default {
     const setInteractionState = store.setInteractionState;
     const setShorthandBehaviors = store.setShorthandBehaviors
 
+    const createLog = inject('createLog')
+
     return {
       interactionState,
       setInteractionState,
       behaviors,
-      setShorthandBehaviors
+      setShorthandBehaviors, 
+      createLog
     };
   },
   data: function () {
@@ -122,12 +125,37 @@ export default {
   },
   methods: {
     removeBehavior: function (i) {
+      this.createLog('removeActionFromBehaviorSearchBox', {
+        action: this.selectedBehaviors[i]
+      })
       this.selectedBehaviors.splice(i, 1)
     },
     setBehaviors: function () {
       console.log('setBehaviors')
+      this.createLog('setBehaviorFromBehaviorSearchBox', {
+        behaviors: this.selectedBehaviors
+        //TODO: search results?
+      })
       this.setShorthandBehaviors(this.shorthandSelectedBehaviors)
-    }
+    },
+    seeBehaviorPanel() {
+      if (this.showOptions) {
+        this.createLog('closeBehaviorPanel', {
+          behaviors: this.selectedBehaviors
+        })
+      } else {
+        this.createLog('openBehaviorPanel', {
+          behaviors: this.selectedBehaviors
+        })
+      }
+      this.showOptions = !this.showOptions
+    },
+    pushBehavior: function (b) {
+      this.createLog('addActionToBehaviorSearchBox', {
+        action: b
+      })
+      this.selectedBehaviors.push(b)
+    },
   },
   computed: {
     shorthandSelectedBehaviors: function () {

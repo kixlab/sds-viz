@@ -42,7 +42,7 @@ import SectionTitle from "@/components/Common/SectionTitle.vue";
 // import SortByDropdown from "@/components/QueryList/SortByDropdown.vue";
 import SessionItem from "@/components/QueryList/SessionItem.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, provide, ref } from "vue";
+import { computed, provide, ref, inject } from "vue";
 import MediumTitle from '../Common/SmallTitle.vue';
 
 export default {
@@ -108,22 +108,27 @@ export default {
     provide("mainOption", sortByOption);
     provide("allOptions", window.globalVars.METRICS);
 
+    const createLog = inject('createLog')
+
     return {
       interactionState,
       setInteractionState,
       selectedSessionIds,
       tags,
       selectedSessions,
-      selectedTag
+      selectedTag,
+      createLog
     };
   },
   methods: {
     selectTag: function (tag) {
       if (this.selectedTag === tag) {
+        this.createLog('deselectTag', { tag: tag })
         this.setInteractionState({
           chosenTag: ''
         })
       } else {
+        this.createLog('selectTag', {tag: tag})
         this.setInteractionState({
           chosenTag: tag
         })

@@ -30,7 +30,7 @@
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, ref } from "vue";
+import { computed, ref, inject } from "vue";
 
 export default {
   setup(props) {
@@ -50,6 +50,8 @@ export default {
       return Object.keys(selectedSessionIds.value)
     })
     const setSelectedSessionIds = store.setSelectedSessionIds;
+
+    const createLog = inject('createLog')
 
     const isAutocompleteEnabled = ref(false)
 
@@ -81,6 +83,11 @@ export default {
         return
       } else if (tags.value.includes(newTag.value)) {
         e.preventDefault();
+        createLog('addExistingTagToSession', {
+          sessionId: props.sessionId,
+          tag: newTag.value,
+          sesssion: props.session
+        })
         e.target.value = ''
         newTag.value = ''
         closeAutocomplete()
@@ -90,6 +97,12 @@ export default {
       e.preventDefault();
       setSelectedSessionIds(newTag.value, props.sessionId, 'add')
       tags.value.push(newTag.value)
+      createLog('addTagToSession', {
+        sessionId: props.sessionId,
+        tag: newTag.value,
+        sesssion: props.session,
+        from: 'tagInput'
+      })
       newTag.value = ''
       e.target.value = '';
       closeAutocomplete()
@@ -98,6 +111,12 @@ export default {
     const setNewTag = function (t) {
       setSelectedSessionIds(t, props.sessionId, 'add')
       tags.value.push(t)
+      createLog('addTagToSession', {
+        sessionId: props.sessionId,
+        tag: newTag.value,
+        sesssion: props.session,
+        from: 'autocomplete'
+      })
       newTag.value = ''
       closeAutocomplete()
     }
@@ -164,6 +183,11 @@ export default {
     removeTag: function (idx) {
       this.setSelectedSessionIds(this.tags[idx], this.sessionId, 'remove')
       this.tags.splice(idx, 1)
+      this.createLog('removeTagFromSession', {
+        sessionId: this.sessionId,
+        tag: this.tags[idx],
+        sesssion: this.session
+      })
     },
     removeLastTag: function (e) {
       if (e.target.value.length === 0) {

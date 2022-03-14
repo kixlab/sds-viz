@@ -90,7 +90,8 @@ export default {
         body: JSON.stringify({
           log_user: getUsername.value,
           event_name: eventName,
-          event_payload: payload
+          event_payload: JSON.stringify(payload),
+          client_timestamp: new Date().toISOString()
         })
       });
     }
@@ -121,6 +122,7 @@ export default {
     provide('navigateToSessions', () => changePage(1));
 
     provide('createLog', createLog);
+    provide('currentPage', page)
 
     return {
       page,

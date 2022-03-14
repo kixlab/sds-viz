@@ -24,7 +24,7 @@
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import SectionTitle from '../Common/SectionTitle.vue';
 
 export default {
@@ -41,6 +41,7 @@ export default {
     })
 
     const queriesSet = computed(() => Array.from(new Set(queries.value)))
+    const createLog = inject('createLog')
 
     const queriesCount = computed(() => {
       return queriesSet.value.map(query => {
@@ -58,6 +59,11 @@ export default {
       const highlightedSessions = selectedSessions.value.filter(session => {
         return session.allQueryPairs.flat().includes(`${query}|${expandedQuery}`)
       }).map(session => session.id)
+      createLog('highlightSessionsFromQueryList', {
+        query,
+        expandedQuery,
+        highlightedSessions
+      })
       setHighlights({
         behaviorClusters: new Set(),
         keywordClusters: new Set(),

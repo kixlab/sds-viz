@@ -38,7 +38,7 @@
 <script>
 import MediumTitle from "../../Common/MediumTitle.vue";
 import SearchRefineIcon from "../../Common/Icons/SearchRefineIcon.vue";
-
+import { inject, ref } from 'vue'
 export default {
   name: "RefinedQueryItem",
   props: ["action"],
@@ -46,11 +46,30 @@ export default {
     MediumTitle,
     SearchRefineIcon,
   },
-  data() {
+  setup(props) {
+    const createLog = inject('createLog')
+    const session = inject('session')
+    const seeSearchResults = ref(false)
+    const toggleSearchResults = function () {
+      if (seeSearchResults.value) {
+        createLog('closeSearchResultsFromRefinedQuery', {
+          query: props.action.Query,
+          session: session
+        })
+        seeSearchResults.value = false
+      } else {
+        createLog('showSearchResultsFromRefinedQuery', {
+          query: props.action.Query,
+          session: session
+        })
+        seeSearchResults.value = true
+      }
+    }
     return {
-      // Whether to show the search results
-      seeSearchResults: false,
-    };
+      createLog,
+      seeSearchResults,
+      toggleSearchResults
+    }
   },
 };
 </script>

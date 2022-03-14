@@ -21,7 +21,7 @@
           <in-section-title class="bg-gray-200 mt-1 mx-2">
             Performance Metric Selection
           </in-section-title>
-          <button class="w-6 h-6 mr-2" @click="tooltipClicked = !tooltipClicked; showTooltip = false" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false">
+          <button class="w-6 h-6 mr-2" @click="onTooltipOpen()" @mouseenter="onTooltipHover()" @mouseleave="onTooltipHoverLeave()">
             <question-mark />
           </button>
         </div>
@@ -34,7 +34,7 @@
             rounded-md
             border-gray-500 border
             px-2
-            py-2" @click="tooltipClicked = false">
+            py-2" @click="onTooltipClose()">
             <ul>
               <li><span class="font-bold">pSkip</span>: Fraction of documents viewed but not clicked</li>
               <li><span class="font-bold">Click@1-5</span>: Fraction of queries with clicks on documents ranked 1-5</li>
@@ -99,7 +99,7 @@ import InSectionTitle from "@/components/Common/InSectionTitle.vue";
 import SmallTitle from "../Common/SmallTitle.vue";
 import KeywordClustersVisualization from "./KeywordClustersVisualization.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import QuestionMark from '../Common/Icons/QuestionMark.vue'
 import { SearchIcon } from "@heroicons/vue/solid";
 
@@ -122,10 +122,12 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     const setQuery = store.setQuery;
+    const createLog = inject('createLog')
     return {
       interactionState,
       setInteractionState,
-      setQuery
+      setQuery,
+      createLog
     };
   },
   data() {
@@ -150,6 +152,9 @@ export default {
         chosenMetric: metric,
         chosenThreshold: 0.0,
       };
+      this.createLog('setMetric', {
+        chosenMetric: metric
+      })
       // If the currently chosen metric is the same as the one chosen, then we cancel selection
       if (this.interactionState.chosenMetric === metric) {
         updateState.chosenMetric = null;
@@ -158,8 +163,28 @@ export default {
       this.setInteractionState(updateState);
     },
     setKeyword: function () {
-      console.log(this.keyword)
+      this.createLog('setKeywordFromKeywordSearchBox', {
+        keyword: this.keyword
+        //TODO: search results
+      })
       this.setQuery(this.keyword);
+    },
+    onTooltipHover: function () {
+      this.createLog('hoverMetricTooltip')
+      this.showTooltip = true;
+    },
+    onTooltipHoverLeave: function () {
+      this.createLog('hoverLeaveMetricTooltip')
+      this.showTooltip = false;
+    },
+    onTooltipOpen: function () {
+      this.createLog('openMetricTooltip')
+      this.tooltipClicked = true;
+      this.showTooltip = false
+    },
+    onTooltipClose: function () {
+      this.createLog('closeMetricTooltip')
+      this.tooltipClicked = false;
     }
   },
 };

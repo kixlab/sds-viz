@@ -107,11 +107,13 @@ export default {
     // Whether the metric goodness is directly proportionate with the value of the metric
     // whether, the higher is the better
     const isMetricGoodnessDirect = window.globalVars.IS_METRIC_GOODNESS_DIRECT;
+    const createLog = inject('createLog')
     return {
       parentCallFunction,
       allOptions,
       mainOption,
       isMetricGoodnessDirect,
+      createLog
     };
   },
   data() {
@@ -121,6 +123,9 @@ export default {
     // When an option is picked, the parentCallFunction is called with this option
     // Then, the parent component will set the dropdown option
     pickOption: function (option) {
+      this.createLog('pickDropdownOption', {
+        option: option
+      })
       this.parentCallFunction(option);
     },
   },

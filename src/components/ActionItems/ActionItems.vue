@@ -23,7 +23,7 @@
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import ActionItem from './ActionItem.vue';
 import SectionTitle from '../Common/SectionTitle.vue';
 import { XIcon, PlusCircleIcon } from "@heroicons/vue/solid";
@@ -45,6 +45,8 @@ export default {
 
     const targetSession = computed(() => store.getSession.value)
 
+    const createLog = inject('createLog')
+
     function updateNote(idx, note) {
       const newActionItem = {
         ...actionItems.value[idx],
@@ -58,6 +60,7 @@ export default {
         alert('Please select a session or group before creating an action item.');
         return
       }
+
       const newActionItem = {
         note: '',
         targetType: interactionState.chosenSessionId !== null ? 'session' : 'tag',
@@ -70,7 +73,9 @@ export default {
         } : null,
         targetTag: interactionState.chosenSessionId !== null ? null : interactionState.chosenTag
       }
-
+      createLog('createEmptyActionItem', {
+        actionItem: newActionItem
+      })
       store.addActionItem(newActionItem);
     }
 
@@ -79,6 +84,8 @@ export default {
     }
 
     function close() {
+      createLog('closeActionItemList', {
+      })
       ctx.emit('close');
     }
 

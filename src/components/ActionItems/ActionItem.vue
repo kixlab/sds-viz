@@ -63,12 +63,17 @@ export default {
 
     const navigateToGroups = inject('navigateToGroups')
     const navigateToSessions = inject('navigateToSessions')
+    const createLog = inject('createLog')
 
     const navigateGroup = function () {
       const update = {
         chosenTag: props.actionItem.targetTag,
         chosenSessionId: null,
       }
+
+      createLog('navigateToGroupFromActionItem', {
+        actionItem: props.actionItem
+      })
 
       setInteractionState(update);
 
@@ -82,6 +87,12 @@ export default {
         chosenKeywordCluster: props.actionItem.targetSession.keywordClusterId
       }
 
+      createLog('navigateToSessionFromActionItem', {
+        actionItem: props.actionItem,
+        ...update,
+        // TODO: include session?
+      })
+
       navigateToSessions();
 
       setInteractionState(update);
@@ -90,7 +101,8 @@ export default {
   return {
       interactionState,
       navigateGroup,
-      navigateSession
+      navigateSession,
+      createLog
       // targetSession,
       // targetSessionName
     }
@@ -104,14 +116,23 @@ export default {
   },
   methods: {
     toggleEditing: function () {
+      this.createLog('startEditActionItem', {
+        actionItem: this.actionItem,
+      })
       this.isEditing = !this.isEditing;
     },
     save: function () {
       this.isEditing = false;
       this.$emit('updateNote', this.idx, this.internalNote);
-      // Todo: implement this.actionItem.note = this.internalNote;
+      this.createLog('saveActionItem', {
+        actionItem: this.actionItem,
+        newNote: this.internalNote
+      })
     },
     removeActionItem: function () {
+      this.createLog('removeActionItem', {
+        actionItem: this.actionItem,
+      })
       this.$emit('remove', this.idx);
     }
   }

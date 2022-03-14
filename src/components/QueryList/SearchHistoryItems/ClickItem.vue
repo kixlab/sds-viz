@@ -23,7 +23,7 @@
     <!-- I-frame to show the search results -->
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
-        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
+        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close document content' : 'See document content' }}
         </div>
         <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
@@ -49,13 +49,21 @@
 <script>
 import IconGiver from "../../Common/IconGiver.vue";
 import MediumTitle from "../../Common/MediumTitle.vue";
-
+import { inject } from 'vue'
 export default {
   name: "ClickItem",
   props: ["action"],
   components: {
     MediumTitle,
     IconGiver,
+  },
+  setup () {
+    const createLog = inject('createLog')
+    const session = inject('session')
+    return {
+      createLog,
+      session
+    }
   },
   computed: {
     highlightedContext: function () {
@@ -85,6 +93,20 @@ export default {
         suffix = "rd";
       }
       return `${rank}${suffix}`;
+    },
+    toggleSearchResults: function () {
+      if (this.seeSearchResults) {
+        this.createLog('hideClickedDocumentContentWithinSession', {
+          session: this.session,
+          action: this.action
+        })
+      } else {
+        this.createLog('showClickedDocumentContentWithinSession', {
+          session: this.session,
+          action: this.action
+        })
+      }
+      this.seeSearchResults = !this.seeSearchResults;
     },
   },
 };

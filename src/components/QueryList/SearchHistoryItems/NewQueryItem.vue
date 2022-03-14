@@ -10,7 +10,7 @@
     <!-- i-frame component to show the search results -->
     <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
-        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
+        <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close query results' : 'See query results' }}
         </div>
         <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
@@ -40,6 +40,7 @@
 import SearchIcon from '@/components/Common/Icons/SearchIcon.vue';
 import MediumTitle from '../../Common/MediumTitle.vue';
 // import SmallTitle from '../../Common/SmallTitle.vue';
+import { inject, ref } from 'vue'
 
 export default {
   name: "NewQueryItem",
@@ -50,12 +51,32 @@ export default {
     MediumTitle,
     // SmallTitle,
   },
-  data() {
+  setup(props) {
+    const createLog = inject('createLog')
+    const session = inject('session')
+    const seeSearchResults = ref(false)
+    const toggleSearchResults = function () {
+      if (seeSearchResults.value) {
+        createLog('closeSearchResultsFromNewQuery', {
+          query: props.action.Query,
+          session: session
+        })
+        seeSearchResults.value = false
+      } else {
+        createLog('showSearchResultsFromNewQuery', {
+          query: props.action.Query,
+          session: session
+        })
+        seeSearchResults.value = true
+      }
+    }
     return {
-      // Whether to show the search results
-      'seeSearchResults': false,
+      createLog,
+      seeSearchResults,
+      toggleSearchResults
     }
   },
+
 };
 </script>
 

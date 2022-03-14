@@ -5,13 +5,13 @@
     </div>
     <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-auto">
       <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col">
-        <div class="flex-none cursor-pointer" @click="highlightSessions(result.query, result.expandedQuery)">
+        <div class="flex-none cursor-pointer" @click="highlightSessions(result)">
           Query: {{result.query}} 
           <br> 
           {{result.clickCounts}} clicks total.
         </div>
         <div class="flex-auto divide-y overflow-y-auto">
-          <search-result-item v-for="item in result.results" :key="`${item.title}-${idx}`" :search-result-item="item">
+          <search-result-item v-for="item in result.results" :key="`${item.title}-${idx}`" :query="result.query" :search-result-item="item">
           </search-result-item>
         </div>
         <!-- <div v-for="item in result.results" :key="`${item.title}-${idx}`">
@@ -24,7 +24,7 @@
 </template>
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import SearchResultItem from "./SearchResultItem.vue";
 import SectionTitle from "../Common/SectionTitle.vue";
 
@@ -36,7 +36,7 @@ export default {
   setup() {
     const store = useGlobalStore();
     const selectedSessions = computed(() => store.getSelectedSessions.value);
-
+    const createLog = inject('createLog')
     const searchResults = computed(() => {
       return selectedSessions.value.map(session => {
         return session.allClickedItems;
@@ -46,11 +46,14 @@ export default {
     const setHighlights = store.setHighlights
 
     // const allClickedItems = computed(() => selectedSessions.map(s => s.allClickedItems))
-    const highlightSessions = function (query, expandedQuery) {
-      console.log(query, expandedQuery)
+    const highlightSessions = function (result) {
       const highlightedSessions = selectedSessions.value.filter(session => {
-        return session.allQueryPairs.flat().includes(`${query}|${expandedQuery}`)
+        return session.allQueryPairs.flat().includes(`${result.query}|${result.expandedQuery}`)
       }).map(session => session.id)
+      createLog('highlightSessionsFromSearchResults', {
+        highlightedSessions,
+        result
+      })
       setHighlights({
         behaviorClusters: new Set(),
         keywordClusters: new Set(),

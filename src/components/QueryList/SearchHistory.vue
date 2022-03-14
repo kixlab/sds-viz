@@ -21,13 +21,16 @@
 import LargeTitle from "../Common/LargeTitle.vue";
 import ItemGiver from "./ItemGiver.vue";
 import LineInTheMiddleVertical from "../Common/Icons/LineInTheMiddleVertical.vue";
-
+import { provide } from 'vue'
 export default {
   name: "SearchHistory",
   components: {
     LargeTitle,
     ItemGiver,
     LineInTheMiddleVertical,
+  },
+  setup(props) {
+    provide('session', props.session)
   },
   // Prop from the parent (which is the session information)
   props: ["session"],

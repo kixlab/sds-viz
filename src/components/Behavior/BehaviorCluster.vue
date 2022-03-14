@@ -46,7 +46,7 @@
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import LineInTheMiddle from "@/components/Common/Icons/LineInTheMiddle.vue";
 import IconGiver from '../Common/IconGiver.vue';
 import SmallTitle from '../Common/SmallTitle.vue';
@@ -68,10 +68,12 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     const highlights = computed(() => store.getHighlights.value);
+    const createLog = inject('createLog')
     return {
       interactionState,
       setInteractionState,
-      highlights
+      highlights,
+      createLog
     };
   },
   methods: {
@@ -88,6 +90,10 @@ export default {
       ) {
         update.chosenBehaviorClusterId = null;
       }
+      this.createLog('chooseBehaviorCluster', {
+        behaviorClusterId: this.behaviorCluster.id,
+        behaviorCluster: this.behaviorCluster
+      })
       // Update the interaction state
       this.setInteractionState(update);
     },

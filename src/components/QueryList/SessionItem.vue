@@ -61,7 +61,7 @@
       </div>
       <div class="flex w-full items-center">
         <div class="grow mr-2">
-          <session-tagger :session-id="session.id"></session-tagger>
+          <session-tagger :session="session" :session-id="session.id"></session-tagger>
         </div>
         <div class="flex-none text-right text-xxs">     
           {{session.timestamp.toLocaleString('ko-KR')}}
@@ -93,7 +93,7 @@ import TriangleBlack from "../Common/Icons/TriangleBlack.vue";
 import SearchHistory from "./SearchHistory.vue";
 import IconGiver from "../Common/IconGiver.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 // import FavoriteIcon from '../Common/Icons/FavoriteIcon.vue';
 // import FavoriteClickedIcon from '../Common/Icons/FavoriteClickedIcon.vue';
 import SessionTagger from './SessionTagger.vue'
@@ -124,12 +124,17 @@ export default {
 
     const highlights = computed(() => store.getHighlights.value);
 
+    const createLog = inject('createLog')
+    const currentPage = inject('currentPage')
+
     return {
       interactionState,
       setInteractionState,
       selectedSessionIds,
       setSelectedSessionIds,
-      highlights
+      highlights,
+      createLog,
+      currentPage
     };
   },
   data() {
@@ -143,14 +148,14 @@ export default {
     // },
   },
   methods: {
-    setFavoriteSession() {
-      const update = this.isClicked
-          ? this.selectedSessionIds.filter(
-              (id) => id !== this.session.id
-            )
-          : [...this.selectedSessionIds, this.session.id];
-      this.setSelectedSessionIds(update);
-    },
+    // setFavoriteSession() {
+    //   const update = this.isClicked
+    //       ? this.selectedSessionIds.filter(
+    //           (id) => id !== this.session.id
+    //         )
+    //       : [...this.selectedSessionIds, this.session.id];
+    //   this.setSelectedSessionIds(update);
+    // },
     // In case this session is clicked, update the interaction state
     setChosenSession() {
       let update = {
@@ -159,6 +164,30 @@ export default {
       // If the previously chosen session was the current session, then we flip the selection
       if (this.interactionState.chosenSessionId === this.session.id) {
         update.chosenSessionId = null;
+        if (this.currentPage === 1) {
+          this.createLog('unselectSessionWhileBrowsing', {
+            sessionId: this.session.id,
+            session: this.session
+          })
+        } else if (this.currentPage === 2) {
+          this.createLog('unselectSessionWhileInspecting', {
+            sessionId: this.session.id,
+            session: this.session
+          })
+        }
+
+      } else {
+        if (this.currentPage === 1) {
+          this.createLog('selectSessionWhileBrowsing', {
+            sessionId: this.session.id,
+            session: this.session
+          })
+        } else if (this.currentPage === 2) {
+          this.createLog('selectSessionWhileInspecting', {
+            sessionId: this.session.id,
+            session: this.session
+          })
+        }
       }
       // Update the interaction state
       this.setInteractionState(update);
