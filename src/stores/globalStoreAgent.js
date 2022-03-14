@@ -220,6 +220,8 @@ export const initGlobalStore = () => {
                 }
             }
         }
+        localStorage.setItem('selectedSessionIds', JSON.stringify(selectedSessionIds));
+
 
         // if (tag in selectedSessionIds) {
         //     if (selectedSessionIds[tag].includes(sessionId)) {
@@ -285,7 +287,7 @@ export const initGlobalStore = () => {
 
         }
 
-        localStorage.setItem('interactionState', JSON.stringify(interactionState));
+        // localStorage.setItem('interactionState', JSON.stringify(interactionState));
 
 
         // if ('chosenKeywordClusterId' in partialState) {

@@ -120,10 +120,14 @@ export class Session {
                     count: count
                 }
             })
+            const clickCounts = queryResults.reduce((prev, cur) => {
+                return prev + cur.count
+            }, 0)
             return {
                 query: query.Query,
                 expandedQuery: query.ExtendedQuery,
-                results: queryResults
+                results: queryResults,
+                clickCounts: clickCounts
             }
         })
 

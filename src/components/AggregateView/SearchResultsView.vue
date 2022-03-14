@@ -4,9 +4,11 @@
       <section-title> Search Results comparison</section-title>
     </div>
     <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-auto">
-      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="w-1/3 flex-none h-full flex flex-col">
+      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col">
         <div class="flex-none cursor-pointer" @click="highlightSessions(result.query, result.expandedQuery)">
-          Query: {{result.query}}
+          Query: {{result.query}} 
+          <br> 
+          {{result.clickCounts}} clicks total.
         </div>
         <div class="flex-auto divide-y overflow-y-auto">
           <search-result-item v-for="item in result.results" :key="`${item.title}-${idx}`" :search-result-item="item">
@@ -38,7 +40,7 @@ export default {
     const searchResults = computed(() => {
       return selectedSessions.value.map(session => {
         return session.allClickedItems;
-      }).flat()
+      }).flat().sort((a, b) => b.clickCounts - a.clickCounts);
     })
 
     const setHighlights = store.setHighlights
