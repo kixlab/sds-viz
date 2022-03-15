@@ -498,10 +498,24 @@ export default {
           //   this.interactionState.chosenKeywordClusterId !== d.id
           // )
           //   return;
+          this.createLog('hoverKeywordClusterInfo', {
+            keywordClusterId: d.id,
+            keywordCluster: d.topFiveKeywords.join(' / '),
+            subtreeSize: d.subtreeSize,
+            metrics: d.metricsValue
+            // behaviorCluster: this.behaviorCluster
+          })
           updateTooltip(e, d);
         })
         // When the hovering is over, hide the tooltip
-        .on("mouseout", () => {
+        .on("mouseout", (e, d) => {
+          this.createLog('hoverLeaveKeywordClusterInfo', {
+            keywordClusterId: d.id,
+            keywordCluster: d.topFiveKeywords.join(' / '),
+            subtreeSize: d.subtreeSize,
+            metrics: d.metricsValue
+            // behaviorCluster: this.behaviorCluster
+          })
           // if (this.interactionState.chosenKeywordClusterId !== null) return;
           this.isTooltipVisible = false
         });
