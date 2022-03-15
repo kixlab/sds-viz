@@ -208,6 +208,7 @@ export default {
     },
     // Update the chosen keyword cluster, by updating the interaction state
     setChosenKeywordCluster(keywordClusterId, keywordCluster) {
+      console.log(keywordCluster)
       const previouslyChosenKeywordClusterId =
         this.interactionState.chosenKeywordClusterId;
       // Flip the color of previously chosen keyword cluster
@@ -219,7 +220,7 @@ export default {
       };
       // If the chosen keyword cluster is the same as the previously chosen keyword cluster,
       // then set the chosen keyword cluster to null
-      if (this.interactionState.chosenKeywordClusterId === keywordClusterId) {
+      if (keywordClusterId !== null && this.interactionState.chosenKeywordClusterId === keywordClusterId) {
         update.chosenKeywordClusterId = null;
         this.createLog('unchooseKeywordCluster', {
           keywordClusterId: keywordClusterId,
@@ -228,7 +229,7 @@ export default {
           metrics: keywordCluster.metricsValue
           // behaviorCluster: this.behaviorCluster
         })
-      } else {
+      } else if (keywordClusterId !== null) {
         this.createLog('chooseKeywordCluster', {
           keywordClusterId: keywordClusterId,
           keywordCluster: keywordCluster.topFiveKeywords.join(' / '),
@@ -585,13 +586,13 @@ export default {
         // We also, re-render the visualiation of keyword clusters for the chosen metric 
         // since the colors etc. also change
         if (newVal !== null && newVal !== oldVal) {
-          this.setChosenKeywordCluster(null)
+          this.setChosenKeywordCluster(null, null)
           this.isTooltipVisible = false
           this.render();
         } 
         // But, if we only set the new metric to null, we do not need to re-render the visualization (it should be empty)
         else if (newVal === null) {
-          this.setChosenKeywordCluster(null)
+          this.setChosenKeywordCluster(null, null)
           this.isTooltipVisible = false
         }
       },
