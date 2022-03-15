@@ -621,6 +621,16 @@ export default {
         }
       },
     },
+    highlights: {
+      handler() {
+        console.log('fired')
+        this.render()
+        // if (newVal.keywordClusters) {
+        //   this.render();
+        // }
+      }, 
+      deep: true
+    }
     // chosenBehaviorClusterId: {
     //   handler(newVal, oldVal) {
     //     // If the new behavior cluster is not equal to the old one

@@ -249,14 +249,14 @@ export default {
         }
       },
     },
-    chosenBehaviorClusterId: {
-      handler(newVal, oldVal) {
-        // If we choose a new threshold, then re-render this component
-        if (newVal !== null && newVal !== oldVal) {
-          this.render();
-        }
-      },
-    }
+    // chosenBehaviorClusterId: {
+    //   handler(newVal, oldVal) {
+    //     // If we choose a new threshold, then re-render this component
+    //     if (newVal !== null && newVal !== oldVal) {
+    //       this.render();
+    //     }
+    //   },
+    // }
   },
 };
 </script>
