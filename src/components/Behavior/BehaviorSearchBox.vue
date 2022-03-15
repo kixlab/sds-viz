@@ -162,6 +162,7 @@ export default {
         //TODO: search results?
       })
       this.setShorthandBehaviors(this.shorthandSelectedBehaviors)
+      this.showOptions = false
     },
     seeBehaviorPanel() {
       if (this.showOptions) {

@@ -36,13 +36,12 @@
             px-2
             py-2" @click="onTooltipClose()">
             <ul>
-              <li><span class="font-bold">pSkip</span>: Fraction of documents viewed but not clicked</li>
-              <li><span class="font-bold">Click@1-5</span>: Fraction of queries with clicks on documents ranked 1-5</li>
-              <li><span class="font-bold">MaxRR</span>: Mean of maximum reciprocal ranks for all queries</li>
+              <li><span class="font-bold">CTR@5</span>: Ratio of queries with clicks on documents ranked 1-5</li>
               <li><span class="font-bold">MeanRR</span>: Mean of average reciprocal ranks for all queries </li>
               <li><span class="font-bold">Abandonment rate</span>: Ratio of queries without any clicks</li>
-              <li><span class="font-bold">Reformulation rate</span>: Fraction of reformulated query among all queries</li>
-              <li><span class="font-bold">NDCG</span>: Normalized discounted Cumulative Gain</li>
+              <li><span class="font-bold">Reformulation rate</span>: Ratio of reformulated query among all queries</li>
+              <li><span class="font-bold">mAP</span>: Mean Average Precision</li>
+              <li><span class="font-bold">NDCG</span>: Normalized Discounted Cumulative Gain</li>
             </ul>
           </div>
         </div>
