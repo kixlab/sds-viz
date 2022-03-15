@@ -1,10 +1,10 @@
 <template>
   <div class="w-1/2 relative">
     <div class="flex">
-      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5">
+      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5 cursor-pointer" @click="seeBehaviorPanel()">
         <div v-if="selectedBehaviors.length > 0" class="flex flex-1 items-center">
           <template v-for="(b, i) in selectedBehaviors" :key="i">
-            <div class="w-6 h-6 relative">
+            <div class="w-6 h-6 relative cursor-pointer" @click="removeBehavior(i)">
               <icon-giver v-bind="{action_item: b}"></icon-giver>
               <div 
                 class="absolute z-10 -top-2 -right-1"
@@ -16,7 +16,7 @@
           </template>
         </div>
         <div class="flex flex-1 items-center text-gray-400" v-else>
-          Open the action palette and add behaviors to start searching
+          Click to open the action palette and add behaviors to start searching
         </div>
         <div class="flex flex-none items-center">
           <button @click="seeBehaviorPanel()" class="cursor-pointer">

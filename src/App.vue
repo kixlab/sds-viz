@@ -4,7 +4,7 @@
       <div class="flex-1 grow px-4"> 
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
       </div>
-      <div class="grow-0 py-2 px-4">
+      <div class="grow-0 py-2 px-4 rounded-md border">
         <input v-model="tempUsername" :disabled="isUsernameSet" placeholder="Your name here">
         <button :disabled="isUsernameSet" @click="setName" :class="[isUsernameSet ? 'bg-blueGray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
       </div>

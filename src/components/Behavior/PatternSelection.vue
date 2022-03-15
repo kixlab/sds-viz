@@ -8,7 +8,7 @@
     </div>
     <div class="flex w-full flex-grow overflow-y-hidden p-4">
       <!-- Behavior Legend -->
-      <behavior-legend class="min-w-max mr-4" />
+      <behavior-legend class="min-w-max mr-4" v-show="false" />
       <div
         class="flex justify-between items-center flex-grow overflow-y-hidden"
       >
