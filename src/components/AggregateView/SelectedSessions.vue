@@ -2,13 +2,13 @@
   <div class="flex flex-col">
     <!-- Title: 'Individual Search Sessions' -->
     <section-title> Selected Search Sessions </section-title>
-    <medium-title>Tags</medium-title>
+    <div>Tags</div>
     <div class="flex">
       <div v-for="tag in tags" :key="tag" :class="[selectedTag === tag ? 'bg-blue-500 text-white' : 'text-blue', 'px-3 py-1 mx-2 cursor-pointer rounded-lg shadow-md']" @click="selectTag(tag)">
         {{tag}}
       </div>
     </div>
-    <medium-title>Sessions</medium-title>
+    <div>Sessions</div>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <!-- The dropdown -->
       <!-- <div class="flex justify-end items-center">
@@ -43,7 +43,7 @@ import SectionTitle from "@/components/Common/SectionTitle.vue";
 import SessionItem from "@/components/QueryList/SessionItem.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, provide, ref, inject } from "vue";
-import MediumTitle from '../Common/SmallTitle.vue';
+// import MediumTitle from '../Common/SmallTitle.vue';
 
 export default {
   name: "SelectedSessions",
@@ -52,7 +52,7 @@ export default {
     // MediumTitle,
     // SortByDropdown,
     SessionItem,
-    MediumTitle,
+    // MediumTitle,
   },
   setup() {
     // The currently active sortByOption

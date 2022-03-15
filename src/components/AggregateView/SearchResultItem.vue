@@ -5,7 +5,7 @@
       <br>
       {{searchResultItem.seq}}
     </div>
-    <div class="flex-auto cursor-pointer" @click="showWholeContextToggle">
+    <div class="flex-auto cursor-pointer break-all" @click="showWholeContextToggle">
       <div class="font-bold">{{searchResultItem.title}}</div>
       <div>{{truncatedContext}}</div>
       <div class="text-sm">{{searchResultItem.url}}</div>

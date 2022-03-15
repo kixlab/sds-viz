@@ -2,11 +2,11 @@
   <div class="flex flex-col">
     <div class="flex justify-between">
       <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
-      <div class="flex">
-        <div class="bg-white rounded-lg shadow-md cursor-default focus:outline-none">
-          <input v-model="keyword" type="text">
+      <div class="flex w-1/3">
+        <div class="bg-white flex-1 rounded-lg shadow-md cursor-default focus:outline-none px-2">
+          <input v-model="keyword" class="w-full" placeholder="Search sessions with user query" @keydown.enter="setKeyword()" type="text">
         </div>
-        <div class="flex-none items-center px-1 rounded-lg shadow-md bg-green-500 text-white">
+        <div class="flex-none items-center px-1 rounded-lg shadow-md bg-blue-800 text-white">
           <button @click="setKeyword()" class="cursor-pointer my-auto">
             <SearchIcon class="h-6 w-6" aria-hidden="true" />
           </button>
@@ -15,10 +15,10 @@
     </div>
     <div class="flex flex-col flex-grow w-auto mx-4 my-4">
       <!-- Performance Metric Selection -->
-      <div class="flex flex-col bg-gray-200 rounded-md border border-black">
+      <div class="flex flex-col bg-gray-100 rounded-md border border-black">
         <!-- Title and question mark -->
         <div class="flex justify-between content-center items-center">
-          <in-section-title class="bg-gray-200 mt-1 mx-2">
+          <in-section-title class="bg-gray-100 mt-1 mx-2">
             Performance Metric Selection
           </in-section-title>
           <button class="w-6 h-6 mr-2" @click="onTooltipOpen()" @mouseenter="onTooltipHover()" @mouseleave="onTooltipHoverLeave()">
@@ -74,13 +74,13 @@
         class="
           flex flex-col flex-grow
           mt-4
-          bg-gray-200
+          bg-gray-100
           border border-black
           rounded-md
           overflow-y-hidden
         "
       >
-        <in-section-title class="bg-gray-200 mt-1 mx-2">
+        <in-section-title class="bg-gray-100 mt-1 mx-2">
           User Query Clusters
         </in-section-title>
         <!-- The visualization of the keyword clusters -->

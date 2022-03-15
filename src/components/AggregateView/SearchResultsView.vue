@@ -4,7 +4,7 @@
       <section-title> Search Results comparison</section-title>
     </div>
     <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-auto">
-      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col">
+      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${idx}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col mx-1 border">
         <div class="flex-none cursor-pointer" @click="highlightSessions(result)">
           Query: {{result.query}} 
           <br> 

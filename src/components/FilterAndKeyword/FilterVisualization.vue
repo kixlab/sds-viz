@@ -48,6 +48,8 @@ export default {
       () => store.getInteractionState.value.chosenThreshold
     );
 
+    const chosenBehaviorClusterId = computed(() => interactionState.value.chosenBehaviorClusterId)
+
     return {
       keywordClusters,
       interactionState,
@@ -57,7 +59,8 @@ export default {
       rankingPercentageById: inject("rankingPercentageById"),
       setInteractionState,
       chosenThreshold,
-      createLog: inject('createLog')
+      createLog: inject('createLog'),
+      chosenBehaviorClusterId
     };
   },
   mounted() {
@@ -246,6 +249,14 @@ export default {
         }
       },
     },
+    chosenBehaviorClusterId: {
+      handler(newVal, oldVal) {
+        // If we choose a new threshold, then re-render this component
+        if (newVal !== null && newVal !== oldVal) {
+          this.render();
+        }
+      },
+    }
   },
 };
 </script>

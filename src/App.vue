@@ -6,24 +6,24 @@
       </div>
       <div class="grow-0 py-2 px-4">
         <input v-model="tempUsername" :disabled="isUsernameSet" placeholder="Your name here">
-        <button :disabled="isUsernameSet" @click="setName" :class="[isUsernameSet ? 'bg-gray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
+        <button :disabled="isUsernameSet" @click="setName" :class="[isUsernameSet ? 'bg-blueGray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
           :disabled="page === 1"
           @click="changePage(1)"
-          class="bg-red-500 text-white rounded-md px-2 py-1">Browse</button>
-      </div>
-      <div class="grow-0 py-2 px-4">
-        <button 
-          @click="toggleActionItems()"
-          class="bg-blue-500 text-white rounded-md px-2 py-1">Action Items</button>
+          :class="[page !== 1 ? 'bg-blueGray-700' : 'bg-blue-500', 'text-white rounded-md px-2 py-1']">Browse sessions</button>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
           :disabled="page === 2"
           @click="changePage(2)"
-          class="bg-blue-500 text-white rounded-md px-2 py-1">Inspect</button>
+          :class="[page !== 2 ? 'bg-blueGray-700' : 'bg-blue-500', 'text-white rounded-md px-2 py-1']">Inspect sessions</button>
+      </div>
+      <div class="grow-0 py-2 px-4">
+        <button 
+          @click="toggleActionItems()"
+          class="bg-blueGray-300 text-black rounded-md px-2 py-1">Action Items</button>
       </div>
     </div>
     <div v-if="page === 1" class="w-full h-full flex flex-wrap">
@@ -81,7 +81,7 @@ export default {
     const { setInteractionState, getUsername, setUsername } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
-      const API_URL = 'http://localhost:8000';
+      const API_URL = 'http://70.70.10.73:5006';
       fetch(`${API_URL}/log/`, {
         method: 'POST',
         headers: {
@@ -145,4 +145,45 @@ export default {
   border-style: solid;
   border-radius: 5px;
 }
+
+.bg-slate-50 {
+  background-color: '#f8fafc';
+}
+
+.bg-slate-100 {
+  background-color: '#f1f5f9';
+}
+
+.bg-slate-200 {
+  background-color: '#e2e8f0';
+}
+
+.bg-slate-300 {
+  background-color: '#cbd5e1';
+}
+
+.bg-slate-400 {
+  background-color: '#94a3b8';
+}
+
+.bg-slate-500 {
+  background-color: '#64748b';
+}
+
+.bg-slate-600 {
+  background-color: '#475569';
+}
+
+.bg-slate-700 {
+  background-color: '#334155';
+}
+
+.bg-slate-800 {
+  background-color: '#1e293b';
+}
+
+.bg-slate-900 {
+  background-color: '#0f172a';
+}
+
 </style>

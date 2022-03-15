@@ -27,7 +27,7 @@
       <button v-else @click="toggleEditing" class="bg-blue-500 rounded-md px-1 py-1 text-white">
         Edit
       </button>
-      <button @click="removeActionItem" class="bg-red-500 rounded-md px-1 py-1 text-white">
+      <button @click="removeActionItem" class="bg-orange-500 rounded-md px-1 py-1 text-white">
         Remove
       </button>
     </div>

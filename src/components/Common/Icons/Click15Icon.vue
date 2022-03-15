@@ -2,7 +2,7 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 64"
-    class="bg-green-400"
+    class="bg-indigo-400"
     fill="none"
   >
     <path

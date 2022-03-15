@@ -7,8 +7,9 @@ export const loadSessions = (filePath, keywordClustersDict, behaviorClustersDict
     const totalSessions = []
     sessionsRaw.forEach(session => {
         const keywordCluster = keywordClustersDict[session.BERTopicsKeywordCluster];
-        const behaviorCluster = behaviorClustersDict[session.ClusterID] // Object.values(keywordCluster.behaviorClusters).find(bc => bc.subtreeNodeIds.has(session.ClusterID));
+        const behaviorCluster = Object.values(behaviorClustersDict).find(bc => bc.subtreeNodeIds.has(session.ClusterID)) // Object.values(keywordCluster.behaviorClusters).find(bc => bc.subtreeNodeIds.has(session.ClusterID));
         const s = new Session(session);
+        s.behaviorClusterId = behaviorCluster.id;
         behaviorCluster.sessions[session.SessionNum] = s
         totalSessions.push(s);
         behaviorCluster.subtreeSize = behaviorCluster.subtreeSize + 1;

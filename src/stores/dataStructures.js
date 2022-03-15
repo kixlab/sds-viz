@@ -119,7 +119,7 @@ export class Session {
                     ...queryResult,
                     count: count
                 }
-            })
+            }).sort((a, b) => (a.seq - b.seq))
             const clickCounts = queryResults.reduce((prev, cur) => {
                 return prev + cur.count
             }, 0)
@@ -145,7 +145,7 @@ export class Session {
     }
 
     set behaviorClusterId(behaviorClusterId) {
-        this.config.behaviorClusterId = behaviorClusterId;
+        this.config.ClusterID = behaviorClusterId;
     }
 
     set sequence(sequence) {

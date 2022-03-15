@@ -4,7 +4,10 @@
     <section-title> Individual Search Sessions </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <!-- The dropdown -->
-      <div class="flex justify-end items-center">
+      <div class="flex justify-between items-center">
+        <div v-if="sessions !== null">
+          Current query cluster: {{currentKeywordCluster.topFiveKeywords.join(" / ")}}
+        </div>
         <div v-if="sessions !== null" class="flex items-center m-1">
           <div class="mx-2 relative">
             <medium-title class="relative">
@@ -74,6 +77,14 @@ export default {
       sortByOption.value = option;
     };
 
+    const keywordClusters = computed(() => store.getKeywordClusters.value)
+
+    const currentKeywordCluster = computed(() => {
+      const currentKeywordClusterId = interactionState.value.chosenKeywordClusterId
+      const currentCluster = Object.values(keywordClusters.value).find(k => k.id === currentKeywordClusterId)
+      return currentCluster
+    })
+
     // Provide 'parentCallFunction', 'mainOption' and 'allOptions' to the dropdown component
     // It actually provides those to all the children components, but they are used only in the dropdown 
     provide("parentCallFunction", onSortByOptionChange);
@@ -84,6 +95,8 @@ export default {
       interactionState,
       setInteractionState,
       sessions,
+      currentKeywordCluster,
+      keywordClusters
     };
   },
   methods: {},

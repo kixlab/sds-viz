@@ -70,7 +70,7 @@
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, provide } from "vue";
+import { computed, provide, inject } from "vue";
 import * as d3 from "d3";
 import $ from "jquery";
 import FilterVisualization from "./FilterVisualization.vue";
@@ -94,6 +94,10 @@ export default {
       const keywordClusters = store.getKeywordClusters.value;
       return Object.values(keywordClusters).filter(c => c.subtreeSize > 0)
     });
+    // const allKeywordClusters = computed(() => {
+    //   const keywordClusters = store.getKeywordClusters.value;
+    //   return keywordClusters
+    // });
     // Sort the keyword clusters with respect to how good it is performing under the chosen performance metric
     const sortedKeywordClusters = computed(() => {
       const chosenMetric = interactionState.value.chosenMetric;
@@ -105,7 +109,7 @@ export default {
           : bAvgMetricVal - aAvgMetricVal;
       });
     });
-
+    const createLog = inject('createLog')
     const highlights = computed(() => store.getHighlights.value);
     // Retrieve the dictionary of keyword clusters that maps their ids to the percentage ranking 
     // with respect to the chosen performance metric
@@ -120,7 +124,7 @@ export default {
     });
     // The chosen performance metric
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
-    const chosenBehaviorCluster = computed(() => interactionState.value.chosenBehaviorCluster);
+    const chosenBehaviorClusterId = computed(() => interactionState.value.chosenBehaviorClusterId);
 
     // All the metrics
     const metrics = window.globalVars.METRICS;
@@ -129,7 +133,21 @@ export default {
       () => store.getInteractionState.value.chosenThreshold
     );
 
+    const flowInitiator = computed(() => interactionState.value.flowInitiator)
+
     const setQuery = store.setQuery;
+
+    const randomShuffle = function (array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    const keywordRenderData = computed(() => randomShuffle(keywordClusters.value))
+
+    // const totalSessions = computed(() => store.getTotalSessions.value)
 
     // Provide the 'rankingPercentageById' computed property to the sub components 
     // so that they can reactively refer to the percentage ranking of a keyword cluster
@@ -145,15 +163,20 @@ export default {
       chosenThreshold,
       highlights,
       setQuery,
-      chosenBehaviorCluster
+      chosenBehaviorClusterId,
+      keywordRenderData,
+      flowInitiator,
+      createLog
+      // allKeywordClusters,
+      // totalSessions
     };
   },
   data() {
     return {
       // Order of the keywords to render
-      keywordRenderData: this.randomShuffle(
-        Object.values(this.keywordClusters)
-      ),
+      // keywordRenderData: this.randomShuffle(
+      //   Object.values(this.keywordClusters)
+      // ),
       // Tooltip data (metric values of a keyword cluster)
       metricVal: window.globalVars.METRICS.reduce((acc, metric) => {
         acc[metric] = 0;
@@ -184,7 +207,7 @@ export default {
       $(`#text-${id}`).css("fill", newColor);
     },
     // Update the chosen keyword cluster, by updating the interaction state
-    setChosenKeywordCluster(keywordClusterId) {
+    setChosenKeywordCluster(keywordClusterId, keywordCluster) {
       const previouslyChosenKeywordClusterId =
         this.interactionState.chosenKeywordClusterId;
       // Flip the color of previously chosen keyword cluster
@@ -198,7 +221,24 @@ export default {
       // then set the chosen keyword cluster to null
       if (this.interactionState.chosenKeywordClusterId === keywordClusterId) {
         update.chosenKeywordClusterId = null;
+        this.createLog('unchooseKeywordCluster', {
+          keywordClusterId: keywordClusterId,
+          keywordCluster: keywordCluster.topFiveKeywords.join(' / '),
+          subtreeSize: keywordCluster.subtreeSize,
+          metrics: keywordCluster.metricsValue
+          // behaviorCluster: this.behaviorCluster
+        })
+      } else {
+        this.createLog('chooseKeywordCluster', {
+          keywordClusterId: keywordClusterId,
+          keywordCluster: keywordCluster.topFiveKeywords.join(' / '),
+          subtreeSize: keywordCluster.subtreeSize,
+          metrics: keywordCluster.metricsValue
+          // behaviorCluster: this.behaviorCluster
+        })
       }
+
+     
       // Update the interaction state
       this.setInteractionState(update);
       // Flip the color of the newly chosen keyword cluster
@@ -208,8 +248,10 @@ export default {
     },
     // Obtain the color for a given ranking percentage
     getColor(rankingP) {
-      const greenZone = ["#D6E8D8", "#2BD72B"],
-        redZone = ["#F05656", "#ECDBDC"];
+      // const greenZone = ["#D6E8D8", "#2BD72B"],
+      //   redZone = ["#F05656", "#ECDBDC"];
+      const redZone=["#f59e0b", "#fcd34d"], // orange
+        greenZone = ["#3B82F6", "#3B82F6"] // blue
       // If it is in top 50% --> it is good then --> green color
       // Else, --> it is bad --> red color
       if (rankingP < 0.5) {
@@ -219,13 +261,6 @@ export default {
       }
     },
     // Utility function
-    randomShuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    },
     // Update the tooltip data (e.g. title, metric values, total count of sessions)
     updateTooltip(tooltipTitle, metricVal, totalCountTooltip) {
       this.tooltipTitle = tooltipTitle;
@@ -340,7 +375,7 @@ export default {
               "drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8))"
             }`
         )
-        .style("stroke", (d) => `${d.id === -1 ? "black" : (this.highlights.keywordClusters.has(d.id) ? "rgb(245, 158, 11)" : "none")}`)
+        .style("stroke", (d) => `${d.id === -1 ? "black" : (this.highlights.keywordClusters.has(d.id) ? "rgb(185, 28, 28)" : "none")}`)
         .style("stroke-width", (d) => `${d.id === -1 ? "1" : (this.highlights.keywordClusters.has(d.id) ? "4" : "none")}`)
         .style("stroke-dasharray", (d) => `${d.id === -1 && "5,5"}`)
         .style()
@@ -408,7 +443,7 @@ export default {
         .append("text")
         // Font size is proportional to the sqrt(# of sessions in the subtree)
         .style("font-size", (d) => {
-          return Math.sqrt(d.subtreeSize) * 2; 
+          return Math.max(3 * Math.sqrt(d.subtreeSize), 12); 
         })
         // Find the x coordinate of the text
         .attr("x", function (_, i) {
@@ -453,7 +488,7 @@ export default {
         // also, anchor the tooltip to the screen
         .on("click", (e, d) => {
           // updateTooltip(e, d);
-          this.setChosenKeywordCluster(d.id);
+          this.setChosenKeywordCluster(d.id, d);
         })
         // When hovered, show the tooltip
         .on("mouseover", (e, d) => {
@@ -532,10 +567,7 @@ export default {
           });
       }
     },
-    setKeyword: function () {
-      console.log(this.keyword)
-      this.setQuery(this.keyword);
-    }
+
   },
   mounted() {
     // When this compenent is mounted for the first time, since the template code is ready
@@ -574,12 +606,13 @@ export default {
         }
       },
     },
-    chosenBehaviorCluster: {
+    chosenBehaviorClusterId: {
       handler(newVal, oldVal) {
         // If the new behavior cluster is not equal to the old one
         // --> re-render the visualization
         console.log('fired?')
-        if (newVal !== oldVal) {
+
+        if (this.flowInitiator !== 'keyword' && newVal !== oldVal) {
           console.log('fired')
           this.render();
         }

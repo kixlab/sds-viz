@@ -7,7 +7,7 @@
         ? 'bg-gray-400 hover:bg-gray-400'
         : 'bg-gray-200 hover:bg-gray-300',
       highlights.behaviorClusters.has(behaviorCluster.id)
-        ? 'border-yellow-500 border-4'
+        ? 'border-red-700 border-4'
         : 'border-black border',
     ]"
     v-on:click="setChosenBehaviorCluster()"
@@ -89,11 +89,20 @@ export default {
         this.behaviorCluster.id
       ) {
         update.chosenBehaviorClusterId = null;
+        this.createLog('unchooseBehaviorCluster', {
+          behaviorClusterId: this.behaviorCluster.id,
+          distinguishingFeatures: this.behaviorCluster.distinguishingFeatures,
+          subtreeSize: this.behaviorCluster.subtreeSize
+        })
+      } else {
+        this.createLog('chooseBehaviorCluster', {
+          behaviorClusterId: this.behaviorCluster.id,
+          distinguishingFeatures: this.behaviorCluster.distinguishingFeatures,
+          subtreeSize: this.behaviorCluster.subtreeSize
+          // behaviorCluster: this.behaviorCluster
+        })
       }
-      this.createLog('chooseBehaviorCluster', {
-        behaviorClusterId: this.behaviorCluster.id,
-        behaviorCluster: this.behaviorCluster
-      })
+
       // Update the interaction state
       this.setInteractionState(update);
     },
