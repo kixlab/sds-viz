@@ -57,7 +57,8 @@ export default {
       setHighlights({
         behaviorClusters: new Set(),
         keywordClusters: new Set(),
-        sessionIds: highlightedSessions
+        sessionIds: highlightedSessions,
+        source: 'SearchResultsView'
       })
     }
 

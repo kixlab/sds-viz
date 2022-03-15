@@ -1,5 +1,5 @@
 <template>
-  <div class="w-2/3 relative">
+  <div :class="['w-2/3 relative']">
     <div class="flex">
       <div class="flex items-center justify-center">
         <label 
@@ -23,7 +23,7 @@
           </div>
         </label>
       </div>
-      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5 cursor-pointer" @click.self="seeBehaviorPanel()">
+      <div :class="[isBorderHighlighted && 'glow','flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5 cursor-pointer']" @click.self="seeBehaviorPanel()">
         <div v-if="selectedBehaviors.length > 0" class="flex flex-1 items-center">
           <template v-for="(b, i) in selectedBehaviors" :key="i">
             <div class="w-6 h-6 relative cursor-pointer" @click="removeBehavior(i)">
@@ -37,7 +37,7 @@
             <line-in-the-middle v-if="i !== selectedBehaviors.length - 1" class="w-4 h-4 min-w-[12] min-h-[12]"></line-in-the-middle>
           </template>
         </div>
-        <div class="flex flex-1 items-center text-gray-400" v-else>
+        <div class="flex flex-1 items-center text-gray-400" @click="seeBehaviorPanel()" v-else>
           Click to open the action palette and add behaviors to start searching
         </div>
         <div class="flex flex-none items-center">
@@ -96,7 +96,7 @@ import {
 } from '@headlessui/vue'
 
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, inject } from "vue";
+import { computed, inject, ref } from "vue";
 import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
@@ -131,6 +131,18 @@ export default {
 
     const createLog = inject('createLog')
     const isExactMatchEnabled = computed(() => store.getExactMatchEnabled.value)
+    const isBorderHighlighted = ref(false)
+    const highlights = computed(() => store.getHighlights.value)
+    // watch(() => highlights, (newVal, oldVal) => {
+    //   console.log('watch')
+    //   if (newVal.value.source === 'BehaviorSearchBox') {
+    //     isBorderHighlighted.value = true
+    //   } else {
+    //     isBorderHighlighted.value = false
+    //   }
+    // }, {
+    //   deep: true
+    // })
     return {
       interactionState,
       setInteractionState,
@@ -138,7 +150,9 @@ export default {
       setShorthandBehaviors, 
       createLog,
       isExactMatchEnabled,
-      setExactMatchEnabled: store.setExactMatchEnabled
+      setExactMatchEnabled: store.setExactMatchEnabled,
+      isBorderHighlighted,
+      highlights
     };
   },
   data: function () {
@@ -201,6 +215,20 @@ export default {
       const shorthand_behaviors_dict = window.globalVars.SHORTHAND_ACTIONS
       return this.selectedBehaviors.map(b => shorthand_behaviors_dict[b]).join('')
     }
+  },
+  watch: {
+    highlights: {
+      handler: function (newVal, oldVal) {
+        console.log('watch')
+        if (newVal.source === 'BehaviorSearchBox') {
+          this.isBorderHighlighted = true
+        } else {
+          this.isBorderHighlighted = false
+          this.selectedBehaviors = []
+        }
+      },
+      deep: true
+    }
   }
 }
 </script>
@@ -210,5 +238,8 @@ input:checked ~ .dot {
   transform: translateX(100%);
   background-color: #48bb78;
 }
-
+.glow {
+  box-shadow: 10px 5px 20px rgb(255 208 0 / 90%);  /* stroke: black;
+  stroke-width: 2; */
+}
 </style>

@@ -2,11 +2,11 @@
   <div class="flex flex-col">
     <div class="flex justify-between">
       <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
-      <div class="flex w-1/3">
+      <div :class="[isBorderHighlighted && 'glow', 'flex w-1/3']">
         <div class="bg-white flex-1 rounded-lg shadow-md cursor-default focus:outline-none px-2">
           <input v-model="keyword" class="w-full" placeholder="Search sessions with user query" @keydown.enter="setKeyword()" type="text">
         </div>
-        <div class="flex-none items-center px-1 rounded-lg shadow-md bg-blue-800 text-white">
+        <div :class="['flex-none items-center px-1 rounded-lg shadow-md bg-blue-800 text-white']">
           <button @click="setKeyword()" class="cursor-pointer my-auto">
             <SearchIcon class="h-6 w-6" aria-hidden="true" />
           </button>
@@ -122,11 +122,13 @@ export default {
     const setInteractionState = store.setInteractionState;
     const setQuery = store.setQuery;
     const createLog = inject('createLog')
+    const highlights = computed(() => store.getHighlights.value)
     return {
       interactionState,
       setInteractionState,
       setQuery,
-      createLog
+      createLog,
+      highlights
     };
   },
   data() {
@@ -140,7 +142,8 @@ export default {
       }),
       showTooltip: false,
       tooltipClicked: false,
-      keyword: ''
+      keyword: '',
+      isBorderHighlighted: false
     };
   },
   methods: {
@@ -186,8 +189,26 @@ export default {
       this.tooltipClicked = false;
     }
   },
+  watch: {
+    highlights: {
+      handler: function (newVal) {
+        console.log('watch')
+        if (newVal.source === 'KeywordSearchBox') {
+          this.isBorderHighlighted = true
+        } else {
+          this.isBorderHighlighted = false
+          this.keywords = []
+        }
+      },
+      deep: true
+    }
+  }
 };
 </script>
 
 <style>
+.glow {
+  box-shadow: 10px 5px 20px rgb(255 208 0 / 90%);  /* stroke: black;
+  stroke-width: 2; */
+}
 </style>

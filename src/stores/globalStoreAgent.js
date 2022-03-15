@@ -90,7 +90,8 @@ export const initGlobalStore = () => {
     var highlights = {
         'behaviorClusters': new Set(),
         'keywordClusters': new Set(),
-        'sessionIds': []
+        'sessionIds': [],
+        'source': null
     }
 
     const highlightsRef = ref(highlights);
@@ -188,7 +189,7 @@ export const initGlobalStore = () => {
             return [];
         }
         const selectedSessions = savedSessions[selectedTag]
-        const sessions = selectedSessions.map(sessionId => {totalSessionsDict[sessionId]});
+        const sessions = selectedSessions.map(sessionId => { return totalSessionsDict[sessionId]});
         // totalSessionsRef.value.filter(session => {
         //     return selectedSessions.includes(session.id);
         // })
@@ -440,7 +441,7 @@ export const initGlobalStore = () => {
         Object.entries(newHighlights).forEach(([key, value]) => {
             highlights[key] = value;
         });
-        localStorage.setItem('highlights', JSON.stringify(highlights));
+        // localStorage.setItem('highlights', JSON.stringify(highlights));
     }
 
     const setShorthandBehaviors = (shorthandBehaviors) => {
@@ -459,6 +460,7 @@ export const initGlobalStore = () => {
 
         if (filteredSessions.length === 0) {
             alert('No sessions found with the given behaviors.')
+            return
         }
 
         const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
@@ -467,7 +469,8 @@ export const initGlobalStore = () => {
         setHighlights({
             behaviorClusters: behaviorClusters,
             keywordClusters: keywordClusters,
-            sessionIds: filteredSessions.map(session => session.id)
+            sessionIds: filteredSessions.map(session => session.id),
+            source: 'BehaviorSearchBox'
         })
     }
 
@@ -480,6 +483,7 @@ export const initGlobalStore = () => {
 
         if (filteredSessions.length === 0) {
             alert('No sessions found with the given query.')
+            return
         }
 
         const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
@@ -488,7 +492,8 @@ export const initGlobalStore = () => {
         setHighlights({
             behaviorClusters: behaviorClusters,
             keywordClusters: keywordClusters,
-            sessionIds: filteredSessions.map(session => session.id)
+            sessionIds: filteredSessions.map(session => session.id),
+            source: 'KeywordSearchBox'
         })
     }
 
