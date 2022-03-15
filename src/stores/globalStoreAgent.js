@@ -56,6 +56,8 @@ export const initGlobalStore = () => {
     // const totalSessionsRef = ref(totalSessions);
     const usernameRef = ref(username);
 
+    const isExactMatchEnabled = ref(false)
+
     // The interactions state, keeping the current state of the app
     var interactionState = {
         'chosenBehaviorClusterId': null,
@@ -199,11 +201,19 @@ export const initGlobalStore = () => {
         return usernameRef.value;
     })
 
+    const getExactMatchEnabled = computed(() => {
+        return isExactMatchEnabled.value;
+    })
+
 
     // Setters //
 
     // Add / delete notes
     // Update saved sessions
+
+    const setExactMatchEnabled = (value) => {
+        isExactMatchEnabled.value = value;
+    }
 
     const setUsername = (newUsername) => {
         usernameRef.value = newUsername;
@@ -434,11 +444,18 @@ export const initGlobalStore = () => {
     }
 
     const setShorthandBehaviors = (shorthandBehaviors) => {
-        const sessions = totalSessions.value
-        const filteredSessions = sessions.filter(session => {
-            // return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
-            return session.shorthandSequence === shorthandBehaviors
-        })
+        const sessions = totalSessions
+        let filteredSessions = []
+        if (getExactMatchEnabled.value) {
+            filteredSessions = sessions.filter(session => {
+                // return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
+                return session.shorthandSequence === shorthandBehaviors
+            })
+        } else {
+            filteredSessions = sessions.filter(session => {
+                return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
+            })
+        }
 
         if (filteredSessions.length === 0) {
             alert('No sessions found with the given behaviors.')
@@ -484,6 +501,7 @@ export const initGlobalStore = () => {
     provide('getHighlights', getHighlights)
     provide('getActionItems', getActionItems)
     provide('getUsername', getUsername)
+    provide('getExactMatchEnabled', getExactMatchEnabled)
     // provide('getTotalSessions', getTotalSessions)
 
     provide('setInteractionState', setInteractionState);
@@ -495,6 +513,7 @@ export const initGlobalStore = () => {
     provide('removeActionItem', removeActionItem)
     provide('updateActionItem', updateActionItem)
     provide('setUsername', setUsername)
+    provide('setExactMatchEnabled', setExactMatchEnabled)
 
     // Return necessary methods to the app.vue //
 
@@ -520,6 +539,7 @@ export const useGlobalStore = () => ({
     getHighlights: inject("getHighlights"),
     getActionItems: inject('getActionItems'),
     getUsername: inject('getUsername'),
+    getExactMatchEnabled: inject('getExactMatchEnabled'),
     // getTotalSessions: inject('getTotalSessions'),
 
     setInteractionState: inject("setInteractionState"),
@@ -531,5 +551,6 @@ export const useGlobalStore = () => ({
     removeActionItem: inject("removeActionItem"),
     updateActionItem: inject("updateActionItem"),
     setUsername: inject('setUsername'),
+    setExactMatchEnabled: inject('setExactMatchEnabled')
 
 });

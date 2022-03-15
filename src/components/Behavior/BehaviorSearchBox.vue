@@ -1,7 +1,29 @@
 <template>
-  <div class="w-1/2 relative">
+  <div class="w-2/3 relative">
     <div class="flex">
-      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5 cursor-pointer" @click="seeBehaviorPanel()">
+      <div class="flex items-center justify-center">
+        <label 
+          for="toogleA"
+          class="flex items-center cursor-pointer"
+        >
+          <!-- toggle -->
+          <div class="relative">
+            <!-- input -->
+            <input id="toogleA" type="checkbox" class="sr-only" 
+            :checked="isExactMatchEnabled"
+            @click="updateExactMatch" />
+            <!-- line -->
+            <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+            <!-- dot -->
+            <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+          </div>
+          <!-- label -->
+          <div class="ml-3 text-gray-700 font-medium">
+            Exact Match
+          </div>
+        </label>
+      </div>
+      <div class="flex flex-1 justify-between rounded-lg shadow-md py-2 pl-3 pr-5 cursor-pointer" @click.self="seeBehaviorPanel()">
         <div v-if="selectedBehaviors.length > 0" class="flex flex-1 items-center">
           <template v-for="(b, i) in selectedBehaviors" :key="i">
             <div class="w-6 h-6 relative cursor-pointer" @click="removeBehavior(i)">
@@ -108,13 +130,15 @@ export default {
     const setShorthandBehaviors = store.setShorthandBehaviors
 
     const createLog = inject('createLog')
-
+    const isExactMatchEnabled = computed(() => store.getExactMatchEnabled.value)
     return {
       interactionState,
       setInteractionState,
       behaviors,
       setShorthandBehaviors, 
-      createLog
+      createLog,
+      isExactMatchEnabled,
+      setExactMatchEnabled: store.setExactMatchEnabled
     };
   },
   data: function () {
@@ -126,7 +150,8 @@ export default {
   methods: {
     removeBehavior: function (i) {
       this.createLog('removeActionFromBehaviorSearchBox', {
-        action: this.selectedBehaviors[i]
+        action: this.selectedBehaviors[i],
+        behaviors: this.selectedBehaviors
       })
       this.selectedBehaviors.splice(i, 1)
     },
@@ -152,10 +177,23 @@ export default {
     },
     pushBehavior: function (b) {
       this.createLog('addActionToBehaviorSearchBox', {
-        action: b
+        action: b,
+        behaviors: this.selectedBehaviors
       })
       this.selectedBehaviors.push(b)
     },
+    updateExactMatch: function () {
+      if (this.isExactMatchEnabled === true) {
+        this.createLog('exactMatchBehaviorDisabled', {
+          behaviors: this.selectedBehaviors
+        })
+      } else {
+        this.createLog('exactMatchBehaviorsEnabled', {
+          behaviors: this.selectedBehaviors
+        })
+      }
+      this.setExactMatchEnabled(!this.isExactMatchEnabled)
+    }
   },
   computed: {
     shorthandSelectedBehaviors: function () {
@@ -166,6 +204,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #48bb78;
+}
 
 </style>
