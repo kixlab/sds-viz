@@ -124,7 +124,7 @@ export default {
     });
     // The chosen performance metric
     const chosenMetric = computed(() => interactionState.value.chosenMetric);
-    const chosenBehaviorClusterId = computed(() => interactionState.value.chosenBehaviorClusterId);
+    // const chosenBehaviorClusterId = computed(() => interactionState.value.chosenBehaviorClusterId);
 
     // All the metrics
     const metrics = window.globalVars.METRICS;
@@ -163,7 +163,7 @@ export default {
       chosenThreshold,
       highlights,
       setQuery,
-      chosenBehaviorClusterId,
+      // chosenBehaviorClusterId,
       keywordRenderData,
       flowInitiator,
       createLog
@@ -621,18 +621,18 @@ export default {
         }
       },
     },
-    chosenBehaviorClusterId: {
-      handler(newVal, oldVal) {
-        // If the new behavior cluster is not equal to the old one
-        // --> re-render the visualization
-        console.log('fired?')
+    // chosenBehaviorClusterId: {
+    //   handler(newVal, oldVal) {
+    //     // If the new behavior cluster is not equal to the old one
+    //     // --> re-render the visualization
+    //     console.log('fired?')
 
-        if (this.flowInitiator !== 'keyword' && newVal !== oldVal) {
-          console.log('fired')
-          this.render();
-        }
-      },
-    },
+    //     if (this.flowInitiator !== 'keyword' && newVal !== oldVal) {
+    //       console.log('fired')
+    //       this.render();
+    //     }
+    //   },
+    // },
   },
 };
 </script>

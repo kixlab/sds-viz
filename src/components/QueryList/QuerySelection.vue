@@ -4,10 +4,7 @@
     <section-title> Individual Search Sessions </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <!-- The dropdown -->
-      <div class="flex justify-between items-center">
-        <div v-if="sessions !== null">
-          Current query cluster: {{currentKeywordCluster.topFiveKeywords.join(" / ")}}
-        </div>
+      <div class="flex flex-row-reverse justify-between items-center">
         <div v-if="sessions !== null" class="flex items-center m-1">
           <div class="mx-2 relative">
             <medium-title class="relative">
@@ -15,6 +12,9 @@
             </medium-title>
           </div>
           <sort-by-dropdown />
+        </div>
+        <div v-if="currentKeywordCluster !== null">
+          Current query cluster: {{currentKeywordCluster.topFiveKeywords.join(" / ")}}
         </div>
       </div>
       <!-- The query list -->
@@ -27,6 +27,16 @@
             session: session,
           }"
         />
+      </div>
+      <div v-if="sessions === null" class="text-center">
+        <medium-title>
+          Start by selecting a cluster from the left. 
+        </medium-title>
+      </div>
+      <div v-else-if="sessions.length === 0" class="text-center">
+        <medium-title>
+          No sessions found. Try different clusters.
+        </medium-title>
       </div>
     </div>
   </div>
@@ -81,6 +91,9 @@ export default {
 
     const currentKeywordCluster = computed(() => {
       const currentKeywordClusterId = interactionState.value.chosenKeywordClusterId
+      if (currentKeywordClusterId === null) {
+        return null
+      }
       const currentCluster = Object.values(keywordClusters.value).find(k => k.id === currentKeywordClusterId)
       return currentCluster
     })

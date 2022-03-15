@@ -42,17 +42,18 @@ export const initGlobalStore = () => {
     var keywordClusters = {};
     var behaviorClusters = {};
     var totalSessions = null;
+    var totalSessionsDict = {}
     var username = localStorage.getItem('username') || '';
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
-    [keywordClusters, behaviorClusters, totalSessions ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
-    
+    [keywordClusters, behaviorClusters, totalSessions, totalSessionsDict ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
+    // console.log(totalSessionsDict)
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
     // And, vue will update the template based on the changes, if needed
     const keywordClustersRef = ref(keywordClusters);
     const behaviorClustersRef = ref(behaviorClusters);
-    const totalSessionsRef = ref(totalSessions);
+    // const totalSessionsRef = ref(totalSessions);
     const usernameRef = ref(username);
 
     // The interactions state, keeping the current state of the app
@@ -129,12 +130,34 @@ export const initGlobalStore = () => {
         const interactionState = getInteractionState.value;
         const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
         const chosenBehaviorClusterId = interactionState['chosenBehaviorClusterId'];
-        if(chosenBehaviorClusterId === null || chosenKeywordClusterId === null) {
+
+        if(chosenBehaviorClusterId === null && chosenKeywordClusterId === null) {
             return null;
         } 
-        const sessions = totalSessionsRef.value.filter(session => {
-            return (session.keywordClusterId === chosenKeywordClusterId && session.behaviorClusterId === chosenBehaviorClusterId)
-        });
+        
+        const behaviorClusterSessionIds = chosenBehaviorClusterId !== null ? getBehaviorClusters.value[chosenBehaviorClusterId].sessionIds : [];
+        const keywordClusterSessionIds = chosenKeywordClusterId !== null ? getKeywordClusters.value[chosenKeywordClusterId].sessionIds : [];
+        const intersection = chosenBehaviorClusterId !== null ?
+                                (chosenKeywordClusterId !== null ?
+                                    behaviorClusterSessionIds.filter(x => keywordClusterSessionIds.includes(x)) :
+                                    behaviorClusterSessionIds) :
+                                (chosenKeywordClusterId !== null ?
+                                    keywordClusterSessionIds :
+                                    [])
+
+        
+        console.log(intersection)
+        const sessions = intersection.map(sessionId => {
+            // console.log(sessionId)
+            return totalSessionsDict[sessionId]
+        })
+        // totalSessionsRef.value.filter(session => {
+        //     return intersection.includes(session.id)
+        //     // return (
+        //     //     (chosenKeywordClusterId === null || session.keywordClusterId === chosenKeywordClusterId) && 
+        //     //     (chosenBehaviorClusterId === null || session.behaviorClusterId === chosenBehaviorClusterId)
+        //     // )
+        // });
 
         return sessions
         // const behaviorCluster = getBehaviorClusters.value[chosenBehaviorClusterId];
@@ -148,7 +171,7 @@ export const initGlobalStore = () => {
         if(chosenSessionId === null) {
             return null;
         }
-        const session = totalSessionsRef.value.find(s => s.id === chosenSessionId)
+        const session = totalSessionsDict[chosenSessionId]; // totalSessionsRef.value.find(s => s.id === chosenSessionId)
         return session;
     });
 
@@ -163,9 +186,10 @@ export const initGlobalStore = () => {
             return [];
         }
         const selectedSessions = savedSessions[selectedTag]
-        const sessions = totalSessionsRef.value.filter(session => {
-            return selectedSessions.includes(session.id);
-        })
+        const sessions = selectedSessions.map(sessionId => {totalSessionsDict[sessionId]});
+        // totalSessionsRef.value.filter(session => {
+        //     return selectedSessions.includes(session.id);
+        // })
         return sessions
     })
 
@@ -257,111 +281,110 @@ export const initGlobalStore = () => {
         if ('chosenMetric' in partialState) {
             interactionState['chosenThreshold'] = null;
             interactionState['chosenSessionId'] = null;
-            interactionState['chosenKeywordClusterId'] = null;
-
+            // interactionState['chosenKeywordClusterId'] = null;
         }
 
-        if (('chosenBehaviorClusterId' in partialState) || ('chosenKeywordClusterId' in partialState)) {
-            interactionState['chosenSessionId'] = null;
-            const sessions = totalSessionsRef.value
-            const keywordClusters = keywordClustersRef.value; 
-            const behaviorClusters = behaviorClustersRef.value;
+        // if (('chosenBehaviorClusterId' in partialState) || ('chosenKeywordClusterId' in partialState)) {
+        //     interactionState['chosenSessionId'] = null;
+        //     const sessions = totalSessionsRef.value
+        //     const keywordClusters = keywordClustersRef.value; 
+        //     const behaviorClusters = behaviorClustersRef.value;
             
-            if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] !== null) {
-                // When keyword cluster was selected first
-                console.log('when keyword cluster was selected first')
-                console.log('updating behavior cluster subtree size')
+        //     if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] !== null) {
+        //         // When keyword cluster was selected first
+        //         console.log('when keyword cluster was selected first')
+        //         console.log('updating behavior cluster subtree size')
 
-                for (let [key, value] of Object.entries(behaviorClusters)) {
-                    value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
-                }
-                interactionState['flowInitiator'] = 'keyword'
-                console.log('then revert keywords')
-                for (let [key, value] of Object.entries(keywordClusters)) {
-                    const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
-                    value.subtreeSize = includedSessions.length;
-                    const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
-                    value.subtreeSize = includedSessions.length;
-                    const metricValues = includedSessions.reduce((prev, cur) => {
-                        const tempMetricValues = prev;
-                        window.globalVars.METRICS.forEach(metric => {
-                            tempMetricValues[metric] += cur.metricValues[metric];
-                        });
-                        return tempMetricValues
-                    }, initialTempMetrics)
-                   value.metricValues = metricValues
-                }
-            } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] === null) {
-                console.log('when behavior cluster was selected first')
-                console.log('updating keyword cluster subtree size') 
-                // When behavior cluster was selected first
-                for (let [key, value] of Object.entries(keywordClusters)) {
-                    const includedSessions = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key))
-                    const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
-                    value.subtreeSize = includedSessions.length;
-                    const metricValues = includedSessions.reduce((prev, cur) => {
-                        const tempMetricValues = prev;
-                        window.globalVars.METRICS.forEach(metric => {
-                            tempMetricValues[metric] += cur.metricValues[metric];
-                        });
-                        return tempMetricValues
-                    }, initialTempMetrics)
-                   value.metricValues = metricValues
-                }
-                interactionState['flowInitiator'] = 'behavior'
-                console.log('then revert behaviors')
-                for (let [key, value] of Object.entries(behaviorClusters)) {
-                    value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
-                }
-            } else if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] === null ){
-                console.log('reverting subtree size')
-                console.log('when none of them are selected')
+        //         for (let [key, value] of Object.entries(behaviorClusters)) {
+        //             value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
+        //         }
+        //         interactionState['flowInitiator'] = 'keyword'
+        //         console.log('then revert keywords')
+        //         for (let [key, value] of Object.entries(keywordClusters)) {
+        //             const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
+        //             value.subtreeSize = includedSessions.length;
+        //             const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
+        //             value.subtreeSize = includedSessions.length;
+        //             const metricValues = includedSessions.reduce((prev, cur) => {
+        //                 const tempMetricValues = prev;
+        //                 window.globalVars.METRICS.forEach(metric => {
+        //                     tempMetricValues[metric] += cur.metricValues[metric];
+        //                 });
+        //                 return tempMetricValues
+        //             }, initialTempMetrics)
+        //            value.metricValues = metricValues
+        //         }
+        //     } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] === null) {
+        //         console.log('when behavior cluster was selected first')
+        //         console.log('updating keyword cluster subtree size') 
+        //         // When behavior cluster was selected first
+        //         for (let [key, value] of Object.entries(keywordClusters)) {
+        //             const includedSessions = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key))
+        //             const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
+        //             value.subtreeSize = includedSessions.length;
+        //             const metricValues = includedSessions.reduce((prev, cur) => {
+        //                 const tempMetricValues = prev;
+        //                 window.globalVars.METRICS.forEach(metric => {
+        //                     tempMetricValues[metric] += cur.metricValues[metric];
+        //                 });
+        //                 return tempMetricValues
+        //             }, initialTempMetrics)
+        //            value.metricValues = metricValues
+        //         }
+        //         interactionState['flowInitiator'] = 'behavior'
+        //         console.log('then revert behaviors')
+        //         for (let [key, value] of Object.entries(behaviorClusters)) {
+        //             value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
+        //         }
+        //     } else if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] === null ){
+        //         console.log('reverting subtree size')
+        //         console.log('when none of them are selected')
 
-                for (let [key, value] of Object.entries(keywordClusters)) {
-                    const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
-                    value.subtreeSize = includedSessions.length;
-                    const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
-                    value.subtreeSize = includedSessions.length;
-                    const metricValues = includedSessions.reduce((prev, cur) => {
-                        const tempMetricValues = prev;
-                        window.globalVars.METRICS.forEach(metric => {
-                            tempMetricValues[metric] += cur.metricValues[metric];
-                        });
-                        return tempMetricValues
-                    }, initialTempMetrics)
-                   value.metricValues = metricValues
-                }
-                for (let [key, value] of Object.entries(behaviorClusters)) {
-                    value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
-                }
-                interactionState['flowInitiator'] = null
-            } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] !== null) {
-                if (interactionState['flowInitiator'] === 'behavior') {
-                    // keyword subtree size update 
-                    console.log('both selected, but when behavior cluster was selected first and behavior has changed')
-                    for (let [key, value] of Object.entries(keywordClusters)) {
-                        const includedSessions = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key))
-                        value.subtreeSize = includedSessions.length;
-                        const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
-                        const metricValues = includedSessions.reduce((prev, cur) => {
-                            const tempMetricValues = prev;
-                            window.globalVars.METRICS.forEach(metric => {
-                                tempMetricValues[metric] += cur.metricValues[metric];
-                            });
-                            return tempMetricValues
-                        }, initialTempMetrics)
-                       value.metricValues = metricValues
-                    }
+        //         for (let [key, value] of Object.entries(keywordClusters)) {
+        //             const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
+        //             value.subtreeSize = includedSessions.length;
+        //             const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
+        //             value.subtreeSize = includedSessions.length;
+        //             const metricValues = includedSessions.reduce((prev, cur) => {
+        //                 const tempMetricValues = prev;
+        //                 window.globalVars.METRICS.forEach(metric => {
+        //                     tempMetricValues[metric] += cur.metricValues[metric];
+        //                 });
+        //                 return tempMetricValues
+        //             }, initialTempMetrics)
+        //            value.metricValues = metricValues
+        //         }
+        //         for (let [key, value] of Object.entries(behaviorClusters)) {
+        //             value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
+        //         }
+        //         interactionState['flowInitiator'] = null
+        //     } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] !== null) {
+        //         if (interactionState['flowInitiator'] === 'behavior') {
+        //             // keyword subtree size update 
+        //             console.log('both selected, but when behavior cluster was selected first and behavior has changed')
+        //             for (let [key, value] of Object.entries(keywordClusters)) {
+        //                 const includedSessions = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key))
+        //                 value.subtreeSize = includedSessions.length;
+        //                 const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
+        //                 const metricValues = includedSessions.reduce((prev, cur) => {
+        //                     const tempMetricValues = prev;
+        //                     window.globalVars.METRICS.forEach(metric => {
+        //                         tempMetricValues[metric] += cur.metricValues[metric];
+        //                     });
+        //                     return tempMetricValues
+        //                 }, initialTempMetrics)
+        //                value.metricValues = metricValues
+        //             }
                     
-                } else if (interactionState['flowInitiator'] === 'keyword' && 'keyword' in partialState) {
-                    console.log('both selected, but when keyword cluster was selected first and keyword has changed')
+        //         } else if (interactionState['flowInitiator'] === 'keyword' && 'keyword' in partialState) {
+        //             console.log('both selected, but when keyword cluster was selected first and keyword has changed')
 
-                    for (let [key, value] of Object.entries(behaviorClusters)) {
-                        value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
-                    }
-                }
-            }
-        }
+        //             for (let [key, value] of Object.entries(behaviorClusters)) {
+        //                 value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
+        //             }
+        //         }
+        //     }
+        // }
 
 
 
@@ -411,7 +434,7 @@ export const initGlobalStore = () => {
     }
 
     const setShorthandBehaviors = (shorthandBehaviors) => {
-        const sessions = totalSessionsRef.value
+        const sessions = totalSessions.value
         const filteredSessions = sessions.filter(session => {
             // return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
             return session.shorthandSequence === shorthandBehaviors
@@ -433,7 +456,7 @@ export const initGlobalStore = () => {
 
     const setQuery = (query) => {
         console.log(query)
-        const sessions = totalSessionsRef.value;
+        const sessions = totalSessions;
         const filteredSessions = sessions.filter(session => {
             return session.allQueries.includes(query)
         })

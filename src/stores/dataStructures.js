@@ -203,6 +203,7 @@ export class BehaviorCluster {
         this.config = config;
         this.subtreeNodeIds = new Set();
         this.sessions = {};
+        this.sessionIds = []
     }
 
     get id() {
@@ -285,6 +286,7 @@ export class KeywordCluster {
     constructor(config) {
         this.config = config;
         this.behaviorClusters = {};
+        this.sessionIds = []
     }
 
     get id() {
