@@ -58,7 +58,7 @@ export const initGlobalStore = () => {
     // The interactions state, keeping the current state of the app
     var interactionState = {
         'chosenBehaviorClusterId': null,
-        'chosenMetric': null,
+        'chosenMetric': 'Click@1-5',
         'chosenKeywordClusterId': null,
         'chosenThreshold': null,
         'chosenSessionId': null,
@@ -269,13 +269,30 @@ export const initGlobalStore = () => {
             
             if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] !== null) {
                 // When keyword cluster was selected first
+                console.log('when keyword cluster was selected first')
                 console.log('updating behavior cluster subtree size')
 
                 for (let [key, value] of Object.entries(behaviorClusters)) {
                     value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
                 }
                 interactionState['flowInitiator'] = 'keyword'
+                console.log('then revert keywords')
+                for (let [key, value] of Object.entries(keywordClusters)) {
+                    const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
+                    value.subtreeSize = includedSessions.length;
+                    const initialTempMetrics = window.globalVars.METRICS.reduce((acc,curr)=> (acc[curr]=0,acc),{})
+                    value.subtreeSize = includedSessions.length;
+                    const metricValues = includedSessions.reduce((prev, cur) => {
+                        const tempMetricValues = prev;
+                        window.globalVars.METRICS.forEach(metric => {
+                            tempMetricValues[metric] += cur.metricValues[metric];
+                        });
+                        return tempMetricValues
+                    }, initialTempMetrics)
+                   value.metricValues = metricValues
+                }
             } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] === null) {
+                console.log('when behavior cluster was selected first')
                 console.log('updating keyword cluster subtree size') 
                 // When behavior cluster was selected first
                 for (let [key, value] of Object.entries(keywordClusters)) {
@@ -292,8 +309,14 @@ export const initGlobalStore = () => {
                    value.metricValues = metricValues
                 }
                 interactionState['flowInitiator'] = 'behavior'
+                console.log('then revert behaviors')
+                for (let [key, value] of Object.entries(behaviorClusters)) {
+                    value.subtreeSize = sessions.filter(session => (session.behaviorClusterId == key)).length;
+                }
             } else if (interactionState['chosenBehaviorClusterId'] === null && interactionState['chosenKeywordClusterId'] === null ){
                 console.log('reverting subtree size')
+                console.log('when none of them are selected')
+
                 for (let [key, value] of Object.entries(keywordClusters)) {
                     const includedSessions = sessions.filter(session => (session.keywordClusterId == key))
                     value.subtreeSize = includedSessions.length;
@@ -315,6 +338,7 @@ export const initGlobalStore = () => {
             } else if (interactionState['chosenBehaviorClusterId'] !== null && interactionState['chosenKeywordClusterId'] !== null) {
                 if (interactionState['flowInitiator'] === 'behavior') {
                     // keyword subtree size update 
+                    console.log('both selected, but when behavior cluster was selected first and behavior has changed')
                     for (let [key, value] of Object.entries(keywordClusters)) {
                         const includedSessions = sessions.filter(session => (session.behaviorClusterId === interactionState.chosenBehaviorClusterId) && (session.keywordClusterId == key))
                         value.subtreeSize = includedSessions.length;
@@ -328,7 +352,10 @@ export const initGlobalStore = () => {
                         }, initialTempMetrics)
                        value.metricValues = metricValues
                     }
-                } else if (interactionState['flowInitiator'] === 'keyword') {
+                    
+                } else if (interactionState['flowInitiator'] === 'keyword' && 'keyword' in partialState) {
+                    console.log('both selected, but when keyword cluster was selected first and keyword has changed')
+
                     for (let [key, value] of Object.entries(behaviorClusters)) {
                         value.subtreeSize = sessions.filter(session => (session.keywordClusterId === interactionState.chosenKeywordClusterId) && (session.behaviorClusterId == key)).length;
                     }
