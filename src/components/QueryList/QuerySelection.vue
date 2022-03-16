@@ -13,8 +13,11 @@
           </div>
           <sort-by-dropdown />
         </div>
-        <div v-if="currentKeywordCluster !== null">
-          Current query cluster: {{currentKeywordCluster.topFiveKeywords.join(" / ")}}
+        <div v-if="sessions !== null">
+          <div>{{sessions.length}} sessions presented. </div>
+          <div v-if="currentKeywordCluster !== null">
+            Current query cluster: {{currentKeywordCluster.topFiveKeywords.join(" / ")}}
+          </div>
         </div>
       </div>
       <!-- The query list -->

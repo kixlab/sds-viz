@@ -146,7 +146,7 @@ export default {
     }
 
     const keywordRenderData = computed(() => randomShuffle(keywordClusters.value))
-
+    const chosenKeywordClusterId = computed(() => interactionState.value.chosenKeywordClusterId)
     // const totalSessions = computed(() => store.getTotalSessions.value)
 
     // Provide the 'rankingPercentageById' computed property to the sub components 
@@ -166,7 +166,8 @@ export default {
       // chosenBehaviorClusterId,
       keywordRenderData,
       flowInitiator,
-      createLog
+      createLog,
+      chosenKeywordClusterId
       // allKeywordClusters,
       // totalSessions
     };
@@ -209,10 +210,12 @@ export default {
     // Update the chosen keyword cluster, by updating the interaction state
     setChosenKeywordCluster(keywordClusterId, keywordCluster) {
       console.log(keywordCluster)
-      const previouslyChosenKeywordClusterId =
-        this.interactionState.chosenKeywordClusterId;
-      // Flip the color of previously chosen keyword cluster
-      this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
+      // const previouslyChosenKeywordClusterId =
+      //   this.interactionState.chosenKeywordClusterId;
+      // // Flip the color of previously chosen keyword cluster
+      // // this.flipColorOfKeywordCluster(previouslyChosenKeywordClusterId);
+      // this.se
+
 
       // Update to be applied onto the interaction state
       let update = {
@@ -243,9 +246,9 @@ export default {
       // Update the interaction state
       this.setInteractionState(update);
       // Flip the color of the newly chosen keyword cluster
-      const currentlyChosenKeywordClusterId =
-        this.interactionState.chosenKeywordClusterId;
-      this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
+      // const currentlyChosenKeywordClusterId =
+      //   this.interactionState.chosenKeywordClusterId;
+      // this.flipColorOfKeywordCluster(currentlyChosenKeywordClusterId);
     },
     // Obtain the color for a given ranking percentage
     getColor(rankingP) {
@@ -480,7 +483,9 @@ export default {
           return y(positions[i][1]);
         })
         // Text color
-        .style("fill", "rgb(255, 255, 255)")
+        .style("fill", (d) => {
+          return this.chosenKeywordClusterId === d.id ? "rgb(0, 0, 0)" : "rgb(255, 255, 255)"
+        })
         .style("cursor", "pointer")
         // Show the top keyword of the keyword cluster
         .text((d) => d.topKeyword)
@@ -611,6 +616,23 @@ export default {
         }
       },
     },
+    chosenKeywordClusterId: {
+      handler(newVal, oldVal) {
+        console.log('newVal', newVal)
+        console.log('oldVal', oldVal)
+        if (newVal !== null) {
+          $(`#text-${newVal}`).css("fill", "rgb(0, 0, 0)");
+        }
+
+        if (oldVal !== null) {
+          $(`#text-${oldVal}`).css("fill", "rgb(255, 255, 255)");
+        }
+        // const curColor = $(`#text-${id}`).css("fill");
+        // const newColor =
+        //   curColor === "rgb(0, 0, 0)" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
+        // $(`#text-${id}`).css("fill", newColor);
+      }
+    },
     // If the chosenThreshold is changed
     chosenThreshold: {
       handler(newVal, oldVal) {
@@ -630,7 +652,8 @@ export default {
         // }
       }, 
       deep: true
-    }
+    },
+
     // chosenBehaviorClusterId: {
     //   handler(newVal, oldVal) {
     //     // If the new behavior cluster is not equal to the old one

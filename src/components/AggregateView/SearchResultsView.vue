@@ -4,14 +4,14 @@
       <section-title> Search Results comparison</section-title>
     </div>
     <div class="w-full flex-auto flex flex-row flex-nowrap overflow-x-auto">
-      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${result.sessionId}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col mx-1 border">
+      <div v-for="(result, idx) in searchResults" :key="`${result.query}-${result.sessionId}-${idx}`" class="lg:w-1/2 xl:w-1/3 flex-none h-full flex flex-col mx-1 border">
         <div class="flex-none cursor-pointer" @click="highlightSessions(result)">
           Query: {{result.query}} 
           <br> 
           {{result.clickCounts}} clicks total.
         </div>
         <div class="flex-auto divide-y overflow-y-auto">
-          <search-result-item v-for="item in result.results" :key="`${item.title}-${idx}`" :query="result.query" :search-result-item="item">
+          <search-result-item v-for="item in result.results" :key="`${result.query}-${result.sessionId}-${item.title}-${idx}`" :query="result.query" :search-result-item="item">
           </search-result-item>
         </div>
         <!-- <div v-for="item in result.results" :key="`${item.title}-${idx}`">

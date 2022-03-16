@@ -103,7 +103,7 @@ export class Session {
     get allClickedItems() {
 
         const clickEventNames = ['Click1-5', 'Click6-10', 'Click11+', 'Click1-5_Short', 'Click6-10_Short', 'Click11+_Short'];
-        const queries = this.config.Sequence.filter(action => action.Type === 'NewQuery' || action.Type === 'RefinedQuery')
+        const queries = this.config.Sequence.filter(action => action.Type === 'NewQuery' || action.Type === 'RefinedQuery' || action.Type === 'RefinedQuery_Short' || action.Type === 'NewQuery_Short')
         // .map(action => {
         //     return action
         // })

@@ -2,7 +2,8 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- The search icon -->
-      <search-icon class="w-9 h-9 mr-2" />
+      <search-icon v-if="action.Type === 'NewQuery'" class="w-9 h-9 mr-2" />
+      <search-short-icon v-else-if="action.Type === 'NewQuery_Short'" class="w-9 h-9 mr-2" />
       <!-- Searched ... -->
       <medium-title class="flex-grow text-center">Searched:  {{ action.Query }} </medium-title>
       <medium-title class="flex-grow text-center">Processed as:  {{ action.ExtendedQuery }} </medium-title>

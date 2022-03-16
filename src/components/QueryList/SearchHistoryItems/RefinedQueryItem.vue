@@ -3,10 +3,11 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- Search refine icon -->
-      <search-refine-icon class="w-9 h-9 mr-2" />
+      <search-refine-icon v-if="action.Type === 'RefinedQuery'" class="w-9 h-9 mr-2" />
+      <search-refine-short-icon v-if="action.Type === 'RefinedQuery_Short'" class="w-9 h-9 mr-2" />
       <!-- Refined to .... -->
       <medium-title class="flex-grow text-center"
-        >Refined to: {{ action.Query }}
+        >Searched: {{ action.Query }}
       </medium-title>
       <medium-title class="flex-grow text-center"
         >Processed as: {{ action.ExtendedQuery }}
@@ -18,7 +19,7 @@
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="seeSearchResults = !seeSearchResults">
           {{ seeSearchResults ? 'Close query results' : 'See query results' }}
         </div>
-        <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
+        <div v-if="seeSearchResults" class="w-2/3">
           <div v-for="item in action.QueryResults" :key="item.id" class="search-results mt-2 border-t-4 text-justify">
             <div class="justify-between flex items-end">
               <div class="text-lg font-medium underline cursor-pointer"><a :href="item.url"> {{item.title}} </a> </div>

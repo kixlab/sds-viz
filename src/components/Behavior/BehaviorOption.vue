@@ -3,7 +3,7 @@
     <div class="inline-block w-6 h-6 text-align-left">
       <icon-giver v-bind="{action_item: value}"></icon-giver>
     </div>
-    {{value}}
+    {{explanation}}
   </div>
 </template>
 
@@ -14,6 +14,10 @@ export default {
   name: 'BehaviorOption',
   props: {
     value: {
+      type: String,
+      required: true,
+    },
+    explanation: {
       type: String,
       required: true,
     },

@@ -46,7 +46,7 @@
 
     </div>
 
-    <action-items v-if="showActionItems" class="absolute z-10 top-10 right-1/4 shadow-md rounded-md w-1/4 h-1/4 bg-white" @close="showActionItems = false"/>
+    <action-items v-if="showActionItems" class="absolute z-10 top-10 right-3 shadow-md rounded-md w-1/3 h-1/2 bg-white" @close="showActionItems = false"/>
 
   </div>
 </template>

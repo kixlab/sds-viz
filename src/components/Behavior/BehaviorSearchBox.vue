@@ -60,6 +60,7 @@
         v-for="b in behaviors" 
         :value="b" 
         :key="b" 
+        :explanation="explanations[b]"
         @click="pushBehavior(b)"
         class="cursor-pointer">
       </behavior-option>
@@ -133,6 +134,22 @@ export default {
     const isExactMatchEnabled = computed(() => store.getExactMatchEnabled.value)
     const isBorderHighlighted = ref(false)
     const highlights = computed(() => store.getHighlights.value)
+
+    const explanations = {
+        'Click1-5': `Click rank 1-5`,
+        'Click6-10': 'Click rank 6-10',
+        'Click11+': 'Click rank ≥ 11',
+        'Click1-5_Short': `Click rank 1-5, dwell time < 30s`,
+        'Click6-10_Short': 'Click rank 6-10, dwell time < 30s',
+        'Click11+_Short': 'Click rank ≥ 11, dwell time < 30s',
+        'ClickQuickLink': 'Click on a quick link',
+        // 'NextPage': 'Next page',
+        'NewQuery': 'New query',
+        'RefinedQuery': 'Query refined',
+        'NewQuery_Short': 'New query, dwell time < 30s',
+        'RefinedQuery_Short': 'Query refined, dwell time < 30s',
+        'EndSession': 'Session ended'
+      }
     // watch(() => highlights, (newVal, oldVal) => {
     //   console.log('watch')
     //   if (newVal.value.source === 'BehaviorSearchBox') {
@@ -152,7 +169,8 @@ export default {
       isExactMatchEnabled,
       setExactMatchEnabled: store.setExactMatchEnabled,
       isBorderHighlighted,
-      highlights
+      highlights,
+      explanations
     };
   },
   data: function () {

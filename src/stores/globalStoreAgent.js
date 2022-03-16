@@ -447,6 +447,17 @@ export const initGlobalStore = () => {
     const setShorthandBehaviors = (shorthandBehaviors) => {
         const sessions = totalSessions
         let filteredSessions = []
+        if (shorthandBehaviors === '') {
+            filteredSessions = []
+            setHighlights({
+                behaviorClusters: new Set(),
+                keywordClusters: new Set(),
+                sessionIds: [],
+                source: 'BehaviorSearchBox'
+            })
+            return
+        } 
+        
         if (getExactMatchEnabled.value) {
             filteredSessions = sessions.filter(session => {
                 // return session.shorthandSequence.indexOf(shorthandBehaviors) !== -1;
@@ -475,8 +486,16 @@ export const initGlobalStore = () => {
     }
 
     const setQuery = (query) => {
-        console.log(query)
         const sessions = totalSessions;
+        if (query === '') {
+            setHighlights({
+                behaviorClusters: new Set(),
+                keywordClusters: new Set(),
+                sessionIds: [],
+                source: 'QuerySearchBox'
+            })
+            return
+        }
         const filteredSessions = sessions.filter(session => {
             return session.allQueries.includes(query)
         })
