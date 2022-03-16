@@ -149,7 +149,7 @@ export const initGlobalStore = () => {
                                     [])
 
         
-        console.log(intersection)
+        // console.log(intersection)
         const sessions = intersection.map(sessionId => {
             // console.log(sessionId)
             return totalSessionsDict[sessionId]
