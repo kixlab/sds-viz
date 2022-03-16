@@ -8,7 +8,12 @@
         </button>
       </div>
     </div>
-    <div class="overflow-y-auto h-4/5 divide-y border">
+    <div v-if="isDumpVisible" class="overflow-y-auto h-4/5">
+      Action items: {{ actionItemDump }}
+      <br>
+      Selected sessions: {{ selectedSessionsDump }}
+    </div>
+    <div v-else class="overflow-y-auto h-4/5 divide-y border">
       <action-item v-for="(item, idx) in actionItems" :actionItem="item" :key="item.text" :idx="idx" @update-note="updateNote" @remove="remove"></action-item>
     </div>
     <div class="bg-blue-800 rounded-md text-white cursor-pointer text-center">
@@ -17,13 +22,18 @@
         Add new action item
       </button>
     </div>
+    <div class="rounded-md text-blue-800 border border-blue cursor-pointer text-center">
+      <button @click="dumpActionItems">
+        Dump action items
+      </button>
+    </div>
   </div>
 </template>
 
 
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, inject } from "vue";
+import { computed, inject, ref } from "vue";
 import ActionItem from './ActionItem.vue';
 import SectionTitle from '../Common/SectionTitle.vue';
 import { XIcon, PlusCircleIcon } from "@heroicons/vue/solid";
@@ -44,8 +54,23 @@ export default {
     const actionItems = computed(() => store.getActionItems.value);
 
     const targetSession = computed(() => store.getSession.value)
+    const selectedSessions = computed(() => store.getSelectedSessions.value);
 
     const createLog = inject('createLog')
+
+    const isDumpVisible = ref(false)
+
+    function dumpActionItems () {
+      isDumpVisible.value = !isDumpVisible.value
+    }
+
+    const actionItemDump = computed(() => {
+      return JSON.stringify(actionItems.value, null, 2)
+    })
+
+    const selectedSessionsDump = computed(() => {
+      return JSON.stringify(selectedSessions.value, null, 2)
+    })
 
     function updateNote(idx, note) {
       const newActionItem = {
@@ -97,7 +122,11 @@ export default {
       createEmptyActionItem,
       remove,
       close,
-      targetSession
+      targetSession,
+      dumpActionItems,
+      isDumpVisible,
+      actionItemDump,
+      selectedSessionsDump
     }
   }
 }
