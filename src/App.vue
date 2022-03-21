@@ -5,8 +5,8 @@
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
       </div>
       <div class="grow-0 py-2 px-4 rounded-md border">
-        <input v-model="tempUsername" :disabled="isUsernameSet" placeholder="Your name here">
-        <button :disabled="isUsernameSet" @click="setName" :class="[isUsernameSet ? 'bg-blueGray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
+        <input v-model="tempUsername" placeholder="Your name here">
+        <button @click="setName" :class="[isUsernameSet ? 'bg-blueGray-500' : 'bg-red-500', 'text-white rounded-md px-2 py-1']">Set name</button>
       </div>
       <div class="grow-0 py-2 px-4">
         <button 
@@ -78,7 +78,7 @@ export default {
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
     // injectible in every subcomponent of this component.
-    const { setInteractionState, getUsername, setUsername } = initGlobalStore();
+    const { setInteractionState, getUsername, setEvaluateUserName } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
       const API_URL = 'http://70.70.10.73:5006';
@@ -97,7 +97,7 @@ export default {
     }
     const isUsernameSet = computed(() => getUsername.value !== '')
     const tempUsername = ref(getUsername.value)
-    const page = ref(1);
+    const page = ref(2);
     const showActionItems = ref(false);
 
     const toggleActionItems = function () {
@@ -106,7 +106,8 @@ export default {
     };
 
     const setName = function () {
-      setUsername(tempUsername.value);
+      // setUsername(tempUsername.value);
+      setEvaluateUserName(tempUsername.value);
     }
     
     const changePage = function (newPage) {

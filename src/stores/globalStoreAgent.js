@@ -5,6 +5,7 @@ const DATAPATH = './data/SDS/new';
 const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
+const ACTION_ITEM_FILE = 'action-items.json';
 
 export const initGlobalStore = () => {
 
@@ -43,7 +44,8 @@ export const initGlobalStore = () => {
     var behaviorClusters = {};
     var totalSessions = null;
     var totalSessionsDict = {}
-    var username = localStorage.getItem('username') || '';
+    var username = '';
+    const loadedActionItems = require(ACTION_ITEM_FILE);
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
     [keywordClusters, behaviorClusters, totalSessions, totalSessionsDict ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
@@ -219,6 +221,16 @@ export const initGlobalStore = () => {
     const setUsername = (newUsername) => {
         usernameRef.value = newUsername;
         localStorage.setItem('username', newUsername);
+    }
+
+    const setEvaluateUserName = (newUsername) => {
+        usernameRef.value = newUsername;
+        localStorage.setItem('username', newUsername);
+        const selectedSessionIds = loadedActionItems[newUsername]['selectedSessionIds'];
+        const actionItems = loadedActionItems[newUsername]['actionItems'];
+
+        selectedSessionIdsRef.value = selectedSessionIds;
+        actionItemsRef.value = actionItems;
     }
 
     const addActionItem = (item) => {
@@ -542,6 +554,7 @@ export const initGlobalStore = () => {
     provide('updateActionItem', updateActionItem)
     provide('setUsername', setUsername)
     provide('setExactMatchEnabled', setExactMatchEnabled)
+    provide('setEvaluateUserName', setEvaluateUserName)
 
     // Return necessary methods to the app.vue //
 
@@ -549,7 +562,8 @@ export const initGlobalStore = () => {
     return {
         setInteractionState,
         setUsername,
-        getUsername
+        getUsername,
+        setEvaluateUserName
     }
 
 };
