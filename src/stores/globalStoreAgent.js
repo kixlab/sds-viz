@@ -82,7 +82,7 @@ export const initGlobalStore = () => {
 
     // Separate state variable for managing saved sessions
 
-    var selectedSessionIds = JSON.parse(localStorage.getItem('selectedSessionIds')) || {};
+    var selectedSessionIds = loadedActionItems['selectedSessionIds'] // JSON.parse(localStorage.getItem('selectedSessionIds')) || {};
 
     const selectedSessionIdsRef = ref(selectedSessionIds);
     const getSelectedSessionIds = computed(() => selectedSessionIdsRef.value);
@@ -102,7 +102,7 @@ export const initGlobalStore = () => {
 
     // yet another state variable for managing action items
 
-    var actionItems = JSON.parse(localStorage.getItem('actionItems')) || [];
+    var actionItems = loadedActionItems['actionItems']// JSON.parse(localStorage.getItem('actionItems')) || [];
 
     const actionItemsRef = ref(actionItems);
     const getActionItems = computed(() => actionItemsRef.value);

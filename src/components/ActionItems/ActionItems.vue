@@ -17,13 +17,13 @@
       <action-item v-for="(item, idx) in actionItems" :actionItem="item" :key="item.text" :idx="idx" @update-note="updateNote" @remove="remove"></action-item>
     </div>
     <div class="bg-blue-800 rounded-md text-white cursor-pointer text-center">
-      <button @click="createEmptyActionItem">
+      <button disabled @click="createEmptyActionItem">
         <PlusCircleIcon class="w-6 h-6 inline"></PlusCircleIcon>
         Add new action item
       </button>
     </div>
     <div class="rounded-md text-blue-800 border border-blue cursor-pointer text-center">
-      <button @click="dumpActionItems">
+      <button disabled @click="dumpActionItems">
         Dump action items
       </button>
     </div>
