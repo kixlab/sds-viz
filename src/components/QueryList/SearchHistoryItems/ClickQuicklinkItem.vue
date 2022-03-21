@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center bg-white px-2 py-2 rounded-md border border-black">
-    <click-quicklink-icon class="w-9 h-9 mr-2" />
+    <div class="w-9 h-9 mr-2">
+      <icon-giver :action_item="action.Type"></icon-giver>
+    </div>    
     <div class="flex-grow text-center flex flex-col">
       <medium-title>
         Clicked the {{ produceRank(action.req) }} quick link</medium-title
@@ -10,6 +12,7 @@
         >URL:<a
           :href="action.source"
           class="ml-1 underline text-blue-500"
+          target="_blank"
         >
           {{ action.source }}
         </a></medium-title
@@ -20,14 +23,16 @@
 
 <script>
 import MediumTitle from '../../Common/MediumTitle.vue';
-import ClickQuicklinkIcon from '../../Common/Icons/ClickQuicklinkIcon.vue';
+import IconGiver from '../../Common/IconGiver.vue';
+// import ClickQuicklinkIcon from '../../Common/Icons/ClickQuicklinkIcon.vue';
 
 export default {
   name: "ClickQuicklinkItem",
   props: ['action'],
   components: {
     MediumTitle,
-    ClickQuicklinkIcon,
+    IconGiver
+    // ClickQuicklinkIcon,
   },
   methods: {
     produceRank: function (rank) {

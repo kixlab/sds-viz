@@ -3,7 +3,7 @@
     <!-- Title: 'Individual Search Sessions' -->
     <section-title> Selected Search Sessions </section-title>
     <div>Tags</div>
-    <div class="flex">
+    <div class="flex flex-wrap">
       <div v-for="tag in tags" :key="tag" :class="[selectedTag === tag ? 'bg-blue-500 text-white' : 'text-blue', 'px-3 py-1 mx-2 cursor-pointer rounded-lg shadow-md']" @click="selectTag(tag)">
         {{tag}}
       </div>

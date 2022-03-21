@@ -2,18 +2,21 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- The icon corresponding to the click -->
-      <icon-giver class="w-9 h-9 mr-2" v-bind="{ action_item: action.Type }" />
+      <div class="flex-none w-9 h-9 mr-2">
+        <icon-giver v-bind="{ action_item: action.Type }" />
+      </div>
       <!-- The texts -->
       <div class="flex-grow text-center flex flex-col">
         <!-- Clicked .... -->
         <medium-title>
           Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
-        <medium-title class="mt-2">{{action.ClickedTitle}}</medium-title>
+        <medium-title class="mt-2 break-all">{{action.ClickedTitle}}</medium-title>
         <medium-title class="mt-2"
           >URL:<a
             :href="action.ClickedURL"
-            class="ml-1 underline text-blue-500"
+            target="_blank"
+            class="ml-1 underline text-blue-500 break-all"
           >
             {{ action.ClickedURL }}
           </a></medium-title
@@ -26,7 +29,7 @@
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close document content' : 'See document content' }}
         </div>
-        <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
+        <div v-if="seeSearchResults" class="w-3/4">
           <div class="mt-2 border-4 text-justify">
             <!-- <p>{{action.ClickedContext}}</p> -->
             <p v-html="highlightedContext"></p>

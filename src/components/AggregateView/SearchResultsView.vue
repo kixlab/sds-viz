@@ -53,7 +53,7 @@ export default {
     // const allClickedItems = computed(() => selectedSessions.map(s => s.allClickedItems))
     const highlightSessions = function (result) {
       const highlightedSessions = selectedSessions.value.filter(session => {
-        return session.allQueryPairs.flat().includes(`${result.query}|${result.expandedQuery}`)
+        return session.id === result.sessionId // session.allQueryPairs.flat().includes(`${result.query}|${result.expandedQuery}`)
       }).map(session => session.id)
       createLog('highlightSessionsFromSearchResults', {
         highlightedSessions,

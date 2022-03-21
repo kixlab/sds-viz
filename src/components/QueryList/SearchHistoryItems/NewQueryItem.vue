@@ -2,11 +2,13 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- The search icon -->
-      <search-icon v-if="action.Type === 'NewQuery'" class="w-9 h-9 mr-2" />
-      <search-short-icon v-else-if="action.Type === 'NewQuery_Short'" class="w-9 h-9 mr-2" />
+      <div class="w-9 h-9 mr-2">
+        <search-icon v-if="action.Type === 'NewQuery'" />
+        <search-short-icon v-else-if="action.Type === 'NewQuery_Short'" />
+      </div>
       <!-- Searched ... -->
       <medium-title class="flex-grow text-center">Searched:  {{ action.Query }} </medium-title>
-      <medium-title class="flex-grow text-center">Processed as:  {{ action.ExtendedQuery }} </medium-title>
+      <medium-title class="flex-grow text-center">Expanded as:  {{ action.ExtendedQuery }} </medium-title>
     </div>
     <!-- i-frame component to show the search results -->
     <div class="flex mt-2">
@@ -14,13 +16,16 @@
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close query results' : 'See query results' }}
         </div>
-        <div v-if="seeSearchResults" class="xl:w-full 2xl:w-1/2">
-          <div v-for="item in action.QueryResults" :key="item.id" class="search-results mt-2 border-t-4 text-justify">
+        <div v-if="seeSearchResults" class="w-2/3">
+          <div v-for="item in action.QueryResults" :key="item.id" class="search-results break-all mt-2 border-t-4 text-justify">
             <div class="justify-between flex items-end">
-              <div class="text-lg font-medium underline cursor-pointer"><a :href="item.url"> {{item.title}} </a> </div>
-              <div class="text-sm">Score: {{item.score}}</div>
+              <div class="text-lg font-medium underline cursor-pointer break-all"><a :href="item.url" target="_blank"> {{item.title}} </a> </div>
             </div>
             <p>{{item.context}}</p>
+            <div class="flex justify-between">
+              <div class="text-sm">Board: {{item.board}} </div>
+              <div class="text-sm">Score: {{item.score}}</div>
+            </div>
           </div>
         </div>
         <!-- <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
@@ -39,6 +44,8 @@
 
 <script>
 import SearchIcon from '@/components/Common/Icons/SearchIcon.vue';
+import SearchShortIcon from '@/components/Common/Icons/SearchShortIcon.vue';
+
 import MediumTitle from '../../Common/MediumTitle.vue';
 // import SmallTitle from '../../Common/SmallTitle.vue';
 import { inject, ref } from 'vue'
@@ -49,6 +56,7 @@ export default {
   props: ['action'],
   components: {
     SearchIcon,
+    SearchShortIcon,
     MediumTitle,
     // SmallTitle,
   },

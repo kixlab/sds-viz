@@ -3,14 +3,16 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- Search refine icon -->
-      <search-refine-icon v-if="action.Type === 'RefinedQuery'" class="w-9 h-9 mr-2" />
-      <search-refine-short-icon v-if="action.Type === 'RefinedQuery_Short'" class="w-9 h-9 mr-2" />
+      <div class="w-9 h-9 mr-2">
+        <search-refine-icon v-if="action.Type === 'RefinedQuery'"  />
+        <search-refine-short-icon v-if="action.Type === 'RefinedQuery_Short'" />
+      </div>
       <!-- Refined to .... -->
       <medium-title class="flex-grow text-center"
         >Searched: {{ action.Query }}
       </medium-title>
       <medium-title class="flex-grow text-center"
-        >Processed as: {{ action.ExtendedQuery }}
+        >Expanded as: {{ action.ExtendedQuery }}
       </medium-title>
     </div>
     <!-- i-frame to show the search results -->
@@ -22,10 +24,13 @@
         <div v-if="seeSearchResults" class="w-2/3">
           <div v-for="item in action.QueryResults" :key="item.id" class="search-results mt-2 border-t-4 text-justify">
             <div class="justify-between flex items-end">
-              <div class="text-lg font-medium underline cursor-pointer"><a :href="item.url"> {{item.title}} </a> </div>
-              <div class="text-sm">Score: {{item.score}}</div>
+              <div class="text-lg font-medium underline cursor-pointer break-all"><a :href="item.url" target="_blank"> {{item.title}} </a> </div>
             </div>
             <p>{{item.context}}</p>
+            <div class="flex justify-between">
+              <div class="text-sm">Board: {{item.board}} </div>
+              <div class="text-sm">Score: {{item.score}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -39,6 +44,8 @@
 <script>
 import MediumTitle from "../../Common/MediumTitle.vue";
 import SearchRefineIcon from "../../Common/Icons/SearchRefineIcon.vue";
+
+import SearchRefineShortIcon from "../../Common/Icons/SearchRefineShortIcon.vue";
 import { inject, ref } from 'vue'
 export default {
   name: "RefinedQueryItem",
@@ -46,6 +53,7 @@ export default {
   components: {
     MediumTitle,
     SearchRefineIcon,
+    SearchRefineShortIcon
   },
   setup(props) {
     const createLog = inject('createLog')

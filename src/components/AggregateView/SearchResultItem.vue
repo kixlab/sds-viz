@@ -9,6 +9,10 @@
       <div class="font-bold">{{searchResultItem.title}}</div>
       <div>{{truncatedContext}}</div>
       <div class="text-sm">{{searchResultItem.url}}</div>
+      <div class="flex justify-between">
+        <div class="text-sm break-all">Board: {{searchResultItem.board}} </div>
+        <div class="text-sm break-all">Score: {{Math.round(searchResultItem.score * 1000000) / 1000000}}</div>
+      </div>
     </div>
     <div class="flex-none text-center mx-1">
       {{searchResultItem.count}} 
@@ -53,7 +57,7 @@ export default {
       if (showWholeContext.value) {
         return props.searchResultItem.context
       } else {
-        return props.searchResultItem.context.substring(0, 30)
+        return props.searchResultItem.context.substring(0, 50) + (props.searchResultItem.context.length > 50 ? '...(see more)' : '')
       }
     })
 

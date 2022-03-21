@@ -54,7 +54,7 @@ export default {
     const actionItems = computed(() => store.getActionItems.value);
 
     const targetSession = computed(() => store.getSession.value)
-    const selectedSessions = computed(() => store.getSelectedSessions.value);
+    const selectedSessionIds = computed(() => store.getSelectedSessionIds.value);
 
     const createLog = inject('createLog')
 
@@ -69,7 +69,7 @@ export default {
     })
 
     const selectedSessionsDump = computed(() => {
-      return JSON.stringify(selectedSessions.value, null, 2)
+      return JSON.stringify(selectedSessionIds.value, null, 2)
     })
 
     function updateNote(idx, note) {

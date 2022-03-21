@@ -5,19 +5,19 @@
       <span v-if="actionItem.targetType === 'session'" class="px-3 py-1 mx-2 cursor-pointer rounded-lg" @click="navigateSession">
         {{actionItem.targetSession.name}}
       </span>
-      <span v-else-if="actionItem.targetType === 'tag'" class="bg-blue-500 px-3 py-1 mx-2 cursor-pointer rounded-lg" @click="navigateGroup">
+      <span v-else-if="actionItem.targetType === 'tag'" class="bg-blue-500 px-3 py-1 mx-2 text-white cursor-pointer rounded-lg" @click="navigateGroup">
         {{actionItem.targetTag}}
       </span>
     </div>
     <div v-if="isEditing">
-      <textarea v-model="internalNote" class="w-full"></textarea>
+      <textarea v-model="internalNote" placeholder="어떤 문제를 발견하셨고, 어떻게 고치면 좋을 지 적어주세요." class="w-full"></textarea>
     </div>
     <div v-else>
       <span v-if="actionItem.note.length > 0">
         {{actionItem.note}}
       </span>
       <span v-else class="text-gray-500">
-        Please write how you would improve the search engine. 
+        어떤 문제를 발견하셨고, 어떻게 고치면 좋을 지 적어주세요. 
       </span>
     </div>
     <div class="buttons flex justify-between">

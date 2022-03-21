@@ -28,11 +28,11 @@ export const initGlobalStore = () => {
             'Click11+': 'C',
             'NewQuery': 'N',
             'RefinedQuery': 'R',
-            'Click1-5_short': 'a',
-            'Click6-10_short': 'b',
-            'Click11+_short': 'c',
-            'NewQuery_short': 'n',
-            'RefinedQuery_short': 'r',
+            'Click1-5_Short': 'a',
+            'Click6-10_Short': 'b',
+            'Click11+_Short': 'c',
+            'NewQuery_Short': 'n',
+            'RefinedQuery_Short': 'r',
             'ClickQuickLink': 'Q',
             'EndSession': 'E'
         }
@@ -222,7 +222,7 @@ export const initGlobalStore = () => {
     }
 
     const addActionItem = (item) => {
-        actionItemsRef.value.push(item);
+        actionItemsRef.value.unshift(item);
         localStorage.setItem('actionItems', JSON.stringify(actionItemsRef.value));
     }
 
