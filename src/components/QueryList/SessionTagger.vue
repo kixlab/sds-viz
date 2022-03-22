@@ -181,8 +181,8 @@ export default {
     //   this.isAutocompleteEnabled = false
     // },
     removeTag: function (idx) {
-      this.setSelectedSessionIds(this.tags[idx], this.sessionId, 'remove')
-      this.tags.splice(idx, 1)
+      // this.setSelectedSessionIds(this.tags[idx], this.sessionId, 'remove')
+      // this.tags.splice(idx, 1)
       this.createLog('removeTagFromSession', {
         sessionId: this.sessionId,
         tag: this.tags[idx],

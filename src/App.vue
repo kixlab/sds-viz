@@ -78,7 +78,7 @@ export default {
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
     // injectible in every subcomponent of this component.
-    const { setInteractionState, getUsername, setEvaluateUserName } = initGlobalStore();
+    const { getUsername, setEvaluateUserName } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
       const API_URL = 'http://70.70.10.73:5006';
@@ -112,10 +112,10 @@ export default {
     
     const changePage = function (newPage) {
       page.value = newPage;
-      setInteractionState({
-        chosenTag: '',
-        chosenSessionId: null
-      });
+      // setInteractionState({
+      //   chosenTag: '',
+      //   chosenSessionId: null
+      // });
 
     };
 

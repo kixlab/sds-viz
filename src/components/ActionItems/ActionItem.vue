@@ -20,7 +20,7 @@
         어떤 문제를 발견하셨고, 어떻게 고치면 좋을 지 적어주세요. 
       </span>
     </div>
-    <div class="buttons flex justify-between">
+    <!-- <div class="buttons flex justify-between">
       <button v-if="isEditing" @click="save" class="bg-blue-500 rounded-md px-1 py-1 text-white">
         Save
       </button>
@@ -30,7 +30,7 @@
       <button @click="removeActionItem" class="bg-orange-500 rounded-md px-1 py-1 text-white">
         Remove
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
     // })
 
     const navigateToGroups = inject('navigateToGroups')
-    const navigateToSessions = inject('navigateToSessions')
+    // const navigateToSessions = inject('navigateToSessions')
     const createLog = inject('createLog')
 
     const navigateGroup = function () {
@@ -83,8 +83,9 @@ export default {
     const navigateSession = function () {
       const update = {
         chosenSessionId: props.actionItem.targetSessionId,
-        chosenBehaviorCluster: props.actionItem.targetSession.behaviorClusterId,
-        chosenKeywordCluster: props.actionItem.targetSession.keywordClusterId
+        chosenTag: props.actionItem.targetTag,
+        // chosenBehaviorClusterId: props.actionItem.targetSession.behaviorCluster,
+        // chosenKeywordClusterId: props.actionItem.targetSession.keywordCluster
       }
 
       createLog('navigateToSessionFromActionItem', {
@@ -93,7 +94,7 @@ export default {
         // TODO: include session?
       })
 
-      navigateToSessions();
+      // navigateToSessions();
 
       setInteractionState(update);
     }

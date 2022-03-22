@@ -1,1 +1,40 @@
-{}
+{
+  "selectedSessionIds": {
+    "e": [
+      "session_id6"
+    ],
+    "ssss": [
+      "session_id6",
+      "session_id4-0",
+      "session_id1",
+      "session_id1-0-1-2-3",
+      "session_id2-0",
+      "session_id2-0-1-2-3"
+    ],
+    "ppppp": [],
+    "xxxp": [],
+    "lslsls": [],
+    "ppp": [],
+    "www,": [],
+    "eeee": [],
+    "fdfsf": [],
+    "ddd": [],
+    "eee": [],
+    "wwww": [],
+    "ttt": [
+      "session_id4"
+    ],
+    "quicklink": [
+      "session_id7-0-1"
+    ],
+    "테스": [],
+    "테스트": [
+      "session_id7-0-1"
+    ],
+    "띄어쓰": [],
+    "띄어쓰기": [
+      "session_id7-0-1"
+    ]
+  },
+  "actionItems": [{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ppppp"},{"note":"","targetType":"session","targetSessionId":"session_id6","targetSession":{"name":"휴가 vacation @ 2022. 1. 1. 오전 12:04:55","keywordCluster":null,"behaviorCluster":4,"metric":"ReformulationRate"},"targetTag":null},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ssss"},{"note":"dsfsdfds","targetType":"session","targetSessionId":"session_id1-0","targetSession":{"name":"휴가 @ 2022. 1. 1. 오전 12:00:01","keywordCluster":3,"behaviorCluster":6,"metric":"ReformulationRate"},"targetTag":null},{"note":"","targetType":"tag","targetSessionId":null,"targetSession":null,"targetTag":"ppppp"}]
+}

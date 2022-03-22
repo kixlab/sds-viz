@@ -33,6 +33,14 @@
         />
       </div>
     </div>
+    <div class="flex flex-col overflow-y-auto mt-4" v-if="chosenSession">
+      <session-item
+        class="my-2"
+        v-bind="{
+          session: chosenSession
+        }"
+      />
+    </div>
   </div>
 </template>
 
@@ -70,6 +78,8 @@ export default {
     const selectedSessionIds = computed(() => store.getSelectedSessionIds.value);
     const selectedSessions = computed(() => store.getSelectedSessions.value)
     const selectedTag = computed(() => store.getInteractionState.value['chosenTag'])
+
+    const chosenSession = computed(() => store.getSession.value)
 
     // Tags
     const tags = computed(() => Object.entries(store.getSelectedSessionIds.value).filter(([, value]) => value.length > 0).map(([key, ]) => key));
@@ -117,7 +127,8 @@ export default {
       tags,
       selectedSessions,
       selectedTag,
-      createLog
+      createLog,
+      chosenSession
     };
   },
   methods: {

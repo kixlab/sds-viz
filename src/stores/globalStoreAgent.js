@@ -5,7 +5,7 @@ const DATAPATH = './data/SDS/new';
 const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
-const ACTION_ITEM_FILE = 'action-items.json';
+// const ACTION_ITEM_FILE = './data/action-items.json';
 
 export const initGlobalStore = () => {
 
@@ -45,7 +45,7 @@ export const initGlobalStore = () => {
     var totalSessions = null;
     var totalSessionsDict = {}
     var username = '';
-    const loadedActionItems = require(ACTION_ITEM_FILE);
+    const loadedActionItems = require("./data/action-items.json");
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
     [keywordClusters, behaviorClusters, totalSessions, totalSessionsDict ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
