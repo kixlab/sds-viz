@@ -255,7 +255,7 @@ export default {
       // const greenZone = ["#D6E8D8", "#2BD72B"],
       //   redZone = ["#F05656", "#ECDBDC"];
       const redZone=["#f59e0b", "#fcd34d"], // orange
-        greenZone = ["#3B82F6", "#3B82F6"] // blue
+        greenZone = ["#3B82F6", "#1e40af"] // blue
       // If it is in top 50% --> it is good then --> green color
       // Else, --> it is bad --> red color
       if (rankingP < 0.5) {

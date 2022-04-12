@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-screen flex flex-col">
-    <div class="w-full h-auto grow-0 flex justify-start items-center relative">
+  <div class="w-full h-screen max-h-screen flex flex-col overflow-y-hidden">
+    <div class="w-full h-auto flex-none flex justify-start items-center relative">
       <div class="flex-1 grow px-4"> 
         <span class="text-xl font-bold">Search Engine Performance Diagnosis</span>
       </div>
@@ -26,24 +26,26 @@
           class="bg-blueGray-300 text-black rounded-md px-2 py-1">Action Items</button>
       </div>
     </div>
-    <div v-if="page === 1" class="w-full h-full flex flex-wrap">
-      <div class="w-3/5 h-full flex-col">
-        <!-- Behavior Pattern Clusters -->
-        <pattern-selection class="main-component w-full h-1/3 flex-auto"/>
-        <!-- Query Clusters & Search Engine Performance Metrics -->
-        <filter-and-keyword-panel class="main-component w-full h-2/3 flex flex-auto"/>
+    <div class="w-full h-auto flex-grow flex-shrink overflow-y-hidden">
+      <div v-if="page === 1" class="w-full h-full flex flex-shrink flex-wrap overflow-y-hidden">
+        <div class="w-3/5 h-full flex-col">
+          <!-- Behavior Pattern Clusters -->
+          <pattern-selection class="main-component w-full h-1/3 flex-auto"/>
+          <!-- Query Clusters & Search Engine Performance Metrics -->
+          <filter-and-keyword-panel class="main-component w-full h-2/3 flex flex-auto"/>
+        </div>
+        <!-- Individual Search Sessions -->
+        <query-selection class="main-component w-2/5 flex-none h-full"/>
       </div>
-      <!-- Individual Search Sessions -->
-      <query-selection class="main-component w-2/5 h-full"/>
-    </div>
-    <div v-else-if="page === 2" class="w-full h-full flex">
-      <selected-sessions class="main-component w-2/5 h-full"/>
+      <div v-else-if="page === 2" class="w-full h-full flex">
+        <selected-sessions class="main-component w-2/5 h-full"/>
 
-      <div class="w-3/5 h-full flex flex-col">
-        <query-list class="h-1/3 main-component flex-auto"></query-list>
-        <search-results-view class="h-2/3 main-component flex-auto"></search-results-view>
+        <div class="w-3/5 h-full flex flex-col">
+          <query-list class="h-1/3 main-component flex-auto"></query-list>
+          <search-results-view class="h-2/3 main-component flex-auto"></search-results-view>
+        </div>
+
       </div>
-
     </div>
 
     <action-items v-if="showActionItems" class="absolute z-10 top-10 right-3 shadow-md rounded-md w-1/3 h-1/2 bg-white" @close="showActionItems = false"/>
@@ -81,7 +83,7 @@ export default {
     const { setInteractionState, getUsername, setUsername } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
-      const API_URL = 'http://70.70.10.73:5006';
+      const API_URL = 'http://localhost:8000';
       fetch(`${API_URL}/log/`, {
         method: 'POST',
         headers: {

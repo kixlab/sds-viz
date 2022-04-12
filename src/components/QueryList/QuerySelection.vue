@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col overflow-y-hidden">
     <!-- Title: 'Individual Search Sessions' -->
     <section-title> Individual Search Sessions </section-title>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <!-- The dropdown -->
-      <div class="flex flex-row-reverse justify-between items-center">
+      <div class="flex flex-none flex-row-reverse justify-between items-center">
         <div v-if="sessions !== null" class="flex items-center m-1">
           <div class="mx-2 relative">
             <medium-title class="relative">
@@ -21,15 +21,17 @@
         </div>
       </div>
       <!-- The query list -->
-      <div class="flex flex-col overflow-y-auto mt-4">
-        <session-item
-          v-for="session in sessions"
-          :key="session.id"
-          class="my-2"
-          v-bind="{
-            session: session,
-          }"
-        />
+      <div class="flex-grow flex-shrink">
+        <div class="h-full overflow-y-auto flex flex-auto flex-col mt-4">
+          <session-item
+            v-for="session in sessions"
+            :key="session.id"
+            class="my-2"
+            v-bind="{
+              session: session,
+            }"
+          />
+        </div>
       </div>
       <div v-if="sessions === null" class="text-center">
         <medium-title>
