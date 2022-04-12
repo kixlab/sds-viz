@@ -21,17 +21,15 @@
         </div>
       </div>
       <!-- The query list -->
-      <div class="flex-grow flex-shrink">
-        <div class="h-full overflow-y-auto flex flex-auto flex-col mt-4">
-          <session-item
-            v-for="session in sessions"
-            :key="session.id"
-            class="my-2"
-            v-bind="{
-              session: session,
-            }"
-          />
-        </div>
+      <div class="h-full overflow-y-auto flex flex-auto flex-col mt-4">
+        <session-item
+          v-for="session in sessions"
+          :key="session.id"
+          class="my-2"
+          v-bind="{
+            session: session,
+          }"
+        />
       </div>
       <div v-if="sessions === null" class="text-center">
         <medium-title>
