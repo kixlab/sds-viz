@@ -64,7 +64,7 @@
           <session-tagger :session="session" :session-id="session.id"></session-tagger>
         </div>
         <div class="flex-none text-right text-xxs">     
-          {{session.timestamp.toLocaleString('ko-KR')}}
+          {{session.timestamp.toLocaleString('en-US')}}
         </div>
       </div>
     </div>
