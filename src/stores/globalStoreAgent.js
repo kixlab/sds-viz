@@ -222,7 +222,7 @@ export const initGlobalStore = () => {
     }
 
     const addActionItem = (item) => {
-        actionItemsRef.value.unshift(item);
+        actionItemsRef.value.push(item);
         localStorage.setItem('actionItems', JSON.stringify(actionItemsRef.value));
     }
 

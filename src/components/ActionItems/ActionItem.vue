@@ -10,15 +10,14 @@
       </span>
     </div>
     <div v-if="isEditing">
-      <textarea v-model="internalNote" placeholder="어떤 문제를 발견하셨고, 어떻게 고치면 좋을 지 적어주세요." class="w-full"></textarea>
+      <textarea v-model="internalNote" placeholder="What problems have you found? How would you like to fix it? " class="w-full"></textarea>
     </div>
     <div v-else>
       <span v-if="actionItem.note.length > 0">
         {{actionItem.note}}
       </span>
       <span v-else class="text-gray-500">
-        어떤 문제를 발견하셨고, 어떻게 고치면 좋을 지 적어주세요. 
-      </span>
+        What problems have you found? How would you like to fix it?       </span>
     </div>
     <div class="buttons flex justify-between">
       <button v-if="isEditing" @click="save" class="bg-blue-500 rounded-md px-1 py-1 text-white">
