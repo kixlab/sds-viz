@@ -3,7 +3,7 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- Search refine icon -->
-      <div class="w-9 h-9 mr-2">
+      <div class="w-9 h-9 mr-2 flex-none">
         <search-refine-icon v-if="action.Type === 'RefinedQuery'"  />
         <search-refine-short-icon v-if="action.Type === 'RefinedQuery_Short'" />
       </div>

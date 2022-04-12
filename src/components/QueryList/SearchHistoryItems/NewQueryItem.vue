@@ -2,7 +2,7 @@
   <div class="flex flex-col bg-white px-2 py-2 rounded-md border border-black">
     <div class="flex items-center">
       <!-- The search icon -->
-      <div class="w-9 h-9 mr-2">
+      <div class="w-9 h-9 mr-2 flex-none">
         <search-icon v-if="action.Type === 'NewQuery'" />
         <search-short-icon v-else-if="action.Type === 'NewQuery_Short'" />
       </div>

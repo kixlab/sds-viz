@@ -11,7 +11,7 @@
         <medium-title>
           Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
-        <medium-title class="mt-2 break-all">{{action.ClickedTitle}}</medium-title>
+        <!-- <medium-title class="mt-2 break-all">{{action.ClickedTitle}}</medium-title> -->
         <medium-title class="mt-2"
           >URL:<a
             :href="action.ClickedURL"
