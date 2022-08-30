@@ -30,7 +30,7 @@
               <icon-giver v-bind="{action_item: b}"></icon-giver>
               <div 
                 class="absolute z-10 -top-2 -right-1"
-                @click="removeBehavior(i)">
+                >
                 <MinusCircleIcon class="-mr-1 ml-1 h-4 w-4 text-red-500 bg-white/50" />
               </div>
             </div>
@@ -41,9 +41,10 @@
           Click to open the action palette and add behaviors to start searching
         </div>
         <div class="flex flex-none items-center">
-          <button @click="seeBehaviorPanel()" class="cursor-pointer">
-            <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
-            <ChevronUpIcon v-else class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+          <button @click="clearHighlights()" class="cursor-pointer">
+            <!-- <ChevronDownIcon v-if="!showOptions" class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+            <ChevronUpIcon v-else class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" /> -->
+            <XIcon class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -54,8 +55,7 @@
       </div>
     </div>
     <div 
-      class="grid grid-cols-2 absolute z-10 rounded-lg shadow-md w-full bg-white px-2 py-2 overflow-y-auto" 
-      v-if="showOptions">
+      class="grid grid-cols-2 absolute z-10 rounded-lg shadow-md w-full bg-white px-2 py-2 overflow-y-auto">
       <behavior-option 
         v-for="b in behaviors" 
         :value="b" 
@@ -97,12 +97,12 @@ import {
 } from '@headlessui/vue'
 
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, inject, ref } from "vue";
+import { computed,  ref } from "vue";
 import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
 import BehaviorOption from './BehaviorOption.vue'
-import { ChevronDownIcon, ChevronUpIcon, SearchIcon, MinusCircleIcon } from "@heroicons/vue/solid";
+import { XIcon, SearchIcon, MinusCircleIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -116,9 +116,8 @@ export default {
     SmallTitle,
     LineInTheMiddle,
     BehaviorOption,
-    ChevronDownIcon,
+    XIcon,
     SearchIcon,
-    ChevronUpIcon,
     MinusCircleIcon
   },
   setup: function () {
@@ -129,8 +128,9 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     const setShorthandBehaviors = store.setShorthandBehaviors
+    const clearHighlights = store.clearHighlights
 
-    const createLog = inject('createLog')
+    const createLog =  function () {} // inject('createLog')
     const isExactMatchEnabled = computed(() => store.getExactMatchEnabled.value)
     const isBorderHighlighted = ref(false)
     const highlights = computed(() => store.getHighlights.value)
@@ -170,7 +170,8 @@ export default {
       setExactMatchEnabled: store.setExactMatchEnabled,
       isBorderHighlighted,
       highlights,
-      explanations
+      explanations,
+      clearHighlights
     };
   },
   data: function () {
@@ -226,6 +227,12 @@ export default {
         })
       }
       this.setExactMatchEnabled(!this.isExactMatchEnabled)
+    },
+    clearHighlights: function () {
+      this.createLog('clearHighlights', {
+        behaviors: this.selectedBehaviors
+      })
+      this.clearHighlights()
     }
   },
   computed: {

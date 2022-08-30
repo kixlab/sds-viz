@@ -47,6 +47,8 @@ export const initGlobalStore = () => {
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
     [keywordClusters, behaviorClusters, totalSessions, totalSessionsDict ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
+    const totalSessionIds = totalSessions.map(session => session.id)
+
     // console.log(totalSessionsDict)
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
@@ -455,7 +457,7 @@ export const initGlobalStore = () => {
             setHighlights({
                 behaviorClusters: new Set(),
                 keywordClusters: new Set(),
-                sessionIds: sessions.map(session => session.id),
+                sessionIds: totalSessionIds,
                 source: 'BehaviorSearchBox'
             })
             return
@@ -494,7 +496,7 @@ export const initGlobalStore = () => {
             setHighlights({
                 behaviorClusters: new Set(),
                 keywordClusters: new Set(),
-                sessionIds: sessions.map(session => session.id),
+                sessionIds: totalSessionIds,
                 source: 'QuerySearchBox'
             })
             return
@@ -524,8 +526,6 @@ export const initGlobalStore = () => {
     }
 
     const clearHighlights = () => {
-        const sessions = totalSessions;
-        const totalSessionIds = sessions.map(session => session.id)
         setHighlights({
             behaviorClusters: new Set(),
             keywordClusters: new Set(),
