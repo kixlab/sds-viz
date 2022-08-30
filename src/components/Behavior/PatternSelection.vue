@@ -3,7 +3,7 @@
   <div class="flex flex-col">
     <!-- The title -->
     <div class="flex justify-between">
-      <section-title> Behavior Pattern Clusters </section-title>
+      <section-title> Search by Behavior Patterns </section-title>
       <behavior-search-box></behavior-search-box>
     </div>
     <!-- <div class="flex w-full flex-grow overflow-y-hidden p-4">

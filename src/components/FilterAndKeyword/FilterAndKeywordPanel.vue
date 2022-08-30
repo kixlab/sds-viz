@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="flex justify-between">
-      <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
+      <section-title> Search by User Queries </section-title>
       <div :class="[isBorderHighlighted && 'glow', 'flex w-1/3']">
         <div class="bg-white flex-1 rounded-lg shadow-md cursor-default focus:outline-none px-2">
           <input v-model="keyword" class="w-full" placeholder="Search sessions with user query" @keydown.enter="setKeyword()" type="text">
