@@ -1,6 +1,9 @@
 <template>
   <div class="mx-1 my-1">
     <div>
+      <span class="font-bold">Item Number {{idx + 1}}</span>
+    </div>
+    <div>
       {{actionItem.targetType === 'session' ? 'Session ' : 'Group '}}:
       <span v-if="actionItem.targetType === 'session'" class="px-3 py-1 mx-2 cursor-pointer rounded-lg" @click="navigateSession">
         {{actionItem.targetSession.name}}

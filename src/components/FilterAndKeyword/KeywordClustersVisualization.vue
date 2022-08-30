@@ -209,7 +209,7 @@ export default {
     },
     // Update the chosen keyword cluster, by updating the interaction state
     setChosenKeywordCluster(keywordClusterId, keywordCluster) {
-      console.log(keywordCluster)
+      // console.log(keywordCluster)
       // const previouslyChosenKeywordClusterId =
       //   this.interactionState.chosenKeywordClusterId;
       // // Flip the color of previously chosen keyword cluster

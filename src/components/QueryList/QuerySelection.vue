@@ -28,8 +28,7 @@
           class="my-2"
           v-bind="{
             session: session,
-          }"
-        />
+          }"/>
       </div>
       <div v-if="sessions === null" class="text-center">
         <medium-title>
@@ -63,6 +62,7 @@ export default {
   },
   setup() {
     // The currently active sortByOption
+
     const sortByOption = ref(window.globalVars.METRICS[0]);
     // Inject the methods to manipulate the state of the global store
     const store = useGlobalStore();
