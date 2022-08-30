@@ -13,10 +13,10 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col flex-grow w-auto mx-4 my-4">
-      <!-- Performance Metric Selection -->
+    <!-- <div class="flex flex-col flex-grow w-auto mx-4 my-4">
+       Performance Metric Selection
       <div class="flex flex-col bg-gray-100 rounded-md border border-black">
-        <!-- Title and question mark -->
+        Title and question mark
         <div class="flex justify-between content-center items-center">
           <in-section-title class="bg-gray-100 mt-1 mx-2">
             Performance Metric Selection
@@ -25,7 +25,7 @@
             <question-mark />
           </button>
         </div>
-        <!-- Tooltip -->
+        Tooltip
         <div class="relative">
           <div v-if="showTooltip || tooltipClicked" class="absolute z-20
             right-6            cursor-pointer
@@ -45,7 +45,7 @@
             </ul>
           </div>
         </div>
-        <!-- List of buttons for metrics in the UI -->
+        List of buttons for metrics in the UI
         <div class="w-full flex h-16 items-center justify-around">
           <div
             v-for="metricInfo in metricsData"
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <!-- User Query Clusters -->
+      User Query Clusters
       <div
         class="
           flex flex-col flex-grow
@@ -82,24 +82,24 @@
         <in-section-title class="bg-gray-100 mt-1 mx-2">
           User Query Clusters
         </in-section-title>
-        <!-- The visualization of the keyword clusters -->
+        The visualization of the keyword clusters
         <keyword-clusters-visualization
           v-if="interactionState.chosenMetric !== null"
           class="w-full flex-grow"
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import SectionTitle from "@/components/Common/SectionTitle.vue";
-import InSectionTitle from "@/components/Common/InSectionTitle.vue";
-import SmallTitle from "../Common/SmallTitle.vue";
-import KeywordClustersVisualization from "./KeywordClustersVisualization.vue";
+// import InSectionTitle from "@/components/Common/InSectionTitle.vue";
+// import SmallTitle from "../Common/SmallTitle.vue";
+// import KeywordClustersVisualization from "./KeywordClustersVisualization.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, inject } from "vue";
-import QuestionMark from '../Common/Icons/QuestionMark.vue'
+// import QuestionMark from '../Common/Icons/QuestionMark.vue'
 import { SearchIcon } from "@heroicons/vue/solid";
 
 
@@ -107,10 +107,10 @@ export default {
   name: "FilterAndKeywordPanel",
   components: {
     SectionTitle,
-    SmallTitle,
-    KeywordClustersVisualization,
-    InSectionTitle,
-    QuestionMark,
+    // SmallTitle,
+    // KeywordClustersVisualization,
+    // InSectionTitle,
+    // QuestionMark,
     SearchIcon,
   },
   setup() {
