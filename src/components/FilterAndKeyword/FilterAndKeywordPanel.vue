@@ -117,8 +117,7 @@ export default {
     // InSectionTitle,
     // QuestionMark,
     XIcon,
-    SearchIcon,
-    XIcon
+    SearchIcon
   },
   setup() {
     // Inject the methods to manipulate the state of the global store
