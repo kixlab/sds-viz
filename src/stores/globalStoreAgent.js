@@ -34,7 +34,8 @@ export const initGlobalStore = () => {
             'NewQuery_Short': 'n',
             'RefinedQuery_Short': 'r',
             'ClickQuickLink': 'Q',
-            'EndSession': 'E'
+            'EndSession': 'E',
+            'NextPage': 'P'
         }
     };
 

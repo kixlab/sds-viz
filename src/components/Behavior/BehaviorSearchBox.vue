@@ -122,7 +122,7 @@ export default {
     MinusCircleIcon
   },
   setup: function () {
-    const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'ClickQuickLink', 'EndSession']
+    const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'ClickQuickLink', 'EndSession', 'NextPage']
     const store = useGlobalStore();
     // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);
@@ -142,8 +142,8 @@ export default {
         'Click1-5_Short': `Click rank 1-5, dwell time < 30s`,
         'Click6-10_Short': 'Click rank 6-10, dwell time < 30s',
         'Click11+_Short': 'Click rank ≥ 11, dwell time < 30s',
-        'ClickQuickLink': 'Click on a quick link',
-        // 'NextPage': 'Next page',
+        // 'ClickQuickLink': 'Click on a quick link',
+        'NextPage': 'Next page',
         'NewQuery': 'New query',
         'RefinedQuery': 'Query refined',
         'NewQuery_Short': 'New query, dwell time < 30s',
