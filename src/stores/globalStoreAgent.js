@@ -34,7 +34,8 @@ export const initGlobalStore = () => {
             'NewQuery_Short': 'n',
             'RefinedQuery_Short': 'r',
             'ClickQuickLink': 'Q',
-            'EndSession': 'E'
+            'EndSession': 'E',
+            'NextPage': 'P'
         }
     };
 
@@ -92,7 +93,7 @@ export const initGlobalStore = () => {
     var highlights = {
         'behaviorClusters': new Set(),
         'keywordClusters': new Set(),
-        'sessionIds': totalSessions.map(session => session.id),
+        'sessionIds': totalSessionIds,
         'source': null
     }
 
@@ -136,7 +137,7 @@ export const initGlobalStore = () => {
         // const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
         // const chosenBehaviorClusterId = interactionState['chosenBehaviorClusterId'];
 
-        // if(chosenBehaviorClusterId === null && chosenKeywordClusterId === null) {
+        // if(chosenBehaviorClusterId === null && chosenKeywordClusterId === null && foundSessionIds.length === 0) {
         //     return null;
         // } 
         
@@ -479,12 +480,12 @@ export const initGlobalStore = () => {
             return
         }
 
-        const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
-        const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
+        // const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
+        // const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
 
         setHighlights({
-            behaviorClusters: behaviorClusters,
-            keywordClusters: keywordClusters,
+            // behaviorClusters: behaviorClusters,
+            // keywordClusters: keywordClusters,
             sessionIds: filteredSessions.map(session => session.id),
             source: 'BehaviorSearchBox'
         })
@@ -518,8 +519,8 @@ export const initGlobalStore = () => {
         // const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
 
         setHighlights({
-            behaviorClusters: behaviorClusters,
-            keywordClusters: keywordClusters,
+            // behaviorClusters: behaviorClusters,
+            // keywordClusters: keywordClusters,
             sessionIds: filteredSessions.map(session => session.id),
             source: 'KeywordSearchBox'
         })
@@ -599,6 +600,7 @@ export const useGlobalStore = () => ({
     updateActionItem: inject("updateActionItem"),
     setUsername: inject('setUsername'),
     setExactMatchEnabled: inject('setExactMatchEnabled'),
+    clearHighlights: inject('clearHighlights'),
     clearHighlights: inject('clearHighlights')
 
 });

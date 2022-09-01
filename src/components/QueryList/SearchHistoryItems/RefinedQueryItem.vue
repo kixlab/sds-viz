@@ -11,9 +11,9 @@
       <medium-title class="flex-grow text-center"
         >Searched: {{ action.Query }}
       </medium-title>
-      <medium-title class="flex-grow text-center"
+      <!-- <medium-title class="flex-grow text-center"
         >Expanded as: {{ action.ExtendedQuery }}
-      </medium-title>
+      </medium-title> -->
     </div>
     <!-- i-frame to show the search results -->
     <div class="flex mt-2">

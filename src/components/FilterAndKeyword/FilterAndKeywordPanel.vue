@@ -118,6 +118,7 @@ export default {
     // QuestionMark,
     XIcon,
     SearchIcon,
+    XIcon
   },
   setup() {
     // Inject the methods to manipulate the state of the global store

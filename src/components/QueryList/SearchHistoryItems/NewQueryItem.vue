@@ -8,10 +8,10 @@
       </div>
       <!-- Searched ... -->
       <medium-title class="flex-grow text-center">Searched:  {{ action.Query }} </medium-title>
-      <medium-title class="flex-grow text-center">Expanded as:  {{ action.ExtendedQuery }} </medium-title>
+      <!-- <medium-title class="flex-grow text-center">Expanded as:  {{ action.ExtendedQuery }} </medium-title> -->
     </div>
     <!-- i-frame component to show the search results -->
-    <div class="flex mt-2">
+    <!-- <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close query results' : 'See query results' }}
@@ -28,14 +28,14 @@
             </div>
           </div>
         </div>
-        <!-- <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
+        <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
          <iframe
             class="scaled-iframe"
             :src="`https://www.google.com/search?igu=1&q=${action.Query}&sourceid=chrome-mobile`"
           ></iframe> 
-        </div> -->
+        </div>
       </div>
-    </div>
+    </div> -->
     <div class="text-sm text-right">
       Total dwell time: {{action.Summary.total_stay_sec}} s
     </div>
