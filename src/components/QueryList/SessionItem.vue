@@ -7,9 +7,10 @@
         this.interactionState.chosenSessionId === session.id
           ? 'bg-gray-400 hover:bg-gray-400'
           : 'bg-gray-200 hover:bg-gray-300',
-        highlights.sessionIds.includes(session.id)
-          ? 'border-yellow-500 border-4'
-          : 'border-black border',  
+        // highlights.sessionIds.includes(session.id)
+        //   ? 'border-yellow-500 border-4'
+        //   :
+        'border-black border',  
       ]"
     >
       <!-- <div class="w-8 flex items-center"

@@ -30,7 +30,7 @@
               <icon-giver v-bind="{action_item: b}"></icon-giver>
               <div 
                 class="absolute z-10 -top-2 -right-1"
-                @click="removeBehavior(i)">
+                >
                 <MinusCircleIcon class="-mr-1 ml-1 h-4 w-4 text-red-500 bg-white/50" />
               </div>
             </div>
@@ -39,6 +39,11 @@
         </div>
         <div class="flex flex-1 items-center text-gray-400" @click="seeBehaviorPanel()" v-else>
           Click to open the action palette and add behaviors to start searching
+        </div>
+        <div class="flex flex-none items-center">
+          <button @click="clearHighlights()" class="cursor-pointer">
+            <XIcon class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+          </button>
         </div>
         <div class="flex flex-none items-center">
           <button @click="seeBehaviorPanel()" class="cursor-pointer">
@@ -102,7 +107,7 @@ import IconGiver from '../Common/IconGiver.vue'
 import SmallTitle from '../Common/SmallTitle.vue'
 import LineInTheMiddle from '../Common/Icons/LineInTheMiddle.vue'
 import BehaviorOption from './BehaviorOption.vue'
-import { ChevronDownIcon, ChevronUpIcon, SearchIcon, MinusCircleIcon } from "@heroicons/vue/solid";
+import { ChevronDownIcon, ChevronUpIcon, SearchIcon, MinusCircleIcon, XIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -119,7 +124,8 @@ export default {
     ChevronDownIcon,
     SearchIcon,
     ChevronUpIcon,
-    MinusCircleIcon
+    MinusCircleIcon, 
+    XIcon
   },
   setup: function () {
     const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'NextPage', 'EndSession']
@@ -129,6 +135,7 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     const setShorthandBehaviors = store.setShorthandBehaviors
+    const clearHighlights = store.clearHighlights
 
     const createLog = inject('createLog')
     const isExactMatchEnabled = computed(() => store.getExactMatchEnabled.value)
@@ -170,7 +177,8 @@ export default {
       setExactMatchEnabled: store.setExactMatchEnabled,
       isBorderHighlighted,
       highlights,
-      explanations
+      explanations,
+      clearHighlights
     };
   },
   data: function () {
@@ -226,6 +234,12 @@ export default {
         })
       }
       this.setExactMatchEnabled(!this.isExactMatchEnabled)
+    },
+    clearHighlights: function () {
+      this.createLog('clearHighlights', {
+        behaviors: this.selectedBehaviors
+      })
+      this.clearHighlights()
     }
   },
   computed: {

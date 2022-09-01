@@ -48,6 +48,7 @@ export const initGlobalStore = () => {
     keywordClusters = loadKeywordClusters(`${DATAPATH}/${KEYWORD_CLUSTERS_FILE}`, keywordClusters);
     behaviorClusters = loadBehaviorClusters(`${DATAPATH}/${BEHAVIOR_CLUSTERS_FILE}`, keywordClusters);
     [keywordClusters, behaviorClusters, totalSessions, totalSessionsDict ] = loadSessions(`${DATAPATH}/${SESSIONS_FILE}`, keywordClusters, behaviorClusters);
+    const totalSessionIds = totalSessions.map(s => s.id);
     // console.log(totalSessionsDict)
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
@@ -91,7 +92,7 @@ export const initGlobalStore = () => {
     var highlights = {
         'behaviorClusters': new Set(),
         'keywordClusters': new Set(),
-        'sessionIds': [],
+        'sessionIds': totalSessionIds,
         'source': null
     }
 
@@ -132,10 +133,12 @@ export const initGlobalStore = () => {
     // Get the sessions that are relevant to the current status of the interaction state
     const getSessions = computed(() => {
         const interactionState = getInteractionState.value;
+        const highlightState = getHighlights.value;
         const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
         const chosenBehaviorClusterId = interactionState['chosenBehaviorClusterId'];
+        const foundSessionIds = highlightState['sessionIds'];
 
-        if(chosenBehaviorClusterId === null && chosenKeywordClusterId === null) {
+        if(chosenBehaviorClusterId === null && chosenKeywordClusterId === null && foundSessionIds.length === 0) {
             return null;
         } 
         
@@ -147,11 +150,11 @@ export const initGlobalStore = () => {
                                     behaviorClusterSessionIds) :
                                 (chosenKeywordClusterId !== null ?
                                     keywordClusterSessionIds :
-                                    [])
+                                    totalSessionIds)
 
         
         // console.log(intersection)
-        const sessions = intersection.map(sessionId => {
+        const sessions = foundSessionIds.filter(id => intersection.includes(id)).map(sessionId => {
             // console.log(sessionId)
             return totalSessionsDict[sessionId]
         })
@@ -453,7 +456,7 @@ export const initGlobalStore = () => {
             setHighlights({
                 behaviorClusters: new Set(),
                 keywordClusters: new Set(),
-                sessionIds: [],
+                sessionIds: totalSessionIds,
                 source: 'BehaviorSearchBox'
             })
             return
@@ -475,12 +478,12 @@ export const initGlobalStore = () => {
             return
         }
 
-        const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
-        const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
+        // const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
+        // const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
 
         setHighlights({
-            behaviorClusters: behaviorClusters,
-            keywordClusters: keywordClusters,
+            // behaviorClusters: behaviorClusters,
+            // keywordClusters: keywordClusters,
             sessionIds: filteredSessions.map(session => session.id),
             source: 'BehaviorSearchBox'
         })
@@ -492,7 +495,7 @@ export const initGlobalStore = () => {
             setHighlights({
                 behaviorClusters: new Set(),
                 keywordClusters: new Set(),
-                sessionIds: [],
+                sessionIds: totalSessionIds,
                 source: 'QuerySearchBox'
             })
             return
@@ -506,14 +509,23 @@ export const initGlobalStore = () => {
             return
         }
 
-        const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
-        const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
+        // const behaviorClusters = new Set(filteredSessions.map(session => session.behaviorClusterId))
+        // const keywordClusters = new Set(filteredSessions.map(session => session.keywordClusterId))
 
         setHighlights({
-            behaviorClusters: behaviorClusters,
-            keywordClusters: keywordClusters,
+            // behaviorClusters: behaviorClusters,
+            // keywordClusters: keywordClusters,
             sessionIds: filteredSessions.map(session => session.id),
             source: 'KeywordSearchBox'
+        })
+    }
+
+    const clearHighlights = () => {
+        setHighlights({
+            behaviorClusters: new Set(),
+            keywordClusters: new Set(),
+            sessionIds: totalSessionIds,
+            source: 'ClearHighlights'
         })
     }
 
@@ -543,6 +555,8 @@ export const initGlobalStore = () => {
     provide('updateActionItem', updateActionItem)
     provide('setUsername', setUsername)
     provide('setExactMatchEnabled', setExactMatchEnabled)
+    provide('clearHighlights', clearHighlights)
+
 
     // Return necessary methods to the app.vue //
 
@@ -580,6 +594,7 @@ export const useGlobalStore = () => ({
     removeActionItem: inject("removeActionItem"),
     updateActionItem: inject("updateActionItem"),
     setUsername: inject('setUsername'),
-    setExactMatchEnabled: inject('setExactMatchEnabled')
+    setExactMatchEnabled: inject('setExactMatchEnabled'),
+    clearHighlights: inject('clearHighlights')
 
 });

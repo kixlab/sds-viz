@@ -3,8 +3,13 @@
     <div class="flex justify-between">
       <section-title> Query Clusters & Search Engine Performance Metrics </section-title>
       <div :class="[isBorderHighlighted && 'glow', 'flex w-1/3']">
-        <div class="bg-white flex-1 rounded-lg shadow-md cursor-default focus:outline-none px-2">
+        <div class="bg-white flex-1 rounded-lg shadow-md cursor-default focus:outline-none px-2 flex">
           <input v-model="keyword" class="w-full" placeholder="Search sessions with user query" @keydown.enter="setKeyword()" type="text">
+          <div class="flex flex-none items-center">
+            <button @click="clearTextbox()" class="cursor-pointer">
+              <XIcon class="-mr-1 ml-1 h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>  
         </div>
         <div :class="['flex-none items-center px-1 rounded-lg shadow-md bg-blue-800 text-white']">
           <button @click="setKeyword()" class="cursor-pointer my-auto">
@@ -100,7 +105,7 @@ import KeywordClustersVisualization from "./KeywordClustersVisualization.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, inject } from "vue";
 import QuestionMark from '../Common/Icons/QuestionMark.vue'
-import { SearchIcon } from "@heroicons/vue/solid";
+import { SearchIcon, XIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -112,6 +117,7 @@ export default {
     InSectionTitle,
     QuestionMark,
     SearchIcon,
+    XIcon
   },
   setup() {
     // Inject the methods to manipulate the state of the global store
@@ -123,12 +129,14 @@ export default {
     const setQuery = store.setQuery;
     const createLog = inject('createLog')
     const highlights = computed(() => store.getHighlights.value)
+    const clearHighlights = store.clearHighlights
     return {
       interactionState,
       setInteractionState,
       setQuery,
       createLog,
-      highlights
+      highlights,
+      clearHighlights
     };
   },
   data() {
@@ -187,6 +195,12 @@ export default {
     onTooltipClose: function () {
       this.createLog('closeMetricTooltip')
       this.tooltipClicked = false;
+    },
+    clearTextbox: function () {
+      this.createLog('clearHighlights', {
+        keyword: this.keyword
+      })
+      this.clearHighlights()
     }
   },
   watch: {
