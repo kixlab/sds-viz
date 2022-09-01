@@ -11,7 +11,7 @@
         <medium-title>
           Clicked the {{ produceRank(action.Rank) }} search result</medium-title
         >
-        <medium-title class="mt-2 break-all">{{action.ClickedTitle}}</medium-title>
+        <!-- <medium-title class="mt-2 break-all">{{action.ClickedTitle}}</medium-title> -->
         <medium-title class="mt-2"
           >URL:<a
             :href="action.ClickedURL"
@@ -24,25 +24,24 @@
       </div>
     </div>
     <!-- I-frame to show the search results -->
-    <div class="flex mt-2">
+    <!-- <div class="flex mt-2">
       <div class="flex flex-col flex-grow items-center mt-2 pb-4">
         <div :class="['flex justify-center items-center h-6 w-full border border-black rounded-md cursor-pointer', seeSearchResults ? 'bg-gray-400' : 'bg-gray-200']" v-on:click="toggleSearchResults">
           {{ seeSearchResults ? 'Close document content' : 'See document content' }}
         </div>
         <div v-if="seeSearchResults" class="w-3/4">
           <div class="mt-2 border-4 text-justify">
-            <!-- <p>{{action.ClickedContext}}</p> -->
             <p v-html="highlightedContext"></p>
           </div>
         </div>
-        <!-- <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
+        <div v-if="seeSearchResults" class="iframe-wrapper px-4 pt-2">
           <iframe
             class="scaled-iframe"
-            :src="`https://www.google.com/search?igu=1&q=${action.Query}&sourceid=chrome-mobile`"
+            :src="`${action.ClickedURL}`"
           ></iframe>
-        </div> -->
+        </div>
       </div>
-    </div>
+    </div> -->
     <div class="text-sm text-right">
       Dwell time: {{action.DwellTime}} s
     </div>
