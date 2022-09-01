@@ -122,7 +122,7 @@ export default {
     MinusCircleIcon
   },
   setup: function () {
-    const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'ClickQuickLink', 'EndSession', 'NextPage']
+    const behaviors = ['Click1-5', 'Click1-5_Short', 'Click6-10', 'Click6-10_Short', 'Click11+', 'Click11+_Short', 'NewQuery', 'NewQuery_Short', 'RefinedQuery', 'RefinedQuery_Short', 'NextPage', 'EndSession']
     const store = useGlobalStore();
     // Current interaction state (which panel is open, which metric is chosen)
     const interactionState = computed(() => store.getInteractionState.value);

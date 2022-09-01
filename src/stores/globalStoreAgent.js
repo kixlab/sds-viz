@@ -1,7 +1,7 @@
 import { provide, ref, computed, inject } from "vue";
 import { loadBehaviorClusters, loadKeywordClusters, loadSessions } from "./dataLoader";
 
-const DATAPATH = './data/SDS/new';
+const DATAPATH = './data/AOL';
 const KEYWORD_CLUSTERS_FILE = 'BERTopics-clusters.json'; 
 const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20.json'; 
 const SESSIONS_FILE = 'sequences-3-20.json'; 
