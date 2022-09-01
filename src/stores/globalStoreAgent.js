@@ -601,6 +601,5 @@ export const useGlobalStore = () => ({
     setUsername: inject('setUsername'),
     setExactMatchEnabled: inject('setExactMatchEnabled'),
     clearHighlights: inject('clearHighlights'),
-    clearHighlights: inject('clearHighlights')
 
 });
