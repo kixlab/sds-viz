@@ -13,14 +13,15 @@
       </span>
     </div>
     <div v-if="isEditing">
-      <textarea v-model="internalNote" placeholder="What problems have you found? How would you like to fix it? " class="w-full"></textarea>
+      <textarea v-model="internalNote" placeholder="이 세션에서 사용자의 검색 의도는 무엇이었나요? " class="w-full"></textarea>
     </div>
     <div v-else>
       <span v-if="actionItem.note.length > 0">
         {{actionItem.note}}
       </span>
       <span v-else class="text-gray-500">
-        What problems have you found? How would you like to fix it?       </span>
+        이 세션에서 사용자의 검색 의도는 무엇이었나요?
+       </span>
     </div>
     <div class="buttons flex justify-between">
       <button v-if="isEditing" @click="save" class="bg-blue-500 rounded-md px-1 py-1 text-white">
@@ -64,7 +65,7 @@ export default {
     // })
 
     const navigateToGroups = inject('navigateToGroups')
-    const navigateToSessions = inject('navigateToSessions')
+    // const navigateToSessions = inject('navigateToSessions')
     const createLog = inject('createLog')
 
     const navigateGroup = function () {
@@ -85,8 +86,8 @@ export default {
     const navigateSession = function () {
       const update = {
         chosenSessionId: props.actionItem.targetSessionId,
-        chosenBehaviorCluster: props.actionItem.targetSession.behaviorClusterId,
-        chosenKeywordCluster: props.actionItem.targetSession.keywordClusterId
+        // chosenBehaviorCluster: props.actionItem.targetSession.behaviorClusterId,
+        // chosenKeywordCluster: props.actionItem.targetSession.keywordClusterId
       }
 
       createLog('navigateToSessionFromActionItem', {
@@ -95,7 +96,7 @@ export default {
         // TODO: include session?
       })
 
-      navigateToSessions();
+      // navigateToSessions();
 
       setInteractionState(update);
     }

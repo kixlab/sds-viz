@@ -90,10 +90,10 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     // The list of keyword clusters
-    const keywordClusters = computed(() => {
-      const keywordClusters = store.getKeywordClusters.value;
-      return Object.values(keywordClusters).filter(c => c.subtreeSize > 0)
-    });
+    const keywordClusters = Object.values(store.getKeywordClusters.value) // computed(() => {
+    //   const keywordClusters = store.getKeywordClusters.value;
+    //   return Object.values(keywordClusters).filter(c => c.subtreeSize > 0)
+    // });
     // const allKeywordClusters = computed(() => {
     //   const keywordClusters = store.getKeywordClusters.value;
     //   return keywordClusters
@@ -101,7 +101,7 @@ export default {
     // Sort the keyword clusters with respect to how good it is performing under the chosen performance metric
     const sortedKeywordClusters = computed(() => {
       const chosenMetric = interactionState.value.chosenMetric;
-      return Object.values(keywordClusters.value).filter(c => c.subtreeSize > 0).sort((a, b) => {
+      return keywordClusters.filter(c => c.subtreeSize > 0).sort((a, b) => {
         const aAvgMetricVal = a.metricValues[chosenMetric] / a.subtreeSize;
         const bAvgMetricVal = b.metricValues[chosenMetric] / b.subtreeSize;
         return window.globalVars.IS_METRIC_GOODNESS_DIRECT[chosenMetric]
@@ -145,7 +145,7 @@ export default {
       return array;
     }
 
-    const keywordRenderData = computed(() => randomShuffle(keywordClusters.value))
+    const keywordRenderData = computed(() => randomShuffle(keywordClusters))
     const chosenKeywordClusterId = computed(() => interactionState.value.chosenKeywordClusterId)
     // const totalSessions = computed(() => store.getTotalSessions.value)
 

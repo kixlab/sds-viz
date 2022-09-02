@@ -74,7 +74,7 @@ export default {
     const sessions = computed(() => {
       const sessions = store.getSessions.value;
       if (sessions !== null) {
-        return Object.values(sessions).sort((a, b) => {
+        return sessions.sort((a, b) => {
           const aMetricVal = a.metricValues[sortByOption.value];
           const bMetricVal = b.metricValues[sortByOption.value];
           // sort bad to good
@@ -90,14 +90,14 @@ export default {
       sortByOption.value = option;
     };
 
-    const keywordClusters = computed(() => store.getKeywordClusters.value)
+    const keywordClusters = store.getKeywordClusters.value
 
     const currentKeywordCluster = computed(() => {
       const currentKeywordClusterId = interactionState.value.chosenKeywordClusterId
       if (currentKeywordClusterId === null) {
         return null
       }
-      const currentCluster = Object.values(keywordClusters.value).find(k => k.id === currentKeywordClusterId)
+      const currentCluster = keywordClusters.find(k => k.id === currentKeywordClusterId)
       return currentCluster
     })
 

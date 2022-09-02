@@ -51,11 +51,11 @@ export default {
     // Updates the interaction state
     const setInteractionState = store.setInteractionState;
     // List of behavior clusters associated with the chosen keyword cluster
-    const behaviorClusters = computed(() => store.getBehaviorClusters.value);
-    const filteredBehaviorClusters = computed(() => {
-      const behaviorClusters = store.getBehaviorClusters.value;
-      return Object.values(behaviorClusters).filter(c => c.subtreeSize > 0)
-    });
+    const behaviorClusters = store.getBehaviorClusters // computed(() => store.getBehaviorClusters.value);
+    const filteredBehaviorClusters = behaviorClusters // computed(() => {
+    //   const behaviorClusters = store.getBehaviorClusters.value;
+    //   return Object.values(behaviorClusters).filter(c => c.subtreeSize > 0)
+    // });
 
     return {
       interactionState,
