@@ -18,9 +18,9 @@
         <button 
           :disabled="page === 2"
           @click="changePage(2)"
-          :class="[page !== 2 ? 'bg-blueGray-700' : 'bg-blue-500', 'text-white rounded-md px-2 py-1']">Inspect sessions</button>
+          :class="[page !== 2 ? 'bg-blueGray-700' : 'bg-blue-500', 'text-white rounded-md px-2 py-1']">Elaborate on sessions</button>
       </div>
-      <div class="grow-0 py-2 px-4">
+      <div class="grow-0 py-2 px-4" v-if="false">
         <button 
           @click="toggleActionItems()"
           class="bg-blueGray-300 text-black rounded-md px-2 py-1">Action Items</button>
@@ -41,8 +41,9 @@
         <selected-sessions class="main-component w-2/5 h-full"/>
 
         <div class="w-3/5 h-full flex flex-col">
-          <query-list class="h-1/3 main-component flex-auto"></query-list>
-          <search-results-view class="h-2/3 main-component flex-auto"></search-results-view>
+          <action-items class="main-component w-full h-full flex-auto"/>
+          <!-- <query-list class="h-1/3 main-component flex-auto"></query-list>
+          <search-results-view class="h-2/3 main-component flex-auto"></search-results-view> -->
         </div>
 
       </div>
@@ -62,8 +63,8 @@ import FilterAndKeywordPanel from './components/FilterAndKeyword/FilterAndKeywor
 import SelectedSessions from './components/AggregateView/SelectedSessions.vue';
 import ActionItems from './components/ActionItems/ActionItems.vue';
 import { ref, provide } from 'vue';
-import SearchResultsView from './components/AggregateView/SearchResultsView.vue'
-import QueryList from './components/AggregateView/QueryList.vue'
+// import SearchResultsView from './components/AggregateView/SearchResultsView.vue'
+// import QueryList from './components/AggregateView/QueryList.vue'
 import {computed} from "vue";
 
 export default {
@@ -74,8 +75,8 @@ export default {
     FilterAndKeywordPanel,
     SelectedSessions,
     ActionItems,
-    SearchResultsView,
-    QueryList
+    // SearchResultsView,
+    // QueryList
   },
   setup() {
     // Initializa the global store, so that its methods that manipulates the state, could be
@@ -83,7 +84,7 @@ export default {
     const { setInteractionState, getUsername, setUsername } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
-      const API_URL = 'http://localhost:8000';
+      const API_URL = 'http://internal.kixlab.org:9893';
       fetch(`${API_URL}/log/`, {
         method: 'POST',
         headers: {

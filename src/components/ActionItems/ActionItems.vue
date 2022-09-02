@@ -2,7 +2,7 @@
   <div class="px-2 py-2">
     <div class="flex flex-row justify-between">
       <section-title>List of Action Items</section-title>
-      <div class="bg-orange-500 rounded-md text-white cursor-pointer w-6 h-6">
+      <div class="bg-orange-500 rounded-md text-white cursor-pointer w-6 h-6" v-if="false">
         <button @click="close">
           <XIcon class="w-full h-full"/>
         </button>
@@ -16,12 +16,12 @@
     <div v-else class="overflow-y-auto h-4/5 divide-y border">
       <action-item v-for="(item, idx) in actionItems" :actionItem="item" :key="item.text" :idx="idx" @update-note="updateNote" @remove="remove"></action-item>
     </div>
-    <div class="bg-blue-800 rounded-md text-white cursor-pointer text-center">
+    <!-- <div class="bg-blue-800 rounded-md text-white cursor-pointer text-center">
       <button @click="createEmptyActionItem">
         <PlusCircleIcon class="w-6 h-6 inline"></PlusCircleIcon>
         Add new action item
       </button>
-    </div>
+    </div> -->
     <div class="rounded-md text-blue-800 border border-blue cursor-pointer text-center">
       <button @click="dumpActionItems">
         Dump action items
@@ -36,7 +36,7 @@ import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, inject, ref } from "vue";
 import ActionItem from './ActionItem.vue';
 import SectionTitle from '../Common/SectionTitle.vue';
-import { XIcon, PlusCircleIcon } from "@heroicons/vue/solid";
+import { XIcon } from "@heroicons/vue/solid";
 
 
 export default {
@@ -44,7 +44,7 @@ export default {
     ActionItem, 
     SectionTitle,
     XIcon,
-    PlusCircleIcon
+    // PlusCircleIcon
   },
   emits: ['close'],
   setup(props, ctx) {

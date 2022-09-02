@@ -54,8 +54,8 @@ export const initGlobalStore = () => {
     // Create a ref --> make it reactive
     // Whenever it changes, it will send a signal to the vue
     // And, vue will update the template based on the changes, if needed
-    const keywordClustersRef = ref(keywordClusters);
-    const behaviorClustersRef = ref(behaviorClusters);
+    // const keywordClustersRef = ref(keywordClusters);
+    // const behaviorClustersRef = ref(behaviorClusters);
     // const totalSessionsRef = ref(totalSessions);
     const usernameRef = ref(username);
 
@@ -116,20 +116,21 @@ export const initGlobalStore = () => {
         if(chosenMetric === null) {
             return null;
         }
-        return keywordClustersRef.value;
+        return keywordClusters;
     });
 
     // based on the interaction state's status, get the behavior clusters that are relevant
-    const getBehaviorClusters = computed(() => {
-        // const interactionState = getInteractionState.value;
-        // const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
-        // if(chosenKeywordClusterId === null) {
-        //     return null;
-        // }
-        // const keywordCluster = getKeywordClusters.value[chosenKeywordClusterId];
-        // return keywordCluster.behaviorClusters;
-        return behaviorClustersRef.value;
-    });
+    const getBehaviorClusters = behaviorClusters // computed(() => {
+    //     // const interactionState = getInteractionState.value;
+    //     // const chosenKeywordClusterId = interactionState['chosenKeywordClusterId'];
+    //     // if(chosenKeywordClusterId === null) {
+    //     //     return null;
+    //     // }
+    //     // const keywordCluster = getKeywordClusters.value[chosenKeywordClusterId];
+    //     // return keywordCluster.behaviorClusters;
+    //     // return behaviorClustersRef.value;
+    //     return behaviorClusters
+    // });
 
     // Get the sessions that are relevant to the current status of the interaction state
     const getSessions = computed(() => {

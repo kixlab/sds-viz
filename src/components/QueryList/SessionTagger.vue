@@ -14,7 +14,7 @@
       @keydown.delete="removeLastTag"
       @keydown.esc="closeAutocomplete"
       v-model="newTag"
-      @input="onChange"
+      @input="_onChange"
       placeholder="Enter a tag" />
     <div v-show="isAutocompleteEnabled"
       class="absolute bg-white shadow-md flex flex-col w-full flex-wrap rounded-md divide-y z-10 top-6">
@@ -31,13 +31,14 @@
 <script>
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
 import { computed, ref, inject } from "vue";
+import _ from 'lodash'
 
 export default {
   setup(props) {
     // console.log(context)
     const store = useGlobalStore();
     // Current interaction state (which panel is open, which metric is chosen)
-    // const interactionState = computed(() => store.getInteractionState.value);
+    const interactionState = store.getInteractionState.value;
     const arrowCounter = ref(-1)
     const newTag = ref('')
     const selectedSessionIds = computed(() => store.getSelectedSessionIds.value); 
@@ -78,7 +79,8 @@ export default {
       arrowCounter.value = -1
     }
 
-    const addTag = function (e) {
+    const addTag = function (e) { // creating a new tag
+      console.log(props)
       if (newTag.value === '' ) {
         return
       } else if (tags.value.includes(newTag.value)) {
@@ -86,7 +88,7 @@ export default {
         createLog('addExistingTagToSession', {
           sessionId: props.sessionId,
           tag: newTag.value,
-          sesssion: props.session
+          session: props.session
         })
         e.target.value = ''
         newTag.value = ''
@@ -96,20 +98,55 @@ export default {
       // this.tags.push(this.newTag)
       e.preventDefault();
       setSelectedSessionIds(newTag.value, props.sessionId, 'add')
+
+      if (tags.value.length === 0) {
+        const newActionItem = {
+          note: '',
+          targetType: 'session',
+          targetSessionId: props.session.id,
+          targetSession: {
+            name: `${props.session.sequence[0].Query} @ ${props.session.timestamp.toLocaleString('ko-KR')}`,
+            keywordCluster: interactionState.chosenKeywordClusterId,
+            behaviorCluster: interactionState.chosenBehaviorClusterId,
+            metric: interactionState.chosenMetric
+          },
+          targetTag: null
+        }
+        store.addActionItem(newActionItem)
+      }
+
       tags.value.push(newTag.value)
       createLog('addTagToSession', {
         sessionId: props.sessionId,
         tag: newTag.value,
-        sesssion: props.session,
+        session: props.session,
         from: 'tagInput'
       })
+
       newTag.value = ''
       e.target.value = '';
       closeAutocomplete()
     }
 
-    const setNewTag = function (t) {
+    const setNewTag = function (t) { // selecting an existing tag
       setSelectedSessionIds(t, props.sessionId, 'add')
+      console.log(props)
+      if (tags.value.length === 0) {
+        const newActionItem = {
+          note: '',
+          targetType: 'session',
+          targetSessionId: props.session.id,
+          targetSession: {
+            name: `${props.session.sequence[0].Query} @ ${props.session.timestamp.toLocaleString('ko-KR')}`,
+            keywordCluster: interactionState.chosenKeywordClusterId,
+            behaviorCluster: interactionState.chosenBehaviorClusterId,
+            metric: interactionState.chosenMetric
+          },
+          targetTag: null
+        }
+        store.addActionItem(newActionItem)
+      }
+
       tags.value.push(t)
       createLog('addTagToSession', {
         sessionId: props.sessionId,
@@ -121,13 +158,15 @@ export default {
       closeAutocomplete()
     }
 
-    const onChange = function (e) {
-      console.log(e.target.value)
+    const _onChange = function (e) {
+      console.log('onchange', e.target.value)
       if (e.target.value === '') {
         isAutocompleteEnabled.value = false
       }
       isAutocompleteEnabled.value = true
     }
+
+    const onChange = _.debounce(_onChange, 500)
 
     const onEnter = function (e) {
       if (arrowCounter.value > -1) {
@@ -135,6 +174,23 @@ export default {
       } else {
         addTag(e)
       }
+    }
+
+    const removeTag = function (idx) {
+      setSelectedSessionIds(tags.value[idx], props.sessionId, 'remove')
+      tags.value.splice(idx, 1)
+      if (tags.value.length === 0) {
+        // const targetSession = props.session
+        const targetActionItemIdx = store.getActionItems.value.findIndex(actionItem => {
+          return actionItem.targetSessionId === props.session.id
+        })
+        store.removeActionItem(targetActionItemIdx)
+      }
+      createLog('removeTagFromSession', {
+        sessionId: props.sessionId,
+        tag: tags.value[idx],
+        session: props.session
+      })
     }
 
     return {
@@ -152,10 +208,11 @@ export default {
       arrowCounter,
       addTag,
       setNewTag,
-      closeAutocomplete
+      closeAutocomplete,
+      removeTag
     }
   },
-  props: ["sessionId"],
+  props: ["session", "sessionId"],
   // data: function () {
   //   return {
   //     // tags: ['hello', 'world'],
@@ -180,15 +237,9 @@ export default {
     //   e.target.value = '';
     //   this.isAutocompleteEnabled = false
     // },
-    removeTag: function (idx) {
-      this.setSelectedSessionIds(this.tags[idx], this.sessionId, 'remove')
-      this.tags.splice(idx, 1)
-      this.createLog('removeTagFromSession', {
-        sessionId: this.sessionId,
-        tag: this.tags[idx],
-        sesssion: this.session
-      })
-    },
+    // removeTag: function (idx) {
+      
+    // },
     removeLastTag: function (e) {
       if (e.target.value.length === 0) {
         this.removeTag(this.tags.length - 1)

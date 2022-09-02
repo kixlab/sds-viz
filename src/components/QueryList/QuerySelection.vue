@@ -90,14 +90,14 @@ export default {
       sortByOption.value = option;
     };
 
-    const keywordClusters = computed(() => store.getKeywordClusters.value)
+    const keywordClusters = store.getKeywordClusters.value
 
     const currentKeywordCluster = computed(() => {
       const currentKeywordClusterId = interactionState.value.chosenKeywordClusterId
       if (currentKeywordClusterId === null) {
         return null
       }
-      const currentCluster = Object.values(keywordClusters.value).find(k => k.id === currentKeywordClusterId)
+      const currentCluster = Object.values(keywordClusters).find(k => k.id === currentKeywordClusterId)
       return currentCluster
     })
 
