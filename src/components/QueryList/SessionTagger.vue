@@ -14,7 +14,7 @@
       @keydown.delete="removeLastTag"
       @keydown.esc="closeAutocomplete"
       v-model="newTag"
-      @input="onChange"
+      @input="_onChange"
       placeholder="Enter a tag" />
     <div v-show="isAutocompleteEnabled"
       class="absolute bg-white shadow-md flex flex-col w-full flex-wrap rounded-md divide-y z-10 top-6">
@@ -159,7 +159,7 @@ export default {
     }
 
     const _onChange = function (e) {
-      console.log(e.target.value)
+      console.log('onchange', e.target.value)
       if (e.target.value === '') {
         isAutocompleteEnabled.value = false
       }

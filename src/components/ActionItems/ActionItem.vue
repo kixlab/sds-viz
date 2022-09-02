@@ -84,8 +84,21 @@ export default {
     }
   
     const navigateSession = function () {
+      const selectedTag = interactionState.value['chosenTag']
+      const targetSessionId = props.actionItem.targetSessionId
+      const selectedSessionIds = store.getSelectedSessionIds.value
+      let tag = null
+
+      console.log(selectedTag, selectedSessionIds[selectedTag])
+
+      if (selectedTag && selectedSessionIds[selectedTag].includes(targetSessionId)) {
+        tag = selectedTag
+      } else {
+        tag = Object.keys(selectedSessionIds).find(tag => selectedSessionIds[tag].includes(targetSessionId))
+      } 
       const update = {
         chosenSessionId: props.actionItem.targetSessionId,
+        chosenTag: tag,
         // chosenBehaviorCluster: props.actionItem.targetSession.behaviorClusterId,
         // chosenKeywordCluster: props.actionItem.targetSession.keywordClusterId
       }
