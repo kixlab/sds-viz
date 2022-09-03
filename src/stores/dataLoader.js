@@ -72,6 +72,14 @@ export const loadBehaviorClusters = (filePath) => {
 
         const galaxyRootNode = behaviorGalaxy.nodes.find(node => node.id === behaviorGalaxy.root_id);
         const firstLayerNodeIds = galaxyRootNode.children;
+        const secondLayerNodeIds = firstLayerNodeIds.map(nodeId => {
+            const children = behaviorGalaxy.nodes.find(node => node.id === nodeId).children
+            if (children) {
+                return children
+            } else {
+                return nodeId
+            }
+        }).flat();
 
         const dfs = (nodeId) => {
             const curNode = behaviorGalaxy.nodes.find(node => node.id === nodeId);
@@ -85,7 +93,7 @@ export const loadBehaviorClusters = (filePath) => {
         };
 
 
-        if (firstLayerNodeIds !== null) {
+        if (secondLayerNodeIds !== null) {
             const firstLayerNodes = behaviorGalaxy.nodes.filter(node => firstLayerNodeIds.includes(node.id));
 
             firstLayerNodes.forEach(firstLayerNode => {
