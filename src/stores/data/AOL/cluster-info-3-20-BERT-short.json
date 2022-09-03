@@ -1,0 +1,3665 @@
+[
+  {
+    "root_id": 1,
+    "nodes": [
+      {
+        "id": 1,
+        "label": "Tree",
+        "distinguishing_features": [
+          {
+            "cluster_id": 1,
+            "action_items": [
+              "Click1-5",
+              "NewQuery",
+              "Click6-10"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 1,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 1,
+            "action_items": [
+              "Click1-5",
+              "NewQuery_Short",
+              "NewQuery_Short"
+            ],
+            "score": 0
+          }
+        ],
+        "divided_cluster": 2,
+        "remaining_cluster": 3,
+        "children": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 5000,
+        "parent": null
+      },
+      {
+        "id": 2,
+        "label": "Tree",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 30,
+        "remaining_cluster": 31,
+        "children": [
+          30,
+          32,
+          34,
+          38,
+          40,
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 1023,
+        "parent": 1
+      },
+      {
+        "id": 3,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 4,
+        "remaining_cluster": 5,
+        "children": [
+          4,
+          6,
+          8,
+          10,
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 3977,
+        "parent": null
+      },
+      {
+        "id": 4,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 4,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery_Short"
+            ],
+            "score": 14446.543968904514
+          },
+          {
+            "cluster_id": 4,
+            "action_items": [
+              "NewQuery",
+              "NewQuery_Short",
+              "Click1-5"
+            ],
+            "score": 7064.020348986376
+          },
+          {
+            "cluster_id": 4,
+            "action_items": [
+              "NewQuery",
+              "NewQuery_Short"
+            ],
+            "score": 5525.717000868062
+          },
+          {
+            "cluster_id": 4,
+            "action_items": [
+              "NewQuery",
+              "RefinedQuery_Short"
+            ],
+            "score": 1830.8946386430525
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 258,
+        "parent": 3
+      },
+      {
+        "id": 5,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 6,
+        "remaining_cluster": 7,
+        "children": [
+          6,
+          8,
+          10,
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 3719,
+        "parent": null
+      },
+      {
+        "id": 6,
+        "label": "Tree",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 12,
+        "remaining_cluster": 13,
+        "children": [
+          12,
+          14,
+          16,
+          20,
+          22,
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1685,
+        "parent": 5
+      },
+      {
+        "id": 7,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 8,
+        "remaining_cluster": 9,
+        "children": [
+          8,
+          10,
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 2034,
+        "parent": null
+      },
+      {
+        "id": 8,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 28.546957175056345
+          },
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 28.546957175056345
+          },
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 21.251377410468322
+          },
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5"
+            ],
+            "score": 21.251377410468322
+          },
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery",
+              "Empty"
+            ],
+            "score": 15.456869009584663
+          },
+          {
+            "cluster_id": 8,
+            "action_items": [
+              "NewQuery_Short",
+              "Empty"
+            ],
+            "score": 14.890298034242234
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 59,
+        "parent": 7
+      },
+      {
+        "id": 9,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 10,
+        "remaining_cluster": 11,
+        "children": [
+          10,
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 1975,
+        "parent": null
+      },
+      {
+        "id": 10,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 10,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 274.7181136120043
+          },
+          {
+            "cluster_id": 10,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 274.7181136120043
+          },
+          {
+            "cluster_id": 10,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 197.48956356736244
+          },
+          {
+            "cluster_id": 10,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5"
+            ],
+            "score": 197.48956356736244
+          },
+          {
+            "cluster_id": 10,
+            "action_items": [
+              "NewQuery",
+              "Empty"
+            ],
+            "score": 139.8286203941731
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 398,
+        "parent": 9
+      },
+      {
+        "id": 11,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 18,
+        "remaining_cluster": 19,
+        "children": [
+          18,
+          26,
+          27
+        ],
+        "subtree_size": 1577,
+        "parent": null
+      },
+      {
+        "id": 12,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 12,
+            "action_items": [
+              "Click1-5",
+              "RefinedQuery_Short"
+            ],
+            "score": 7448.333333333333
+          },
+          {
+            "cluster_id": 12,
+            "action_items": [
+              "RefinedQuery_Short",
+              "Click1-5"
+            ],
+            "score": 1153.044783111083
+          },
+          {
+            "cluster_id": 12,
+            "action_items": [
+              "RefinedQuery_Short",
+              "RefinedQuery"
+            ],
+            "score": 34.51094204520027
+          },
+          {
+            "cluster_id": 12,
+            "action_items": [
+              "RefinedQuery_Short",
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 22.965156794425084
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 41,
+        "parent": 6
+      },
+      {
+        "id": 13,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 14,
+        "remaining_cluster": 15,
+        "children": [
+          14,
+          16,
+          20,
+          22,
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1644,
+        "parent": null
+      },
+      {
+        "id": 14,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 14,
+            "action_items": [
+              "RefinedQuery",
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3862.288906035204
+          },
+          {
+            "cluster_id": 14,
+            "action_items": [
+              "RefinedQuery",
+              "NewQuery"
+            ],
+            "score": 3083.916666666667
+          },
+          {
+            "cluster_id": 14,
+            "action_items": [
+              "Click1-5",
+              "RefinedQuery",
+              "NewQuery"
+            ],
+            "score": 1159.012805671468
+          },
+          {
+            "cluster_id": 14,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery"
+            ],
+            "score": 82.60191334919142
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 23,
+        "parent": 13
+      },
+      {
+        "id": 15,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 16,
+        "remaining_cluster": 17,
+        "children": [
+          16,
+          20,
+          22,
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1621,
+        "parent": null
+      },
+      {
+        "id": 16,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 16,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 2721.013668354647
+          },
+          {
+            "cluster_id": 16,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 2540.191787362725
+          },
+          {
+            "cluster_id": 16,
+            "action_items": [
+              "Click1-5",
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 932.8388505601621
+          },
+          {
+            "cluster_id": 16,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 916.2751067640171
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 61,
+        "parent": 15
+      },
+      {
+        "id": 17,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 20,
+        "remaining_cluster": 21,
+        "children": [
+          20,
+          22,
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1560,
+        "parent": null
+      },
+      {
+        "id": 18,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 18,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 504.85659655831734
+          },
+          {
+            "cluster_id": 18,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 504.85659655831734
+          },
+          {
+            "cluster_id": 18,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 332.9658385093169
+          },
+          {
+            "cluster_id": 18,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5"
+            ],
+            "score": 332.9658385093169
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 410,
+        "parent": 11
+      },
+      {
+        "id": 19,
+        "label": "Merged",
+        "distinguishing_features": [],
+        "divided_cluster": 26,
+        "remaining_cluster": 27,
+        "children": [
+          26,
+          27
+        ],
+        "subtree_size": 1167,
+        "parent": null
+      },
+      {
+        "id": 20,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 20,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "RefinedQuery"
+            ],
+            "score": 4794.382276755283
+          },
+          {
+            "cluster_id": 20,
+            "action_items": [
+              "Click1-5",
+              "RefinedQuery"
+            ],
+            "score": 3424.9090909090896
+          },
+          {
+            "cluster_id": 20,
+            "action_items": [
+              "Click1-5",
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 2340.8014154160983
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 78,
+        "parent": 17
+      },
+      {
+        "id": 21,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 22,
+        "remaining_cluster": 23,
+        "children": [
+          22,
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1482,
+        "parent": null
+      },
+      {
+        "id": 22,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 2654.337133878064
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "Click1-5",
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 2212.9080619578467
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 1708.2685880522292
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 1279.2937122070696
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "Click6-10",
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 1244.8650900900902
+          },
+          {
+            "cluster_id": 22,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 1110.5516136719757
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 296,
+        "parent": 21
+      },
+      {
+        "id": 23,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 24,
+        "remaining_cluster": 25,
+        "children": [
+          24,
+          28,
+          29
+        ],
+        "subtree_size": 1186,
+        "parent": null
+      },
+      {
+        "id": 24,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 24,
+            "action_items": [
+              "NewQuery_Short",
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 4156.660419238475
+          },
+          {
+            "cluster_id": 24,
+            "action_items": [
+              "NewQuery_Short",
+              "NewQuery"
+            ],
+            "score": 3541.7647058823527
+          },
+          {
+            "cluster_id": 24,
+            "action_items": [
+              "NewQuery_Short",
+              "NewQuery",
+              "Empty"
+            ],
+            "score": 168.59574468085106
+          },
+          {
+            "cluster_id": 24,
+            "action_items": [
+              "Click1-5",
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 21.475927516668712
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 54,
+        "parent": 23
+      },
+      {
+        "id": 25,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          }
+        ],
+        "divided_cluster": 28,
+        "remaining_cluster": 29,
+        "children": [
+          28,
+          29
+        ],
+        "subtree_size": 1132,
+        "parent": null
+      },
+      {
+        "id": 26,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 26,
+            "action_items": [
+              "Click1-5",
+              "NewQuery_Short",
+              "RefinedQuery"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 26,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 523
+          },
+          {
+            "cluster_id": 26,
+            "action_items": [
+              "NewQuery_Short",
+              "Click1-5"
+            ],
+            "score": 523
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 523,
+        "parent": 19
+      },
+      {
+        "id": 27,
+        "label": "Remainder",
+        "distinguishing_features": [
+          {
+            "cluster_id": 27,
+            "action_items": [
+              "RefinedQuery",
+              "NextPage",
+              "RefinedQuery_Short"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 27,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Empty"
+            ],
+            "score": 644
+          },
+          {
+            "cluster_id": 27,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 644
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 644,
+        "parent": 19
+      },
+      {
+        "id": 28,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 28,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5",
+              "NewQuery"
+            ],
+            "score": 2015.375031938451
+          },
+          {
+            "cluster_id": 28,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 902.2382553691526
+          },
+          {
+            "cluster_id": 28,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 715.0792217166457
+          },
+          {
+            "cluster_id": 28,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery"
+            ],
+            "score": 365.6253140659921
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 37,
+        "parent": 25
+      },
+      {
+        "id": 29,
+        "label": "Remainder",
+        "distinguishing_features": [
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 3327.897486091707
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2732.7454798331023
+          },
+          {
+            "cluster_id": 6,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 2207.6955445544554
+          },
+          {
+            "cluster_id": 29,
+            "action_items": [
+              "Click1-5",
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 465
+          },
+          {
+            "cluster_id": 29,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "NewQuery"
+            ],
+            "score": 507
+          },
+          {
+            "cluster_id": 29,
+            "action_items": [
+              "Click1-5",
+              "NewQuery"
+            ],
+            "score": 671
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 1095,
+        "parent": 25
+      },
+      {
+        "id": 30,
+        "label": "Tree",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          }
+        ],
+        "divided_cluster": 36,
+        "remaining_cluster": 37,
+        "children": [
+          36,
+          44,
+          45
+        ],
+        "subtree_size": 432,
+        "parent": 2
+      },
+      {
+        "id": 31,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 32,
+        "remaining_cluster": 33,
+        "children": [
+          32,
+          34,
+          38,
+          40,
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 591,
+        "parent": null
+      },
+      {
+        "id": 32,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 32,
+            "action_items": [
+              "NewQuery",
+              "RefinedQuery"
+            ],
+            "score": 958.6046511627908
+          },
+          {
+            "cluster_id": 32,
+            "action_items": [
+              "NewQuery",
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 176.52083333333334
+          },
+          {
+            "cluster_id": 32,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "RefinedQuery"
+            ],
+            "score": 71.68695652173912
+          },
+          {
+            "cluster_id": 32,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 64.46384022712061
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 133,
+        "parent": 31
+      },
+      {
+        "id": 33,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 34,
+        "remaining_cluster": 35,
+        "children": [
+          34,
+          38,
+          40,
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 458,
+        "parent": null
+      },
+      {
+        "id": 34,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 34,
+            "action_items": [
+              "NewQuery",
+              "NewQuery_Short"
+            ],
+            "score": 182.20200871592178
+          },
+          {
+            "cluster_id": 34,
+            "action_items": [
+              "NewQuery",
+              "NewQuery",
+              "Empty"
+            ],
+            "score": 176.01315789473685
+          },
+          {
+            "cluster_id": 34,
+            "action_items": [
+              "NewQuery",
+              "NewQuery",
+              "NewQuery_Short"
+            ],
+            "score": 90.46153846153847
+          },
+          {
+            "cluster_id": 34,
+            "action_items": [
+              "NewQuery",
+              "NewQuery",
+              "NewQuery"
+            ],
+            "score": 72.21052631578948
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 115,
+        "parent": 33
+      },
+      {
+        "id": 35,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 38,
+        "remaining_cluster": 39,
+        "children": [
+          38,
+          40,
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 343,
+        "parent": null
+      },
+      {
+        "id": 36,
+        "label": "Tree",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          }
+        ],
+        "divided_cluster": 42,
+        "remaining_cluster": 43,
+        "children": [
+          42,
+          48,
+          52,
+          54,
+          55
+        ],
+        "subtree_size": 216,
+        "parent": 30
+      },
+      {
+        "id": 37,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          }
+        ],
+        "divided_cluster": 44,
+        "remaining_cluster": 45,
+        "children": [
+          44,
+          45
+        ],
+        "subtree_size": 216,
+        "parent": null
+      },
+      {
+        "id": 38,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 38,
+            "action_items": [
+              "NextPage",
+              "NewQuery_Short"
+            ],
+            "score": 303.0
+          },
+          {
+            "cluster_id": 38,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "NewQuery_Short"
+            ],
+            "score": 202.0
+          },
+          {
+            "cluster_id": 38,
+            "action_items": [
+              "NewQuery_Short",
+              "NextPage"
+            ],
+            "score": 163.15384615384616
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 40,
+        "parent": 35
+      },
+      {
+        "id": 39,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 40,
+        "remaining_cluster": 41,
+        "children": [
+          40,
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 303,
+        "parent": null
+      },
+      {
+        "id": 40,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 40,
+            "action_items": [
+              "Click6-10",
+              "Click1-5"
+            ],
+            "score": 311.5432833627278
+          },
+          {
+            "cluster_id": 40,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 213.09121621621622
+          },
+          {
+            "cluster_id": 40,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery"
+            ],
+            "score": 207.21135574899017
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 108,
+        "parent": 39
+      },
+      {
+        "id": 41,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 46,
+        "remaining_cluster": 47,
+        "children": [
+          46,
+          50,
+          51
+        ],
+        "subtree_size": 195,
+        "parent": null
+      },
+      {
+        "id": 42,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          },
+          {
+            "cluster_id": 42,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 544.6155372405373
+          },
+          {
+            "cluster_id": 42,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 34.43617021276595
+          },
+          {
+            "cluster_id": 42,
+            "action_items": [
+              "NewQuery_Short",
+              "Click11+"
+            ],
+            "score": 26.02941176470588
+          },
+          {
+            "cluster_id": 42,
+            "action_items": [
+              "Click6-10",
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 22.176372221129256
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 39,
+        "parent": 36
+      },
+      {
+        "id": 43,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          }
+        ],
+        "divided_cluster": 48,
+        "remaining_cluster": 49,
+        "children": [
+          48,
+          52,
+          54,
+          55
+        ],
+        "subtree_size": 177,
+        "parent": null
+      },
+      {
+        "id": 44,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 44,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 699.8118070953436
+          },
+          {
+            "cluster_id": 44,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 86.86147186147186
+          },
+          {
+            "cluster_id": 44,
+            "action_items": [
+              "NextPage",
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 72.43076923076922
+          },
+          {
+            "cluster_id": 44,
+            "action_items": [
+              "NextPage",
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 67.94496044031648
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 44,
+        "parent": 37
+      },
+      {
+        "id": 45,
+        "label": "Remainder",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 45,
+            "action_items": [
+              "NextPage",
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 49
+          },
+          {
+            "cluster_id": 45,
+            "action_items": [
+              "NextPage",
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 577
+          },
+          {
+            "cluster_id": 45,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 138
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 172,
+        "parent": 37
+      },
+      {
+        "id": 46,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 46,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery",
+              "Empty"
+            ],
+            "score": 96.3103448275862
+          },
+          {
+            "cluster_id": 46,
+            "action_items": [
+              "NewQuery_Short",
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 52.34946631878557
+          },
+          {
+            "cluster_id": 46,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 44.2323885199241
+          },
+          {
+            "cluster_id": 46,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "Empty"
+            ],
+            "score": 35.01176470588236
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 48,
+        "parent": 41
+      },
+      {
+        "id": 47,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          }
+        ],
+        "divided_cluster": 50,
+        "remaining_cluster": 51,
+        "children": [
+          50,
+          51
+        ],
+        "subtree_size": 147,
+        "parent": null
+      },
+      {
+        "id": 48,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          },
+          {
+            "cluster_id": 48,
+            "action_items": [
+              "NewQuery",
+              "Click6-10"
+            ],
+            "score": 266.74593019934883
+          },
+          {
+            "cluster_id": 48,
+            "action_items": [
+              "NewQuery",
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 85.9588492808005
+          },
+          {
+            "cluster_id": 48,
+            "action_items": [
+              "NewQuery",
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 85.9588492808005
+          },
+          {
+            "cluster_id": 48,
+            "action_items": [
+              "Click11+",
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 40.80180794814942
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 41,
+        "parent": 43
+      },
+      {
+        "id": 49,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          }
+        ],
+        "divided_cluster": 52,
+        "remaining_cluster": 53,
+        "children": [
+          52,
+          54,
+          55
+        ],
+        "subtree_size": 136,
+        "parent": null
+      },
+      {
+        "id": 50,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 50,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 28.86206896551724
+          },
+          {
+            "cluster_id": 50,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 27.32203389830508
+          },
+          {
+            "cluster_id": 50,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 16.65671641791045
+          },
+          {
+            "cluster_id": 50,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 9.216216216216216
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 85,
+        "parent": 47
+      },
+      {
+        "id": 51,
+        "label": "Remainder",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 51,
+            "action_items": [
+              "RefinedQuery",
+              "NewQuery_Short",
+              "Click6-10"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 51,
+            "action_items": [
+              "RefinedQuery",
+              "NextPage",
+              "RefinedQuery_Short"
+            ],
+            "score": 0
+          },
+          {
+            "cluster_id": 51,
+            "action_items": [
+              "NewQuery",
+              "NextPage",
+              "Empty"
+            ],
+            "score": 62
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 62,
+        "parent": 47
+      },
+      {
+        "id": 52,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          },
+          {
+            "cluster_id": 52,
+            "action_items": [
+              "NextPage",
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 171.8111111111111
+          },
+          {
+            "cluster_id": 52,
+            "action_items": [
+              "Click11+",
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 96.26666666666667
+          },
+          {
+            "cluster_id": 52,
+            "action_items": [
+              "Click6-10",
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 94.09577922077925
+          },
+          {
+            "cluster_id": 52,
+            "action_items": [
+              "Click1-5",
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 71.97892603850052
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 84,
+        "parent": 49
+      },
+      {
+        "id": 53,
+        "label": "Merged",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          }
+        ],
+        "divided_cluster": 54,
+        "remaining_cluster": 55,
+        "children": [
+          54,
+          55
+        ],
+        "subtree_size": 52,
+        "parent": null
+      },
+      {
+        "id": 54,
+        "label": "Leaf",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          },
+          {
+            "cluster_id": 54,
+            "action_items": [
+              "NextPage",
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 77.47174603174602
+          },
+          {
+            "cluster_id": 54,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 25.5
+          },
+          {
+            "cluster_id": 54,
+            "action_items": [
+              "NewQuery",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 17.411964785914364
+          },
+          {
+            "cluster_id": 54,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 17.294117647058826
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 21,
+        "parent": 53
+      },
+      {
+        "id": 55,
+        "label": "Remainder",
+        "distinguishing_features": [
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NextPage",
+              "NextPage"
+            ],
+            "score": 17769.126440332344
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "NewQuery",
+              "NextPage"
+            ],
+            "score": 14765.797701081261
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "NextPage"
+            ],
+            "score": 4223.773245630604
+          },
+          {
+            "cluster_id": 2,
+            "action_items": [
+              "Click11+",
+              "Click11+"
+            ],
+            "score": 4074.112102510507
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NewQuery",
+              "Click1-5"
+            ],
+            "score": 12093.430610068259
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "NextPage",
+              "NewQuery"
+            ],
+            "score": 3035.3271006604696
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click6-10",
+              "NextPage"
+            ],
+            "score": 993.4625868055556
+          },
+          {
+            "cluster_id": 30,
+            "action_items": [
+              "Click1-5",
+              "NextPage"
+            ],
+            "score": 776.3260040160642
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "NextPage",
+              "Click11+"
+            ],
+            "score": 1262.7222951680674
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click6-10",
+              "Click6-10"
+            ],
+            "score": 737.0616113744076
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 433.2284360189573
+          },
+          {
+            "cluster_id": 36,
+            "action_items": [
+              "Click1-5",
+              "Click6-10"
+            ],
+            "score": 389.68397120121256
+          },
+          {
+            "cluster_id": 55,
+            "action_items": [
+              "RefinedQuery",
+              "Click1-5"
+            ],
+            "score": 21
+          },
+          {
+            "cluster_id": 55,
+            "action_items": [
+              "Click1-5",
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 24
+          },
+          {
+            "cluster_id": 55,
+            "action_items": [
+              "Click1-5",
+              "Click1-5"
+            ],
+            "score": 59
+          }
+        ],
+        "divided_cluster": null,
+        "remaining_cluster": null,
+        "children": null,
+        "subtree_size": 31,
+        "parent": 53
+      }
+    ],
+    "keyword_cluster": 0
+  }
+]

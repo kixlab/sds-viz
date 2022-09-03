@@ -24,7 +24,7 @@
           <!-- The search icon -->
           <search-icon class="min-w-min min-h-min w-8 h-8 mr-2" />
           <!-- What is searched -->
-          <medium-title>
+          <medium-title class="break-all">
             {{ session.sequence[0].Query }}
           </medium-title>
         </div>

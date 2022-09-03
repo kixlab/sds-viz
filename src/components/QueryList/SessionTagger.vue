@@ -256,3 +256,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.tag-input__input {
+  width: 60%;
+}
+</style>
