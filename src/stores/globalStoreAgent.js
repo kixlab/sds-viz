@@ -2,9 +2,9 @@ import { provide, ref, computed, inject } from "vue";
 import { loadBehaviorClusters, loadKeywordClusters, loadSessions } from "./dataLoader";
 
 const DATAPATH = './data/AOL';
-const KEYWORD_CLUSTERS_FILE = 'BERTopics-cluster-50000-50-BERT-short.json'; 
-const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20-BERT-short.json'; 
-const SESSIONS_FILE = 'sequences-3-20-BERT-short.json'; 
+const KEYWORD_CLUSTERS_FILE = 'BERTopics-cluster-50000-50-BERT-short-normal.json'; 
+const BEHAVIOR_CLUSTERS_FILE = 'cluster-info-3-20-BERT-short-normal.json'; 
+const SESSIONS_FILE = 'sequences-3-20-BERT-short-normal.json'; 
 
 export const initGlobalStore = () => {
 
