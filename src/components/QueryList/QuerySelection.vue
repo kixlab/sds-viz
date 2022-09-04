@@ -1,7 +1,31 @@
 <template>
   <div class="flex flex-col overflow-y-hidden">
     <!-- Title: 'Individual Search Sessions' -->
-    <section-title> Individual Search Sessions </section-title>
+    <div class="flex justify-between content-center items-center">
+      <section-title> Individual Search Sessions </section-title>
+      <button class="w-6 h-6 mr-2" @click="onTooltipOpen()" @mouseenter="onTooltipHover()" @mouseleave="onTooltipHoverLeave()">
+        <question-mark />
+      </button>
+    </div>
+    <div class="relative">
+      <div v-if="showTooltip || tooltipClicked" class="absolute z-20
+        right-6            cursor-pointer
+        bg-white
+        drop-shadow-sm
+        rounded-md
+        border-gray-500 border
+        px-2
+        py-2" @click="onTooltipClose()">
+        <ul>
+          <li><span class="font-bold">CTR@5</span>: Ratio of queries with clicks on documents ranked 1-5</li>
+          <li><span class="font-bold">MeanRR</span>: Mean of average reciprocal ranks for all queries </li>
+          <li><span class="font-bold">Abandonment rate</span>: Ratio of queries without any clicks</li>
+          <li><span class="font-bold">Reformulation rate</span>: Ratio of reformulated query among all queries</li>
+          <li><span class="font-bold">mAP</span>: Mean Average Precision</li>
+          <li><span class="font-bold">NDCG</span>: Normalized Discounted Cumulative Gain</li>
+        </ul>
+      </div>
+    </div>
     <div class="flex flex-col my-4 mx-2 overflow-y-hidden">
       <!-- The dropdown -->
       <div class="flex flex-none flex-row-reverse justify-between items-center">
@@ -50,7 +74,8 @@ import MediumTitle from "../Common/MediumTitle.vue";
 import SortByDropdown from "@/components/QueryList/SortByDropdown.vue";
 import SessionItem from "@/components/QueryList/SessionItem.vue";
 import { useGlobalStore } from "@/stores/globalStoreAgent.js";
-import { computed, provide, ref } from "vue";
+import { computed, provide, ref, inject } from "vue";
+import QuestionMark from '../Common/Icons/QuestionMark.vue'
 
 export default {
   name: "QuerySelection",
@@ -59,6 +84,7 @@ export default {
     MediumTitle,
     SortByDropdown,
     SessionItem,
+    QuestionMark
   },
   setup() {
     // The currently active sortByOption
@@ -85,6 +111,7 @@ export default {
       }
       return null;
     });
+    const createLog = inject('createLog')
     // When the sortByOption changes
     const onSortByOptionChange = (option) => {
       sortByOption.value = option;
@@ -112,10 +139,35 @@ export default {
       setInteractionState,
       sessions,
       currentKeywordCluster,
-      keywordClusters
+      keywordClusters,
+      createLog
     };
   },
-  methods: {},
+  methods: {
+    onTooltipHover: function () {
+      this.createLog('hoverMetricTooltip')
+      this.showTooltip = true;
+    },
+    onTooltipHoverLeave: function () {
+      this.createLog('hoverLeaveMetricTooltip')
+      this.showTooltip = false;
+    },
+    onTooltipOpen: function () {
+      this.createLog('openMetricTooltip')
+      this.tooltipClicked = true;
+      this.showTooltip = false
+    },
+    onTooltipClose: function () {
+      this.createLog('closeMetricTooltip')
+      this.tooltipClicked = false;
+    },
+  },
+  data: function () {
+    return {
+      showTooltip: false,
+      tooltipClicked: false
+    }
+  }
 };
 </script>
 
