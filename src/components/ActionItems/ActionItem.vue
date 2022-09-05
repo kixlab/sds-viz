@@ -13,14 +13,14 @@
       </span>
     </div>
     <div v-if="isEditing">
-      <textarea v-model="internalNote" placeholder="이 세션에서 사용자의 검색 의도는 무엇이었나요? " class="w-full"></textarea>
+      <textarea v-model="internalNote" placeholder="이 세션을 통해 사용자가 찾으려 한 정보는 무엇이었나요?" class="w-full"></textarea>
     </div>
     <div v-else>
       <span v-if="actionItem.note.length > 0">
         {{actionItem.note}}
       </span>
       <span v-else class="text-gray-500">
-        이 세션에서 사용자의 검색 의도는 무엇이었나요?
+        이 세션을 통해 사용자가 찾으려 한 정보는 무엇이었나요?
        </span>
     </div>
     <div class="buttons flex justify-between">
