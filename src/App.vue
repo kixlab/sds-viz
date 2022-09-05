@@ -84,7 +84,7 @@ export default {
     const { setInteractionState, getUsername, setUsername } = initGlobalStore();
 
     const createLog = function(eventName, payload) {
-      const API_URL = 'http://internal.kixlab.org:9893';
+      const API_URL = 'https://khw0726.pythonanywhere.com';
       fetch(`${API_URL}/log/`, {
         method: 'POST',
         headers: {
