@@ -17,12 +17,12 @@
         px-2
         py-2" @click="onTooltipClose()">
         <ul>
-          <li><span class="font-bold">CTR@5</span>: Ratio of queries with clicks on documents ranked 1-5</li>
-          <li><span class="font-bold">MeanRR</span>: Mean of average reciprocal ranks for all queries </li>
-          <li><span class="font-bold">Abandonment rate</span>: Ratio of queries without any clicks</li>
-          <li><span class="font-bold">Reformulation rate</span>: Ratio of reformulated query among all queries</li>
-          <li><span class="font-bold">mAP</span>: Mean Average Precision</li>
-          <li><span class="font-bold">NDCG</span>: Normalized Discounted Cumulative Gain</li>
+          <li><span class="font-bold">CTR@5</span>: 전체 쿼리 중, 사용자가 1-5순위 검색 결과를 클릭한 쿼리의 비율</li>
+          <li><span class="font-bold">MeanRR</span>: 사용자가 클릭한 검색 결과들의 순위 역수의 평균 </li>
+          <li><span class="font-bold">Abandonment rate</span>: 전체 쿼리 중, 사용자가 어떤 결과도 클릭하지 않은 쿼리의 비율</li>
+          <li><span class="font-bold">Reformulation rate</span>: 전체 쿼리 중, 이전 쿼리와 유사하여 RefinedQuery로 판정된 쿼리의 비율</li>
+          <li><span class="font-bold">mAP</span>: 검색 결과의 순위와 사용자가 클릭한 문서 순위의 일치 정도</li>
+          <li><span class="font-bold">NDCG</span>: 가중치를 포함한 검색 결과의 순위와 사용자가 클릭한 문서 순위의 일치 정도</li>
         </ul>
       </div>
     </div>
