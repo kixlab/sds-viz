@@ -1,7 +1,7 @@
 <template>
   <div class="px-2 py-2">
     <div class="flex flex-row justify-between">
-      <section-title>List of Action Items</section-title>
+      <section-title>List of Session Explanation</section-title>
       <div class="bg-orange-500 rounded-md text-white cursor-pointer w-6 h-6" v-if="false">
         <button @click="close">
           <XIcon class="w-full h-full"/>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-if="isDumpVisible" class="overflow-y-auto h-4/5">
-      Action items: {{ actionItemDump }}
+      Explanations: {{ actionItemDump }}
       <br>
       Selected sessions: {{ selectedSessionsDump }}
     </div>
@@ -24,7 +24,7 @@
     </div> -->
     <div class="rounded-md text-blue-800 border border-blue cursor-pointer text-center">
       <button @click="dumpActionItems">
-        Dump action items
+        Dump explanations
       </button>
     </div>
   </div>
