@@ -247,12 +247,6 @@ export default {
 
       }
     },
-    // setNewTag: function (t) {
-    //   this.setSelectedSessionIds(t, this.sessionId, 'add')
-    //   this.tags.push(t)
-    //   this.newTag = ''
-    //   this.isAutocompleteEnabled = false
-    // }
   }
 }
 </script>
